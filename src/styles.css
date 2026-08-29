@@ -788,7 +788,7 @@ a {
     linear-gradient(160deg, #073f4c, #052d39 62%, #04242e);
   box-shadow: -24px 0 70px rgba(0, 20, 27, 0.38);
   color: var(--white);
-  display: flex;
+  display: none;
   flex-direction: column;
   height: 100dvh;
   max-width: 390px;
@@ -797,15 +797,29 @@ a {
   right: 0;
   top: 0;
   transform: translateX(105%);
-  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    display 360ms allow-discrete,
+    visibility 360ms allow-discrete;
   visibility: hidden;
   width: min(88vw, 390px);
   z-index: 43;
 }
 
+/* Le panneau est retiré du flux via display:none quand il est fermé (au lieu de
+   rester posé hors-écran) : un position:fixed translaté hors du viewport élargit
+   quand même document.documentElement.scrollWidth dans les navigateurs, ce qui
+   provoquait un débordement horizontal de toute la page sur mobile/tablette. */
 .mobile-menu.is-open .menu-panel {
+  display: flex;
   transform: translateX(0);
   visibility: visible;
+}
+
+@starting-style {
+  .mobile-menu.is-open .menu-panel {
+    transform: translateX(105%);
+  }
 }
 
 .menu-panel-header {
