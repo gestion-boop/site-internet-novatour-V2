@@ -7941,3 +7941,59 @@ main.offers-page .quote-section {
     font-size: 16px;
   }
 }
+
+/* Locations saisonnières : plateformes de réservation mises en avant
+   (noms en texte, sans logos de marques). */
+.saison-showcase__platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0 0 clamp(18px, 2.6vh, 30px);
+  padding: 0;
+}
+
+.saison-showcase__platforms li {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(95, 214, 205, 0.35);
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.01em;
+  padding: 7px 14px;
+}
+
+.saison-showcase__platforms li::before {
+  background: #5fd6cd;
+  border-radius: 50%;
+  content: "";
+  height: 6px;
+  width: 6px;
+}
+
+.saison-showcase__platforms li:first-child,
+.saison-showcase__platforms li:nth-child(2) {
+  background: rgba(95, 214, 205, 0.16);
+  border-color: rgba(95, 214, 205, 0.7);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.saison-showcase__sub {
+  margin-bottom: clamp(14px, 2vh, 22px);
+}
+
+@media (max-width: 900px) {
+  .saison-showcase__platforms li {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+.saison-showcase__lead {
+  max-width: 34ch;
+}

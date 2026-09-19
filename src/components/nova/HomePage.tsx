@@ -162,26 +162,38 @@ export function HomePage() {
               de réserver.
             </h2>
             <p className="saison-showcase__lead">
-              Gîtes, maisons et appartements de vacances à découvrir en immersion 360°, comme si vous y
-              étiez.
+              Vous avez repéré un logement sur Airbnb ou Booking ? Visitez-le en immersion 360° sur
+              NovaTour avant de réserver.
             </p>
             <p className="saison-showcase__sub">
-              Chaque location présente sur NovaTour se visite pièce par pièce, avec ses photos et
-              toutes ses informations pour réserver en confiance.
+              Gîtes, maisons et appartements de vacances se visitent pièce par pièce, avec leurs
+              photos et toutes leurs informations pour réserver en confiance.
             </p>
+
+            <ul
+              className="saison-showcase__platforms"
+              aria-label="Plateformes de réservation concernées"
+            >
+              <li>Airbnb</li>
+              <li>Booking.com</li>
+              <li>Abritel</li>
+              <li>Gîtes de France</li>
+              <li>Réservation en direct</li>
+            </ul>
 
             <div className="saison-showcase__actions">
               <a className="saison-showcase__cta" href={STAYS_URL} target="_blank" rel="noreferrer">
                 Voir les locations <b aria-hidden="true">→</b>
               </a>
               <a className="saison-showcase__link" href="/contact">
-                Vous êtes propriétaire ? Mettre mon logement en valeur <b aria-hidden="true">→</b>
+                Vous louez sur Airbnb ou Booking ? Ajoutez la visite 360° à votre annonce{" "}
+                <b aria-hidden="true">→</b>
               </a>
             </div>
 
             <p className="saison-showcase__trust">
               <ShieldCheck aria-hidden="true" />
-              Une visite immersive créée pour inspirer confiance.
+              Une visite immersive qui rassure avant la réservation, quelle que soit la plateforme.
             </p>
           </div>
 
