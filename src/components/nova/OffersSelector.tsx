@@ -48,7 +48,6 @@ const plans: {
         title: "Visite 360° jusqu’à 20 espaces",
         detail: "Deux fois plus de pièces ou zones filmées qu’en Statique",
       },
-      { title: "Points d’interaction intégrés", detail: "Illimités" },
       {
         title: "Liens de redirection illimités",
         detail: "Contact, réservation, réseaux sociaux, menu en ligne…",
@@ -68,11 +67,6 @@ const plans: {
       {
         title: "2 mises à jour par an",
         detail: "NovaVisio revient actualiser votre visite virtuelle deux fois par an",
-      },
-      { title: "Référencement local", detail: "Visible dans les recherches de la région" },
-      {
-        title: "Programme en description",
-        detail: "Vos activités et créneaux affichés dans la fiche texte",
       },
     ],
   },
