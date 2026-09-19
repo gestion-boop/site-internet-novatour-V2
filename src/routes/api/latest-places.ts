@@ -97,8 +97,8 @@ export const Route = createFileRoute("/api/latest-places")({
               title: place.place_name,
             }));
 
-          if (places.length !== 3) {
-            throw new Error(`NovaTour API returned only ${places.length} published places`);
+          if (places.length === 0) {
+            throw new Error("NovaTour API returned no published places");
           }
 
           return Response.json(

@@ -49,7 +49,7 @@ export default defineConfig(({ mode, command }) => {
       }),
       viteReact(),
       // nitro builds the deployable server output; only needed for `vite build`.
-      ...(command === "build" ? [nitro({ defaultPreset: "cloudflare-module" })] : []),
+      ...(command === "build" ? [nitro({ preset: "vercel" })] : []),
     ],
   };
 });

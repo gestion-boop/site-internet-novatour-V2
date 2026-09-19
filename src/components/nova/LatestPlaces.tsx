@@ -59,7 +59,7 @@ export function LatestPlaces() {
         if (!response.ok) return;
 
         const payload = (await response.json()) as { places?: FeaturedPlace[] };
-        if (payload.places?.length === 3) {
+        if (payload.places && payload.places.length > 0) {
           setPlaces(payload.places);
         }
       } catch (error) {
