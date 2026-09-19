@@ -51,8 +51,8 @@ export function HomePage() {
         <div className="hero-copy">
           <p className="eyebrow">La plateforme gratuite pour explorer</p>
           <h1>
-            Un seul endroit <br className="hero-br" />
-            pour explorer tous les autres.
+            Un seul <span className="hero-accent">endroit</span> <br className="hero-br" />
+            pour <span className="hero-accent">explorer</span> tous les autres.
           </h1>
           <p className="hero-intro">
             Explorez les meilleurs lieux de la région à 360°, puis retrouvez toutes leurs informations utiles au même

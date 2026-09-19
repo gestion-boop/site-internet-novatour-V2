@@ -946,6 +946,17 @@ body.menu-open {
   margin: 0;
 }
 
+/* Mots-clés aux couleurs du logo : le dégradé bleu profond → teal du disque,
+   reproduit dans les lettres. Sans ombre, sinon elle transparaît. */
+.hero h1 .hero-accent {
+  background: linear-gradient(120deg, #3a68a8 0%, #2a8fa9 55%, #35a6bc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #2a8fa9;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
 .wave {
   color: #32d4cb;
   font-size: 42px;
