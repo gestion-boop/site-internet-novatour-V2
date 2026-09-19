@@ -41,7 +41,7 @@ export function HomePage() {
 
         <div className="hero-copy">
           <p className="eyebrow">La plateforme gratuite pour explorer</p>
-          <h1>NovaTour — Visitez. Découvrez. Choisissez. en 360°</h1>
+          <h1>NovaTour — Visitez. Découvrez. Choisissez en 360°.</h1>
           <p className="hero-lead">
             Attirez <span className="highlight-yellow">plus</span> de personnes grâce à la{" "}
             <span className="highlight-yellow">visite Immersive</span>
@@ -205,11 +205,11 @@ export function HomePage() {
             </p>
 
             <div className="saison-showcase__actions">
-              <a className="saison-showcase__cta" href="/contact">
-                Mettre mon logement en valeur <b aria-hidden="true">→</b>
-              </a>
-              <a className="saison-showcase__link" href={APP_URL} target="_blank" rel="noreferrer">
+              <a className="saison-showcase__cta" href={APP_URL} target="_blank" rel="noreferrer">
                 Découvrir NovaTour <b aria-hidden="true">→</b>
+              </a>
+              <a className="saison-showcase__link" href="/contact">
+                Vous êtes propriétaire ? Mettre mon logement en valeur <b aria-hidden="true">→</b>
               </a>
             </div>
 
