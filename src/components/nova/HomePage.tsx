@@ -2,7 +2,6 @@ import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import { ShieldCheck } from "lucide-react";
-import heroVideo from "@/assets/novatour-hero.mp4.asset.json";
 import saisonHero from "@/assets/saison-bg-cosy.png.asset.json";
 import cosyVisite from "@/assets/le-cosy-visite.png.asset.json";
 
@@ -36,7 +35,7 @@ export function HomePage() {
 
       <section className="hero hero--video" id="accueil">
         <div className="hero-video-layer" aria-hidden="true">
-          <video className="hero-video" src={heroVideo.url} autoPlay muted loop playsInline preload="auto" />
+          <video className="hero-video" src="/novatour-hero.mp4" autoPlay muted loop playsInline preload="auto" />
           <div className="hero-video-overlay" />
         </div>
 
