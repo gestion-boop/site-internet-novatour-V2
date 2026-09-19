@@ -7805,3 +7805,146 @@ main.offers-page .quote-section {
     grid-template-columns: 54px 1fr;
   }
 }
+
+/* ============================================================
+   Locations saisonnières : galerie des derniers hébergements
+   visitables en 360°, à la place du téléphone vide.
+   ============================================================ */
+.saison-showcase__bg--gradient {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(18, 179, 166, 0.22), transparent 38%),
+    radial-gradient(circle at 10% 90%, rgba(95, 214, 205, 0.14), transparent 40%),
+    linear-gradient(120deg, #06202b 0%, #0a2f3a 55%, #0f3d46 100%);
+}
+
+.stay-gallery {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  height: min(66svh, 620px);
+  min-width: 0;
+}
+
+.stay-gallery > .stay-card:first-child {
+  grid-row: 1 / span 2;
+}
+
+.stay-card {
+  border-radius: 24px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+  color: #fff;
+  display: block;
+  isolation: isolate;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.stay-card:hover {
+  box-shadow: 0 36px 80px rgba(0, 0, 0, 0.45);
+  transform: translateY(-4px);
+}
+
+.stay-card::after {
+  background: linear-gradient(180deg, rgba(4, 24, 38, 0) 40%, rgba(4, 24, 38, 0.86) 100%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.stay-card__cover {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+  width: 100%;
+}
+
+.stay-card:hover .stay-card__cover {
+  transform: scale(1.04);
+}
+
+.stay-card__cover--empty {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(115, 216, 209, 0.45), transparent 55%),
+    linear-gradient(160deg, #0a5a67, #083945);
+}
+
+.stay-card__badge {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 6px 11px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  z-index: 2;
+}
+
+.stay-card__body {
+  bottom: 0;
+  display: grid;
+  gap: 4px;
+  left: 0;
+  padding: 18px 20px 20px;
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+
+.stay-card__body small {
+  color: #5fd6cd;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.stay-card__body strong {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.stay-gallery > .stay-card:first-child .stay-card__body strong {
+  font-size: 22px;
+}
+
+@media (max-width: 900px) {
+  .stay-gallery {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    height: auto;
+    order: 2;
+  }
+
+  .stay-gallery > .stay-card:first-child {
+    grid-row: auto;
+  }
+
+  .stay-card {
+    aspect-ratio: 16 / 10;
+  }
+
+  .stay-card__body {
+    padding: 14px 16px 16px;
+  }
+
+  .stay-card__body strong,
+  .stay-gallery > .stay-card:first-child .stay-card__body strong {
+    font-size: 17px;
+  }
+}

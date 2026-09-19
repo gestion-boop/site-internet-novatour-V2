@@ -93,8 +93,12 @@ function detectFamily(labels: (string | undefined)[]): PlaceFamily | null {
 export const Route = createFileRoute("/api/latest-places")({
   server: {
     handlers: {
-      GET: async () => {
+      GET: async ({ request }) => {
         try {
+          const url = new URL(request.url);
+          const wantedFamily = url.searchParams.get("family") as PlaceFamily | null;
+          const limit = Math.min(Math.max(Number(url.searchParams.get("limit")) || 3, 1), 6);
+
           const [placesResponse, categoriesResponse] = await Promise.all([
             fetch(`${API_URL}/place/public`, {
               cache: "no-store",
@@ -121,7 +125,6 @@ export const Route = createFileRoute("/api/latest-places")({
 
           const places = (placesPayload.places ?? [])
             .filter((place) => place.published && place.place_uuid && place.place_name)
-            .slice(0, 3)
             .map((place) => ({
               category:
                 place.category.map((id) => categoryNames.get(id)).find(Boolean) ?? "À découvrir",
@@ -136,7 +139,9 @@ export const Route = createFileRoute("/api/latest-places")({
               href: `${APP_URL}/place/${slugify(place.place_name)}?id=${encodeURIComponent(place.place_uuid)}`,
               id: place.place_uuid,
               title: place.place_name,
-            }));
+            }))
+            .filter((place) => !wantedFamily || place.family === wantedFamily)
+            .slice(0, limit);
 
           if (places.length === 0) {
             throw new Error("NovaTour API returned no published places");

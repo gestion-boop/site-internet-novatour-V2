@@ -2,8 +2,7 @@ import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import { ClipboardList, MousePointerClick, ShieldCheck } from "lucide-react";
-import saisonHero from "@/assets/saison-bg-cosy.png.asset.json";
-import cosyVisite from "@/assets/le-cosy-visite.png.asset.json";
+import { SeasonalStays } from "./SeasonalStays";
 
 
 const APP_URL = "https://app.novatour.fr";
@@ -148,10 +147,7 @@ export function HomePage() {
 
 
       <section className="saison-showcase" id="partenaire" aria-labelledby="partner-title">
-        <div className="saison-showcase__bg" aria-hidden="true">
-          <img src={saisonHero.url} alt="" />
-          <span className="saison-showcase__veil" />
-        </div>
+        <div className="saison-showcase__bg saison-showcase__bg--gradient" aria-hidden="true" />
 
         <div className="saison-showcase__inner">
           <div className="saison-showcase__content">
@@ -162,16 +158,17 @@ export function HomePage() {
               de réserver.
             </h2>
             <p className="saison-showcase__lead">
-              Pour la première fois, découvrez vos locations saisonnières en immersion 360° avant de faire votre choix.
+              Gîtes, maisons et appartements de vacances à découvrir en immersion 360°, comme si vous y
+              étiez.
             </p>
             <p className="saison-showcase__sub">
-              Faites ressentir l’ambiance, valorisez chaque espace et donnez envie de réserver avant même la première
-              visite.
+              Chaque location présente sur NovaTour se visite pièce par pièce, avec ses photos et
+              toutes ses informations pour réserver en confiance.
             </p>
 
             <div className="saison-showcase__actions">
               <a className="saison-showcase__cta" href={APP_URL} target="_blank" rel="noreferrer">
-                Découvrir NovaTour <b aria-hidden="true">→</b>
+                Voir les locations <b aria-hidden="true">→</b>
               </a>
               <a className="saison-showcase__link" href="/contact">
                 Vous êtes propriétaire ? Mettre mon logement en valeur <b aria-hidden="true">→</b>
@@ -184,16 +181,7 @@ export function HomePage() {
             </p>
           </div>
 
-          <a
-            className="saison-showcase__device"
-            href={APP_URL}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Ouvrir une visite immersive 360° dans l’application NovaTour"
-          >
-            <span className="saison-showcase__notch" aria-hidden="true" />
-            <img src={cosyVisite.url} alt="Visite immersive 360° d’une location saisonnière dans l’application NovaTour" />
-          </a>
+          <SeasonalStays />
         </div>
       </section>
 
