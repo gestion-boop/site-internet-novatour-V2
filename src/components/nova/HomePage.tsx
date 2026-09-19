@@ -162,24 +162,24 @@ export function HomePage() {
               de réserver.
             </h2>
             <p className="saison-showcase__lead">
-              Vous avez repéré un logement sur Airbnb ou Booking ? Visitez-le en immersion 360° sur
-              NovaTour avant de réserver.
+              Visualisez les lieux en immersion 360° avant de réserver votre logement sur les
+              plateformes.
             </p>
             <p className="saison-showcase__sub">
               Gîtes, maisons et appartements de vacances se visitent pièce par pièce, avec leurs
               photos et toutes leurs informations pour réserver en confiance.
             </p>
 
-            <ul
-              className="saison-showcase__platforms"
-              aria-label="Plateformes de réservation concernées"
-            >
-              <li>Airbnb</li>
-              <li>Booking.com</li>
-              <li>Abritel</li>
-              <li>Gîtes de France</li>
-              <li>Réservation en direct</li>
-            </ul>
+            <div className="saison-platforms" aria-label="Plateformes de réservation concernées">
+              <span className="saison-platforms__label">Avant de réserver sur</span>
+              <span className="saison-platforms__logo saison-platforms__logo--airbnb">
+                <img src="/stays/airbnb-logo.png" alt="Airbnb" height="40" />
+              </span>
+              <span className="saison-platforms__logo saison-platforms__logo--booking">
+                Booking.com
+              </span>
+              <span className="saison-platforms__label">ou en direct.</span>
+            </div>
 
             <div className="saison-showcase__actions">
               <a className="saison-showcase__cta" href={STAYS_URL} target="_blank" rel="noreferrer">
