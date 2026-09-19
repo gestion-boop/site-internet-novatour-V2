@@ -186,8 +186,9 @@ export function HomePage() {
                 Voir les locations <b aria-hidden="true">→</b>
               </a>
               <a className="saison-showcase__link" href="/contact">
-                Vous louez sur Airbnb ou Booking ? Ajoutez la visite 360° à votre annonce{" "}
-                <b aria-hidden="true">→</b>
+                Augmentez votre taux de satisfaction avec la visite immersive.
+                <br />
+                Toutes les informations au même endroit. <b aria-hidden="true">→</b>
               </a>
             </div>
 
