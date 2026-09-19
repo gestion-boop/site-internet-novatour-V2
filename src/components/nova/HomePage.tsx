@@ -173,7 +173,9 @@ export function HomePage() {
             </div>
 
             <div className="saison-platforms" aria-label="Plateformes de réservation concernées">
-              <span className="saison-platforms__label">Disponible sur</span>
+              <span className="saison-platforms__label">
+                Après la visite immersive, votre location est disponible sur
+              </span>
               <span className="saison-platforms__logo saison-platforms__logo--airbnb">
                 <img src="/stays/airbnb-logo.png" alt="Airbnb" height="24" />
               </span>
