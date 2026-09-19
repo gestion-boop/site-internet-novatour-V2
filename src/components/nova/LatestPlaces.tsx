@@ -1,12 +1,24 @@
 import { useEffect, useState } from "react";
+import { BedDouble, House, ShoppingBag, Utensils } from "lucide-react";
 
 const APP_URL = "https://app.novatour.fr";
+
+type PlaceFamily = "restaurant" | "stay" | "shop" | "pro";
+
+/** Mêmes pictogrammes que les filtres de l'application NovaTour. */
+const familyIcons = {
+  pro: House,
+  restaurant: Utensils,
+  shop: ShoppingBag,
+  stay: BedDouble,
+} as const;
 
 type FeaturedPlace = {
   category: string;
   city: string;
   coverUrl: string | null;
   description?: string | null;
+  family?: PlaceFamily | null;
   href: string;
   id: string;
   logoUrl?: string | null;
@@ -18,6 +30,7 @@ const fallbackPlaces: FeaturedPlace[] = [
     category: "Se restaurer",
     city: "Narbonne",
     coverUrl: "/occitanie-restaurant.png",
+    family: "restaurant",
     href: APP_URL,
     id: "fallback-restaurant",
     logoUrl: "/novatour-logo.png",
@@ -27,19 +40,21 @@ const fallbackPlaces: FeaturedPlace[] = [
     category: "Hébergement",
     city: "Le Somail",
     coverUrl: "/occitanie-village.png",
+    family: "stay",
     href: APP_URL,
     id: "fallback-stay",
     logoUrl: "/novatour-logo.png",
     title: "Parenthèse au bord de l’eau",
   },
   {
-    category: "À découvrir",
+    category: "Commerces",
     city: "Narbonne-Plage",
     coverUrl: "/occitanie-marina.png",
+    family: "shop",
     href: APP_URL,
     id: "fallback-coast",
     logoUrl: "/novatour-logo.png",
-    title: "Escapade sur le littoral",
+    title: "Comptoir du littoral",
   },
 ];
 
@@ -88,35 +103,47 @@ export function LatestPlaces() {
 
   return (
     <div className="places-grid" aria-live="polite">
-      {places.map((place) => (
-        <a className="place-card" href={place.href} key={place.id} target="_blank" rel="noreferrer">
-          <figure className="place-card__media">
-            {place.coverUrl ? (
-              <img alt="" className="place-card__cover" loading="lazy" src={place.coverUrl} />
-            ) : (
-              <span className="place-card__cover place-card__cover--empty" aria-hidden="true" />
-            )}
-            <span className="place-card__badge">360°</span>
-            {place.logoUrl ? (
-              <img
-                alt={`Logo ${place.title}`}
-                className="place-card__logo"
-                loading="lazy"
-                src={place.logoUrl}
-              />
-            ) : null}
-          </figure>
-          <div className="place-card__body">
-            <p className="place-card__category">{place.category}</p>
-            <h3 className="place-card__title">{place.title}</h3>
-            <p className="place-card__city">{place.city}</p>
-            {place.description ? <p className="place-card__desc">{place.description}</p> : null}
-            <span className="place-card__cta">
-              Visiter en immersion <span aria-hidden="true">→</span>
-            </span>
-          </div>
-        </a>
-      ))}
+      {places.map((place) => {
+        const FamilyIcon = place.family ? familyIcons[place.family] : null;
+        return (
+          <a
+            className="place-card"
+            href={place.href}
+            key={place.id}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <figure className="place-card__media">
+              {place.coverUrl ? (
+                <img alt="" className="place-card__cover" loading="lazy" src={place.coverUrl} />
+              ) : (
+                <span className="place-card__cover place-card__cover--empty" aria-hidden="true" />
+              )}
+              <span className="place-card__badge">360°</span>
+              {place.logoUrl ? (
+                <img
+                  alt={`Logo ${place.title}`}
+                  className="place-card__logo"
+                  loading="lazy"
+                  src={place.logoUrl}
+                />
+              ) : null}
+            </figure>
+            <div className="place-card__body">
+              <p className="place-card__category">
+                {FamilyIcon ? <FamilyIcon aria-hidden="true" /> : null}
+                {place.category}
+              </p>
+              <h3 className="place-card__title">{place.title}</h3>
+              <p className="place-card__city">{place.city}</p>
+              {place.description ? <p className="place-card__desc">{place.description}</p> : null}
+              <span className="place-card__cta">
+                Visiter en immersion <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </a>
+        );
+      })}
     </div>
   );
 }

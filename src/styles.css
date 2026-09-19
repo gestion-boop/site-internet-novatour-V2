@@ -7564,12 +7564,26 @@ main.offers-page .quote-section {
 }
 
 .place-card__category {
+  align-items: center;
   color: var(--teal-dark);
+  display: flex;
   font-size: 11px;
   font-weight: 800;
+  gap: 8px;
   letter-spacing: 0.12em;
   margin: 0;
   text-transform: uppercase;
+}
+
+.place-card__category svg {
+  background: rgba(5, 151, 157, 0.12);
+  border-radius: 50%;
+  box-sizing: content-box;
+  flex: none;
+  height: 14px;
+  padding: 6px;
+  stroke-width: 2.2;
+  width: 14px;
 }
 
 .place-card__title {

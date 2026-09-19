@@ -44,15 +44,50 @@ function withVersion(url: string | null | undefined, version: number) {
   return `${url}${url.includes("?") ? "&" : "?"}v=${version}`;
 }
 
+type PlaceFamily = "restaurant" | "stay" | "shop" | "pro";
+
 function flattenCategories(categories: ApiCategory[]) {
   const names = new Map<string, string>();
+  const roots = new Map<string, string>();
   for (const category of categories) {
     names.set(category.category_uuid, category.name);
+    roots.set(category.category_uuid, category.name);
     for (const subCategory of category.sub_categories ?? []) {
       names.set(subCategory.category_uuid, subCategory.name);
+      roots.set(subCategory.category_uuid, category.name);
     }
   }
-  return names;
+  return { names, roots };
+}
+
+/**
+ * Famille d'établissement, alignée sur les quatre filtres de l'application
+ * (Se restaurer, Hébergements, Commerces, Professionnels). Déduite du nom de
+ * la catégorie parente, avec repli sur le nom de la catégorie elle-même.
+ */
+function detectFamily(labels: (string | undefined)[]): PlaceFamily | null {
+  const text = labels
+    .filter(Boolean)
+    .join(" ")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+  if (!text) return null;
+  if (/restaur|\bbars?\b|cafe|brasserie|pizz|traiteur|manger|gastro/.test(text)) {
+    return "restaurant";
+  }
+  if (/heberg|hotel|gite|chambre|camping|location saison|logement|dormir/.test(text)) {
+    return "stay";
+  }
+  if (/commerc|boutique|magasin|shop|epicerie|\bcaves?\b|marche/.test(text)) return "shop";
+  if (
+    /profession|\bpros?\b|service|artisan|entreprise|agence|cabinet|bien-etre|sante|loisir/.test(
+      text,
+    )
+  ) {
+    return "pro";
+  }
+  return null;
 }
 
 export const Route = createFileRoute("/api/latest-places")({
@@ -79,7 +114,9 @@ export const Route = createFileRoute("/api/latest-places")({
           const categoriesPayload = categoriesResponse.ok
             ? ((await categoriesResponse.json()) as { categories?: ApiCategory[] })
             : { categories: [] };
-          const categoryNames = flattenCategories(categoriesPayload.categories ?? []);
+          const { names: categoryNames, roots: categoryRoots } = flattenCategories(
+            categoriesPayload.categories ?? [],
+          );
           const version = Date.now();
 
           const places = (placesPayload.places ?? [])
@@ -90,6 +127,10 @@ export const Route = createFileRoute("/api/latest-places")({
                 place.category.map((id) => categoryNames.get(id)).find(Boolean) ?? "À découvrir",
               city: place.city || "Occitanie",
               coverUrl: withVersion(place.cover_url, version),
+              family: detectFamily([
+                ...place.category.map((id) => categoryRoots.get(id)),
+                ...place.category.map((id) => categoryNames.get(id)),
+              ]),
               logoUrl: withVersion(place.business_logo, version),
               description: (place.description || "").trim() || null,
               href: `${APP_URL}/place/${slugify(place.place_name)}?id=${encodeURIComponent(place.place_uuid)}`,
