@@ -34,16 +34,6 @@ const plans: {
         title: "Charte graphique personnalisée",
         detail: "Couleurs et logo de votre établissement dans l’interface de visite",
       },
-      { title: "Visite jour & nuit", detail: "Non incluse", included: false },
-      {
-        title: "Lien de redirection",
-        detail: "Lien de contact, lien de réservation, lien réseaux sociaux.",
-      },
-      { title: "Référencement local", detail: "Visible dans les recherches de la région" },
-      {
-        title: "Programme en description",
-        detail: "Vos activités et créneaux affichés dans la fiche texte",
-      },
     ],
   },
   {
