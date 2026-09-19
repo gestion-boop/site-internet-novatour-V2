@@ -1,8 +1,20 @@
 import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
-import { ClipboardList, Eye, MousePointerClick, ShieldCheck } from "lucide-react";
+import {
+  BadgeCheck,
+  ClipboardList,
+  Compass,
+  Eye,
+  Globe,
+  MousePointerClick,
+  Share,
+  ShieldCheck,
+  Smartphone,
+  SquarePlus,
+} from "lucide-react";
 import { SeasonalStays } from "./SeasonalStays";
+import { TourPreview } from "./TourPreview";
 
 
 const APP_URL = "https://app.novatour.fr";
@@ -49,7 +61,10 @@ export function HomePage() {
         </div>
 
         <div className="hero-copy">
-          <p className="eyebrow">La plateforme gratuite pour explorer</p>
+          <p className="hero-badge">
+            <span className="hero-badge__dot" aria-hidden="true" />
+            La plateforme gratuite pour explorer
+          </p>
           <h1>
             Un seul <span className="hero-accent">endroit</span> <br className="hero-br" />
             pour <span className="hero-accent">explorer</span> tous les autres.
@@ -69,7 +84,20 @@ export function HomePage() {
             </a>
           </div>
 
-          <p className="hero-categories">Restaurants · Hébergements · Professionnels · Commerces</p>
+          <ul className="hero-proofs">
+            <li>
+              <BadgeCheck aria-hidden="true" />
+              Gratuit
+            </li>
+            <li>
+              <Smartphone aria-hidden="true" />
+              Sans téléchargement
+            </li>
+            <li>
+              <Compass aria-hidden="true" />
+              Immersion 360°
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -87,13 +115,7 @@ export function HomePage() {
       </section>
 
       <section className="about about--editorial section" id="concept">
-        <div className="about-scene" aria-hidden="true">
-          <img className="about-scene__photo" src="/occitanie-marina.png" alt="" />
-          <div className="about-scene__phone">
-            <span className="about-scene__speaker" />
-            <img src="/novatour-app-home.png" alt="" />
-          </div>
-        </div>
+        <TourPreview />
 
         <div className="about-copy about-copy--editorial">
           <p className="eyebrow">Le concept</p>
@@ -209,8 +231,8 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="app-section section app-section--modern">
-        <div className="app-copy">
+      <section className="app-section app-section--light section">
+        <div className="app-copy app-copy--light">
           <p className="eyebrow">L’application web</p>
           <h2>
             NovaTour dans
@@ -218,70 +240,57 @@ export function HomePage() {
             votre <em>poche</em>
           </h2>
           <p>
-            NovaTour est une application web : aucun téléchargement ni store. Ajoutez-la directement à l’écran d’accueil
-            de votre téléphone et accédez aux visites comme dans une véritable application.
+            Aucun téléchargement : ajoutez NovaTour à l’écran d’accueil de votre téléphone et lancez
+            les visites en un geste.
           </p>
-          <ol className="install-steps">
+          <ol className="app-steps">
             <li>
-              <span>1</span>
-              <p>
-                <strong>Ouvrez NovaTour</strong> dans Safari sur iPhone ou Chrome sur Android.
-              </p>
+              <Globe aria-hidden="true" />
+              <span>
+                <strong>Ouvrez NovaTour</strong> dans Safari ou Chrome.
+              </span>
             </li>
             <li>
-              <span>2</span>
-              <p>
-                <strong>Appuyez sur « Partager »</strong> ou ouvrez le menu de votre navigateur.
-              </p>
+              <Share aria-hidden="true" />
+              <span>
+                <strong>Appuyez sur « Partager »</strong> dans votre navigateur.
+              </span>
             </li>
             <li>
-              <span>3</span>
-              <p>
-                <strong>Choisissez « Ajouter à l’écran d’accueil »</strong> : l’icône NovaTour apparaît sur votre
-                téléphone.
-              </p>
+              <SquarePlus aria-hidden="true" />
+              <span>
+                <strong>Ajoutez à l’écran d’accueil</strong>, l’icône apparaît.
+              </span>
             </li>
           </ol>
-          <a className="app-start-button" href={APP_URL} target="_blank" rel="noreferrer">
-            <span aria-hidden="true">▯</span>
-            <small>Démarrer</small>
-            <strong>Faire votre première recherche</strong>
-            <b aria-hidden="true">→</b>
-          </a>
-        </div>
-
-        <div className="app-install">
           <a
-            className="app-notification"
+            className="button button-primary app-cta"
             href={APP_URL}
             target="_blank"
             rel="noreferrer"
-            aria-label="Découvrir les derniers partenaires NovaTour"
           >
-            <img src="/novatour-logo.png" alt="" width="52" height="52" />
-            <div>
-              <strong>Profitez des derniers partenaires de NovaTour</strong>
-              <p>Découvrez les nouveaux lieux qui rejoignent la plateforme partout en France.</p>
-            </div>
+            Ouvrir NovaTour <span aria-hidden="true">→</span>
           </a>
+        </div>
 
-          <div className="scan-divider">
-            <span>ou scannez</span>
-          </div>
-
-          <div className="qr-card">
-            <p>Scanner pour ouvrir NovaTour</p>
-            <a href={APP_URL} target="_blank" rel="noreferrer" aria-label="Ouvrir l’application NovaTour">
-              <img
-                src="/novatour-app-qr.png"
-                alt="QR code permettant d’ouvrir l’application NovaTour"
-                width="220"
-                height="220"
-              />
-            </a>
-            <strong>Pointez votre appareil photo</strong>
-            <span>Le lien s’ouvre directement sur iOS et Android.</span>
-          </div>
+        <div className="app-qr">
+          <img alt="" className="app-qr__logo" height="64" src="/novatour-logo.png" width="64" />
+          <a
+            href={APP_URL}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Ouvrir l’application NovaTour"
+          >
+            <img
+              alt="QR code permettant d’ouvrir l’application NovaTour"
+              className="app-qr__code"
+              height="240"
+              src="/novatour-app-qr.png"
+              width="240"
+            />
+          </a>
+          <strong>Scannez pour ouvrir NovaTour sur votre téléphone</strong>
+          <span>Le lien s’ouvre directement sur iOS et Android.</span>
         </div>
       </section>
 

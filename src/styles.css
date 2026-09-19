@@ -8306,3 +8306,451 @@ main.offers-page .quote-section {
     radial-gradient(circle at 90% 0%, rgba(232, 112, 58, 0.14), transparent 32%),
     rgba(255, 255, 255, 0.72);
 }
+
+/* ============================================================
+   Première page : badge à point lumineux et rangée de réassurances.
+   ============================================================ */
+.hero-badge {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.12em;
+  margin: 0 0 18px;
+  padding: 8px 14px 8px 12px;
+  text-transform: uppercase;
+}
+
+.hero-badge__dot {
+  animation: hero-pulse 2s ease-in-out infinite;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(232, 112, 58, 0.6);
+  height: 8px;
+  width: 8px;
+}
+
+@keyframes hero-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(232, 112, 58, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(232, 112, 58, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(232, 112, 58, 0);
+  }
+}
+
+.hero-proofs {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 18px 0 0;
+}
+
+.hero-proofs li {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.86);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 9px;
+}
+
+.hero-proofs svg {
+  color: var(--accent);
+  height: 18px;
+  stroke-width: 2.2;
+  width: 18px;
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .hero-proofs {
+    margin-top: 18px;
+    padding-top: 14px;
+  }
+}
+
+/* ============================================================
+   Le concept : carte d'aperçu 360° avec vraies captures.
+   ============================================================ */
+.tour-preview {
+  align-self: center;
+  background: rgba(8, 30, 36, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 28px;
+  box-shadow: 0 40px 90px rgba(4, 55, 65, 0.28);
+  color: #fff;
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  width: 100%;
+}
+
+.tour-preview__bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 6px;
+}
+
+.tour-preview__live {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  text-transform: uppercase;
+}
+
+.tour-preview__dot {
+  animation: hero-pulse 2s ease-in-out infinite;
+  background: var(--accent);
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+}
+
+.tour-preview__count {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tour-preview__stage {
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tour-preview__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.tour-preview__stage::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 30%, transparent 60%, rgba(0, 0, 0, 0.55));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.tour-preview__place {
+  align-items: center;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 6px;
+  left: 14px;
+  padding: 6px 10px;
+  position: absolute;
+  top: 14px;
+  z-index: 2;
+}
+
+.tour-preview__place svg {
+  color: var(--accent);
+  height: 14px;
+  width: 14px;
+}
+
+.tour-preview__open {
+  align-items: center;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+  display: grid;
+  font-size: 11px;
+  font-weight: 800;
+  gap: 8px;
+  justify-items: center;
+  left: 50%;
+  letter-spacing: 0.08em;
+  position: absolute;
+  text-decoration: none;
+  text-transform: uppercase;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.tour-preview__hotspot {
+  align-items: center;
+  background: rgba(232, 112, 58, 0.92);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 900;
+  height: 56px;
+  justify-content: center;
+  transition: transform 200ms ease;
+  width: 56px;
+}
+
+.tour-preview__open:hover .tour-preview__hotspot {
+  transform: scale(1.08);
+}
+
+.tour-preview__foot {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 2px 6px 4px;
+}
+
+.tour-preview__foot > div:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+.tour-preview__foot strong {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.tour-preview__foot span {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+}
+
+.tour-preview__nav {
+  display: flex;
+  gap: 6px;
+}
+
+.tour-preview__nav button {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 36px;
+  justify-content: center;
+  transition: background 160ms ease;
+  width: 36px;
+}
+
+.tour-preview__nav button:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.tour-preview__nav svg {
+  height: 18px;
+  width: 18px;
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .tour-preview__stage {
+    aspect-ratio: 16 / 11;
+  }
+}
+
+/* ============================================================
+   L'application : panneau clair, étapes courtes, une carte QR.
+   ============================================================ */
+.app-section--light {
+  color: var(--ink);
+  gap: clamp(40px, 6vw, 96px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+}
+
+.app-copy--light .eyebrow {
+  color: var(--accent-dark);
+}
+
+.app-copy--light h2 {
+  color: var(--ink);
+}
+
+.app-copy--light h2 em {
+  background: linear-gradient(120deg, #3a68a8 0%, #2a8fa9 55%, #35a6bc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #2a8fa9;
+  font-style: normal;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-copy--light > p:not(.eyebrow) {
+  color: var(--ink-soft);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  margin: 0 0 clamp(18px, 2.6vh, 28px);
+  max-width: 46ch;
+}
+
+.app-steps {
+  counter-reset: step;
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 0 0 clamp(22px, 3vh, 34px);
+  padding: 0;
+}
+
+.app-steps li {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(8, 116, 123, 0.1);
+  border-radius: 16px;
+  color: var(--ink-soft);
+  display: flex;
+  font-size: 15px;
+  gap: 14px;
+  line-height: 1.4;
+  padding: 12px 16px 12px 12px;
+}
+
+.app-steps li {
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Neutralise l'ancien style « pastille numérotée » appliqué aux span des étapes. */
+.app-copy .app-steps li > span {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  display: inline;
+  flex: 1 1 auto;
+  font-size: inherit;
+  height: auto;
+  justify-content: flex-start;
+}
+
+.app-steps li strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.app-steps svg {
+  background: var(--accent-soft);
+  border-radius: 12px;
+  box-sizing: content-box;
+  color: var(--accent-dark);
+  flex: none;
+  height: 20px;
+  padding: 10px;
+  stroke-width: 2;
+  width: 20px;
+}
+
+.app-cta span {
+  font-size: 18px;
+  transition: transform 180ms ease;
+}
+
+.app-cta:hover span {
+  transform: translateX(4px);
+}
+
+.app-qr {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(11, 61, 70, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 30px 70px rgba(4, 55, 65, 0.12);
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  justify-self: center;
+  max-width: 380px;
+  padding: 30px 28px 28px;
+  text-align: center;
+  width: 100%;
+}
+
+.app-qr__logo {
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(4, 55, 65, 0.16);
+  height: 64px;
+  width: 64px;
+}
+
+.app-qr__code {
+  border-radius: 18px;
+  display: block;
+  height: auto;
+  max-width: 240px;
+  width: 100%;
+}
+
+.app-qr strong {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.app-qr span {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .app-qr {
+    gap: 10px;
+    padding: 22px 22px 20px;
+  }
+
+  .app-qr__code {
+    max-width: 200px;
+  }
+
+  .app-steps {
+    gap: 8px;
+  }
+
+  .app-steps li {
+    font-size: 14px;
+    padding: 10px 14px 10px 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-section--light {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Sur téléphone, le QR code n'a pas de sens : le bouton suffit. */
+  .app-qr {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-badge {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 7px 12px 7px 10px;
+  }
+}
