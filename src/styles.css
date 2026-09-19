@@ -414,11 +414,6 @@ main > section:not(.hero) {
     font-size: clamp(40px, 3.7vw, 54px);
   }
 
-  .place-card {
-    height: 100%;
-    min-height: clamp(380px, 68vh, 560px);
-  }
-
   .place-content {
     bottom: 20px;
   }
@@ -1553,48 +1548,6 @@ body.menu-open {
   grid-template-columns: repeat(3, 1fr);
   height: 100%;
   min-height: 0;
-}
-
-.place-card {
-  background-color: #5c817e;
-  background-position: center;
-  background-size: cover;
-  border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(6, 66, 73, 0.12);
-  color: white;
-  display: block;
-  height: 100%;
-  min-height: 620px;
-  overflow: hidden;
-  padding: 24px;
-  position: relative;
-  transition:
-    transform 220ms ease,
-    box-shadow 220ms ease;
-}
-
-.place-card::before {
-  background: linear-gradient(180deg, rgba(2, 30, 35, 0.02) 20%, rgba(3, 40, 46, 0.88));
-  content: "";
-  inset: 0;
-  position: absolute;
-}
-
-.place-card:hover {
-  box-shadow: 0 28px 60px rgba(6, 66, 73, 0.2);
-  transform: translateY(-6px);
-}
-
-.place-card--1 {
-  background-image: linear-gradient(135deg, #7a9a92, #d5a165 55%, #203f43);
-}
-
-.place-card--2 {
-  background-image: linear-gradient(135deg, #b2d1cc, #d8c394 58%, #55756e);
-}
-
-.place-card--3 {
-  background-image: linear-gradient(135deg, #72bed2, #f0d5a3 52%, #3e7777);
 }
 
 .place-360 {
@@ -3829,10 +3782,6 @@ footer div:not(.footer-brand) a {
     grid-template-columns: 1fr;
   }
 
-  .place-card {
-    min-height: 520px;
-  }
-
   .about,
   .benefits,
   .app-section {
@@ -4484,11 +4433,6 @@ footer div:not(.footer-brand) a {
   .section h2,
   .partner-section h2 {
     font-size: clamp(38px, 3.6vw, 52px);
-  }
-
-  .place-card {
-    height: 100%;
-    min-height: clamp(360px, 60vh, 520px);
   }
 
   .place-content {
@@ -6539,10 +6483,6 @@ main.offers-page .quote-section {
     gap: 18px;
   }
 
-  .place-card {
-    min-height: 0 !important;
-  }
-
   .place-phone__frame {
     width: min(100%, 260px);
     margin-inline: auto;
@@ -7526,4 +7466,185 @@ main.offers-page .quote-section {
 .app-section h2,
 .saison-showcase__content h2 {
   margin-bottom: clamp(14px, 2vh, 26px);
+}
+
+/* ============================================================
+   Dernières découvertes : cartes éditoriales (photo du lieu, logo
+   en médaillon, toute la carte cliquable). Remplace les maquettes
+   téléphone. Placé en fin de feuille pour primer.
+   ============================================================ */
+.place-card {
+  background: var(--white);
+  border: 1px solid rgba(11, 61, 70, 0.08);
+  border-radius: 22px;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.place-card:hover {
+  box-shadow: 0 22px 48px rgba(4, 55, 65, 0.14);
+  transform: translateY(-4px);
+}
+
+.place-card__media {
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  min-height: 0;
+  overflow: visible;
+  position: relative;
+}
+
+.place-card__cover {
+  border-radius: 22px 22px 0 0;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+  width: 100%;
+}
+
+.place-card__cover--empty {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(115, 216, 209, 0.45), transparent 55%),
+    linear-gradient(160deg, #0a5a67, #083945);
+}
+
+.place-card:hover .place-card__cover {
+  transform: scale(1.03);
+}
+
+/* Le zoom au survol ne doit pas sortir du cadre arrondi de la photo. */
+.place-card__media::before {
+  border-radius: 22px 22px 0 0;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.place-card__badge {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 6px 11px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+}
+
+.place-card__logo {
+  background: var(--white);
+  border-radius: 50%;
+  bottom: -24px;
+  box-shadow:
+    0 0 0 3px var(--white),
+    0 8px 20px rgba(4, 55, 65, 0.18);
+  height: 56px;
+  left: 20px;
+  object-fit: cover;
+  position: absolute;
+  width: 56px;
+}
+
+.place-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  padding: 36px 22px 22px;
+}
+
+.place-card__category {
+  color: var(--teal-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.place-card__title {
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.place-card__city {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin: 0;
+}
+
+.place-card__city::before {
+  content: "⌖ ";
+}
+
+.place-card__desc {
+  -webkit-box-orient: vertical;
+  color: var(--ink-soft);
+  display: -webkit-box;
+  font-size: 14px;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  line-height: 1.5;
+  margin: 4px 0 0;
+  overflow: hidden;
+}
+
+.place-card__cta {
+  align-items: center;
+  color: var(--teal-dark);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.place-card__cta span {
+  transition: transform 180ms ease;
+}
+
+.place-card:hover .place-card__cta span {
+  transform: translateX(4px);
+}
+
+@media (min-width: 901px) {
+  /* Le panneau a une hauteur fixe : la photo prend toute la place restante. */
+  .discover .places-grid {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .place-card {
+    min-height: 0;
+  }
+
+  .place-card__media {
+    aspect-ratio: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .place-card__body {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .place-card__media {
+    aspect-ratio: 16 / 10;
+  }
 }
