@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { HomePage } from "@/components/nova/HomePage";
 
-const TITLE = "NovaTour — Visitez. Découvrez. Choisissez en 360°.";
+const TITLE = "NovaTour — Un seul endroit pour explorer tous les autres";
 const DESCRIPTION =
   "Explorez gratuitement les restaurants, hébergements, commerces et activités grâce aux visites immersives 360° de NovaTour.";
 const URL = "https://novatour.fr/";

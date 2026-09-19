@@ -926,14 +926,6 @@ body.menu-open {
   color: var(--aqua);
 }
 
-.hero-app-slogan {
-  color: var(--aqua);
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.3;
-  margin: -6px 0 12px;
-}
-
 .eyebrow {
   color: var(--teal-dark);
   font-size: 13px;
@@ -5546,11 +5538,6 @@ main.offers-page .quote-section {
     margin-bottom: clamp(6px, 1vh, 12px);
   }
 
-  .hero-app-slogan {
-    font-size: clamp(14px, 1vw, 17px);
-    margin: -4px 0 clamp(6px, 1vh, 12px);
-  }
-
   .hero h1 {
     font-size: clamp(38px, 3.2vw, 56px);
     line-height: 0.94;
@@ -5617,11 +5604,6 @@ main.offers-page .quote-section {
 
   .hero-copy .eyebrow {
     margin-bottom: clamp(4px, 0.7vh, 10px);
-  }
-
-  .hero-app-slogan {
-    font-size: 13px;
-    margin: -2px 0 clamp(2px, 0.5vh, 8px);
   }
 
   .hero h1 {

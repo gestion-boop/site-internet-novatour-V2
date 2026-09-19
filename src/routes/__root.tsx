@@ -64,7 +64,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "NovaTour — Visitez. Découvrez. Choisissez en 360°." },
+      { title: "NovaTour — Un seul endroit pour explorer tous les autres" },
       { name: "description", content: "La plateforme gratuite pour explorer les lieux en immersion 360°." },
       { name: "author", content: "NovaVisio" },
       { property: "og:title", content: "NovaTour" },
