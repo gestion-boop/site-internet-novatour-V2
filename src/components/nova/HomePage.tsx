@@ -148,7 +148,10 @@ export function HomePage() {
 
 
       <section className="saison-showcase" id="partenaire" aria-labelledby="partner-title">
-        <div className="saison-showcase__bg saison-showcase__bg--gradient" aria-hidden="true" />
+        <div className="saison-showcase__bg saison-showcase__bg--gradient" aria-hidden="true">
+          <img src="/stays/le-cosy-cuisine.webp" alt="" loading="lazy" />
+          <span className="saison-showcase__veil" />
+        </div>
 
         <div className="saison-showcase__inner">
           <div className="saison-showcase__content">

@@ -1,93 +1,67 @@
-import { useEffect, useState } from "react";
-
 const STAYS_URL = "https://app.novatour.fr/?category=h%C3%A9bergements";
 
-type Stay = {
+type FeaturedVisit = {
+  alt: string;
   category: string;
   city: string;
-  coverUrl: string | null;
   href: string;
   id: string;
+  screenshot: string;
   title: string;
 };
 
-const fallbackStays: Stay[] = [
+/**
+ * Visites immersives mises en avant : captures mobiles réelles de
+ * l'application NovaTour. Pour ajouter une location, déposer la capture
+ * (format portrait) dans public/stays et compléter cette liste.
+ */
+const featuredVisits: FeaturedVisit[] = [
   {
-    category: "Maison de vacances",
-    city: "Le Somail",
-    coverUrl: "/occitanie-village.png",
-    href: STAYS_URL,
-    id: "fallback-stay-village",
-    title: "Maison de village au bord du canal",
-  },
-  {
-    category: "Appartement",
-    city: "Narbonne-Plage",
-    coverUrl: "/occitanie-marina.png",
-    href: STAYS_URL,
-    id: "fallback-stay-marina",
-    title: "Appartement vue sur le port",
-  },
-  {
+    alt: "Visite immersive 360° du gîte de Jonquières : chambre lumineuse avec poutre apparente",
     category: "Gîte",
-    city: "Narbonne",
-    coverUrl: "/occitanie-restaurant.png",
+    city: "Jonquières",
     href: STAYS_URL,
-    id: "fallback-stay-mas",
-    title: "Mas avec terrasse sur les vignes",
+    id: "jonquieres",
+    screenshot: "/stays/jonquieres-chambre.webp",
+    title: "Château de Jonquières",
+  },
+  {
+    alt: "Visite immersive 360° de l’appartement Le Cosy : cuisine ouverte et mur bleu",
+    category: "Appartement",
+    city: "Narbonne",
+    href: STAYS_URL,
+    id: "le-cosy",
+    screenshot: "/stays/le-cosy-mobile.webp",
+    title: "Le Cosy",
   },
 ];
 
-/**
- * Locations saisonnières visibles sur NovaTour : les derniers hébergements
- * publiés (famille « stay » côté API), avec repli sur des visuels locaux.
- */
 export function SeasonalStays() {
-  const [stays, setStays] = useState(fallbackStays);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    async function refreshStays() {
-      try {
-        const response = await fetch(`/api/latest-places?family=stay&limit=3&t=${Date.now()}`, {
-          cache: "no-store",
-          signal: controller.signal,
-        });
-
-        if (!response.ok) return;
-
-        const payload = (await response.json()) as { places?: Stay[] };
-        if (payload.places && payload.places.length > 0) {
-          setStays(payload.places);
-        }
-      } catch (error) {
-        if (!controller.signal.aborted) {
-          console.error("[NovaTour] Impossible d’actualiser les locations", error);
-        }
-      }
-    }
-
-    void refreshStays();
-
-    return () => controller.abort();
-  }, []);
-
   return (
-    <div className="stay-gallery" aria-label="Locations saisonnières à visiter en immersion">
-      {stays.map((stay) => (
-        <a className="stay-card" href={stay.href} key={stay.id} target="_blank" rel="noreferrer">
-          {stay.coverUrl ? (
-            <img alt="" className="stay-card__cover" loading="lazy" src={stay.coverUrl} />
-          ) : (
-            <span className="stay-card__cover stay-card__cover--empty" aria-hidden="true" />
-          )}
-          <span className="stay-card__badge">Visite 360°</span>
-          <span className="stay-card__body">
+    <div className="stay-phones" aria-label="Locations saisonnières à visiter en immersion">
+      {featuredVisits.map((visit, index) => (
+        <a
+          className={`stay-phone${index % 2 === 1 ? " stay-phone--offset" : ""}`}
+          href={visit.href}
+          key={visit.id}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="stay-phone__frame">
+            <span className="stay-phone__notch" aria-hidden="true" />
+            <img
+              alt={visit.alt}
+              className="stay-phone__screen"
+              loading="lazy"
+              src={visit.screenshot}
+            />
+          </span>
+          <span className="stay-phone__caption">
             <small>
-              {stay.category} · {stay.city}
+              {visit.category} · {visit.city}
             </small>
-            <strong>{stay.title}</strong>
+            <strong>{visit.title}</strong>
+            <em>Visiter en 360° →</em>
           </span>
         </a>
       ))}
