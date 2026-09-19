@@ -173,16 +173,14 @@ export function HomePage() {
             </div>
 
             <div className="saison-platforms" aria-label="Plateformes de réservation concernées">
-              <span className="saison-platforms__label">
-                Après la visite immersive, votre location est disponible sur
-              </span>
+              <span className="saison-platforms__label">Visitez sur NovaTour, réservez sur</span>
               <span className="saison-platforms__logo saison-platforms__logo--airbnb">
                 <img src="/stays/airbnb-logo.png" alt="Airbnb" height="24" />
               </span>
               <span className="saison-platforms__logo saison-platforms__logo--booking">
                 <img src="/stays/booking-logo.png" alt="Booking.com" height="36" />
               </span>
-              <span className="saison-platforms__label">ou en direct</span>
+              <span className="saison-platforms__label">ou en direct.</span>
             </div>
 
             <ul className="saison-benefits">
