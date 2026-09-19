@@ -1,7 +1,7 @@
 import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
-import { ShieldCheck } from "lucide-react";
+import { ClipboardList, MousePointerClick, ShieldCheck } from "lucide-react";
 import saisonHero from "@/assets/saison-bg-cosy.png.asset.json";
 import cosyVisite from "@/assets/le-cosy-visite.png.asset.json";
 
@@ -87,32 +87,21 @@ export function HomePage() {
       </section>
 
       <section className="about about--editorial section" id="concept">
-        <div className="about-story-visual" aria-label="Lieux et expériences à découvrir">
-          <figure className="story-photo story-photo--village">
-            <img src="/occitanie-village.png" alt="Village occitan en pierre traversé par un canal" />
-          </figure>
-          <figure className="story-photo story-photo--restaurant">
-            <img src="/occitanie-restaurant.png" alt="Terrasse de restaurant avec vue sur les vignobles" />
-          </figure>
-          <figure className="story-photo story-photo--marina">
-            <img src="/occitanie-marina.png" alt="Marina méditerranéenne bordée de maisons et de palmiers" />
-          </figure>
-          <div className="story-phone" aria-hidden="true">
-            <span className="story-phone-speaker" />
+        <div className="about-scene" aria-hidden="true">
+          <img className="about-scene__photo" src="/occitanie-marina.png" alt="" />
+          <div className="about-scene__phone">
+            <span className="about-scene__speaker" />
             <img src="/novatour-app-home.png" alt="" />
           </div>
         </div>
 
         <div className="about-copy about-copy--editorial">
-          <p className="eyebrow">
-            La plateforme gratuite créée par <span className="novavisio-accent">NovaVisio</span>
-          </p>
+          <p className="eyebrow">Le concept</p>
           <h2>
             Tout un territoire
             <br />
             au creux de la main
           </h2>
-          <p className="about-categories">Restaurants · Hébergements · Professionnels · Commerces</p>
 
           <div className="about-features">
             <article>
@@ -126,24 +115,32 @@ export function HomePage() {
             </article>
             <article>
               <span className="feature-icon" aria-hidden="true">
-                ▤
+                <ClipboardList />
               </span>
               <div>
                 <small>02 — S’informer</small>
-                <strong>Toutes les informations réunies au même endroit : coordonnées, réseaux sociaux, avis…</strong>
+                <strong>Coordonnées, réseaux sociaux et avis réunis</strong>
               </div>
             </article>
-            <a href={APP_URL} target="_blank" rel="noreferrer">
+            <article>
               <span className="feature-icon" aria-hidden="true">
-                ♡
+                <MousePointerClick />
               </span>
               <div>
                 <small>03 — Choisir</small>
                 <strong>Explorer avant de choisir</strong>
               </div>
-              <b aria-hidden="true">→</b>
-            </a>
+            </article>
           </div>
+
+          <a
+            className="button button-primary about-cta"
+            href={APP_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Découvrir NovaTour <span aria-hidden="true">→</span>
+          </a>
         </div>
       </section>
 

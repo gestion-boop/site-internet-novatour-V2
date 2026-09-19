@@ -7662,3 +7662,146 @@ main.offers-page .quote-section {
     aspect-ratio: 16 / 10;
   }
 }
+
+/* ============================================================
+   Le concept : une seule photo signature avec le téléphone devant,
+   typographie alignée sur la première page, vrais pictogrammes.
+   Placé en fin de feuille pour primer sur les anciens réglages.
+   ============================================================ */
+.about-scene {
+  align-self: stretch;
+  min-height: 0;
+  min-width: 0;
+  position: relative;
+}
+
+.about-scene__photo {
+  border-radius: 30px;
+  box-shadow: 0 30px 70px rgba(5, 62, 70, 0.18);
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.about-scene__phone {
+  aspect-ratio: 205 / 405;
+  background: #0a0e12;
+  border: 3px solid #252c31;
+  border-radius: 40px;
+  bottom: 6%;
+  box-shadow: 0 36px 70px rgba(2, 26, 34, 0.35);
+  overflow: hidden;
+  padding: 8px;
+  position: absolute;
+  right: 6%;
+  width: clamp(150px, 34%, 230px);
+  z-index: 2;
+}
+
+.about-scene__phone > img {
+  border-radius: 30px;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+}
+
+.about-scene__speaker {
+  background: #080a0c;
+  border-radius: 99px;
+  height: 20px;
+  left: 50%;
+  position: absolute;
+  top: 13px;
+  transform: translateX(-50%);
+  width: 72px;
+  z-index: 2;
+}
+
+.about-copy--editorial h2 {
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.about-features strong {
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.about-features article {
+  grid-template-columns: 70px 1fr;
+}
+
+.feature-icon {
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.feature-icon svg {
+  height: 26px;
+  stroke-width: 2;
+  width: 26px;
+}
+
+.about-cta {
+  margin-top: clamp(18px, 2.6vh, 30px);
+}
+
+.about-cta span {
+  font-size: 18px;
+  transition: transform 180ms ease;
+}
+
+.about-cta:hover span {
+  transform: translateX(4px);
+}
+
+@media (min-width: 901px) {
+  .about--editorial {
+    align-items: center;
+  }
+
+  .about-features article {
+    grid-template-columns: 60px 1fr;
+    min-height: 0;
+    padding: 10px 16px 10px 10px;
+  }
+
+  .about-features .feature-icon {
+    height: 52px;
+    width: 52px;
+  }
+
+  .about-features strong {
+    font-size: 18px;
+  }
+
+  .feature-icon svg {
+    height: 22px;
+    width: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-scene {
+    height: clamp(300px, 48vh, 420px);
+  }
+
+  .about-scene__photo {
+    border-radius: 24px;
+  }
+
+  .about-scene__phone {
+    width: clamp(120px, 32%, 160px);
+  }
+
+  .about-features article {
+    grid-template-columns: 54px 1fr;
+  }
+}
