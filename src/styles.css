@@ -5140,12 +5140,11 @@ main.offers-page .quote-section {
   }
 
   .hero--video .hero-copy {
-    /* Texte ancré en bas de l'image, comme sur les sites de marque : la
-       colonne occupe toute la hauteur et pousse son contenu vers le bas. */
+    /* Bloc de texte centré verticalement sur l'image, aligné à gauche : la
+       colonne occupe toute la hauteur et centre son contenu. */
     align-self: stretch;
-    justify-content: flex-end;
+    justify-content: center;
     min-height: 0;
-    padding-bottom: clamp(56px, 9vh, 110px);
     padding-left: clamp(48px, 6vw, 96px);
   }
 
