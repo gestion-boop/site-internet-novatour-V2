@@ -1,6 +1,5 @@
 import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
-import { PlacesCount } from "./PlacesCount";
 import { MotionEffects } from "./MotionEffects";
 import { ShieldCheck } from "lucide-react";
 import saisonHero from "@/assets/saison-bg-cosy.png.asset.json";
@@ -62,7 +61,6 @@ export function HomePage() {
             <span>
               <strong>360°</strong> visites immersives
             </span>
-            <PlacesCount />
           </div>
         </div>
       </section>
