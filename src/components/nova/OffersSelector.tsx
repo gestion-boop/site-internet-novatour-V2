@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Building2, Hotel, Store } from "lucide-react";
 
-type PlanFeature = { title: string; detail: string; included?: boolean };
+type PlanFeature = { title: string; detail?: string; included?: boolean };
 
 const plans: {
   id: string;
@@ -17,14 +17,11 @@ const plans: {
     price: "9,90€",
     description: "L’essentiel pour présenter votre activité et être trouvable.",
     features: [
-      {
-        title: "Visite 360° jusqu’à 8 espaces",
-        detail: "Votre visite immersive publiée sur votre fiche",
-      },
+      { title: "Visite 360° jusqu’à 8 espaces capturés" },
       { title: "Points d’interaction intégrés", detail: "Dans la limite de 5" },
       {
         title: "Plan interactif dans la 360°",
-        detail: "Navigation libre sur votre site directement depuis la visite immersive",
+        detail: "Plan du lieu intégré",
       },
       {
         title: "Intégration de 5 PDF",
@@ -45,7 +42,7 @@ const plans: {
     features: [
       { title: "Toute l’offre Statique", detail: "Inclut tous les services de l’offre Statique" },
       {
-        title: "Visite 360° jusqu’à 20 espaces",
+        title: "Visite 360° jusqu’à 20 espaces capturés",
         detail: "Deux fois plus de pièces ou zones filmées qu’en Statique",
       },
       {
@@ -179,7 +176,7 @@ export function OffersSelector() {
                     <span>{included ? "✓" : "×"}</span>
                     <div>
                       <strong>{title}</strong>
-                      <small>{detail}</small>
+                      {detail ? <small>{detail}</small> : null}
                     </div>
                   </li>
                 ))}
