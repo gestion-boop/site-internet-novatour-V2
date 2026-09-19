@@ -8013,3 +8013,186 @@ main.offers-page .quote-section {
 .saison-showcase__lead {
   max-width: 34ch;
 }
+
+/* ============================================================
+   Locations saisonnières v3 : colonne de gauche aérée, un seul
+   bouton, logos discrets, puces avec pictogrammes, téléphones en
+   relief sur la photo d'intérieur.
+   ============================================================ */
+.saison-showcase__bg--gradient img {
+  filter: saturate(1.05) brightness(0.96) blur(2px);
+  object-position: center 40%;
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.saison-showcase__bg--gradient .saison-showcase__veil {
+  background:
+    linear-gradient(
+      100deg,
+      rgba(4, 24, 38, 0.95) 0%,
+      rgba(4, 24, 38, 0.88) 36%,
+      rgba(4, 24, 38, 0.5) 62%,
+      rgba(4, 24, 38, 0.28) 100%
+    ),
+    linear-gradient(180deg, rgba(4, 24, 38, 0.35), transparent 25%, transparent 70%, rgba(4, 24, 38, 0.55));
+}
+
+.saison-showcase__content h2 {
+  font-size: clamp(38px, 4.3vw, 66px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  margin-bottom: clamp(14px, 2.2vh, 24px);
+}
+
+.saison-showcase__lead {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(16px, 1.15vw, 19px);
+  font-weight: 500;
+  line-height: 1.55;
+  margin: 0 0 clamp(20px, 3vh, 32px);
+  max-width: 44ch;
+}
+
+.saison-showcase__actions {
+  margin-bottom: clamp(14px, 2vh, 22px);
+}
+
+.saison-showcase__cta {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  color: var(--ink);
+  font-size: 16px;
+  padding: 16px 28px;
+}
+
+.saison-showcase__cta:hover {
+  background: #f2fbfa;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.saison-showcase__cta b {
+  color: var(--teal-dark);
+}
+
+.saison-platforms {
+  gap: 8px 10px;
+  margin-bottom: clamp(20px, 3vh, 32px);
+}
+
+.saison-platforms__label {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.saison-platforms__logo {
+  border-radius: 10px;
+  box-shadow: none;
+  height: 36px;
+  padding: 0 10px;
+}
+
+.saison-platforms__logo--airbnb img {
+  height: 24px;
+}
+
+.saison-platforms__logo--booking img {
+  border-radius: 10px;
+  box-shadow: none;
+  height: 36px;
+}
+
+.saison-benefits {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.saison-benefits li {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  font-size: 15px;
+  gap: 12px;
+  line-height: 1.4;
+}
+
+.saison-benefits li strong {
+  color: #fff;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.saison-benefits svg {
+  background: rgba(95, 214, 205, 0.16);
+  border-radius: 50%;
+  box-sizing: content-box;
+  color: #5fd6cd;
+  flex: none;
+  height: 18px;
+  padding: 8px;
+  stroke-width: 2;
+  width: 18px;
+}
+
+/* Téléphones : le premier plus grand et plus haut, ombres douces. */
+.stay-phones {
+  align-items: flex-start;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.stay-phone:first-child {
+  flex-basis: clamp(200px, 19vw, 280px);
+}
+
+.stay-phone--offset {
+  flex-basis: clamp(170px, 15.5vw, 230px);
+  margin-top: clamp(40px, 7vh, 88px);
+}
+
+.stay-phone__frame {
+  box-shadow:
+    0 30px 45px -20px rgba(0, 0, 0, 0.6),
+    0 70px 90px -30px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.12);
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .stay-phone:first-child {
+    flex-basis: clamp(180px, 16.5vw, 240px);
+  }
+
+  .stay-phone--offset {
+    flex-basis: clamp(160px, 14vw, 200px);
+    margin-top: 36px;
+  }
+
+  .saison-benefits {
+    gap: 8px;
+  }
+
+  .saison-benefits li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .stay-phone:first-child,
+  .stay-phone--offset {
+    flex: 1 1 0;
+  }
+
+  .stay-phone--offset {
+    margin-top: 28px;
+  }
+
+  .saison-benefits li {
+    align-items: flex-start;
+    font-size: 14px;
+  }
+}

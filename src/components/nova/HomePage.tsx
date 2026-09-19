@@ -1,7 +1,7 @@
 import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
-import { ClipboardList, MousePointerClick, ShieldCheck } from "lucide-react";
+import { ClipboardList, Eye, MousePointerClick, ShieldCheck } from "lucide-react";
 import { SeasonalStays } from "./SeasonalStays";
 
 
@@ -157,45 +157,52 @@ export function HomePage() {
           <div className="saison-showcase__content">
             <p className="saison-showcase__eyebrow">Locations saisonnières</p>
             <h2 id="partner-title">
-              Visitez avant
+              Visitez en immersion 360°
               <br />
-              de réserver.
+              avant de réserver.
             </h2>
             <p className="saison-showcase__lead">
-              Visualisez les lieux en immersion 360° avant de réserver votre logement sur les
-              plateformes.
+              Explorez gîtes, maisons et appartements pièce par pièce. Réservez en toute confiance
+              sur vos plateformes préférées ou en direct.
             </p>
-            <p className="saison-showcase__sub">
-              Gîtes, maisons et appartements de vacances se visitent pièce par pièce, avec leurs
-              photos et toutes leurs informations pour réserver en confiance.
-            </p>
-
-            <div className="saison-platforms" aria-label="Plateformes de réservation concernées">
-              <span className="saison-platforms__label">Avant de réserver sur</span>
-              <span className="saison-platforms__logo saison-platforms__logo--airbnb">
-                <img src="/stays/airbnb-logo.png" alt="Airbnb" height="40" />
-              </span>
-              <span className="saison-platforms__logo saison-platforms__logo--booking">
-                <img src="/stays/booking-logo.png" alt="Booking.com" height="40" />
-              </span>
-              <span className="saison-platforms__label">ou en direct.</span>
-            </div>
 
             <div className="saison-showcase__actions">
               <a className="saison-showcase__cta" href={STAYS_URL} target="_blank" rel="noreferrer">
                 Voir les locations <b aria-hidden="true">→</b>
               </a>
-              <a className="saison-showcase__link" href="/contact">
-                Augmentez votre taux de satisfaction avec la visite immersive.
-                <br />
-                Toutes les informations au même endroit. <b aria-hidden="true">→</b>
-              </a>
             </div>
 
-            <p className="saison-showcase__trust">
-              <ShieldCheck aria-hidden="true" />
-              Une visite immersive qui rassure avant la réservation, quelle que soit la plateforme.
-            </p>
+            <div className="saison-platforms" aria-label="Plateformes de réservation concernées">
+              <span className="saison-platforms__label">Disponible sur</span>
+              <span className="saison-platforms__logo saison-platforms__logo--airbnb">
+                <img src="/stays/airbnb-logo.png" alt="Airbnb" height="24" />
+              </span>
+              <span className="saison-platforms__logo saison-platforms__logo--booking">
+                <img src="/stays/booking-logo.png" alt="Booking.com" height="36" />
+              </span>
+              <span className="saison-platforms__label">ou en direct</span>
+            </div>
+
+            <ul className="saison-benefits">
+              <li>
+                <Eye aria-hidden="true" />
+                <span>
+                  <strong>Immersion 360°</strong> Une visite virtuelle fidèle au lieu.
+                </span>
+              </li>
+              <li>
+                <ShieldCheck aria-hidden="true" />
+                <span>
+                  <strong>Zéro mauvaise surprise</strong> Transparence totale avant de réserver.
+                </span>
+              </li>
+              <li>
+                <ClipboardList aria-hidden="true" />
+                <span>
+                  <strong>Tout au même endroit</strong> Coordonnées, avis, réseaux et réservation.
+                </span>
+              </li>
+            </ul>
           </div>
 
           <SeasonalStays />
