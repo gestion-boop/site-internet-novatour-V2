@@ -7,6 +7,9 @@
   --teal: #079b9f;
   --teal-dark: #08747b;
   --aqua: #73d8d1;
+  --accent: #e8703a;
+  --accent-dark: #c4562a;
+  --accent-soft: rgba(232, 112, 58, 0.14);
   --novavisio-gold: #ffbd59;
   --novavisio-gold-soft: #ffe0a3;
   --novavisio-ink: #20252b;
@@ -8195,4 +8198,111 @@ main.offers-page .quote-section {
     align-items: flex-start;
     font-size: 14px;
   }
+}
+
+/* ============================================================
+   Couleur d'accent terracotta : une seule teinte chaude, réservée
+   aux boutons principaux, pastilles 360°, sous-titres, liens et
+   fonds de pictogrammes. Titres, textes et navigation inchangés.
+   ============================================================ */
+
+/* Boutons principaux */
+.button-primary,
+.hero-actions .button-primary,
+.saison-showcase__cta,
+.about-cta,
+.form-submit,
+.contact-page .form-submit,
+.header-cta {
+  background: var(--accent);
+  box-shadow: 0 12px 28px rgba(232, 112, 58, 0.32);
+  color: #fff;
+}
+
+.button-primary:hover,
+.hero-actions .button-primary:hover,
+.saison-showcase__cta:hover,
+.about-cta:hover,
+.form-submit:hover,
+.contact-page .form-submit:hover,
+.header-cta:hover {
+  background: var(--accent-dark);
+  box-shadow: 0 16px 36px rgba(232, 112, 58, 0.4);
+  color: #fff;
+}
+
+.header-cta::after,
+.header-cta:hover::after {
+  display: none;
+}
+
+.hero-actions .button-primary span,
+.about-cta span,
+.saison-showcase__cta b {
+  color: #fff;
+}
+
+/* Pastilles et étiquettes */
+.place-card__badge,
+.stay-card__badge,
+.popular-label {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Sous-titres en capitales : foncé sur fond clair, clair sur fond sombre */
+.eyebrow,
+.about-features small,
+.place-card__category,
+.contact-heading .eyebrow {
+  color: var(--accent-dark);
+}
+
+.hero-copy .eyebrow,
+.saison-showcase__eyebrow,
+.app-section .eyebrow,
+.stay-phone__caption small,
+.stay-phone__caption em {
+  color: var(--accent);
+}
+
+/* Liens fléchés */
+.text-link,
+.place-card__cta,
+.saison-showcase__link {
+  color: var(--accent-dark);
+}
+
+.saison-showcase__link {
+  border-bottom-color: rgba(232, 112, 58, 0.6);
+  color: #fff;
+}
+
+/* Fonds des pictogrammes */
+.feature-icon,
+.about-features .feature-icon {
+  background: linear-gradient(145deg, rgba(232, 112, 58, 0.1), rgba(232, 112, 58, 0.22));
+  border-color: rgba(232, 112, 58, 0.3);
+  color: var(--accent-dark);
+}
+
+.place-card__category svg {
+  background: var(--accent-soft);
+}
+
+.saison-benefits svg {
+  background: rgba(232, 112, 58, 0.2);
+  color: var(--accent);
+}
+
+.contact-icon {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+/* Halo discret dans le panneau des découvertes */
+.discover {
+  background:
+    radial-gradient(circle at 90% 0%, rgba(232, 112, 58, 0.14), transparent 32%),
+    rgba(255, 255, 255, 0.72);
 }
