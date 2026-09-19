@@ -17,3 +17,7 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+## Deployment
+
+Deployed on Vercel (nitro preset `vercel`, configured in `vite.config.ts`). Every push to a branch with an open pull request gets its own preview deployment.
