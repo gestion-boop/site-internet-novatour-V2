@@ -6,6 +6,7 @@ import { SeasonalStays } from "./SeasonalStays";
 
 
 const APP_URL = "https://app.novatour.fr";
+const STAYS_URL = "https://app.novatour.fr/?category=h%C3%A9bergements";
 
 export function HomePage() {
   return (
@@ -167,7 +168,7 @@ export function HomePage() {
             </p>
 
             <div className="saison-showcase__actions">
-              <a className="saison-showcase__cta" href={APP_URL} target="_blank" rel="noreferrer">
+              <a className="saison-showcase__cta" href={STAYS_URL} target="_blank" rel="noreferrer">
                 Voir les locations <b aria-hidden="true">→</b>
               </a>
               <a className="saison-showcase__link" href="/contact">

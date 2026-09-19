@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const APP_URL = "https://app.novatour.fr";
+const STAYS_URL = "https://app.novatour.fr/?category=h%C3%A9bergements";
 
 type Stay = {
   category: string;
@@ -16,7 +16,7 @@ const fallbackStays: Stay[] = [
     category: "Maison de vacances",
     city: "Le Somail",
     coverUrl: "/occitanie-village.png",
-    href: APP_URL,
+    href: STAYS_URL,
     id: "fallback-stay-village",
     title: "Maison de village au bord du canal",
   },
@@ -24,7 +24,7 @@ const fallbackStays: Stay[] = [
     category: "Appartement",
     city: "Narbonne-Plage",
     coverUrl: "/occitanie-marina.png",
-    href: APP_URL,
+    href: STAYS_URL,
     id: "fallback-stay-marina",
     title: "Appartement vue sur le port",
   },
@@ -32,7 +32,7 @@ const fallbackStays: Stay[] = [
     category: "Gîte",
     city: "Narbonne",
     coverUrl: "/occitanie-restaurant.png",
-    href: APP_URL,
+    href: STAYS_URL,
     id: "fallback-stay-mas",
     title: "Mas avec terrasse sur les vignes",
   },
