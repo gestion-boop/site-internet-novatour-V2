@@ -5036,6 +5036,9 @@ main.offers-page .quote-section {
 }
 
 .hero--video .hero-copy {
+  /* Aligné en haut (et non centré) : si le contenu est plus haut que la
+     zone dispo, il déborde vers le bas et jamais derrière le header fixe. */
+  align-self: flex-start;
   background: transparent;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
   align-items: flex-start;
@@ -5528,39 +5531,39 @@ main.offers-page .quote-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: clamp(24px, 4vh, 54px) clamp(34px, 4.4vw, 76px);
+    padding: clamp(16px, 2.4vh, 32px) clamp(34px, 4.4vw, 76px);
   }
 
   .hero-copy .eyebrow {
-    margin-bottom: clamp(8px, 1.4vh, 18px);
+    margin-bottom: clamp(6px, 1vh, 12px);
   }
 
   .hero h1 {
-    font-size: clamp(42px, 3.6vw, 62px);
+    font-size: clamp(38px, 3.2vw, 56px);
     line-height: 0.94;
   }
 
   .hero-tagline {
     font-size: clamp(18px, 1.35vw, 24px);
-    margin: clamp(10px, 1.8vh, 20px) 0 clamp(8px, 1.2vh, 14px);
+    margin: clamp(6px, 1.2vh, 14px) 0 clamp(6px, 1vh, 10px);
   }
 
   .hero-intro {
     font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: clamp(8px, 1.4vh, 16px);
+    line-height: 1.5;
+    margin-bottom: clamp(6px, 1vh, 12px);
   }
 
   .hero-info-examples {
-    margin-bottom: clamp(12px, 2vh, 22px);
+    margin-bottom: clamp(8px, 1.4vh, 16px);
   }
 
   .hero-proof {
-    margin-top: clamp(12px, 2vh, 22px);
+    margin-top: clamp(8px, 1.4vh, 16px);
   }
 
   .hero-creator {
-    margin-top: clamp(10px, 1.8vh, 18px);
+    margin-top: clamp(6px, 1.2vh, 12px);
   }
 
   main > section.benefits {
@@ -5588,6 +5591,43 @@ main.offers-page .quote-section {
   .benefits-list article {
     min-height: clamp(120px, 15.5vh, 180px);
     padding: clamp(18px, 2.6vh, 32px) 26px;
+  }
+}
+
+/* Écrans PC bas (ex. 1366x768) : le calibrage ci-dessus ne suffit pas
+   toujours à tout faire tenir sans déborder sous le hero. On resserre
+   encore un peu plus le rythme vertical du texte. */
+@media (min-width: 901px) and (max-height: 820px) {
+  .hero-copy {
+    padding: clamp(10px, 1.6vh, 24px) clamp(34px, 4.4vw, 76px);
+  }
+
+  .hero-copy .eyebrow {
+    margin-bottom: clamp(4px, 0.7vh, 10px);
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 2.8vw, 50px);
+  }
+
+  .hero-tagline {
+    margin: clamp(4px, 0.8vh, 10px) 0 clamp(4px, 0.7vh, 8px);
+  }
+
+  .hero-intro {
+    margin-bottom: clamp(4px, 0.7vh, 10px);
+  }
+
+  .hero-info-examples {
+    margin-bottom: clamp(6px, 1vh, 12px);
+  }
+
+  .hero-proof {
+    margin-top: clamp(6px, 1vh, 12px);
+  }
+
+  .hero-creator {
+    margin-top: clamp(4px, 0.8vh, 10px);
   }
 }
 
