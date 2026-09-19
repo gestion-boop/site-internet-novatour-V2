@@ -1069,8 +1069,18 @@ body.menu-open {
 
 .hero-actions {
   display: grid;
-  gap: 12px;
-  max-width: 340px;
+  gap: 14px;
+  max-width: 420px;
+}
+
+.hero-pro-link {
+  color: var(--white);
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.hero-pro-link:hover {
+  opacity: 1;
 }
 
 .button {

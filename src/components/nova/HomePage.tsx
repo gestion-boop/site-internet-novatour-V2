@@ -42,24 +42,31 @@ export function HomePage() {
         <div className="hero-copy">
           <p className="eyebrow">La plateforme gratuite pour explorer</p>
           <h1>Un seul endroit pour explorer tous les autres.</h1>
-          <p className="hero-lead">
-            Attirez <span className="highlight-yellow">plus</span> de personnes grâce à la{" "}
-            <span className="highlight-yellow">visite Immersive</span>
-          </p>
-          <p className="hero-slogan">
-            Offrez à vos futurs clients une nouvelle façon de découvrir votre activité grâce à l’expérience immersive
-            360° de NovaTour.
-          </p>
-
-          <p className="hero-tagline">
-            Découvrez l’application <em>maintenant</em> — des lieux en immersion à 360°
-          </p>
           <p className="hero-intro">
             Explorez les meilleurs lieux de la région à 360°, puis retrouvez toutes leurs informations utiles au même
             endroit.
           </p>
+
+          <div className="hero-actions">
+            <a className="button button-primary" href={APP_URL} target="_blank" rel="noreferrer">
+              <span aria-hidden="true">⌕</span>
+              Découvrir NovaTour
+            </a>
+            <a className="text-link hero-pro-link" href="/offres">
+              Vous êtes un professionnel ? Devenez visible <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div className="hero-proof">
+            <span>
+              <strong>360°</strong> visites immersives
+            </span>
+            <span>
+              <strong>Gratuit</strong> pour tous les visiteurs
+            </span>
+          </div>
+
           <div className="hero-info-examples" aria-label="Informations disponibles sur les fiches NovaTour">
-            <span>Coordonnées · Réseaux sociaux</span>
             <div className="hero-socials" aria-label="Facebook, Instagram, LinkedIn, TikTok et YouTube">
               <span className="social-icon social-icon--facebook" aria-label="Facebook">
                 f
@@ -77,30 +84,6 @@ export function HomePage() {
                 ▶
               </span>
             </div>
-          </div>
-          <div className="hero-actions">
-            <a className="button button-primary" href={APP_URL} target="_blank" rel="noreferrer">
-              <span aria-hidden="true">⌕</span>
-              Découvrir NovaTour
-            </a>
-            <a className="button button-secondary" href="/offres">
-              <span aria-hidden="true">▦</span>
-              Professionnels : être visible
-            </a>
-          </div>
-          <div className="hero-proof">
-            <span>
-              <strong>360°</strong> visites immersives
-            </span>
-            <span>
-              <strong>Gratuit</strong> pour tous les visiteurs
-            </span>
-          </div>
-          <div className="hero-creator">
-            <img src="/novavisio-logo.png" alt="Logo NovaVisio" width="64" height="64" />
-            <span className="novavisio-accent">
-              Une plateforme imaginée et développée par <strong>NovaVisio</strong>
-            </span>
           </div>
         </div>
       </section>
