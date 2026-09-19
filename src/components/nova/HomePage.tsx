@@ -35,13 +35,25 @@ export function HomePage() {
 
       <section className="hero hero--video" id="accueil">
         <div className="hero-video-layer" aria-hidden="true">
-          <video className="hero-video" src="/novatour-hero.mp4" autoPlay muted loop playsInline preload="auto" />
+          <video
+            className="hero-video"
+            src="/novatour-hero.mp4"
+            poster="/novatour-hero-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          />
           <div className="hero-video-overlay" />
         </div>
 
         <div className="hero-copy">
           <p className="eyebrow">La plateforme gratuite pour explorer</p>
-          <h1>Un seul endroit pour explorer tous les autres.</h1>
+          <h1>
+            Un seul endroit <br className="hero-br" />
+            pour explorer tous les autres.
+          </h1>
           <p className="hero-intro">
             Explorez les meilleurs lieux de la région à 360°, puis retrouvez toutes leurs informations utiles au même
             endroit.
@@ -57,11 +69,7 @@ export function HomePage() {
             </a>
           </div>
 
-          <div className="hero-proof">
-            <span>
-              <strong>360°</strong> visites immersives
-            </span>
-          </div>
+          <p className="hero-categories">Restaurants · Hébergements · Professionnels · Commerces</p>
         </div>
       </section>
 
