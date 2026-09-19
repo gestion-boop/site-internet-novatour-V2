@@ -40,8 +40,9 @@ export function HomePage() {
         </div>
 
         <div className="hero-copy">
-          <p className="eyebrow">La plateforme gratuite pour explorer</p>
+          <p className="eyebrow">Un seul endroit pour explorer tous les autres</p>
           <h1>NovaTour — Visitez. Découvrez. Choisissez en 360°.</h1>
+          <p className="hero-app-slogan">Un seul endroit pour explorer tous les autres.</p>
           <p className="hero-lead">
             Attirez <span className="highlight-yellow">plus</span> de personnes grâce à la{" "}
             <span className="highlight-yellow">visite Immersive</span>

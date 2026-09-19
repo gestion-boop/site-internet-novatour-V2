@@ -926,6 +926,14 @@ body.menu-open {
   color: var(--aqua);
 }
 
+.hero-app-slogan {
+  color: var(--aqua);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: -6px 0 12px;
+}
+
 .eyebrow {
   color: var(--teal-dark);
   font-size: 13px;
@@ -5538,6 +5546,11 @@ main.offers-page .quote-section {
     margin-bottom: clamp(6px, 1vh, 12px);
   }
 
+  .hero-app-slogan {
+    font-size: clamp(14px, 1vw, 17px);
+    margin: -4px 0 clamp(6px, 1vh, 12px);
+  }
+
   .hero h1 {
     font-size: clamp(38px, 3.2vw, 56px);
     line-height: 0.94;
@@ -5606,28 +5619,37 @@ main.offers-page .quote-section {
     margin-bottom: clamp(4px, 0.7vh, 10px);
   }
 
+  .hero-app-slogan {
+    font-size: 13px;
+    margin: -2px 0 clamp(2px, 0.5vh, 8px);
+  }
+
   .hero h1 {
-    font-size: clamp(34px, 2.8vw, 50px);
+    font-size: clamp(30px, 2.5vw, 44px);
   }
 
   .hero-tagline {
-    margin: clamp(4px, 0.8vh, 10px) 0 clamp(4px, 0.7vh, 8px);
+    font-size: clamp(16px, 1.2vw, 20px);
+    margin: clamp(2px, 0.6vh, 8px) 0 clamp(2px, 0.5vh, 6px);
   }
 
   .hero-intro {
-    margin-bottom: clamp(4px, 0.7vh, 10px);
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: clamp(2px, 0.5vh, 8px);
   }
 
   .hero-info-examples {
-    margin-bottom: clamp(6px, 1vh, 12px);
+    margin-bottom: clamp(4px, 0.8vh, 10px);
   }
 
   .hero-proof {
-    margin-top: clamp(6px, 1vh, 12px);
+    margin-top: clamp(4px, 0.8vh, 10px);
   }
 
   .hero-creator {
-    margin-top: clamp(4px, 0.8vh, 10px);
+    font-size: 10px;
+    margin-top: clamp(2px, 0.6vh, 8px);
   }
 }
 
