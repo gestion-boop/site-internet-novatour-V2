@@ -92,7 +92,8 @@ main > section:not(.hero) {
     scroll-behavior: smooth;
     /* The snap area begins below the fixed header and ends with the same
        breathing room at the bottom, so every rounded panel is centred. */
-    scroll-padding: calc(var(--desktop-header-height) + var(--desktop-panel-gap)) 0 var(--desktop-panel-gap);
+    scroll-padding: calc(var(--desktop-header-height) + var(--desktop-panel-gap)) 0
+      var(--desktop-panel-gap);
     scroll-snap-type: y proximity;
     scrollbar-gutter: stable;
   }
@@ -117,12 +118,14 @@ main > section:not(.hero) {
 
   main > section:not(.hero) {
     height: calc(
-      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) - (var(--desktop-panel-gap) * 2)
+      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) -
+        (var(--desktop-panel-gap) * 2)
     );
     margin-top: var(--desktop-panel-gap);
     margin-bottom: var(--desktop-panel-gap);
     min-height: calc(
-      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) - (var(--desktop-panel-gap) * 2)
+      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) -
+        (var(--desktop-panel-gap) * 2)
     ) !important;
     scroll-margin-top: 0;
   }
@@ -176,7 +179,8 @@ main > section:not(.hero) {
 
   .offers-hero {
     min-height: calc(
-      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) - (var(--desktop-panel-gap) * 2)
+      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) -
+        (var(--desktop-panel-gap) * 2)
     );
     padding: clamp(30px, 4.5vh, 54px) 24px;
   }
@@ -228,7 +232,10 @@ main > section:not(.hero) {
     justify-content: flex-start;
     min-height: max(
       1120px,
-      calc(var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) - (var(--desktop-panel-gap) * 2))
+      calc(
+        var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) -
+          (var(--desktop-panel-gap) * 2)
+      )
     ) !important;
     padding: clamp(56px, 7vh, 92px) clamp(24px, 5vw, 76px);
     scroll-snap-align: start;
@@ -700,13 +707,13 @@ a {
 
 .header-cta {
   background: linear-gradient(135deg, #20c7c1, #079ba6);
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 10px 28px rgba(3, 129, 136, 0.17);
   color: var(--white);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   justify-self: end;
-  padding: 18px 30px;
+  padding: 12px 22px;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease;
@@ -1260,7 +1267,8 @@ body.menu-open {
 
 .hero-visual {
   background-color: #a9d8e0;
-  background-image: linear-gradient(90deg, rgba(8, 61, 70, 0.08), transparent 35%), url("/hero-occitanie.png");
+  background-image:
+    linear-gradient(90deg, rgba(8, 61, 70, 0.08), transparent 35%), url("/hero-occitanie.png");
   background-position: center;
   background-size: cover;
   border-radius: 72px 0 0 0;
@@ -1503,7 +1511,9 @@ body.menu-open {
 }
 
 .discover {
-  background: radial-gradient(circle at 90% 0%, rgba(70, 209, 200, 0.16), transparent 32%), rgba(255, 255, 255, 0.72);
+  background:
+    radial-gradient(circle at 90% 0%, rgba(70, 209, 200, 0.16), transparent 32%),
+    rgba(255, 255, 255, 0.72);
   border-radius: 0 0 42px 42px;
   box-shadow: 0 30px 80px rgba(4, 55, 65, 0.08);
   display: flex;
@@ -1597,7 +1607,9 @@ body.menu-open {
 
 .about {
   align-items: center;
-  background: radial-gradient(circle at 5% 85%, rgba(33, 184, 180, 0.13), transparent 34%), rgba(255, 255, 255, 0.58);
+  background:
+    radial-gradient(circle at 5% 85%, rgba(33, 184, 180, 0.13), transparent 34%),
+    rgba(255, 255, 255, 0.58);
   border: 1px solid rgba(8, 116, 123, 0.08);
   border-radius: 42px;
   box-shadow: 0 30px 80px rgba(4, 55, 65, 0.07);
@@ -2844,6 +2856,7 @@ body.menu-open {
    distinction accessible on the light contact and sizing panels. */
 .contact-section .novavisio-accent,
 .venue-size-section .novavisio-accent,
+.pricing-section .novavisio-accent,
 .quote-section .novavisio-accent {
   color: #b8791f;
 }
@@ -2854,12 +2867,11 @@ body.menu-open {
 }
 
 .offers-hero h1 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(54px, 6.5vw, 96px);
-  font-weight: 500;
-  letter-spacing: -0.06em;
-  line-height: 0.98;
-  margin: 10px 0 28px;
+  font-size: clamp(38px, 4.4vw, 66px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 10px 0 24px;
 }
 
 .offers-hero h1 em {
@@ -2982,22 +2994,22 @@ body.menu-open {
 }
 
 .offers-page .offers-section-heading .eyebrow {
-  color: var(--novavisio-gold);
+  color: var(--accent-dark);
 }
 
 .offers-page .popular-label {
-  background: linear-gradient(90deg, #b8791f, var(--novavisio-gold));
-  color: var(--novavisio-ink);
+  background: var(--accent-gradient);
+  color: #fff;
 }
 
 .offers-page .pricing-card--popular {
-  border-color: rgba(255, 189, 89, 0.62);
-  box-shadow: 0 20px 70px rgba(255, 189, 89, 0.12);
+  border-color: rgba(39, 130, 153, 0.55);
+  box-shadow: 0 20px 70px rgba(39, 130, 153, 0.18);
 }
 
 .offers-page .pricing-card--popular > button {
-  background: linear-gradient(135deg, #ffd27b, var(--novavisio-gold));
-  color: var(--novavisio-ink);
+  background: var(--accent-gradient);
+  color: #fff;
 }
 
 .footer-brand > p a {
@@ -3012,8 +3024,10 @@ body.menu-open {
 }
 
 .pricing-section {
-  background: radial-gradient(circle at 50% 5%, rgba(30, 182, 190, 0.14), transparent 28%), #091820;
-  color: white;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(39, 130, 153, 0.14), transparent 32%),
+    rgba(255, 255, 255, 0.86);
+  color: var(--ink);
 }
 
 .pricing-section,
@@ -3035,11 +3049,10 @@ body.menu-open {
 }
 
 .offers-section-heading h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(44px, 4.5vw, 68px);
-  font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 1.04;
+  font-size: clamp(38px, 4vw, 58px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
   margin: 0;
 }
 
@@ -3059,9 +3072,10 @@ body.menu-open {
 }
 
 .pricing-card {
-  background: linear-gradient(160deg, #122b35, #0b1d23);
-  border: 1px solid rgba(75, 186, 198, 0.2);
+  background: linear-gradient(180deg, #ffffff, #f4fafb);
+  border: 1px solid rgba(11, 61, 70, 0.1);
   border-radius: 30px;
+  box-shadow: 0 22px 55px rgba(12, 55, 74, 0.1);
   overflow: hidden;
   position: relative;
   transform-style: preserve-3d;
@@ -3072,16 +3086,16 @@ body.menu-open {
 }
 
 .pricing-card:hover {
-  border-color: rgba(75, 199, 210, 0.54);
+  border-color: rgba(39, 130, 153, 0.45);
   box-shadow:
-    0 40px 95px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(75, 186, 198, 0.12) inset;
+    0 40px 95px rgba(12, 75, 90, 0.18),
+    0 0 0 1px rgba(39, 130, 153, 0.12) inset;
   transform: perspective(1200px) rotateX(-2deg) translateY(-12px) scale(1.01);
 }
 
 .pricing-card--popular {
-  border-color: rgba(56, 198, 210, 0.6);
-  box-shadow: 0 20px 70px rgba(14, 142, 158, 0.15);
+  border-color: rgba(39, 130, 153, 0.5);
+  box-shadow: 0 20px 70px rgba(39, 130, 153, 0.15);
 }
 
 .popular-label {
@@ -3095,14 +3109,15 @@ body.menu-open {
 }
 
 .pricing-card-head {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgba(11, 61, 70, 0.1);
   min-height: 240px;
   padding: 36px;
 }
 
 .pricing-card-head h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 30px;
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 700;
   margin: 0 0 20px;
 }
 
@@ -3119,12 +3134,12 @@ body.menu-open {
 }
 
 .pricing-card-head p span {
-  color: #728991;
+  color: #5d7581;
   font-size: 11px;
 }
 
 .pricing-card-head em {
-  color: #80979f;
+  color: #5d7581;
   font-style: normal;
   line-height: 1.65;
 }
@@ -3213,10 +3228,10 @@ body.menu-open {
 
 .pricing-card li > span {
   align-items: center;
-  background: rgba(35, 182, 196, 0.13);
-  border: 1px solid rgba(51, 192, 204, 0.34);
+  background: var(--accent-soft);
+  border: 1px solid rgba(39, 130, 153, 0.3);
   border-radius: 50%;
-  color: #45c0ce;
+  color: var(--accent-dark);
   display: flex;
   font-size: 11px;
   height: 24px;
@@ -3225,14 +3240,14 @@ body.menu-open {
 }
 
 .pricing-card li.is-excluded > span {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(184, 203, 208, 0.18);
-  color: #71878d;
+  background: rgba(11, 61, 70, 0.05);
+  border-color: rgba(11, 61, 70, 0.14);
+  color: #90a0a4;
 }
 
 .pricing-card li.is-excluded strong,
 .pricing-card li.is-excluded small {
-  color: #71878d;
+  color: #90a0a4;
 }
 
 .pricing-card li div {
@@ -3245,16 +3260,16 @@ body.menu-open {
 }
 
 .pricing-card li small {
-  color: #81969e;
+  color: #5d7480;
   font-size: 13px;
   line-height: 1.5;
 }
 
 .pricing-card > button {
   background: transparent;
-  border: 1px solid rgba(62, 187, 201, 0.42);
+  border: 1px solid rgba(39, 130, 153, 0.4);
   border-radius: 99px;
-  color: #46bfd0;
+  color: var(--accent-dark);
   cursor: pointer;
   display: block;
   font: inherit;
@@ -3270,7 +3285,7 @@ body.menu-open {
 
 .pricing-card > button:hover,
 .pricing-card--popular > button {
-  background: linear-gradient(135deg, #28a9bb, #147a98);
+  background: var(--accent-gradient);
   color: white;
   transform: translateY(-3px);
 }
@@ -3331,9 +3346,8 @@ body.menu-open {
 }
 
 .size-grid h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 42px;
-  font-weight: 500;
+  font-size: 34px;
+  font-weight: 600;
   margin: 0 0 18px;
 }
 
@@ -3379,11 +3393,10 @@ body.menu-open {
 }
 
 .quote-copy h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(52px, 5vw, 78px);
-  font-weight: 500;
-  letter-spacing: -0.05em;
-  line-height: 1;
+  font-size: clamp(38px, 4vw, 58px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
   margin: 0 0 24px;
 }
 
@@ -3625,7 +3638,12 @@ footer {
 .button::after,
 .header-cta::after,
 .app-start-button::after {
-  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.34) 48%, transparent 76%);
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.34) 48%,
+    transparent 76%
+  );
   content: "";
   inset: -70% -35%;
   opacity: 0;
@@ -5062,7 +5080,12 @@ main.offers-page .quote-section {
   /* Voile neutre (pas teinté) : la vidéo garde ses vraies couleurs, le texte
      reste lisible grâce au dégradé latéral et à la vignette basse. */
   background:
-    linear-gradient(90deg, rgba(8, 18, 22, 0.78) 0%, rgba(8, 18, 22, 0.42) 48%, rgba(8, 18, 22, 0.08) 100%),
+    linear-gradient(
+      90deg,
+      rgba(8, 18, 22, 0.78) 0%,
+      rgba(8, 18, 22, 0.42) 48%,
+      rgba(8, 18, 22, 0.08) 100%
+    ),
     linear-gradient(180deg, rgba(8, 18, 22, 0) 55%, rgba(8, 18, 22, 0.55) 100%);
 }
 
@@ -5978,7 +6001,12 @@ main.offers-page .quote-section {
 }
 
 .place-phone__cover::after {
-  background: linear-gradient(180deg, rgba(3, 40, 46, 0.22), transparent 50%, rgba(3, 40, 46, 0.32));
+  background: linear-gradient(
+    180deg,
+    rgba(3, 40, 46, 0.22),
+    transparent 50%,
+    rgba(3, 40, 46, 0.32)
+  );
   border-radius: inherit;
   content: "";
   inset: 0;
@@ -7051,7 +7079,10 @@ main.offers-page .quote-section {
   .immersive-promo.section {
     box-sizing: border-box;
     width: calc(100% - (var(--novatour-panel-gap, 22px) * 2));
-    min-height: var(--novatour-panel-height, calc(100dvh - var(--desktop-header-height, 82px) - 44px));
+    min-height: var(
+      --novatour-panel-height,
+      calc(100dvh - var(--desktop-header-height, 82px) - 44px)
+    );
     height: var(--novatour-panel-height, calc(100dvh - var(--desktop-header-height, 82px) - 44px));
     margin: var(--novatour-panel-gap, 22px) auto;
     border-radius: 42px;
@@ -7147,8 +7178,12 @@ main.offers-page .quote-section {
 }
 
 .saison-showcase__veil {
-  background:
-    linear-gradient(100deg, rgba(4, 24, 38, 0.94) 0%, rgba(4, 24, 38, 0.82) 42%, rgba(4, 24, 38, 0.42) 100%);
+  background: linear-gradient(
+    100deg,
+    rgba(4, 24, 38, 0.94) 0%,
+    rgba(4, 24, 38, 0.82) 42%,
+    rgba(4, 24, 38, 0.42) 100%
+  );
   inset: 0;
   position: absolute;
 }
@@ -7223,7 +7258,9 @@ main.offers-page .quote-section {
   gap: 14px;
   padding: clamp(14px, 1.6vh, 20px) clamp(22px, 2vw, 34px);
   text-decoration: none;
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .saison-showcase__cta:hover {
@@ -7829,8 +7866,19 @@ main.offers-page .quote-section {
 
 .saison-showcase__bg--gradient .saison-showcase__veil {
   background:
-    linear-gradient(100deg, rgba(4, 24, 38, 0.96) 0%, rgba(4, 24, 38, 0.86) 40%, rgba(4, 24, 38, 0.55) 100%),
-    linear-gradient(180deg, rgba(4, 24, 38, 0.35), transparent 30%, transparent 70%, rgba(4, 24, 38, 0.5));
+    linear-gradient(
+      100deg,
+      rgba(4, 24, 38, 0.96) 0%,
+      rgba(4, 24, 38, 0.86) 40%,
+      rgba(4, 24, 38, 0.55) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(4, 24, 38, 0.35),
+      transparent 30%,
+      transparent 70%,
+      rgba(4, 24, 38, 0.5)
+    );
 }
 
 .stay-phones {
@@ -8040,7 +8088,13 @@ main.offers-page .quote-section {
       rgba(4, 24, 38, 0.5) 62%,
       rgba(4, 24, 38, 0.28) 100%
     ),
-    linear-gradient(180deg, rgba(4, 24, 38, 0.35), transparent 25%, transparent 70%, rgba(4, 24, 38, 0.55));
+    linear-gradient(
+      180deg,
+      rgba(4, 24, 38, 0.35),
+      transparent 25%,
+      transparent 70%,
+      rgba(4, 24, 38, 0.55)
+    );
 }
 
 .saison-showcase__content h2 {
@@ -8449,7 +8503,13 @@ main.offers-page .quote-section {
 }
 
 .tour-preview__stage::after {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 30%, transparent 60%, rgba(0, 0, 0, 0.55));
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.35),
+    transparent 30%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.55)
+  );
   content: "";
   inset: 0;
   pointer-events: none;
@@ -8754,5 +8814,80 @@ main.offers-page .quote-section {
     font-size: 11px;
     letter-spacing: 0.08em;
     padding: 7px 12px 7px 10px;
+  }
+}
+
+/* ============================================================
+   Page « Nos offres » : chiffres clés du hero, pictogrammes de
+   taille, récapitulatif de sélection, contraste de l'eyebrow sur
+   la section devis (fond sombre).
+   ============================================================ */
+.quote-copy .eyebrow {
+  color: #6fc3d6;
+}
+
+.offers-stats {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 32px;
+  justify-content: center;
+  list-style: none;
+  margin: 34px auto 0;
+  max-width: 720px;
+  padding: 24px 0 0;
+}
+
+.offers-stats li {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.86);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 10px;
+}
+
+.offers-stats svg {
+  color: #6fc3d6;
+  flex: none;
+  height: 20px;
+  stroke-width: 2;
+  width: 20px;
+}
+
+.size-grid button > span svg {
+  height: 36px;
+  stroke-width: 1.6;
+  width: 36px;
+}
+
+.quote-selection__summary {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(90, 202, 207, 0.2);
+  border-radius: 14px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  padding: 14px 18px;
+}
+
+.quote-selection__summary strong {
+  color: #6fc3d6;
+}
+
+.quote-selection__summary span {
+  background: none;
+  border: 0;
+  color: rgba(255, 255, 255, 0.4);
+  display: inline;
+  margin: 0 6px;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .offers-stats {
+    justify-content: flex-start;
+    text-align: left;
   }
 }

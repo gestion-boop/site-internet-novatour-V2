@@ -1,3 +1,4 @@
+import { Camera, Clock, Tag } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import { OffersSelector } from "./OffersSelector";
@@ -31,41 +32,36 @@ export function OffersPage() {
       </header>
 
       <section className="offers-hero snap-section">
-        <p className="eyebrow novavisio-accent">Solutions professionnelles signées NovaVisio</p>
+        <p className="eyebrow">Solutions professionnelles NovaVisio</p>
         <h1>
-          Faites entrer votre établissement
+          Votre établissement,
           <br />
-          <em>dans NovaTour</em>
+          visible sur <em>NovaTour</em>
         </h1>
         <p>
-          <strong className="novavisio-accent">NovaVisio conçoit et calibre votre expérience immersive.</strong>{" "}
-          NovaTour la rend ensuite accessible gratuitement au public.
+          Vous êtes restaurateur, hébergeur ou commerçant ?{" "}
+          <span className="novavisio-accent">NovaVisio</span> réalise votre visite immersive 360°,
+          NovaTour la diffuse ensuite gratuitement au public.
         </p>
-        <div className="brand-flow" aria-label="NovaVisio crée la solution, NovaTour la diffuse au public">
-          <span className="brand-flow__side brand-flow__side--visio">
-            <img src="/novavisio-logo.png" alt="" width="48" height="48" />
-            <span>
-              <small>L’outil professionnel</small>
-              <b>NovaVisio</b>
-              <em>crée et calibre votre solution immersive</em>
-            </span>
-          </span>
-          <i aria-hidden="true">→</i>
-          <span className="brand-flow__side brand-flow__side--tour">
-            <img src="/novatour-logo.png" alt="" width="48" height="48" />
-            <span>
-              <small>La plateforme publique</small>
-              <b>NovaTour</b>
-              <em>diffuse gratuitement votre lieu</em>
-            </span>
-          </span>
-        </div>
         <div className="offers-hero-actions">
           <a className="button button-primary" href="#pricing-title">
             Découvrir les solutions <span>↓</span>
           </a>
           <a href="#devis">Être rappelé par Natacha</a>
         </div>
+        <ul className="offers-stats">
+          <li>
+            <Camera aria-hidden="true" />
+            Visite 360° réalisée chez vous
+          </li>
+          <li>
+            <Clock aria-hidden="true" />
+            En ligne sous 48 h
+          </li>
+          <li>
+            <Tag aria-hidden="true" />À partir de 9,90 € HT / mois
+          </li>
+        </ul>
       </section>
 
       <OffersSelector />
@@ -78,7 +74,12 @@ export function OffersPage() {
           </a>
           <p>
             La plateforme gratuite de découverte conçue par{" "}
-            <a className="novavisio-accent" href="https://www.novavisio.fr/" target="_blank" rel="noreferrer">
+            <a
+              className="novavisio-accent"
+              href="https://www.novavisio.fr/"
+              target="_blank"
+              rel="noreferrer"
+            >
               NovaVisio
             </a>
             .
