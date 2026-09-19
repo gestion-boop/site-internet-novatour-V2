@@ -176,7 +176,7 @@ export function HomePage() {
                 <img src="/stays/airbnb-logo.png" alt="Airbnb" height="40" />
               </span>
               <span className="saison-platforms__logo saison-platforms__logo--booking">
-                Booking.com
+                <img src="/stays/booking-logo.png" alt="Booking.com" height="40" />
               </span>
               <span className="saison-platforms__label">ou en direct.</span>
             </div>
