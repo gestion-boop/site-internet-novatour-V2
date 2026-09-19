@@ -1,5 +1,6 @@
 import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
+import { PlacesCount } from "./PlacesCount";
 import { MotionEffects } from "./MotionEffects";
 import { ShieldCheck } from "lucide-react";
 import saisonHero from "@/assets/saison-bg-cosy.png.asset.json";
@@ -61,29 +62,7 @@ export function HomePage() {
             <span>
               <strong>360°</strong> visites immersives
             </span>
-            <span>
-              <strong>Gratuit</strong> pour tous les visiteurs
-            </span>
-          </div>
-
-          <div className="hero-info-examples" aria-label="Informations disponibles sur les fiches NovaTour">
-            <div className="hero-socials" aria-label="Facebook, Instagram, LinkedIn, TikTok et YouTube">
-              <span className="social-icon social-icon--facebook" aria-label="Facebook">
-                f
-              </span>
-              <span className="social-icon social-icon--instagram" aria-label="Instagram">
-                ◎
-              </span>
-              <span className="social-icon social-icon--linkedin" aria-label="LinkedIn">
-                in
-              </span>
-              <span className="social-icon social-icon--tiktok" aria-label="TikTok">
-                ♪
-              </span>
-              <span className="social-icon social-icon--youtube" aria-label="YouTube">
-                ▶
-              </span>
-            </div>
+            <PlacesCount />
           </div>
         </div>
       </section>

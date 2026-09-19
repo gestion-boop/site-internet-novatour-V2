@@ -1073,6 +1073,18 @@ body.menu-open {
   max-width: 420px;
 }
 
+@media (min-width: 901px) {
+  /* Un bouton fait la largeur de son texte, pas de la colonne. */
+  .hero-actions {
+    justify-items: start;
+  }
+
+  .hero-actions .button {
+    padding-left: 34px;
+    padding-right: 34px;
+  }
+}
+
 .hero-pro-link {
   color: var(--white);
   font-size: 14px;

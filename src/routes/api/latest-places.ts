@@ -82,27 +82,28 @@ export const Route = createFileRoute("/api/latest-places")({
           const categoryNames = flattenCategories(categoriesPayload.categories ?? []);
           const version = Date.now();
 
-          const places = (placesPayload.places ?? [])
-            .filter((place) => place.published && place.place_uuid && place.place_name)
-            .slice(0, 3)
-            .map((place) => ({
-              category:
-                place.category.map((id) => categoryNames.get(id)).find(Boolean) ?? "À découvrir",
-              city: place.city || "Occitanie",
-              coverUrl: withVersion(place.cover_url, version),
-              logoUrl: withVersion(place.business_logo, version),
-              description: (place.description || "").trim() || null,
-              href: `${APP_URL}/place/${slugify(place.place_name)}?id=${encodeURIComponent(place.place_uuid)}`,
-              id: place.place_uuid,
-              title: place.place_name,
-            }));
+          const publishedPlaces = (placesPayload.places ?? []).filter(
+            (place) => place.published && place.place_uuid && place.place_name,
+          );
+
+          const places = publishedPlaces.slice(0, 3).map((place) => ({
+            category:
+              place.category.map((id) => categoryNames.get(id)).find(Boolean) ?? "À découvrir",
+            city: place.city || "Occitanie",
+            coverUrl: withVersion(place.cover_url, version),
+            logoUrl: withVersion(place.business_logo, version),
+            description: (place.description || "").trim() || null,
+            href: `${APP_URL}/place/${slugify(place.place_name)}?id=${encodeURIComponent(place.place_uuid)}`,
+            id: place.place_uuid,
+            title: place.place_name,
+          }));
 
           if (places.length === 0) {
             throw new Error("NovaTour API returned no published places");
           }
 
           return Response.json(
-            { places },
+            { places, total: publishedPlaces.length },
             { headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } },
           );
         } catch (error) {
