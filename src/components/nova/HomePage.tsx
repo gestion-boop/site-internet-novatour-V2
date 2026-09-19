@@ -77,7 +77,7 @@ export function HomePage() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">Les dernières découvertes</p>
-            <h2 id="discover-title">À vivre près de chez vous</h2>
+            <h2 id="discover-title">Ils viennent de rejoindre NovaTour</h2>
           </div>
           <a className="text-link" href={APP_URL} target="_blank" rel="noreferrer">
             Voir tous les lieux <span>→</span>
@@ -252,7 +252,7 @@ export function HomePage() {
             <img src="/novatour-logo.png" alt="" width="52" height="52" />
             <div>
               <strong>Profitez des derniers partenaires de NovaTour</strong>
-              <p>Découvrez les nouveaux lieux qui rejoignent la plateforme près de chez vous.</p>
+              <p>Découvrez les nouveaux lieux qui rejoignent la plateforme partout en France.</p>
             </div>
           </a>
 
