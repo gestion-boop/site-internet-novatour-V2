@@ -140,13 +140,6 @@ main > section:not(.hero) {
     padding-top: 0;
   }
 
-  /* Hero "Nos offres" : contenu riche et variable (diagramme, 4 étapes,
-     actions). Sur les écrans bas, il peut dépasser un plein écran : on le
-     laisse grandir plutôt que de rogner le CTA. */
-  main > section.offers-hero--split {
-    height: auto;
-  }
-
   /* Calibrage du contenu du hero : tout doit tenir dans une seule hauteur
      d'écran PC, sans débordement du bloc NovaVisio. */
   .hero-copy {
@@ -186,42 +179,6 @@ main > section:not(.hero) {
 
   .hero-creator {
     margin-top: clamp(10px, 1.8vh, 20px);
-  }
-
-  .offers-hero {
-    min-height: calc(
-      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) -
-        (var(--desktop-panel-gap) * 2)
-    );
-    padding: clamp(30px, 4.5vh, 54px) 24px;
-  }
-
-  /* Keep the complete NovaVisio / NovaTour explanation and both actions
-     inside one snapped MacBook Air viewport. */
-  .offers-hero h1 {
-    font-size: clamp(48px, 5.35vw, 82px);
-    line-height: 0.96;
-    margin: 8px 0 18px;
-  }
-
-  .offers-hero > p:not(.eyebrow) {
-    font-size: clamp(15px, 1.2vw, 17px);
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  .offers-hero .brand-flow {
-    margin-top: 17px !important;
-    min-height: 70px;
-    padding: 12px 18px;
-  }
-
-  .offers-hero .brand-flow span {
-    justify-content: center;
-  }
-
-  .offers-hero .offers-hero-actions {
-    margin-top: 16px !important;
   }
 
   /* A pricing comparison needs room to be read and chosen. It intentionally
@@ -586,11 +543,6 @@ main > section:not(.hero) {
   .about-features strong {
     font-size: clamp(17px, 1.45vw, 20px);
   }
-
-  .offers-hero .brand-flow {
-    margin-top: 14px !important;
-    max-width: 760px;
-  }
 }
 
 main > section:not(.hero)::after {
@@ -633,7 +585,6 @@ main > section:not(.hero)::after {
 .benefits,
 .offers-preview,
 .app-section,
-.offers-hero,
 .pricing-section,
 .features-section,
 .venue-size-section,
@@ -3063,246 +3014,6 @@ body.menu-open {
   background: #091820;
 }
 
-.offers-hero {
-  align-items: center;
-  background:
-    radial-gradient(circle at 82% 24%, rgba(32, 190, 193, 0.2), transparent 30%),
-    radial-gradient(circle at 12% 86%, rgba(20, 83, 112, 0.24), transparent 34%),
-    linear-gradient(145deg, #071922, #0a303b);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 160px 24px 90px;
-  text-align: center;
-}
-
-.offers-hero--split {
-  overflow: hidden;
-  padding: clamp(84px, 13vh, 150px) 24px clamp(32px, 5vh, 70px);
-  position: relative;
-}
-
-.offers-hero__glow {
-  background:
-    linear-gradient(115deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.22) 34%, transparent 56%),
-    linear-gradient(
-      115deg,
-      transparent 44%,
-      rgba(28, 163, 173, 0.22) 70%,
-      rgba(28, 163, 173, 0.4) 100%
-    ),
-    radial-gradient(circle at 14% 18%, rgba(255, 189, 89, 0.18), transparent 32%),
-    radial-gradient(circle at 88% 80%, rgba(50, 200, 197, 0.22), transparent 36%);
-  inset: 0;
-  position: absolute;
-  z-index: 0;
-}
-
-.offers-hero--split > * {
-  position: relative;
-  z-index: 1;
-}
-
-.offers-hero__flow {
-  align-items: center;
-  display: flex;
-  gap: 18px;
-  justify-content: center;
-  margin: 0 0 clamp(12px, 2vh, 22px);
-}
-
-.offers-hero__badge {
-  align-items: center;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 99px;
-  display: flex;
-  gap: 10px;
-  padding: 6px 18px 6px 6px;
-  text-align: left;
-}
-
-.offers-hero__badge img {
-  border-radius: 50%;
-  display: block;
-  flex: none;
-  height: 40px;
-  object-fit: cover;
-  width: 40px;
-}
-
-.offers-hero__badge span {
-  display: grid;
-  gap: 1px;
-}
-
-.offers-hero__badge small {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.offers-hero__badge b {
-  font-size: 15px;
-}
-
-.offers-hero__badge--visio small,
-.offers-hero__badge--visio b {
-  color: var(--novavisio-gold);
-}
-
-.offers-hero__badge--tour small,
-.offers-hero__badge--tour b {
-  color: var(--aqua);
-}
-
-.offers-hero__connector {
-  align-items: center;
-  display: flex;
-  gap: 0;
-}
-
-.offers-hero__connector-line {
-  height: 2px;
-  width: 34px;
-}
-
-.offers-hero__connector-line--visio {
-  background: linear-gradient(90deg, rgba(255, 189, 89, 0.7), rgba(255, 189, 89, 0.3));
-}
-
-.offers-hero__connector-line--tour {
-  background: linear-gradient(90deg, rgba(50, 200, 197, 0.3), rgba(50, 200, 197, 0.7));
-}
-
-.offers-hero__connector-line--dashed {
-  background-image: linear-gradient(90deg, rgba(210, 220, 222, 0.6) 0 6px, transparent 6px 12px);
-  background-repeat: repeat-x;
-  background-size: 12px 2px;
-  width: 30px;
-}
-
-.offers-hero__connector-node {
-  align-items: center;
-  border-radius: 50%;
-  display: flex;
-  flex: none;
-  font-size: 10px;
-  font-weight: 800;
-  height: 30px;
-  justify-content: center;
-  width: 30px;
-}
-
-.offers-hero__connector-node--visio {
-  background: rgba(255, 189, 89, 0.14);
-  border: 1px solid rgba(255, 189, 89, 0.5);
-  color: var(--novavisio-gold);
-}
-
-.offers-hero__connector-node--tour {
-  background: rgba(50, 200, 197, 0.14);
-  border: 1px solid rgba(50, 200, 197, 0.5);
-  color: var(--aqua);
-}
-
-.offers-hero__connector-node--tour svg {
-  height: 14px;
-  width: 14px;
-}
-
-.offers-hero__steps {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  margin: clamp(18px, 3vh, 34px) auto 0;
-  max-width: 900px;
-  padding: 0;
-  position: relative;
-}
-
-.offers-hero__steps::before {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 189, 89, 0.55) 0%,
-    rgba(255, 189, 89, 0.55) 48%,
-    rgba(50, 200, 197, 0.55) 52%,
-    rgba(50, 200, 197, 0.55) 100%
-  );
-  content: "";
-  height: 2px;
-  left: 32px;
-  position: absolute;
-  right: 32px;
-  top: 56px;
-}
-
-.offers-hero__steps li {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  max-width: 190px;
-  padding: 0 8px;
-  text-align: center;
-}
-
-.offers-hero__step-icon {
-  align-items: center;
-  border-radius: 50%;
-  display: flex;
-  height: 46px;
-  justify-content: center;
-  position: relative;
-  width: 46px;
-  z-index: 1;
-}
-
-.offers-hero__step--visio .offers-hero__step-icon {
-  background: rgba(255, 189, 89, 0.12);
-  border: 1px solid rgba(255, 189, 89, 0.45);
-  color: var(--novavisio-gold);
-}
-
-.offers-hero__step--tour .offers-hero__step-icon {
-  background: rgba(50, 200, 197, 0.12);
-  border: 1px solid rgba(50, 200, 197, 0.45);
-  color: var(--aqua);
-}
-
-.offers-hero__step-stem {
-  background: rgba(255, 255, 255, 0.25);
-  height: 10px;
-  width: 2px;
-}
-
-.offers-hero__steps li > div {
-  display: grid;
-  gap: 3px;
-  margin-top: 10px;
-}
-
-.offers-hero__steps strong {
-  color: white;
-  font-size: 15px;
-}
-
-.offers-hero__steps small {
-  color: #9db4ba;
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.offers-hero .eyebrow {
-  color: var(--aqua);
-}
-
-.offers-hero .eyebrow.novavisio-accent {
-  color: var(--novavisio-gold-soft);
-}
-
 .novavisio-accent {
   color: var(--novavisio-gold-soft);
 }
@@ -3314,48 +3025,6 @@ body.menu-open {
 .pricing-section .novavisio-accent,
 .quote-section .novavisio-accent {
   color: #b8791f;
-}
-
-.offers-hero .novavisio-accent {
-  color: var(--novavisio-gold);
-}
-
-.offers-hero > p:not(.eyebrow) .novavisio-accent {
-  color: var(--novavisio-gold);
-  font-weight: 800;
-}
-
-.offers-hero h1 {
-  font-size: clamp(34px, 4.4vw, 60px);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-  margin: clamp(4px, 1vh, 10px) 0 clamp(10px, 1.8vh, 18px);
-}
-
-.offers-hero h1 em {
-  color: #44c7ca;
-  font-style: normal;
-}
-
-.offers-hero > p:not(.eyebrow) {
-  color: #a5bec3;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
-  max-width: 760px;
-}
-
-.offers-hero > .offers-hero-actions {
-  align-items: center;
-  display: flex;
-  gap: 26px;
-  margin-top: clamp(14px, 2.4vh, 26px);
-}
-
-.offers-hero .offers-hero-actions > a:last-child {
-  color: var(--aqua);
-  font-weight: 800;
 }
 
 .brand-flow {
@@ -3447,10 +3116,6 @@ body.menu-open {
   font-size: 10px;
   font-style: normal;
   line-height: 1.25;
-}
-
-.offers-hero-actions {
-  margin-top: 22px !important;
 }
 
 .offers-page .offers-section-heading .eyebrow {
@@ -4277,19 +3942,6 @@ footer div:not(.footer-brand) a {
     padding-top: 68px;
   }
 
-  .offers-hero__steps {
-    flex-wrap: wrap;
-    row-gap: 28px;
-  }
-
-  .offers-hero__steps::before {
-    display: none;
-  }
-
-  .offers-hero__steps li {
-    flex: 0 0 45%;
-  }
-
   .hero h1 {
     font-size: clamp(68px, 17vw, 104px);
   }
@@ -4348,8 +4000,7 @@ footer div:not(.footer-brand) a {
     width: 100%;
   }
 
-  .offers-preview-heading,
-  .offers-hero > .offers-hero-actions {
+  .offers-preview-heading {
     align-items: flex-start;
     flex-direction: column;
   }
@@ -4485,62 +4136,6 @@ footer div:not(.footer-brand) a {
 
   .section {
     padding: 56px 18px;
-  }
-
-  .offers-hero {
-    align-items: flex-start;
-    padding: 140px 22px 72px;
-    text-align: left;
-  }
-
-  .offers-hero h1 {
-    font-size: 48px;
-  }
-
-  .offers-hero > .offers-hero-actions {
-    width: 100%;
-  }
-
-  .offers-hero .brand-flow {
-    grid-template-columns: 1fr auto 1fr;
-  }
-
-  .offers-hero .button {
-    width: 100%;
-  }
-
-  .offers-hero__flow {
-    flex-wrap: wrap;
-    row-gap: 14px;
-  }
-
-  .offers-hero__steps {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 22px;
-    max-width: none;
-  }
-
-  .offers-hero__steps::before {
-    display: none;
-  }
-
-  .offers-hero__steps li {
-    flex-direction: row;
-    gap: 16px;
-    max-width: none;
-    padding: 0;
-    text-align: left;
-  }
-
-  .offers-hero__step-stem {
-    display: none;
-  }
-
-  .offers-hero__steps strong,
-  .offers-hero__steps small {
-    margin-top: 0;
-    display: block;
   }
 
   .pricing-section,
@@ -5470,11 +5065,6 @@ footer div:not(.footer-brand) a {
 
   .about-features strong {
     font-size: clamp(17px, 1.45vw, 20px);
-  }
-
-  .offers-hero .brand-flow {
-    margin-top: 14px !important;
-    max-width: 760px;
   }
 }
 
@@ -7031,8 +6621,7 @@ main.offers-page .footer-brand > p {
   .benefits-heading h2,
   .offers-section-heading h2,
   .partner-showcase h2,
-  .contact-heading h1,
-  .offers-hero h1 {
+  .contact-heading h1 {
     font-size: clamp(28px, 7.4vw, 38px) !important;
     line-height: 1.08;
   }
@@ -7136,12 +6725,6 @@ main.offers-page .footer-brand > p {
 
   .brand-flow > span:not(.brand-flow__side) {
     display: none;
-  }
-
-  .offers-hero-actions {
-    display: grid;
-    gap: 10px;
-    width: 100%;
   }
 
   .pricing-grid,
@@ -9853,8 +9436,19 @@ main.offers-page .footer-brand > p {
     0 12px 32px rgba(255, 189, 89, 0.32),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
   color: #2b1c05;
-  margin-top: clamp(4px, 1vh, 8px);
   width: fit-content;
+}
+
+.nv-hero__actions {
+  align-items: center;
+  display: flex;
+  gap: 22px;
+  margin-top: clamp(6px, 1.2vh, 12px);
+}
+
+.nv-hero__actions > a:last-child {
+  color: var(--novavisio-gold);
+  font-weight: 800;
 }
 
 .nv-viewer {

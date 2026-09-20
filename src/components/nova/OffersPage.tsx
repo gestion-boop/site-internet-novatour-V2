@@ -1,40 +1,80 @@
-import { Camera, CloudUpload, Glasses, Share2 } from "lucide-react";
+import {
+  BarChart3,
+  Eye,
+  Maximize,
+  MapPin,
+  Moon,
+  Orbit,
+  Smartphone,
+  Sun,
+  ZoomIn,
+  ZoomOut,
+} from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import { OffersSelector } from "./OffersSelector";
 
-const steps = [
+const APP_URL = "https://app.novatour.fr";
+
+const features = [
   {
-    icon: Camera,
-    title: "Création 360°",
-    detail: "Captation professionnelle et modélisation",
-    accent: "visio" as const,
+    icon: Orbit,
+    title: "Visites 360° interactives",
+    detail: "Explorez chaque recoin avec une navigation fluide et intuitive.",
   },
   {
-    icon: Glasses,
-    title: "Immersion",
-    detail: "Visites interactives et expériences immersives",
-    accent: "visio" as const,
+    icon: MapPin,
+    title: "Points d’intérêt personnalisés",
+    detail: "Mettez en avant vos atouts et guidez vos visiteurs vers l’essentiel.",
   },
   {
-    icon: CloudUpload,
-    title: "Hébergement",
-    detail: "Plateforme sécurisée et performante",
-    accent: "tour" as const,
+    icon: GoogleGlyph,
+    title: "Intégration Google Street View",
+    detail: "Une technologie de référence, fiable et reconnue.",
   },
   {
-    icon: Share2,
-    title: "Diffusion",
-    detail: "Partage facile sur tous vos supports",
-    accent: "tour" as const,
+    icon: Smartphone,
+    title: "Compatible tous appareils",
+    detail: "Une expérience parfaite sur ordinateur, tablette et smartphone.",
+  },
+  {
+    icon: Eye,
+    title: "Plus d’engagement",
+    detail: "Attirez l’attention et augmentez vos réservations.",
+  },
+  {
+    icon: BarChart3,
+    title: "Des résultats concrets",
+    detail: "Une meilleure visibilité, un trafic qualifié et plus de clients.",
   },
 ];
 
-const APP_URL = "https://app.novatour.fr";
+function GoogleGlyph({ ...props }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 48 48" {...props}>
+      <path
+        fill="#4285F4"
+        d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"
+      />
+      <path
+        fill="#34A853"
+        d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M11.69 28.18A13.9 13.9 0 0 1 10.9 24c0-1.45.25-2.86.69-4.18v-5.7H4.34A21.93 21.93 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88z"
+      />
+      <path
+        fill="#EA4335"
+        d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"
+      />
+    </svg>
+  );
+}
 
 export function OffersPage() {
   return (
-    <main className="offers-page">
+    <main className="offers-page novavisio-page">
       <MotionEffects />
       <header className="site-header offers-site-header">
         <a className="brand" href="/#accueil" aria-label="NovaTour — accueil">
@@ -46,7 +86,6 @@ export function OffersPage() {
           <a href={APP_URL} target="_blank" rel="noreferrer">
             Faire une recherche
           </a>
-          <a href="/novavisio">NovaVisio</a>
           <a className="active" href="/offres">
             Nos offres
           </a>
@@ -59,75 +98,97 @@ export function OffersPage() {
         <MobileMenu />
       </header>
 
-      <section className="offers-hero offers-hero--split snap-section">
-        <div className="offers-hero__glow" aria-hidden="true" />
+      <section className="nv-hero snap-section">
+        <div className="nv-hero__glow" aria-hidden="true" />
 
-        <div className="offers-hero__flow" aria-hidden="true">
-          <span className="offers-hero__badge offers-hero__badge--visio">
-            <img src="/novavisio-logo.png" alt="" width="48" height="48" />
+        <div className="nv-hero__copy">
+          <p className="eyebrow">Visites virtuelles 360°</p>
+          <h1>
+            Une visite immersive qui donne envie de <em>pousser la porte</em>
+          </h1>
+          <p>
+            Offrez à vos futurs clients une expérience authentique et engageante grâce à nos visites
+            virtuelles 360°. Explorez vos espaces comme si vous y étiez, et transformez la curiosité
+            en visite réelle.
+          </p>
+
+          <div className="nv-google-badge">
+            <GoogleGlyph aria-hidden="true" />
             <span>
-              <small>NovaVisio</small>
-              <b>L’entreprise</b>
+              <strong>Certifié Google Street View</strong>
+              <small>Des visites fiables et de haute qualité</small>
             </span>
-          </span>
-          <span className="offers-hero__connector">
-            <span className="offers-hero__connector-line offers-hero__connector-line--visio" />
-            <span className="offers-hero__connector-node offers-hero__connector-node--visio">
-              360°
-            </span>
-            <span className="offers-hero__connector-line offers-hero__connector-line--dashed" />
-            <span className="offers-hero__connector-node offers-hero__connector-node--tour">
-              <CloudUpload aria-hidden="true" />
-            </span>
-            <span className="offers-hero__connector-line offers-hero__connector-line--tour" />
-          </span>
-          <span className="offers-hero__badge offers-hero__badge--tour">
-            <img src="/novatour-logo.png" alt="" width="48" height="48" />
-            <span>
-              <small>NovaTour</small>
-              <b>La marque</b>
-            </span>
-          </span>
+          </div>
+
+          <div className="nv-hero__actions">
+            <a className="button button-primary" href={APP_URL} target="_blank" rel="noreferrer">
+              Découvrir nos visites virtuelles <span aria-hidden="true">→</span>
+            </a>
+            <a href="#devis">Être rappelé par Natacha</a>
+          </div>
         </div>
 
-        <p className="eyebrow">
-          Créatrice de visites virtuelles immersives · Plateforme de diffusion
-        </p>
-        <h1>
-          <span className="novavisio-accent">NovaVisio</span> crée vos visites immersives,
-          <br />
-          <em>NovaTour</em> les diffuse.
-        </h1>
-        <p>
-          L’équipe NovaVisio se déplace chez vous pour capturer votre lieu à 360° ; NovaTour héberge
-          et diffuse ensuite la visite auprès du public.
-        </p>
+        <div className="nv-viewer" aria-hidden="true">
+          <img className="nv-viewer__image" src="/stays/cascade-de-moussan-terrasse.webp" alt="" />
+          <span className="nv-viewer__place">
+            <MapPin aria-hidden="true" />
+            <span>
+              <strong>La Cascade de Moussan</strong>
+              <small>Terrasse ombragée</small>
+            </span>
+          </span>
+          <span className="nv-viewer__daynight">
+            <span className="is-active">
+              <Sun aria-hidden="true" /> Jour
+            </span>
+            <span>
+              <Moon aria-hidden="true" /> Nuit
+            </span>
+          </span>
+          <span className="nv-viewer__pin" style={{ top: "38%", left: "10%" }}>
+            Coin repas
+          </span>
+          <span className="nv-viewer__pin" style={{ top: "52%", left: "48%" }}>
+            Allée ombragée
+          </span>
+          <span className="nv-viewer__pin" style={{ top: "44%", right: "8%" }}>
+            Salle intérieure
+          </span>
+          <span className="nv-viewer__controls">
+            <ZoomIn aria-hidden="true" />
+            <ZoomOut aria-hidden="true" />
+            <Maximize aria-hidden="true" />
+          </span>
+          <span className="nv-viewer__badge">
+            <span className="nv-viewer__badge-ring">360°</span>
+          </span>
+        </div>
+      </section>
 
-        <ul className="offers-hero__steps">
-          {steps.map((step) => (
-            <li key={step.title} className={`offers-hero__step--${step.accent}`}>
-              <span className="offers-hero__step-icon">
-                <step.icon aria-hidden="true" />
+      <section className="nv-features snap-section" aria-labelledby="nv-features-title">
+        <div className="nv-features__intro">
+          <p className="eyebrow">Pourquoi choisir NovaVisio</p>
+          <h2 id="nv-features-title">
+            Une technologie au service
+            <br />
+            de votre visibilité
+          </h2>
+          <p>
+            Plus qu’une simple visite, une expérience immersive qui valorise votre lieu, renforce
+            votre image et génère plus de réservations.
+          </p>
+        </div>
+
+        <div className="nv-features__grid">
+          {features.map((feature) => (
+            <article key={feature.title}>
+              <span className="nv-features__icon">
+                <feature.icon aria-hidden="true" />
               </span>
-              <span className="offers-hero__step-stem" aria-hidden="true" />
-              <div>
-                <strong>{step.title}</strong>
-                <small>{step.detail}</small>
-              </div>
-            </li>
+              <strong>{feature.title}</strong>
+              <p>{feature.detail}</p>
+            </article>
           ))}
-        </ul>
-
-        <div className="offers-hero-actions">
-          <a
-            className="button button-primary"
-            href="https://www.novavisio.fr/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Découvrir les offres NovaVisio <span aria-hidden="true">↗</span>
-          </a>
-          <a href="#devis">Être rappelé par Natacha</a>
         </div>
       </section>
 

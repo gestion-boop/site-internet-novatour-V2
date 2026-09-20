@@ -104,17 +104,14 @@ export function MobileMenu() {
           <a href={APP_URL} target="_blank" rel="noreferrer" onClick={closeMenu}>
             <span>02</span>Découvrir NovaTour
           </a>
-          <a href="/novavisio" onClick={closeMenu}>
-            <span>03</span>NovaVisio
-          </a>
           <a href="/offres" onClick={closeMenu}>
-            <span>04</span>Nos offres
+            <span>03</span>Nos offres
           </a>
           <a href="/#partenaire" onClick={closeMenu}>
-            <span>05</span>Devenir partenaire
+            <span>04</span>Devenir partenaire
           </a>
           <a href="/contact" onClick={closeMenu}>
-            <span>06</span>Contact
+            <span>05</span>Contact
           </a>
         </nav>
 

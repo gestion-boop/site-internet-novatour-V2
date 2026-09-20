@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as OffresRouteImport } from './routes/offres'
-import { Route as NovavisioRouteImport } from './routes/novavisio'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiLatestPlacesRouteImport } from './routes/api/latest-places'
@@ -24,11 +23,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const OffresRoute = OffresRouteImport.update({
   id: '/offres',
   path: '/offres',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NovavisioRoute = NovavisioRouteImport.update({
-  id: '/novavisio',
-  path: '/novavisio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -50,7 +44,6 @@ const ApiLatestPlacesRoute = ApiLatestPlacesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/novavisio': typeof NovavisioRoute
   '/offres': typeof OffresRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/latest-places': typeof ApiLatestPlacesRoute
@@ -58,7 +51,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/novavisio': typeof NovavisioRoute
   '/offres': typeof OffresRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/latest-places': typeof ApiLatestPlacesRoute
@@ -67,7 +59,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/novavisio': typeof NovavisioRoute
   '/offres': typeof OffresRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/latest-places': typeof ApiLatestPlacesRoute
@@ -77,23 +68,15 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/contact'
-    | '/novavisio'
     | '/offres'
     | '/sitemap.xml'
     | '/api/latest-places'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/contact'
-    | '/novavisio'
-    | '/offres'
-    | '/sitemap.xml'
-    | '/api/latest-places'
+  to: '/' | '/contact' | '/offres' | '/sitemap.xml' | '/api/latest-places'
   id:
     | '__root__'
     | '/'
     | '/contact'
-    | '/novavisio'
     | '/offres'
     | '/sitemap.xml'
     | '/api/latest-places'
@@ -102,7 +85,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
-  NovavisioRoute: typeof NovavisioRoute
   OffresRoute: typeof OffresRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ApiLatestPlacesRoute: typeof ApiLatestPlacesRoute
@@ -122,13 +104,6 @@ declare module '@tanstack/react-router' {
       path: '/offres'
       fullPath: '/offres'
       preLoaderRoute: typeof OffresRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/novavisio': {
-      id: '/novavisio'
-      path: '/novavisio'
-      fullPath: '/novavisio'
-      preLoaderRoute: typeof NovavisioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -158,7 +133,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
-  NovavisioRoute: NovavisioRoute,
   OffresRoute: OffresRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ApiLatestPlacesRoute: ApiLatestPlacesRoute,
