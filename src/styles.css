@@ -1657,13 +1657,43 @@ body.menu-open {
 }
 
 .about--editorial {
-  background:
-    radial-gradient(circle at 10% 14%, rgba(84, 205, 198, 0.13), transparent 25%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.93), rgba(240, 248, 247, 0.88));
   gap: clamp(54px, 6vw, 100px);
   grid-template-columns: minmax(0, 1.05fr) minmax(430px, 0.95fr);
   min-height: 820px;
   overflow: hidden;
+  position: relative;
+}
+
+.about-editorial__bg {
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}
+
+.about-editorial__bg img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.about-editorial__veil {
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0.6) 55%,
+    rgba(255, 255, 255, 0.78) 100%
+  );
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.about--editorial > .tour-preview,
+.about--editorial > .about-copy--editorial {
+  position: relative;
+  z-index: 2;
 }
 
 .about-story-visual {
@@ -8504,8 +8534,10 @@ main.offers-page .quote-section {
    ============================================================ */
 .tour-preview {
   align-self: center;
-  background: rgba(8, 30, 36, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(8, 30, 36, 0.62);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 28px;
   box-shadow: 0 40px 90px rgba(4, 55, 65, 0.28);
   color: #fff;

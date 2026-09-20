@@ -118,6 +118,10 @@ export function HomePage() {
       </section>
 
       <section className="about about--editorial section" id="concept">
+        <div className="about-editorial__bg" aria-hidden="true">
+          <img src="/stays/le-cosy-cuisine.webp" alt="" loading="lazy" />
+        </div>
+        <div className="about-editorial__veil" aria-hidden="true" />
         <TourPreview />
 
         <div className="about-copy about-copy--editorial">
