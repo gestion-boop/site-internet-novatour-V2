@@ -646,10 +646,13 @@ a {
 
 .site-header {
   align-items: center;
-  backdrop-filter: blur(18px);
-  background: linear-gradient(90deg, rgba(4, 42, 53, 0.97), rgba(6, 72, 82, 0.94));
-  border-bottom: 1px solid rgba(115, 216, 209, 0.2);
-  box-shadow: 0 12px 40px rgba(2, 31, 40, 0.18);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  background: linear-gradient(90deg, rgba(4, 42, 53, 0.86), rgba(6, 72, 82, 0.8));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 12px 40px rgba(2, 31, 40, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   color: var(--white);
   display: grid;
   column-gap: 14px;
@@ -667,6 +670,12 @@ a {
   position: static;
   transform: none;
   justify-self: center;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header {
+    background: linear-gradient(90deg, #042a35, #064852);
+  }
 }
 
 .brand {
@@ -1190,22 +1199,42 @@ body.menu-open {
   min-height: 46px;
   padding: 10px 22px;
   transition:
-    transform 180ms ease,
-    box-shadow 180ms ease,
-    background 180ms ease;
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease,
+    filter 220ms ease;
 }
 
 .button-primary {
   background: linear-gradient(135deg, #0ca7a9, #048d96);
-  box-shadow: 0 10px 24px rgba(2, 135, 143, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 10px 24px rgba(2, 135, 143, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
   color: var(--white);
 }
 
+.button-primary:hover {
+  filter: brightness(1.05);
+}
+
 .button-secondary {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(115, 216, 209, 0.72);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
   color: var(--white);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.button-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .button-secondary {
+    background: rgba(8, 61, 70, 0.55);
+  }
 }
 
 .button span {
@@ -1782,8 +1811,38 @@ body.menu-open {
     rgba(255, 255, 255, 0.78) 100%
   );
   inset: 0;
+  overflow: hidden;
   position: absolute;
   z-index: 1;
+}
+
+.about-editorial__veil::after {
+  animation: about-editorial-halo-drift 26s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(115, 216, 209, 0.35), transparent 60%);
+  border-radius: 50%;
+  content: "";
+  height: 55%;
+  left: -12%;
+  opacity: 0.6;
+  pointer-events: none;
+  position: absolute;
+  top: -18%;
+  width: 38%;
+}
+
+@keyframes about-editorial-halo-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(4%, 3%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-editorial__veil::after {
+    animation: none;
+  }
 }
 
 .about--editorial > .tour-preview,
@@ -1901,7 +1960,9 @@ body.menu-open {
 .about-features > a {
   align-items: center;
   background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(8, 116, 123, 0.1);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 21px;
   box-shadow: 0 18px 45px rgba(4, 55, 65, 0.07);
   display: grid;
@@ -1911,13 +1972,22 @@ body.menu-open {
   padding: 12px 22px 12px 12px;
   transition:
     box-shadow 250ms ease,
-    transform 250ms ease;
+    transform 250ms ease,
+    background 250ms ease;
 }
 
 .about-features article:hover,
 .about-features > a:hover {
+  background: rgba(255, 255, 255, 0.85);
   box-shadow: 0 26px 55px rgba(4, 55, 65, 0.13);
   transform: translateY(-4px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .about-features article,
+  .about-features > a {
+    background: rgba(255, 255, 255, 0.92);
+  }
 }
 
 .feature-icon {
@@ -7436,7 +7506,37 @@ main.offers-page .quote-section {
     rgba(4, 24, 38, 0.42) 100%
   );
   inset: 0;
+  overflow: hidden;
   position: absolute;
+}
+
+.saison-showcase__veil::after {
+  animation: saison-showcase-halo-drift 28s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(115, 216, 209, 0.28), transparent 62%);
+  border-radius: 50%;
+  content: "";
+  height: 60%;
+  opacity: 0.7;
+  pointer-events: none;
+  position: absolute;
+  right: -10%;
+  top: -20%;
+  width: 42%;
+}
+
+@keyframes saison-showcase-halo-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-3%, 4%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saison-showcase__veil::after {
+    animation: none;
+  }
 }
 
 .saison-showcase__inner {
