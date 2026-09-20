@@ -40,8 +40,15 @@ export function OffersPage() {
         </h1>
         <p>
           Vous êtes restaurateur, hébergeur ou commerçant ?{" "}
-          <span className="novavisio-accent">NovaVisio</span> réalise votre visite immersive 360°,
-          NovaTour la diffuse ensuite gratuitement au public.
+          <a
+            className="novavisio-accent"
+            href="https://www.novavisio.fr/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            NovaVisio
+          </a>{" "}
+          crée votre visite immersive 360°, NovaTour la diffuse ensuite gratuitement au public.
         </p>
         <div className="offers-hero-actions">
           <a className="button button-primary" href="#pricing-title">
