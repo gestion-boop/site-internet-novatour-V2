@@ -1538,30 +1538,103 @@ body.menu-open {
 }
 
 .discover__bg img {
+  animation: discover-bg-drift 32s ease-in-out infinite alternate;
   display: block;
-  filter: blur(3px);
+  filter: blur(6px);
   height: 100%;
   object-fit: cover;
-  transform: scale(1.04);
+  transform: scale(1.06);
   width: 100%;
 }
 
+@keyframes discover-bg-drift {
+  from {
+    transform: scale(1.06) translate(0, 0);
+  }
+  to {
+    transform: scale(1.1) translate(-1.2%, -0.8%);
+  }
+}
+
 .discover__veil {
-  /* Le panneau lui-même est en verre dépoli : fond blanc semi-transparent
-     et flou d'arrière-plan, la photo légèrement floutée se devine au travers. */
-  background-color: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Verre dépoli premium : très translucide (la photo se devine nettement
+     au travers), fort flou d'arrière-plan et légère saturation pour un
+     rendu "Liquid Glass" plutôt qu'un simple voile blanc opaque. */
+  background-color: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   inset: 0;
+  overflow: hidden;
   position: absolute;
   z-index: 1;
+}
+
+/* Reflet lumineux très diffus, comme une plaque de verre éclairée
+   depuis le coin supérieur gauche : subtil, jamais "plastique". */
+.discover__veil::before {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.08) 22%,
+    transparent 46%
+  );
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* Halo diffus qui dérive très légèrement, sans jamais distraire. */
+.discover__veil::after {
+  animation: discover-halo-drift 22s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 60%);
+  border-radius: 50%;
+  content: "";
+  height: 60%;
+  opacity: 0.5;
+  pointer-events: none;
+  position: absolute;
+  right: -10%;
+  top: -15%;
+  width: 40%;
+}
+
+@keyframes discover-halo-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-4%, 3%);
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .discover__veil {
+    background-color: rgba(255, 255, 255, 0.82);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .discover__bg img,
+  .discover__veil::after {
+    animation: none;
+  }
 }
 
 .discover > .section-heading,
 .discover > .places-grid {
   position: relative;
   z-index: 2;
+}
+
+/* Le voile est très translucide : une ombre portée légère garde le texte
+   lisible quelle que soit la zone de la photo qui se devine dessous. */
+.discover > .section-heading .eyebrow,
+.discover > .section-heading h2,
+.discover > .section-heading .text-link {
+  text-shadow: 0 1px 16px rgba(255, 255, 255, 0.6);
 }
 
 .discover .places-grid {
@@ -2925,16 +2998,56 @@ body.menu-open {
 }
 
 .offers-hero--visual {
-  gap: 30px;
-  padding: 120px 24px 70px;
+  justify-content: flex-end;
+  min-height: 640px;
+  overflow: hidden;
+  padding: 0 24px 56px;
+  position: relative;
+}
+
+.offers-hero__bg {
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
 }
 
 .offers-hero__schema {
-  border-radius: 24px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  animation: offers-hero-pan 26s ease-in-out infinite alternate;
   display: block;
-  max-width: min(100%, 1100px);
+  height: 100%;
+  object-fit: cover;
   width: 100%;
+}
+
+@keyframes offers-hero-pan {
+  from {
+    transform: scale(1.06) translate(0, 0);
+  }
+  to {
+    transform: scale(1.16) translate(-2.5%, -2%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offers-hero__schema {
+    animation: none;
+  }
+}
+
+.offers-hero__veil {
+  background: linear-gradient(
+    180deg,
+    rgba(7, 18, 22, 0) 20%,
+    rgba(7, 18, 22, 0.65) 48%,
+    rgba(7, 18, 22, 1) 72%
+  );
+  inset: 0;
+  position: absolute;
+}
+
+.offers-hero--visual .offers-hero-actions {
+  position: relative;
+  z-index: 1;
 }
 
 .offers-hero .eyebrow {
@@ -2983,7 +3096,7 @@ body.menu-open {
   max-width: 760px;
 }
 
-.offers-hero > div {
+.offers-hero > .offers-hero-actions {
   align-items: center;
   display: flex;
   gap: 26px;
@@ -3973,7 +4086,7 @@ footer div:not(.footer-brand) a {
   }
 
   .offers-preview-heading,
-  .offers-hero > div {
+  .offers-hero > .offers-hero-actions {
     align-items: flex-start;
     flex-direction: column;
   }
@@ -4121,7 +4234,7 @@ footer div:not(.footer-brand) a {
     font-size: 48px;
   }
 
-  .offers-hero > div {
+  .offers-hero > .offers-hero-actions {
     width: 100%;
   }
 
@@ -6512,6 +6625,14 @@ main.offers-page .quote-section {
     gap: 24px;
   }
 
+  /* Le hero visuel de "Nos offres" reste plein cadre même sur mobile :
+     le schéma NovaVisio doit occuper toute la hauteur du panneau. */
+  main.offers-page > .offers-hero--visual {
+    justify-content: flex-end !important;
+    min-height: 520px !important;
+    padding: 0 20px 40px !important;
+  }
+
   main > section.snap-section,
   main > section.hero {
     scroll-snap-align: none;
@@ -7640,26 +7761,32 @@ main.offers-page .quote-section {
    ============================================================ */
 .place-card {
   background-color: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 24px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 26px;
+  box-shadow: 0 14px 40px 0 rgba(4, 55, 65, 0.1);
   color: var(--ink);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   text-decoration: none;
   transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
-    background-color 220ms ease;
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    background-color 260ms ease;
 }
 
 .place-card:hover {
   background-color: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 18px 48px 0 rgba(4, 55, 65, 0.16);
   transform: translateY(-4px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .place-card {
+    background-color: rgba(255, 255, 255, 0.94);
+  }
 }
 
 .place-card__media {
@@ -9175,5 +9302,23 @@ main.offers-page .quote-section {
 @media (max-width: 900px) {
   .discover__constellation {
     display: none;
+  }
+
+  /* Même esprit "verre dépoli", mais un blur plus léger (coût de rendu
+     mobile) et un peu plus d'opacité pour garder une bonne lisibilité. */
+  .discover__veil {
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    background-color: rgba(255, 255, 255, 0.22);
+  }
+
+  .discover__veil::after {
+    height: 45%;
+    width: 55%;
+  }
+
+  .place-card {
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
   }
 }

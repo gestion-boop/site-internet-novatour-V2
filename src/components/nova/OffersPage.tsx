@@ -31,13 +31,14 @@ export function OffersPage() {
       </header>
 
       <section className="offers-hero offers-hero--visual snap-section">
-        <img
-          className="offers-hero__schema"
-          src="/novavisio-novatour-schema.webp"
-          alt="NovaVisio, l’entreprise créatrice de visites virtuelles immersives, crée les visites ; NovaTour, la plateforme de diffusion, les diffuse. Une solution complète en 4 étapes : création 360°, immersion, hébergement, diffusion."
-          width="3000"
-          height="1688"
-        />
+        <div className="offers-hero__bg" aria-hidden="true">
+          <img
+            className="offers-hero__schema"
+            src="/novavisio-novatour-schema.webp"
+            alt="NovaVisio, l’entreprise créatrice de visites virtuelles immersives, crée les visites ; NovaTour, la plateforme de diffusion, les diffuse. Une solution complète en 4 étapes : création 360°, immersion, hébergement, diffusion."
+          />
+        </div>
+        <div className="offers-hero__veil" aria-hidden="true" />
         <div className="offers-hero-actions">
           <a
             className="button button-primary"
