@@ -70,6 +70,20 @@ const partners: Partner[] = [
     logo: "/partners/waw.webp",
     name: "WAW!",
   },
+  {
+    alt: "Le Cosy",
+    href: "https://app.novatour.fr/place/le-cosy?category=h%C3%A9bergements&search=cosy&id=1d274a97-8e90-42c6-897f-a0928301562c",
+    id: "le-cosy",
+    logo: "/partners/le-cosy.webp",
+    name: "Le Cosy",
+  },
+  {
+    alt: "Le Bali",
+    href: "https://app.novatour.fr/place/le-bali?category=h%C3%A9bergements&id=67290063-bf83-4a4f-874d-c1730203eff4",
+    id: "le-bali",
+    logo: "/partners/le-bali.webp",
+    name: "Le Bali",
+  },
 ];
 
 /** Doublé pour un défilement en boucle continue et sans coupure. */

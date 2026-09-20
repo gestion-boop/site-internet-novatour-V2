@@ -132,13 +132,6 @@ main > section:not(.hero) {
     scroll-margin-top: 0;
   }
 
-  /* Bandeau de logos : contenu volontairement court, pas un panneau
-     plein écran comme les autres sections. */
-  main > section.trusted-partners {
-    height: auto;
-    min-height: 0 !important;
-  }
-
   .hero {
     height: calc(var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height));
     min-height: calc(var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height));

@@ -19,7 +19,7 @@ const tours: Tour[] = [
   {
     alt: "Cuisine ouverte de l’appartement Le Cosy en visite 360°",
     city: "Narbonne",
-    href: APP_URL,
+    href: "https://app.novatour.fr/place/le-cosy?category=h%C3%A9bergements&search=cosy&id=1d274a97-8e90-42c6-897f-a0928301562c",
     id: "le-cosy",
     image: "/stays/le-cosy-cuisine.webp",
     kind: "Appartement",
