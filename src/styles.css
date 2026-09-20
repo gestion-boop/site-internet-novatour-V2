@@ -1527,15 +1527,20 @@ body.menu-open {
 
 .discover__bg img {
   display: block;
+  filter: blur(3px);
   height: 100%;
   object-fit: cover;
+  transform: scale(1.04);
   width: 100%;
 }
 
 .discover__veil {
-  /* Photo nette, sans flou : seul un dégradé sombre assure le contraste
-     du texte blanc. Le flou « verre » reste localisé aux cartes. */
-  background: linear-gradient(180deg, rgba(8, 18, 22, 0.22) 0%, rgba(8, 18, 22, 0.48) 100%);
+  /* Le panneau lui-même est en verre dépoli : fond blanc semi-transparent
+     et flou d'arrière-plan, la photo légèrement floutée se devine au travers. */
+  background-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   inset: 0;
   position: absolute;
   z-index: 1;
@@ -1545,17 +1550,6 @@ body.menu-open {
 .discover > .places-grid {
   position: relative;
   z-index: 2;
-}
-
-.discover .eyebrow,
-.discover h2,
-.discover .text-link {
-  color: #fff;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
-}
-
-.discover .text-link span {
-  color: #fff;
 }
 
 .discover .places-grid {
@@ -9004,4 +8998,46 @@ main.offers-page .quote-section {
 
 .hero-actions .hero-pro-link:hover {
   text-decoration-color: #fff;
+}
+
+/* ============================================================
+   Découvertes : réseau illustratif discret et filigrane, en écho
+   à la maquette de référence (constellation + « Narbonne · 360° »).
+   ============================================================ */
+.discover__constellation {
+  height: clamp(90px, 14vh, 150px);
+  inset: 2% 4% auto auto;
+  pointer-events: none;
+  position: absolute;
+  width: clamp(180px, 22vw, 280px);
+  z-index: 1;
+}
+
+.discover__constellation svg {
+  display: block;
+  height: 100%;
+  opacity: 0.45;
+  width: 100%;
+}
+
+.discover__constellation circle {
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.9));
+}
+
+.discover__watermark {
+  bottom: -18px;
+  color: rgba(9, 64, 74, 0.55);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  position: absolute;
+  right: 8px;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 900px) {
+  .discover__constellation {
+    display: none;
+  }
 }

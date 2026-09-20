@@ -105,6 +105,25 @@ export function HomePage() {
           <img src="/narbonne-canal.webp" alt="" loading="lazy" />
         </div>
         <div className="discover__veil" aria-hidden="true" />
+        <div className="discover__constellation" aria-hidden="true">
+          <svg viewBox="0 0 360 220" preserveAspectRatio="xMaxYMin meet">
+            <g fill="none" stroke="rgba(255, 255, 255, 0.85)" strokeWidth="1" strokeLinecap="round">
+              <path d="M40 150 L120 100 L170 60 L250 90 L300 40" />
+              <path d="M120 100 L150 150 L250 90" />
+              <path d="M170 60 L200 20" />
+            </g>
+            <g fill="#fff">
+              <circle cx="40" cy="150" r="2.4" />
+              <circle cx="120" cy="100" r="3" />
+              <circle cx="170" cy="60" r="2.2" />
+              <circle cx="250" cy="90" r="3.2" />
+              <circle cx="300" cy="40" r="2.4" />
+              <circle cx="150" cy="150" r="2" />
+              <circle cx="200" cy="20" r="1.8" />
+            </g>
+          </svg>
+          <span className="discover__watermark">Narbonne · 360° · NovaTour</span>
+        </div>
         <div className="section-heading">
           <div>
             <p className="eyebrow">Les dernières découvertes</p>
