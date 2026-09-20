@@ -138,6 +138,13 @@ main > section:not(.hero) {
     padding-top: 0;
   }
 
+  /* Hero "Nos offres" : contenu riche et variable (diagramme, 4 étapes,
+     actions). Sur les écrans bas, il peut dépasser un plein écran : on le
+     laisse grandir plutôt que de rogner le CTA. */
+  main > section.offers-hero--split {
+    height: auto;
+  }
+
   /* Calibrage du contenu du hero : tout doit tenir dans une seule hauteur
      d'écran PC, sans débordement du bloc NovaVisio. */
   .hero-copy {
@@ -3141,7 +3148,7 @@ body.menu-open {
 
 .offers-hero__badge--visio small,
 .offers-hero__badge--visio b {
-  color: var(--novavisio-gold-soft);
+  color: var(--novavisio-gold);
 }
 
 .offers-hero__badge--tour small,
@@ -3190,7 +3197,7 @@ body.menu-open {
 .offers-hero__connector-node--visio {
   background: rgba(255, 189, 89, 0.14);
   border: 1px solid rgba(255, 189, 89, 0.5);
-  color: var(--novavisio-gold-soft);
+  color: var(--novavisio-gold);
 }
 
 .offers-hero__connector-node--tour {
@@ -3254,7 +3261,7 @@ body.menu-open {
 .offers-hero__step--visio .offers-hero__step-icon {
   background: rgba(255, 189, 89, 0.12);
   border: 1px solid rgba(255, 189, 89, 0.45);
-  color: var(--novavisio-gold-soft);
+  color: var(--novavisio-gold);
 }
 
 .offers-hero__step--tour .offers-hero__step-icon {
@@ -3307,8 +3314,12 @@ body.menu-open {
   color: #b8791f;
 }
 
+.offers-hero .novavisio-accent {
+  color: var(--novavisio-gold);
+}
+
 .offers-hero > p:not(.eyebrow) .novavisio-accent {
-  color: var(--novavisio-gold-soft);
+  color: var(--novavisio-gold);
   font-weight: 800;
 }
 

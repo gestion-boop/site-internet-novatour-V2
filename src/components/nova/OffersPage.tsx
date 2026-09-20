@@ -93,7 +93,7 @@ export function OffersPage() {
           Créatrice de visites virtuelles immersives · Plateforme de diffusion
         </p>
         <h1>
-          <span className="novavisio-accent">NovaVisio</span> filme et crée vos visites immersives,
+          <span className="novavisio-accent">NovaVisio</span> crée vos visites immersives,
           <br />
           <em>NovaTour</em> les diffuse.
         </h1>
