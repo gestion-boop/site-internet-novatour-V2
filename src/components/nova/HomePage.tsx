@@ -126,16 +126,18 @@ export function HomePage() {
               <circle cx="200" cy="20" r="1.8" />
             </g>
           </svg>
-          <span className="discover__watermark">Narbonne · 360° · NovaTour</span>
         </div>
         <div className="section-heading">
           <div>
             <p className="eyebrow">Les dernières découvertes</p>
             <h2 id="discover-title">Ils viennent de rejoindre NovaTour</h2>
           </div>
-          <a className="text-link" href={APP_URL} target="_blank" rel="noreferrer">
-            Voir tous les lieux <span>→</span>
-          </a>
+          <div className="discover__heading-side">
+            <span className="discover__watermark">Narbonne · 360° · NovaTour</span>
+            <a className="text-link" href={APP_URL} target="_blank" rel="noreferrer">
+              Voir tous les lieux <span>→</span>
+            </a>
+          </div>
         </div>
         <LatestPlaces />
       </section>
