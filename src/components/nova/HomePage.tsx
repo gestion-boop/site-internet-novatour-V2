@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { SeasonalStays } from "./SeasonalStays";
 import { TourPreview } from "./TourPreview";
+import { TrustedPartners } from "./TrustedPartners";
 
 const APP_URL = "https://app.novatour.fr";
 const STAYS_URL = "https://app.novatour.fr/?category=h%C3%A9bergements";
@@ -256,6 +257,8 @@ export function HomePage() {
           <SeasonalStays />
         </div>
       </section>
+
+      <TrustedPartners />
 
       <section className="app-section app-section--light section">
         <p className="app-section__watermark" aria-hidden="true">
