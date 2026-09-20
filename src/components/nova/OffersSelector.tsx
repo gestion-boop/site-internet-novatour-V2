@@ -29,33 +29,15 @@ const plans: {
     name: "Dynamique",
     price: "19,90€",
     popular: true,
-    description: "Le plan interactif et la visite jour & nuit pour une immersion complète.",
+    description: "Plus d’espaces, de contenus et de mises à jour pour une visite plus riche.",
     features: [
-      { title: "Toute l’offre Statique", detail: "Inclut tous les services de l’offre Statique" },
-      {
-        title: "Visite 360° jusqu’à 20 espaces capturés",
-        detail: "Deux fois plus de pièces ou zones filmées qu’en Statique",
-      },
-      {
-        title: "Liens de redirection illimités",
-        detail: "Contact, réservation, réseaux sociaux, menu en ligne…",
-      },
-      {
-        title: "Visite jour & nuit",
-        detail: "Basculez entre deux ambiances lumineuses depuis la même visite 360°",
-      },
-      {
-        title: "Ajout de 2 vidéos",
-        detail: "Vidéos d’ambiance intégrées directement dans la visite",
-      },
-      {
-        title: "Intégration de 10 PDF",
-        detail: "Le double de documents consultables par rapport à l’offre Statique",
-      },
-      {
-        title: "2 mises à jour par an",
-        detail: "NovaVisio revient actualiser votre visite virtuelle deux fois par an",
-      },
+      { title: "Toute l’offre Statique et :" },
+      { title: "Visite 360° jusqu’à 20 espaces capturés" },
+      { title: "10 points d’interaction intégrés" },
+      { title: "10 fichiers PDF intégrés" },
+      { title: "2 vidéos intégrées" },
+      { title: "2 mises à jour par an incluses" },
+      { title: "10 liens de redirection" },
     ],
   },
   {
