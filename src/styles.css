@@ -3068,57 +3068,128 @@ body.menu-open {
   text-align: center;
 }
 
-.offers-hero--visual {
-  justify-content: flex-end;
-  min-height: 640px;
+.offers-hero--split {
   overflow: hidden;
-  padding: 0 24px 56px;
+  padding: 150px 24px 80px;
   position: relative;
 }
 
-.offers-hero__bg {
-  inset: 0;
-  overflow: hidden;
-  position: absolute;
-}
-
-.offers-hero__schema {
-  animation: offers-hero-pan 26s ease-in-out infinite alternate;
-  display: block;
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-@keyframes offers-hero-pan {
-  from {
-    transform: scale(1.06) translate(0, 0);
-  }
-  to {
-    transform: scale(1.16) translate(-2.5%, -2%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .offers-hero__schema {
-    animation: none;
-  }
-}
-
-.offers-hero__veil {
-  background: linear-gradient(
-    180deg,
-    rgba(7, 18, 22, 0) 20%,
-    rgba(7, 18, 22, 0.65) 48%,
-    rgba(7, 18, 22, 1) 72%
-  );
+.offers-hero__glow {
+  background:
+    radial-gradient(circle at 14% 20%, rgba(255, 189, 89, 0.16), transparent 30%),
+    radial-gradient(circle at 88% 76%, rgba(50, 200, 197, 0.22), transparent 34%);
   inset: 0;
   position: absolute;
+  z-index: 0;
 }
 
-.offers-hero--visual .offers-hero-actions {
+.offers-hero--split > * {
   position: relative;
   z-index: 1;
+}
+
+.offers-hero__badges {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin: 0 0 22px;
+}
+
+.offers-hero__badge {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 99px;
+  display: flex;
+  gap: 12px;
+  padding: 8px 20px 8px 8px;
+  text-align: left;
+}
+
+.offers-hero__badge img {
+  border-radius: 50%;
+  display: block;
+  flex: none;
+  height: 44px;
+  object-fit: cover;
+  width: 44px;
+}
+
+.offers-hero__badge span {
+  display: grid;
+  gap: 1px;
+}
+
+.offers-hero__badge small {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.offers-hero__badge b {
+  font-size: 15px;
+}
+
+.offers-hero__badge--visio small,
+.offers-hero__badge--visio b {
+  color: var(--novavisio-gold-soft);
+}
+
+.offers-hero__badge--tour small,
+.offers-hero__badge--tour b {
+  color: var(--aqua);
+}
+
+.offers-hero__badge-link {
+  color: #5f7a80;
+  flex: none;
+  height: 18px;
+  width: 18px;
+}
+
+.offers-hero__steps {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  list-style: none;
+  margin: 40px auto 0;
+  max-width: 980px;
+  padding: 0;
+  text-align: left;
+}
+
+.offers-hero__steps li {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  display: grid;
+  gap: 10px;
+  padding: 20px 18px;
+}
+
+.offers-hero__steps span {
+  align-items: center;
+  background: rgba(50, 200, 197, 0.14);
+  border: 1px solid rgba(50, 200, 197, 0.3);
+  border-radius: 14px;
+  color: var(--aqua);
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+
+.offers-hero__steps strong {
+  color: white;
+  font-size: 15px;
+}
+
+.offers-hero__steps small {
+  color: #9db4ba;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .offers-hero .eyebrow {
@@ -4098,6 +4169,10 @@ footer div:not(.footer-brand) a {
     padding-top: 68px;
   }
 
+  .offers-hero__steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .hero h1 {
     font-size: clamp(68px, 17vw, 104px);
   }
@@ -4315,6 +4390,14 @@ footer div:not(.footer-brand) a {
 
   .offers-hero .button {
     width: 100%;
+  }
+
+  .offers-hero__badges {
+    flex-wrap: wrap;
+  }
+
+  .offers-hero__steps {
+    grid-template-columns: 1fr;
   }
 
   .pricing-section,
@@ -6694,14 +6777,6 @@ main.offers-page .quote-section {
     flex-direction: column;
     justify-content: flex-start;
     gap: 24px;
-  }
-
-  /* Le hero visuel de "Nos offres" reste plein cadre même sur mobile :
-     le schéma NovaVisio doit occuper toute la hauteur du panneau. */
-  main.offers-page > .offers-hero--visual {
-    justify-content: flex-end !important;
-    min-height: 520px !important;
-    padding: 0 20px 40px !important;
   }
 
   main > section.snap-section,

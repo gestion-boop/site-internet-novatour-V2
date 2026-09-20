@@ -1,6 +1,30 @@
+import { ArrowLeftRight, Camera, CloudUpload, Glasses, Share2 } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import { OffersSelector } from "./OffersSelector";
+
+const steps = [
+  {
+    icon: Camera,
+    title: "Création 360°",
+    detail: "Captation professionnelle et modélisation",
+  },
+  {
+    icon: Glasses,
+    title: "Immersion",
+    detail: "Visites interactives et expériences immersives",
+  },
+  {
+    icon: CloudUpload,
+    title: "Hébergement",
+    detail: "Plateforme sécurisée et performante",
+  },
+  {
+    icon: Share2,
+    title: "Diffusion",
+    detail: "Partage facile sur tous vos supports",
+  },
+];
 
 const APP_URL = "https://app.novatour.fr";
 
@@ -30,15 +54,52 @@ export function OffersPage() {
         <MobileMenu />
       </header>
 
-      <section className="offers-hero offers-hero--visual snap-section">
-        <div className="offers-hero__bg" aria-hidden="true">
-          <img
-            className="offers-hero__schema"
-            src="/novavisio-novatour-schema.webp"
-            alt="NovaVisio, l’entreprise créatrice de visites virtuelles immersives, crée les visites ; NovaTour, la plateforme de diffusion, les diffuse. Une solution complète en 4 étapes : création 360°, immersion, hébergement, diffusion."
-          />
+      <section className="offers-hero offers-hero--split snap-section">
+        <div className="offers-hero__glow" aria-hidden="true" />
+
+        <div className="offers-hero__badges">
+          <span className="offers-hero__badge offers-hero__badge--visio">
+            <img src="/novavisio-logo.png" alt="" width="44" height="44" />
+            <span>
+              <small>NovaVisio</small>
+              <b>L’entreprise</b>
+            </span>
+          </span>
+          <ArrowLeftRight aria-hidden="true" className="offers-hero__badge-link" />
+          <span className="offers-hero__badge offers-hero__badge--tour">
+            <img src="/novatour-logo.png" alt="" width="44" height="44" />
+            <span>
+              <small>NovaTour</small>
+              <b>La marque</b>
+            </span>
+          </span>
         </div>
-        <div className="offers-hero__veil" aria-hidden="true" />
+
+        <p className="eyebrow">
+          Créatrice de visites virtuelles immersives · Plateforme de diffusion
+        </p>
+        <h1>
+          <span className="novavisio-accent">NovaVisio</span> crée les visites immersives,
+          <br />
+          <em>NovaTour</em> les diffuse.
+        </h1>
+        <p>
+          Une solution complète pour créer, héberger et partager des expériences virtuelles
+          immersives.
+        </p>
+
+        <ul className="offers-hero__steps">
+          {steps.map((step) => (
+            <li key={step.title}>
+              <span>
+                <step.icon aria-hidden="true" />
+              </span>
+              <strong>{step.title}</strong>
+              <small>{step.detail}</small>
+            </li>
+          ))}
+        </ul>
+
         <div className="offers-hero-actions">
           <a
             className="button button-primary"
