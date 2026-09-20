@@ -44,13 +44,13 @@ const tours: Tour[] = [
     title: "Château de Jonquières",
   },
   {
-    alt: "Boutique du littoral en visite 360°",
-    city: "Narbonne-Plage",
-    href: APP_URL,
-    id: "comptoir-littoral",
-    image: "/occitanie-marina.png",
-    kind: "Commerces",
-    title: "Comptoir du littoral",
+    alt: "Salon voûté de l’agence ImmoSphera en visite 360°",
+    city: "Narbonne",
+    href: "https://app.novatour.fr/place/agence-immosphera?category=professionnels&id=36246b5e-be3e-41a8-8de5-13823d06ac94",
+    id: "immosphera",
+    image: "/stays/immosphera-salon.webp",
+    kind: "Professionnels",
+    title: "ImmoSphera",
   },
 ];
 
