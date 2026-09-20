@@ -9754,15 +9754,15 @@ main.offers-page .quote-section {
    Page NovaVisio : vitrine dédiée à la visite virtuelle 360°.
    ============================================================ */
 .novavisio-page {
-  background: #091820;
+  background: #1a1a1c;
 }
 
 .nv-hero {
   align-items: center;
   background:
-    radial-gradient(circle at 85% 15%, rgba(34, 232, 247, 0.22), transparent 32%),
-    radial-gradient(circle at 8% 92%, rgba(34, 232, 247, 0.1), transparent 30%),
-    linear-gradient(155deg, #071922, #0a2e38);
+    radial-gradient(circle at 85% 15%, rgba(255, 189, 89, 0.24), transparent 32%),
+    radial-gradient(circle at 8% 92%, rgba(255, 189, 89, 0.12), transparent 30%),
+    linear-gradient(155deg, #18181a 0%, #292420 55%, #3a2f1c 100%);
   color: white;
   display: grid;
   gap: clamp(32px, 5vw, 64px);
@@ -9774,8 +9774,8 @@ main.offers-page .quote-section {
 
 .nv-hero__glow {
   background:
-    radial-gradient(circle at 14% 20%, rgba(34, 232, 247, 0.18), transparent 30%),
-    radial-gradient(circle at 92% 82%, rgba(34, 232, 247, 0.14), transparent 34%);
+    radial-gradient(circle at 14% 20%, rgba(255, 189, 89, 0.18), transparent 30%),
+    radial-gradient(circle at 92% 82%, rgba(255, 189, 89, 0.14), transparent 34%);
   inset: 0;
   position: absolute;
   z-index: 0;
@@ -9795,7 +9795,7 @@ main.offers-page .quote-section {
 }
 
 .nv-hero__copy .eyebrow {
-  color: var(--novavisio-cyan-soft);
+  color: var(--novavisio-gold-soft);
 }
 
 .nv-hero__copy h1 {
@@ -9807,12 +9807,12 @@ main.offers-page .quote-section {
 }
 
 .nv-hero__copy h1 em {
-  color: var(--novavisio-cyan);
+  color: var(--novavisio-gold);
   font-style: normal;
 }
 
 .nv-hero__copy > p {
-  color: #a5bec3;
+  color: #b8b2a6;
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
@@ -9849,16 +9849,16 @@ main.offers-page .quote-section {
 }
 
 .nv-google-badge small {
-  color: #9db4ba;
+  color: #aca69c;
   font-size: 12px;
 }
 
 .nv-hero .button-primary {
-  background: linear-gradient(135deg, #3cf0fc, #0bc4d6);
+  background: linear-gradient(135deg, #ffd583, #e8a53a);
   box-shadow:
-    0 12px 32px rgba(34, 232, 247, 0.32),
+    0 12px 32px rgba(255, 189, 89, 0.32),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  color: #052226;
+  color: #2b1c05;
   margin-top: clamp(4px, 1vh, 8px);
   width: fit-content;
 }
@@ -9883,7 +9883,7 @@ main.offers-page .quote-section {
 
 .nv-viewer__place {
   align-items: center;
-  background: rgba(9, 22, 27, 0.6);
+  background: rgba(22, 20, 17, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 16px;
@@ -9897,7 +9897,7 @@ main.offers-page .quote-section {
 }
 
 .nv-viewer__place svg {
-  color: var(--novavisio-cyan);
+  color: var(--novavisio-gold);
   flex: none;
   height: 18px;
   width: 18px;
@@ -9914,12 +9914,12 @@ main.offers-page .quote-section {
 }
 
 .nv-viewer__place small {
-  color: #cfe3e6;
+  color: #d9d4c9;
   font-size: 11px;
 }
 
 .nv-viewer__daynight {
-  background: rgba(9, 22, 27, 0.55);
+  background: rgba(22, 20, 17, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 999px;
@@ -9934,7 +9934,7 @@ main.offers-page .quote-section {
 .nv-viewer__daynight span {
   align-items: center;
   border-radius: 999px;
-  color: #cfe3e6;
+  color: #d9d4c9;
   display: flex;
   font-size: 12px;
   font-weight: 700;
@@ -9948,13 +9948,13 @@ main.offers-page .quote-section {
 }
 
 .nv-viewer__daynight span.is-active {
-  background: var(--novavisio-cyan);
-  color: #052226;
+  background: var(--novavisio-gold);
+  color: #2b1c05;
 }
 
 .nv-viewer__pin {
   align-items: center;
-  background: rgba(9, 22, 27, 0.72);
+  background: rgba(22, 20, 17, 0.72);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 999px;
@@ -9968,9 +9968,9 @@ main.offers-page .quote-section {
 }
 
 .nv-viewer__pin::before {
-  background: var(--novavisio-cyan);
+  background: var(--novavisio-gold);
   border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(34, 232, 247, 0.28);
+  box-shadow: 0 0 0 4px rgba(255, 189, 89, 0.28);
   content: "";
   height: 7px;
   width: 7px;
@@ -9987,7 +9987,7 @@ main.offers-page .quote-section {
 
 .nv-viewer__controls svg {
   align-items: center;
-  background: rgba(9, 22, 27, 0.6);
+  background: rgba(22, 20, 17, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 50%;
@@ -10006,12 +10006,12 @@ main.offers-page .quote-section {
 
 .nv-viewer__badge-ring {
   align-items: center;
-  background: rgba(9, 22, 27, 0.65);
+  background: rgba(22, 20, 17, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 2px solid var(--novavisio-cyan);
+  border: 2px solid var(--novavisio-gold);
   border-radius: 50%;
-  color: var(--novavisio-cyan);
+  color: var(--novavisio-gold);
   display: flex;
   font-size: 13px;
   font-weight: 800;
@@ -10021,7 +10021,7 @@ main.offers-page .quote-section {
 }
 
 .nv-features {
-  background: linear-gradient(180deg, #0a2530, #091820);
+  background: linear-gradient(180deg, #241f1a, #18181a);
   color: white;
   display: flex;
   flex-direction: column;
@@ -10035,7 +10035,7 @@ main.offers-page .quote-section {
 }
 
 .nv-features__intro .eyebrow {
-  color: var(--novavisio-cyan-soft);
+  color: var(--novavisio-gold-soft);
 }
 
 .nv-features__intro h2 {
@@ -10047,7 +10047,7 @@ main.offers-page .quote-section {
 }
 
 .nv-features__intro p {
-  color: #9db4ba;
+  color: #aca69c;
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
@@ -10071,10 +10071,10 @@ main.offers-page .quote-section {
 
 .nv-features__icon {
   align-items: center;
-  background: rgba(34, 232, 247, 0.14);
-  border: 1px solid rgba(34, 232, 247, 0.35);
+  background: rgba(255, 189, 89, 0.14);
+  border: 1px solid rgba(255, 189, 89, 0.35);
   border-radius: 12px;
-  color: var(--novavisio-cyan);
+  color: var(--novavisio-gold);
   display: flex;
   height: 44px;
   justify-content: center;
@@ -10092,7 +10092,7 @@ main.offers-page .quote-section {
 }
 
 .nv-features__grid p {
-  color: #9db4ba;
+  color: #aca69c;
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
