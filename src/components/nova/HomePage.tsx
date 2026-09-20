@@ -258,6 +258,9 @@ export function HomePage() {
       </section>
 
       <section className="app-section app-section--light section">
+        <p className="app-section__watermark" aria-hidden="true">
+          Un seul endroit pour explorer tous les autres.
+        </p>
         <div className="app-copy app-copy--light">
           <p className="eyebrow">L’application web</p>
           <h2>
