@@ -18,19 +18,10 @@ const plans: {
     description: "L’essentiel pour présenter votre activité et être trouvable.",
     features: [
       { title: "Visite 360° jusqu’à 8 espaces capturés" },
-      { title: "Points d’interaction intégrés", detail: "Dans la limite de 5" },
-      {
-        title: "Plan interactif dans la 360°",
-        detail: "Plan du lieu intégré",
-      },
-      {
-        title: "Intégration de 5 PDF",
-        detail: "Menu, tarifs, brochure… jusqu’à 5 documents consultables dans la visite",
-      },
-      {
-        title: "Charte graphique personnalisée",
-        detail: "Couleurs et logo de votre établissement dans l’interface de visite",
-      },
+      { title: "5 points d’interaction intégrés" },
+      { title: "Plan interactif intégré" },
+      { title: "5 fichiers PDF intégrés" },
+      { title: "Charte graphique personnalisée" },
     ],
   },
   {
