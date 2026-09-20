@@ -1,80 +1,25 @@
 import { useState } from "react";
 import { Building2, Hotel, Store } from "lucide-react";
 
-type PlanFeature = { title: string; detail?: string; included?: boolean };
-
-const plans: {
-  id: string;
-  name: string;
-  price: string;
-  popular?: boolean;
-  description: string;
-  features: PlanFeature[];
-}[] = [
-  {
-    id: "statique",
-    name: "Statique",
-    price: "9,90€",
-    description: "L’essentiel pour présenter votre activité et être trouvable.",
-    features: [
-      { title: "Visite 360° jusqu’à 8 espaces capturés" },
-      { title: "5 points d’interaction intégrés" },
-      { title: "Plan interactif intégré" },
-      { title: "5 fichiers PDF intégrés" },
-      { title: "Charte graphique personnalisée" },
-    ],
-  },
-  {
-    id: "dynamique",
-    name: "Dynamique",
-    price: "19,90€",
-    popular: true,
-    description: "Plus d’espaces, de contenus et de mises à jour pour une visite plus riche.",
-    features: [
-      { title: "Toute l’offre Statique et :" },
-      { title: "Visite 360° jusqu’à 20 espaces capturés" },
-      { title: "10 points d’interaction intégrés" },
-      { title: "10 fichiers PDF intégrés" },
-      { title: "2 vidéos intégrées" },
-      { title: "2 mises à jour par an incluses" },
-      { title: "10 liens de redirection" },
-    ],
-  },
-  {
-    id: "premium",
-    name: "Premium",
-    price: "24,90€",
-    description: "L’expérience complète pour une activité qui se démarque vraiment.",
-    features: [
-      { title: "Captures panoramas illimitées" },
-      { title: "Points d’interaction illimités" },
-      { title: "Fichiers PDF illimités" },
-      { title: "Liens de redirection illimités" },
-      { title: "Intégrations de vidéos illimitées" },
-      { title: "Mises à jour incluses" },
-      { title: "Mode jour / nuit inclus" },
-      { title: "Intégration Google Maps offerte (en respectant les normes Google)" },
-      { title: "Accompagnement personnalisé" },
-    ],
-  },
+const plans = [
+  { id: "statique", name: "Statique" },
+  { id: "dynamique", name: "Dynamique" },
+  { id: "premium", name: "Premium" },
 ];
 
 const sizes = [
   {
     id: "0–25 m²",
-    price: "208 € HT",
     icon: Store,
     detail: "Bar, kiosque, boutique ou petit salon.",
   },
   {
     id: "25–50 m²",
-    price: "333,33 € HT",
     icon: Building2,
     detail: "Restaurant, salon, salle de sport ou espace moyen.",
   },
   {
     id: "+ de 50 m²",
-    price: "Sur devis",
     icon: Hotel,
     detail: "Hôtel, domaine, réception ou espace événementiel.",
   },
@@ -84,11 +29,6 @@ export function OffersSelector() {
   const [plan, setPlan] = useState("Dynamique");
   const [size, setSize] = useState("25–50 m²");
 
-  const choosePlan = (name: string) => {
-    setPlan(name);
-    document.getElementById("taille-lieu")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const chooseSize = (name: string) => {
     setSize(name);
     document.getElementById("devis")?.scrollIntoView({ behavior: "smooth" });
@@ -96,60 +36,6 @@ export function OffersSelector() {
 
   return (
     <>
-      <section className="pricing-section snap-section" aria-labelledby="pricing-title">
-        <div className="offers-section-heading">
-          <p className="eyebrow">
-            Solutions de visibilité <span className="novavisio-accent">NovaVisio</span>
-          </p>
-          <h2 id="pricing-title">Une solution claire pour chaque ambition</h2>
-          <p>
-            <span className="novavisio-accent">
-              Ces tarifs concernent les services professionnels conçus par NovaVisio.
-            </span>{" "}
-            L’accès à NovaTour reste gratuit pour les visiteurs.
-          </p>
-        </div>
-        <div className="pricing-grid">
-          {plans.map((item) => (
-            <article
-              className={`pricing-card${item.popular ? " pricing-card--popular" : ""}`}
-              id={item.id}
-              key={item.id}
-            >
-              <div className="pricing-card__ribbon">
-                {item.popular ? <span className="popular-label">Le plus populaire</span> : null}
-              </div>
-              <div className="pricing-card-head">
-                <h3>{item.name}</h3>
-                <p>
-                  <strong>{item.price}</strong>
-                  <span>
-                    HT
-                    <br />
-                    /mois
-                  </span>
-                </p>
-                <em>{item.description}</em>
-              </div>
-              <ul>
-                {item.features.map(({ title, detail, included = true }) => (
-                  <li className={included ? undefined : "is-excluded"} key={title}>
-                    <span>{included ? "✓" : "×"}</span>
-                    <div>
-                      <strong>{title}</strong>
-                      {detail ? <small>{detail}</small> : null}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <button type="button" onClick={() => choosePlan(item.name)}>
-                Choisir {item.name}
-              </button>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section
         className="venue-size-section snap-section"
         id="taille-lieu"
@@ -177,7 +63,6 @@ export function OffersSelector() {
                 <item.icon aria-hidden="true" />
               </span>
               <h3>{item.id}</h3>
-              <strong>{item.price}</strong>
               <p>{item.detail}</p>
               <b>Choisir cette formule →</b>
             </button>

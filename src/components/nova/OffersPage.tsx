@@ -1,4 +1,3 @@
-import { Camera, Clock, Tag } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import { OffersSelector } from "./OffersSelector";
@@ -31,44 +30,25 @@ export function OffersPage() {
         <MobileMenu />
       </header>
 
-      <section className="offers-hero snap-section">
-        <p className="eyebrow">Solutions professionnelles NovaVisio</p>
-        <h1>
-          Votre établissement,
-          <br />
-          visible sur <em>NovaTour</em>
-        </h1>
-        <p>
-          Vous êtes restaurateur, hébergeur ou commerçant ?{" "}
+      <section className="offers-hero offers-hero--visual snap-section">
+        <img
+          className="offers-hero__schema"
+          src="/novavisio-novatour-schema.webp"
+          alt="NovaVisio, l’entreprise créatrice de visites virtuelles immersives, crée les visites ; NovaTour, la plateforme de diffusion, les diffuse. Une solution complète en 4 étapes : création 360°, immersion, hébergement, diffusion."
+          width="3000"
+          height="1688"
+        />
+        <div className="offers-hero-actions">
           <a
-            className="novavisio-accent"
+            className="button button-primary"
             href="https://www.novavisio.fr/"
             target="_blank"
             rel="noreferrer"
           >
-            NovaVisio
-          </a>{" "}
-          crée votre visite immersive 360°, NovaTour la diffuse ensuite gratuitement au public.
-        </p>
-        <div className="offers-hero-actions">
-          <a className="button button-primary" href="#pricing-title">
-            Découvrir les solutions <span>↓</span>
+            Découvrir les offres NovaVisio <span aria-hidden="true">↗</span>
           </a>
           <a href="#devis">Être rappelé par Natacha</a>
         </div>
-        <ul className="offers-stats">
-          <li>
-            <Camera aria-hidden="true" />
-            Visite 360° réalisée chez vous
-          </li>
-          <li>
-            <Clock aria-hidden="true" />
-            En ligne sous 48 h
-          </li>
-          <li>
-            <Tag aria-hidden="true" />À partir de 9,90 € HT / mois
-          </li>
-        </ul>
       </section>
 
       <OffersSelector />
