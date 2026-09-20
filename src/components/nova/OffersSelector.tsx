@@ -46,29 +46,15 @@ const plans: {
     price: "24,90€",
     description: "L’expérience complète pour une activité qui se démarque vraiment.",
     features: [
-      { title: "Toute l’offre Dynamique", detail: "Inclut tous les services de l’offre Dynamique" },
-      { title: "Visite 360° illimitée", detail: "Autant d’espaces que nécessaire, sans limite" },
-      {
-        title: "Visite jour & nuit incluse",
-        detail: "Les deux ambiances lumineuses, comprises dans l’offre",
-      },
-      {
-        title: "Vidéos illimitées",
-        detail: "Ajoutez autant de vidéos d’ambiance que vous le souhaitez",
-      },
-      { title: "PDF illimités", detail: "Programmes, brochures, tarifs… sans limite de documents" },
-      {
-        title: "Mises à jour illimitées",
-        detail: "Modifications traitées en priorité par notre équipe",
-      },
-      {
-        title: "Référencement renforcé",
-        detail: "Position mise en avant dans les résultats de recherche",
-      },
-      {
-        title: "Accompagnement personnalisé",
-        detail: "Un conseiller NovaVisio dédié pour optimiser votre visite",
-      },
+      { title: "Captures panoramas illimitées" },
+      { title: "Points d’interaction illimités" },
+      { title: "Fichiers PDF illimités" },
+      { title: "Liens de redirection illimités" },
+      { title: "Intégrations de vidéos illimitées" },
+      { title: "Mises à jour incluses" },
+      { title: "Mode jour / nuit inclus" },
+      { title: "Intégration Google Maps offerte (en respectant les normes Google)" },
+      { title: "Accompagnement personnalisé" },
     ],
   },
 ];
