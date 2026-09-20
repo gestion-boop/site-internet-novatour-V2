@@ -46,6 +46,7 @@ export function OffersPage() {
           <a href={APP_URL} target="_blank" rel="noreferrer">
             Faire une recherche
           </a>
+          <a href="/novavisio">NovaVisio</a>
           <a className="active" href="/offres">
             Nos offres
           </a>

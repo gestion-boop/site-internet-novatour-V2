@@ -6920,6 +6920,14 @@ main.offers-page .quote-section {
     gap: 24px;
   }
 
+  /* Quand ce n'est pas le vrai hero qui ouvre la page (Nos offres,
+     NovaVisio, Contact...), la première section suit directement le
+     header en position absolue : il lui faut assez de marge en haut
+     pour ne pas passer dessous. */
+  main > header + section:not(.hero) {
+    padding-top: 130px !important;
+  }
+
   main > section.snap-section,
   main > section.hero {
     scroll-snap-align: none;
@@ -9737,6 +9745,377 @@ main.offers-page .quote-section {
 @media (prefers-reduced-motion: reduce) {
   .trusted-partners__scroller {
     animation: none;
+  }
+}
+
+/* ============================================================
+   Page NovaVisio : vitrine dédiée à la visite virtuelle 360°.
+   ============================================================ */
+.novavisio-page {
+  background: #091820;
+}
+
+.nv-hero {
+  align-items: center;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(50, 200, 197, 0.2), transparent 32%),
+    radial-gradient(circle at 8% 92%, rgba(255, 189, 89, 0.12), transparent 30%),
+    linear-gradient(155deg, #071922, #0a2e38);
+  color: white;
+  display: grid;
+  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: 1fr 1.15fr;
+  overflow: hidden;
+  padding: clamp(72px, 12vh, 130px) clamp(28px, 4vw, 64px) clamp(36px, 6vh, 64px);
+  position: relative;
+}
+
+.nv-hero__glow {
+  background:
+    radial-gradient(circle at 14% 20%, rgba(255, 189, 89, 0.14), transparent 30%),
+    radial-gradient(circle at 92% 82%, rgba(50, 200, 197, 0.2), transparent 34%);
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.nv-hero__copy,
+.nv-viewer {
+  position: relative;
+  z-index: 1;
+}
+
+.nv-hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.6vh, 16px);
+  text-align: left;
+}
+
+.nv-hero__copy .eyebrow {
+  color: var(--aqua);
+}
+
+.nv-hero__copy h1 {
+  font-size: clamp(32px, 3.2vw, 46px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.nv-hero__copy h1 em {
+  color: var(--aqua);
+  font-style: normal;
+}
+
+.nv-hero__copy > p {
+  color: #a5bec3;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 46ch;
+}
+
+.nv-google-badge {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  display: inline-flex;
+  gap: 12px;
+  margin: clamp(4px, 1vh, 10px) 0;
+  padding: 10px 18px 10px 14px;
+  width: fit-content;
+}
+
+.nv-google-badge svg {
+  flex: none;
+  height: 26px;
+  width: 26px;
+}
+
+.nv-google-badge span {
+  display: grid;
+  gap: 1px;
+  text-align: left;
+}
+
+.nv-google-badge strong {
+  color: white;
+  font-size: 14px;
+}
+
+.nv-google-badge small {
+  color: #9db4ba;
+  font-size: 12px;
+}
+
+.nv-hero .button-primary {
+  margin-top: clamp(4px, 1vh, 8px);
+  width: fit-content;
+}
+
+.nv-viewer {
+  aspect-ratio: 4 / 3;
+  border-radius: 28px;
+  box-shadow: 0 40px 100px rgba(2, 20, 26, 0.45);
+  height: clamp(300px, 52vh, 500px);
+  justify-self: center;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+}
+
+.nv-viewer__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.nv-viewer__place {
+  align-items: center;
+  background: rgba(9, 22, 27, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  color: white;
+  display: flex;
+  gap: 10px;
+  left: 16px;
+  padding: 10px 16px 10px 12px;
+  position: absolute;
+  top: 16px;
+}
+
+.nv-viewer__place svg {
+  color: var(--aqua);
+  flex: none;
+  height: 18px;
+  width: 18px;
+}
+
+.nv-viewer__place span {
+  display: grid;
+  gap: 0;
+  text-align: left;
+}
+
+.nv-viewer__place strong {
+  font-size: 13px;
+}
+
+.nv-viewer__place small {
+  color: #cfe3e6;
+  font-size: 11px;
+}
+
+.nv-viewer__daynight {
+  background: rgba(9, 22, 27, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 999px;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.nv-viewer__daynight span {
+  align-items: center;
+  border-radius: 999px;
+  color: #cfe3e6;
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 6px;
+  padding: 6px 12px;
+}
+
+.nv-viewer__daynight span svg {
+  height: 13px;
+  width: 13px;
+}
+
+.nv-viewer__daynight span.is-active {
+  background: var(--aqua);
+  color: #06282c;
+}
+
+.nv-viewer__pin {
+  align-items: center;
+  background: rgba(9, 22, 27, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 999px;
+  color: white;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 8px;
+  padding: 7px 14px 7px 10px;
+  position: absolute;
+}
+
+.nv-viewer__pin::before {
+  background: var(--aqua);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(50, 200, 197, 0.25);
+  content: "";
+  height: 7px;
+  width: 7px;
+}
+
+.nv-viewer__controls {
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  left: 16px;
+  position: absolute;
+}
+
+.nv-viewer__controls svg {
+  align-items: center;
+  background: rgba(9, 22, 27, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  height: 36px;
+  padding: 9px;
+  width: 36px;
+}
+
+.nv-viewer__badge {
+  bottom: 18px;
+  position: absolute;
+  right: 18px;
+}
+
+.nv-viewer__badge-ring {
+  align-items: center;
+  background: rgba(9, 22, 27, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid var(--aqua);
+  border-radius: 50%;
+  color: var(--aqua);
+  display: flex;
+  font-size: 13px;
+  font-weight: 800;
+  height: 58px;
+  justify-content: center;
+  width: 58px;
+}
+
+.nv-features {
+  background: linear-gradient(180deg, #0a2530, #091820);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vh, 44px);
+  justify-content: center;
+  padding: clamp(64px, 10vh, 110px) clamp(28px, 4vw, 64px);
+}
+
+.nv-features__intro {
+  max-width: 640px;
+}
+
+.nv-features__intro .eyebrow {
+  color: var(--aqua);
+}
+
+.nv-features__intro h2 {
+  font-size: clamp(28px, 2.8vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 8px 0 14px;
+}
+
+.nv-features__intro p {
+  color: #9db4ba;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.nv-features__grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.nv-features__grid article {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+}
+
+.nv-features__icon {
+  align-items: center;
+  background: rgba(50, 200, 197, 0.14);
+  border: 1px solid rgba(50, 200, 197, 0.35);
+  border-radius: 12px;
+  color: var(--aqua);
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+
+.nv-features__icon svg {
+  height: 20px;
+  width: 20px;
+}
+
+.nv-features__grid strong {
+  color: white;
+  font-size: 16px;
+}
+
+.nv-features__grid p {
+  color: #9db4ba;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .nv-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .nv-viewer {
+    aspect-ratio: 16 / 11;
+    height: auto;
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .nv-features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .nv-features__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nv-viewer__pin {
+    font-size: 11px;
+    padding: 6px 12px 6px 8px;
   }
 }
 
