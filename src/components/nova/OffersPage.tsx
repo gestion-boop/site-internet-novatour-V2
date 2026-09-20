@@ -1,4 +1,4 @@
-import { ArrowLeftRight, Camera, CloudUpload, Glasses, Share2 } from "lucide-react";
+import { Camera, CloudUpload, Glasses, Share2 } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import { OffersSelector } from "./OffersSelector";
@@ -8,21 +8,25 @@ const steps = [
     icon: Camera,
     title: "Création 360°",
     detail: "Captation professionnelle et modélisation",
+    accent: "visio" as const,
   },
   {
     icon: Glasses,
     title: "Immersion",
     detail: "Visites interactives et expériences immersives",
+    accent: "visio" as const,
   },
   {
     icon: CloudUpload,
     title: "Hébergement",
     detail: "Plateforme sécurisée et performante",
+    accent: "tour" as const,
   },
   {
     icon: Share2,
     title: "Diffusion",
     detail: "Partage facile sur tous vos supports",
+    accent: "tour" as const,
   },
 ];
 
@@ -57,17 +61,27 @@ export function OffersPage() {
       <section className="offers-hero offers-hero--split snap-section">
         <div className="offers-hero__glow" aria-hidden="true" />
 
-        <div className="offers-hero__badges">
+        <div className="offers-hero__flow" aria-hidden="true">
           <span className="offers-hero__badge offers-hero__badge--visio">
-            <img src="/novavisio-logo.png" alt="" width="44" height="44" />
+            <img src="/novavisio-logo.png" alt="" width="48" height="48" />
             <span>
               <small>NovaVisio</small>
               <b>L’entreprise</b>
             </span>
           </span>
-          <ArrowLeftRight aria-hidden="true" className="offers-hero__badge-link" />
+          <span className="offers-hero__connector">
+            <span className="offers-hero__connector-line offers-hero__connector-line--visio" />
+            <span className="offers-hero__connector-node offers-hero__connector-node--visio">
+              360°
+            </span>
+            <span className="offers-hero__connector-line offers-hero__connector-line--dashed" />
+            <span className="offers-hero__connector-node offers-hero__connector-node--tour">
+              <CloudUpload aria-hidden="true" />
+            </span>
+            <span className="offers-hero__connector-line offers-hero__connector-line--tour" />
+          </span>
           <span className="offers-hero__badge offers-hero__badge--tour">
-            <img src="/novatour-logo.png" alt="" width="44" height="44" />
+            <img src="/novatour-logo.png" alt="" width="48" height="48" />
             <span>
               <small>NovaTour</small>
               <b>La marque</b>
@@ -79,23 +93,26 @@ export function OffersPage() {
           Créatrice de visites virtuelles immersives · Plateforme de diffusion
         </p>
         <h1>
-          <span className="novavisio-accent">NovaVisio</span> crée les visites immersives,
+          <span className="novavisio-accent">NovaVisio</span> filme et crée vos visites immersives,
           <br />
           <em>NovaTour</em> les diffuse.
         </h1>
         <p>
-          Une solution complète pour créer, héberger et partager des expériences virtuelles
-          immersives.
+          L’équipe NovaVisio se déplace chez vous pour capturer votre lieu à 360° ; NovaTour héberge
+          et diffuse ensuite la visite auprès du public.
         </p>
 
         <ul className="offers-hero__steps">
           {steps.map((step) => (
-            <li key={step.title}>
-              <span>
+            <li key={step.title} className={`offers-hero__step--${step.accent}`}>
+              <span className="offers-hero__step-icon">
                 <step.icon aria-hidden="true" />
               </span>
-              <strong>{step.title}</strong>
-              <small>{step.detail}</small>
+              <span className="offers-hero__step-stem" aria-hidden="true" />
+              <div>
+                <strong>{step.title}</strong>
+                <small>{step.detail}</small>
+              </div>
             </li>
           ))}
         </ul>
