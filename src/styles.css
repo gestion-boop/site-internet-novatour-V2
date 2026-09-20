@@ -9490,24 +9490,21 @@ main.offers-page .quote-section {
 
 .trusted-partners__logo {
   border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(4, 55, 65, 0.1);
   display: block;
-  filter: grayscale(100%);
   flex: 0 0 auto;
   height: clamp(64px, 8vw, 92px);
-  opacity: 0.7;
   overflow: hidden;
   pointer-events: auto;
   transition:
-    filter 260ms ease,
-    opacity 260ms ease,
+    box-shadow 260ms ease,
     transform 260ms ease;
   width: clamp(64px, 8vw, 92px);
 }
 
 .trusted-partners__logo:hover,
 .trusted-partners__logo:focus-visible {
-  filter: grayscale(0%);
-  opacity: 1;
+  box-shadow: 0 14px 32px rgba(4, 55, 65, 0.18);
   transform: translateY(-3px);
 }
 

@@ -1,5 +1,3 @@
-const APP_URL = "https://app.novatour.fr";
-
 type Partner = {
   alt: string;
   href: string;
@@ -11,27 +9,67 @@ type Partner = {
 const partners: Partner[] = [
   {
     alt: "Ariya — Bien-être et tradition",
-    href: APP_URL,
+    href: "https://app.novatour.fr/place/ariya-bien-etre-et-tradition?category=commerces&id=bcaf93c6-4286-4434-811e-862c09d70265",
     id: "ariya",
     logo: "/partners/ariya.webp",
     name: "Ariya",
   },
-  { alt: "Mioza", href: APP_URL, id: "mioza", logo: "/partners/mioza.webp", name: "Mioza" },
+  {
+    alt: "Mioza",
+    href: "https://app.novatour.fr/place/mioza?category=se+restaurer&id=0dc5f97b-a944-4f40-8a0e-13168091e15e",
+    id: "mioza",
+    logo: "/partners/mioza.webp",
+    name: "Mioza",
+  },
   {
     alt: "Groupe Alternance Narbonne — L’école supérieure de l’alternance",
-    href: APP_URL,
+    href: "https://app.novatour.fr/place/groupe-alternance?category=professionnels&id=52dc7e95-3fc0-41b2-ba7f-39b89aba3cd2",
     id: "groupe-alternance",
     logo: "/partners/groupe-alternance.webp",
     name: "Groupe Alternance Narbonne",
   },
   {
     alt: "Le Fauteuil by Sylvie",
-    href: APP_URL,
+    href: "https://app.novatour.fr/place/le-fauteuil-by-sylvie?category=commerces&id=91ea043a-16b1-4174-9a85-182ad291a142",
     id: "le-fauteuil",
     logo: "/partners/le-fauteuil.webp",
     name: "Le Fauteuil by Sylvie",
   },
-  { alt: "Gaïa", href: APP_URL, id: "gaia", logo: "/partners/gaia.webp", name: "Gaïa" },
+  {
+    alt: "Gaïa",
+    href: "https://app.novatour.fr/place/gaia?category=se+restaurer&id=a092f0f6-e198-4c1a-a8da-25173fd67f66",
+    id: "gaia",
+    logo: "/partners/gaia.webp",
+    name: "Gaïa",
+  },
+  {
+    alt: "ImmoSphera — Visitez autrement",
+    href: "https://app.novatour.fr/place/agence-immosphera?category=professionnels&id=36246b5e-be3e-41a8-8de5-13823d06ac94",
+    id: "immosphera",
+    logo: "/partners/immosphera.webp",
+    name: "ImmoSphera",
+  },
+  {
+    alt: "Arc en Ciel — Mobilier & décoration",
+    href: "https://app.novatour.fr/place/arc-en-ciel?category=commerces&id=21fe6bb0-7524-48f9-9d35-2c26f4617003",
+    id: "arc-en-ciel",
+    logo: "/partners/arc-en-ciel.webp",
+    name: "Arc en Ciel",
+  },
+  {
+    alt: "Indian Flame",
+    href: "https://app.novatour.fr/place/indian-flame?category=se+restaurer&id=8e8a87ee-50f6-47a1-9f29-c7d99714d04e",
+    id: "indian-flame",
+    logo: "/partners/indian-flame.webp",
+    name: "Indian Flame",
+  },
+  {
+    alt: "WAW! — Work Another Way",
+    href: "https://app.novatour.fr/place/le-waw-coworking?category=professionnels&id=cee17d8b-1274-4ef9-9251-d781539a820c",
+    id: "waw",
+    logo: "/partners/waw.webp",
+    name: "WAW!",
+  },
 ];
 
 /** Doublé pour un défilement en boucle continue et sans coupure. */
