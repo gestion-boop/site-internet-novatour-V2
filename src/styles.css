@@ -1511,13 +1511,45 @@ body.menu-open {
 }
 
 .discover {
-  background:
-    radial-gradient(circle at 90% 0%, rgba(70, 209, 200, 0.16), transparent 32%),
-    rgba(255, 255, 255, 0.72);
   border-radius: 0 0 42px 42px;
   box-shadow: 0 30px 80px rgba(4, 55, 65, 0.08);
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.discover__bg {
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}
+
+.discover__bg img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.discover__veil {
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.66) 0%,
+    rgba(255, 255, 255, 0.46) 45%,
+    rgba(255, 255, 255, 0.66) 100%
+  );
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.discover > .section-heading,
+.discover > .places-grid {
+  position: relative;
+  z-index: 2;
 }
 
 .discover .places-grid {
@@ -7542,9 +7574,12 @@ main.offers-page .quote-section {
    téléphone. Placé en fin de feuille pour primer.
    ============================================================ */
 .place-card {
-  background: var(--white);
-  border: 1px solid rgba(11, 61, 70, 0.08);
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(4, 55, 65, 0.1);
   color: var(--ink);
   display: flex;
   flex-direction: column;
@@ -7552,11 +7587,13 @@ main.offers-page .quote-section {
   text-decoration: none;
   transition:
     transform 220ms ease,
-    box-shadow 220ms ease;
+    box-shadow 220ms ease,
+    background 220ms ease;
 }
 
 .place-card:hover {
-  box-shadow: 0 22px 48px rgba(4, 55, 65, 0.14);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 22px 48px rgba(4, 55, 65, 0.16);
   transform: translateY(-4px);
 }
 
@@ -8380,13 +8417,6 @@ main.offers-page .quote-section {
 .contact-icon {
   background: var(--accent-soft);
   color: var(--accent-dark);
-}
-
-/* Halo discret dans le panneau des découvertes */
-.discover {
-  background:
-    radial-gradient(circle at 90% 0%, rgba(39, 130, 153, 0.14), transparent 32%),
-    rgba(255, 255, 255, 0.72);
 }
 
 /* ============================================================

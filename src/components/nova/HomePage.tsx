@@ -16,7 +16,6 @@ import {
 import { SeasonalStays } from "./SeasonalStays";
 import { TourPreview } from "./TourPreview";
 
-
 const APP_URL = "https://app.novatour.fr";
 const STAYS_URL = "https://app.novatour.fr/?category=h%C3%A9bergements";
 
@@ -70,8 +69,8 @@ export function HomePage() {
             pour <span className="hero-accent">explorer</span> tous les autres.
           </h1>
           <p className="hero-intro">
-            Explorez les meilleurs lieux de la région à 360°, puis retrouvez toutes leurs informations utiles au même
-            endroit.
+            Explorez les meilleurs lieux de la région à 360°, puis retrouvez toutes leurs
+            informations utiles au même endroit.
           </p>
 
           <div className="hero-actions">
@@ -102,6 +101,10 @@ export function HomePage() {
       </section>
 
       <section className="discover section" aria-labelledby="discover-title">
+        <div className="discover__bg" aria-hidden="true">
+          <img src="/narbonne-canal.webp" alt="" loading="lazy" />
+        </div>
+        <div className="discover__veil" aria-hidden="true" />
         <div className="section-heading">
           <div>
             <p className="eyebrow">Les dernières découvertes</p>
@@ -165,9 +168,6 @@ export function HomePage() {
           </a>
         </div>
       </section>
-
-
-
 
       <section className="saison-showcase" id="partenaire" aria-labelledby="partner-title">
         <div className="saison-showcase__bg saison-showcase__bg--gradient" aria-hidden="true">
@@ -294,8 +294,6 @@ export function HomePage() {
         </div>
       </section>
 
-
-
       <footer id="contact">
         <div className="footer-brand">
           <a className="brand brand--footer" href="#accueil">
@@ -342,7 +340,11 @@ export function HomePage() {
           <a href="https://www.instagram.com/novatour.fr/" target="_blank" rel="noreferrer">
             Instagram
           </a>
-          <a href="https://www.facebook.com/p/NovaTour-61587281682477/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.facebook.com/p/NovaTour-61587281682477/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Facebook
           </a>
         </div>
