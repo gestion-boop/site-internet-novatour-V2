@@ -5103,15 +5103,16 @@ main.offers-page .quote-section {
   position: absolute;
   inset: 0;
   /* Voile neutre (pas teinté) : la vidéo garde ses vraies couleurs, le texte
-     reste lisible grâce au dégradé latéral et à la vignette basse. */
+     reste lisible grâce au dégradé latéral et à la vignette basse. Voile
+     allégé pour laisser mieux voir la vidéo derrière le texte. */
   background:
     linear-gradient(
       90deg,
-      rgba(8, 18, 22, 0.78) 0%,
-      rgba(8, 18, 22, 0.42) 48%,
-      rgba(8, 18, 22, 0.08) 100%
+      rgba(8, 18, 22, 0.6) 0%,
+      rgba(8, 18, 22, 0.28) 48%,
+      rgba(8, 18, 22, 0.04) 100%
     ),
-    linear-gradient(180deg, rgba(8, 18, 22, 0) 55%, rgba(8, 18, 22, 0.55) 100%);
+    linear-gradient(180deg, rgba(8, 18, 22, 0) 55%, rgba(8, 18, 22, 0.4) 100%);
 }
 
 .hero--video .hero-copy {
@@ -8915,4 +8916,24 @@ main.offers-page .quote-section {
     justify-content: flex-start;
     text-align: left;
   }
+}
+
+/* ============================================================
+   Ajustements de la première page : badge resserré à son contenu,
+   lien « Vous êtes un professionnel ? » plus visible sur la vidéo.
+   ============================================================ */
+.hero-badge {
+  max-width: fit-content;
+  width: fit-content;
+}
+
+.hero-actions .hero-pro-link {
+  color: #fff;
+  font-weight: 700;
+  opacity: 1;
+  text-decoration-color: rgba(255, 255, 255, 0.65);
+}
+
+.hero-actions .hero-pro-link:hover {
+  text-decoration-color: #fff;
 }
