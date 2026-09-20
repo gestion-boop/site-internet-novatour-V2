@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 
 const APP_URL = "https://app.novatour.fr";
+const AUTOPLAY_DELAY = 20000;
 
 type Tour = {
   alt: string;
@@ -13,7 +14,7 @@ type Tour = {
   title: string;
 };
 
-/** Aperçus 360° réels : captures de l'application NovaTour. */
+/** Aperçus 360° : un exemple par type de lieu, pour montrer la diversité de NovaTour. */
 const tours: Tour[] = [
   {
     alt: "Cuisine ouverte de l’appartement Le Cosy en visite 360°",
@@ -25,6 +26,15 @@ const tours: Tour[] = [
     title: "Le Cosy",
   },
   {
+    alt: "Terrasse ombragée d’un restaurant en visite 360°",
+    city: "Narbonne",
+    href: APP_URL,
+    id: "saveurs-occitanie",
+    image: "/occitanie-restaurant.png",
+    kind: "Restaurant",
+    title: "Saveurs d’Occitanie",
+  },
+  {
     alt: "Chambre du gîte de Jonquières en visite 360°",
     city: "Jonquières",
     href: APP_URL,
@@ -33,16 +43,53 @@ const tours: Tour[] = [
     kind: "Gîte et chambres d’hôtes",
     title: "Château de Jonquières",
   },
+  {
+    alt: "Boutique du littoral en visite 360°",
+    city: "Narbonne-Plage",
+    href: APP_URL,
+    id: "comptoir-littoral",
+    image: "/occitanie-marina.png",
+    kind: "Commerces",
+    title: "Comptoir du littoral",
+  },
 ];
 
 export function TourPreview() {
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
   const tour = tours[index];
-  const go = (delta: number) =>
+
+  const remainingRef = useRef(AUTOPLAY_DELAY);
+  const startRef = useRef(0);
+
+  const go = (delta: number) => {
+    remainingRef.current = AUTOPLAY_DELAY;
     setIndex((current) => (current + delta + tours.length) % tours.length);
+  };
+
+  useEffect(() => {
+    if (paused) {
+      remainingRef.current -= Date.now() - startRef.current;
+      return;
+    }
+
+    startRef.current = Date.now();
+    const timer = window.setTimeout(() => {
+      remainingRef.current = AUTOPLAY_DELAY;
+      setIndex((current) => (current + 1) % tours.length);
+    }, remainingRef.current);
+    return () => window.clearTimeout(timer);
+  }, [paused, index]);
 
   return (
-    <div className="tour-preview" aria-label="Aperçu d’une visite immersive 360°">
+    <div
+      className="tour-preview"
+      aria-label="Aperçu d’une visite immersive 360°"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
       <div className="tour-preview__bar">
         <span className="tour-preview__live">
           <span className="tour-preview__dot" aria-hidden="true" />
@@ -50,6 +97,9 @@ export function TourPreview() {
         </span>
         <span className="tour-preview__count">
           {index + 1} / {tours.length}
+          <span className="tour-preview__clock" aria-hidden="true" key={index}>
+            <span className={`tour-preview__clock-hand${paused ? " is-paused" : ""}`} />
+          </span>
         </span>
       </div>
 

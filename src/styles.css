@@ -1663,7 +1663,7 @@ body.menu-open {
 .about--editorial {
   gap: clamp(54px, 6vw, 100px);
   grid-template-columns: minmax(0, 1.05fr) minmax(430px, 0.95fr);
-  min-height: 820px;
+  min-height: min(820px, 86svh);
   overflow: hidden;
   position: relative;
 }
@@ -8581,9 +8581,46 @@ main.offers-page .quote-section {
 }
 
 .tour-preview__count {
+  align-items: center;
   color: rgba(255, 255, 255, 0.6);
+  display: inline-flex;
   font-size: 12px;
   font-weight: 600;
+  gap: 7px;
+}
+
+.tour-preview__clock {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: inline-block;
+  height: 14px;
+  position: relative;
+  width: 14px;
+}
+
+.tour-preview__clock-hand {
+  animation: tour-preview-clock 20s linear infinite;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 1px;
+  height: 6px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform-origin: 50% 0;
+  width: 1.5px;
+}
+
+.tour-preview__clock-hand.is-paused {
+  animation-play-state: paused;
+}
+
+@keyframes tour-preview-clock {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
 }
 
 .tour-preview__stage {
@@ -8594,10 +8631,22 @@ main.offers-page .quote-section {
 }
 
 .tour-preview__image {
+  animation: tour-preview-fade 500ms ease both;
   display: block;
   height: 100%;
   object-fit: cover;
   width: 100%;
+}
+
+@keyframes tour-preview-fade {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .tour-preview__stage::after {
