@@ -94,7 +94,9 @@ main > section:not(.hero) {
        breathing room at the bottom, so every rounded panel is centred. */
     scroll-padding: calc(var(--desktop-header-height) + var(--desktop-panel-gap)) 0
       var(--desktop-panel-gap);
-    scroll-snap-type: y proximity;
+    /* Mandatory: relâcher la molette doit toujours aimanter vers un panneau
+       entier, jamais rester entre deux sections. */
+    scroll-snap-type: y mandatory;
     scrollbar-gutter: stable;
   }
 
@@ -220,7 +222,7 @@ main > section:not(.hero) {
     /* The offers rail uses the same firm magnetic stop as the homepage.
        A full panel settles below the fixed header instead of lingering
        between the pricing section and the following panel. */
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
   }
 
   main.offers-page > section {
