@@ -149,9 +149,9 @@ export function HomePage() {
         <div className="about-copy about-copy--editorial">
           <p className="eyebrow">Le concept</p>
           <h2>
-            Tout un territoire
+            Tous réunis
             <br />
-            au creux de la main
+            au même endroit
           </h2>
 
           <div className="about-features">
