@@ -7,6 +7,11 @@
   --teal: #079b9f;
   --teal-dark: #08747b;
   --aqua: #73d8d1;
+  --accent: #278299;
+  --accent-dark: #00565e;
+  --accent-blue: #315a97;
+  --accent-soft: rgba(39, 130, 153, 0.14);
+  --accent-gradient: linear-gradient(120deg, #315a97 0%, #278299 100%);
   --novavisio-gold: #ffbd59;
   --novavisio-gold-soft: #ffe0a3;
   --novavisio-ink: #20252b;
@@ -87,7 +92,8 @@ main > section:not(.hero) {
     scroll-behavior: smooth;
     /* The snap area begins below the fixed header and ends with the same
        breathing room at the bottom, so every rounded panel is centred. */
-    scroll-padding: calc(var(--desktop-header-height) + var(--desktop-panel-gap)) 0 var(--desktop-panel-gap);
+    scroll-padding: calc(var(--desktop-header-height) + var(--desktop-panel-gap)) 0
+      var(--desktop-panel-gap);
     scroll-snap-type: y proximity;
     scrollbar-gutter: stable;
   }
@@ -112,12 +118,14 @@ main > section:not(.hero) {
 
   main > section:not(.hero) {
     height: calc(
-      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) - (var(--desktop-panel-gap) * 2)
+      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) -
+        (var(--desktop-panel-gap) * 2)
     );
     margin-top: var(--desktop-panel-gap);
     margin-bottom: var(--desktop-panel-gap);
     min-height: calc(
-      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) - (var(--desktop-panel-gap) * 2)
+      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) -
+        (var(--desktop-panel-gap) * 2)
     ) !important;
     scroll-margin-top: 0;
   }
@@ -171,7 +179,8 @@ main > section:not(.hero) {
 
   .offers-hero {
     min-height: calc(
-      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) - (var(--desktop-panel-gap) * 2)
+      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) -
+        (var(--desktop-panel-gap) * 2)
     );
     padding: clamp(30px, 4.5vh, 54px) 24px;
   }
@@ -223,7 +232,10 @@ main > section:not(.hero) {
     justify-content: flex-start;
     min-height: max(
       1120px,
-      calc(var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) - (var(--desktop-panel-gap) * 2))
+      calc(
+        var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) -
+          (var(--desktop-panel-gap) * 2)
+      )
     ) !important;
     padding: clamp(56px, 7vh, 92px) clamp(24px, 5vw, 76px);
     scroll-snap-align: start;
@@ -414,11 +426,6 @@ main > section:not(.hero) {
     font-size: clamp(40px, 3.7vw, 54px);
   }
 
-  .place-card {
-    height: 100%;
-    min-height: clamp(380px, 68vh, 560px);
-  }
-
   .place-content {
     bottom: 20px;
   }
@@ -520,10 +527,20 @@ main > section:not(.hero) {
 
   /* Page 2 : conserver l'intégralité du récit et des trois actions dans le
      cadre arrondi, y compris sur un MacBook Air 13 pouces. */
-  .about--editorial {
+  .about.about--editorial {
     align-items: center;
     gap: clamp(28px, 4vw, 58px);
+    min-height: 0;
     padding: clamp(24px, 3.2vh, 42px) clamp(28px, 5vw, 76px);
+  }
+
+  .tour-preview {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .tour-preview__stage {
+    aspect-ratio: 16 / 10;
   }
 
   .about-story-visual {
@@ -700,13 +717,13 @@ a {
 
 .header-cta {
   background: linear-gradient(135deg, #20c7c1, #079ba6);
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 10px 28px rgba(3, 129, 136, 0.17);
   color: var(--white);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   justify-self: end;
-  padding: 18px 30px;
+  padding: 12px 22px;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease;
@@ -923,7 +940,10 @@ body.menu-open {
 }
 
 .hero-copy .eyebrow {
-  color: var(--aqua);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
 }
 
 .eyebrow {
@@ -937,9 +957,21 @@ body.menu-open {
 
 .hero h1 {
   font-size: clamp(72px, 7vw, 118px);
-  letter-spacing: -0.075em;
+  font-weight: 600;
+  letter-spacing: -0.03em;
   line-height: 0.85;
   margin: 0;
+}
+
+/* Mots-clés aux couleurs du logo : le dégradé bleu profond → teal du disque,
+   reproduit dans les lettres. Sans ombre, sinon elle transparaît. */
+.hero h1 .hero-accent {
+  background: linear-gradient(120deg, #3a68a8 0%, #2a8fa9 55%, #35a6bc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #2a8fa9;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
 }
 
 .wave {
@@ -1069,8 +1101,73 @@ body.menu-open {
 
 .hero-actions {
   display: grid;
-  gap: 12px;
-  max-width: 340px;
+  gap: 14px;
+  max-width: 420px;
+}
+
+@media (min-width: 901px) {
+  /* Un bouton fait la largeur de son texte, pas de la colonne. */
+  .hero-actions {
+    justify-items: start;
+  }
+
+  .hero-actions .button {
+    padding-left: 34px;
+    padding-right: 34px;
+  }
+}
+
+.hero-pro-link {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.85;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+  text-underline-offset: 5px;
+}
+
+.hero-pro-link:hover {
+  opacity: 1;
+  text-decoration-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Plus spécifique que `.text-link span` (25px), qui gagnait par ordre. */
+.hero-actions .hero-pro-link span {
+  font-size: 16px;
+}
+
+/* Coupe volontaire du titre en deux lignes sur desktop uniquement. */
+@media (max-width: 900px) {
+  .hero-br {
+    display: none;
+  }
+}
+
+/* Bouton sobre sur la photo : plein blanc, texte foncé, sans halo ni reflet. */
+.hero-actions .button-primary {
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  color: var(--ink);
+}
+
+.hero-actions .button-primary::after {
+  display: none;
+}
+
+.hero-actions .button-primary:hover {
+  background: #f1f6f5;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+.hero-categories {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 28px 0 0;
 }
 
 .button {
@@ -1180,7 +1277,8 @@ body.menu-open {
 
 .hero-visual {
   background-color: #a9d8e0;
-  background-image: linear-gradient(90deg, rgba(8, 61, 70, 0.08), transparent 35%), url("/hero-occitanie.png");
+  background-image:
+    linear-gradient(90deg, rgba(8, 61, 70, 0.08), transparent 35%), url("/hero-occitanie.png");
   background-position: center;
   background-size: cover;
   border-radius: 72px 0 0 0;
@@ -1423,11 +1521,45 @@ body.menu-open {
 }
 
 .discover {
-  background: radial-gradient(circle at 90% 0%, rgba(70, 209, 200, 0.16), transparent 32%), rgba(255, 255, 255, 0.72);
   border-radius: 0 0 42px 42px;
   box-shadow: 0 30px 80px rgba(4, 55, 65, 0.08);
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.discover__bg {
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}
+
+.discover__bg img {
+  display: block;
+  filter: blur(3px);
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  width: 100%;
+}
+
+.discover__veil {
+  /* Le panneau lui-même est en verre dépoli : fond blanc semi-transparent
+     et flou d'arrière-plan, la photo légèrement floutée se devine au travers. */
+  background-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.discover > .section-heading,
+.discover > .places-grid {
+  position: relative;
+  z-index: 2;
 }
 
 .discover .places-grid {
@@ -1475,48 +1607,6 @@ body.menu-open {
   min-height: 0;
 }
 
-.place-card {
-  background-color: #5c817e;
-  background-position: center;
-  background-size: cover;
-  border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(6, 66, 73, 0.12);
-  color: white;
-  display: block;
-  height: 100%;
-  min-height: 620px;
-  overflow: hidden;
-  padding: 24px;
-  position: relative;
-  transition:
-    transform 220ms ease,
-    box-shadow 220ms ease;
-}
-
-.place-card::before {
-  background: linear-gradient(180deg, rgba(2, 30, 35, 0.02) 20%, rgba(3, 40, 46, 0.88));
-  content: "";
-  inset: 0;
-  position: absolute;
-}
-
-.place-card:hover {
-  box-shadow: 0 28px 60px rgba(6, 66, 73, 0.2);
-  transform: translateY(-6px);
-}
-
-.place-card--1 {
-  background-image: linear-gradient(135deg, #7a9a92, #d5a165 55%, #203f43);
-}
-
-.place-card--2 {
-  background-image: linear-gradient(135deg, #b2d1cc, #d8c394 58%, #55756e);
-}
-
-.place-card--3 {
-  background-image: linear-gradient(135deg, #72bed2, #f0d5a3 52%, #3e7777);
-}
-
 .place-360 {
   background: rgba(5, 151, 157, 0.92);
   border: 2px solid white;
@@ -1559,7 +1649,9 @@ body.menu-open {
 
 .about {
   align-items: center;
-  background: radial-gradient(circle at 5% 85%, rgba(33, 184, 180, 0.13), transparent 34%), rgba(255, 255, 255, 0.58);
+  background:
+    radial-gradient(circle at 5% 85%, rgba(33, 184, 180, 0.13), transparent 34%),
+    rgba(255, 255, 255, 0.58);
   border: 1px solid rgba(8, 116, 123, 0.08);
   border-radius: 42px;
   box-shadow: 0 30px 80px rgba(4, 55, 65, 0.07);
@@ -1569,13 +1661,53 @@ body.menu-open {
 }
 
 .about--editorial {
-  background:
-    radial-gradient(circle at 10% 14%, rgba(84, 205, 198, 0.13), transparent 25%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.93), rgba(240, 248, 247, 0.88));
   gap: clamp(54px, 6vw, 100px);
   grid-template-columns: minmax(0, 1.05fr) minmax(430px, 0.95fr);
-  min-height: 820px;
+  min-height: min(820px, 86svh);
   overflow: hidden;
+  position: relative;
+}
+
+.about-editorial__bg {
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}
+
+.about-editorial__bg img {
+  animation: about-editorial-bg-fade 900ms ease both;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+@keyframes about-editorial-bg-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.about-editorial__veil {
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0.6) 55%,
+    rgba(255, 255, 255, 0.78) 100%
+  );
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.about--editorial > .tour-preview,
+.about--editorial > .about-copy--editorial {
+  position: relative;
+  z-index: 2;
 }
 
 .about-story-visual {
@@ -2806,6 +2938,7 @@ body.menu-open {
    distinction accessible on the light contact and sizing panels. */
 .contact-section .novavisio-accent,
 .venue-size-section .novavisio-accent,
+.pricing-section .novavisio-accent,
 .quote-section .novavisio-accent {
   color: #b8791f;
 }
@@ -2816,12 +2949,11 @@ body.menu-open {
 }
 
 .offers-hero h1 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(54px, 6.5vw, 96px);
-  font-weight: 500;
-  letter-spacing: -0.06em;
-  line-height: 0.98;
-  margin: 10px 0 28px;
+  font-size: clamp(38px, 4.4vw, 66px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 10px 0 24px;
 }
 
 .offers-hero h1 em {
@@ -2944,22 +3076,22 @@ body.menu-open {
 }
 
 .offers-page .offers-section-heading .eyebrow {
-  color: var(--novavisio-gold);
+  color: var(--accent-dark);
 }
 
 .offers-page .popular-label {
-  background: linear-gradient(90deg, #b8791f, var(--novavisio-gold));
-  color: var(--novavisio-ink);
+  background: var(--accent-gradient);
+  color: #fff;
 }
 
 .offers-page .pricing-card--popular {
-  border-color: rgba(255, 189, 89, 0.62);
-  box-shadow: 0 20px 70px rgba(255, 189, 89, 0.12);
+  border-color: rgba(39, 130, 153, 0.55);
+  box-shadow: 0 20px 70px rgba(39, 130, 153, 0.18);
 }
 
 .offers-page .pricing-card--popular > button {
-  background: linear-gradient(135deg, #ffd27b, var(--novavisio-gold));
-  color: var(--novavisio-ink);
+  background: var(--accent-gradient);
+  color: #fff;
 }
 
 .footer-brand > p a {
@@ -2974,8 +3106,10 @@ body.menu-open {
 }
 
 .pricing-section {
-  background: radial-gradient(circle at 50% 5%, rgba(30, 182, 190, 0.14), transparent 28%), #091820;
-  color: white;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(39, 130, 153, 0.14), transparent 32%),
+    rgba(255, 255, 255, 0.86);
+  color: var(--ink);
 }
 
 .pricing-section,
@@ -2997,11 +3131,10 @@ body.menu-open {
 }
 
 .offers-section-heading h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(44px, 4.5vw, 68px);
-  font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 1.04;
+  font-size: clamp(38px, 4vw, 58px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
   margin: 0;
 }
 
@@ -3012,7 +3145,7 @@ body.menu-open {
 }
 
 .pricing-grid {
-  align-items: start;
+  align-items: stretch;
   display: grid;
   gap: 22px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3021,50 +3154,77 @@ body.menu-open {
 }
 
 .pricing-card {
-  background: linear-gradient(160deg, #122b35, #0b1d23);
-  border: 1px solid rgba(75, 186, 198, 0.2);
+  background: linear-gradient(
+    155deg,
+    #ffffff 0%,
+    rgba(49, 90, 151, 0.05) 55%,
+    rgba(39, 130, 153, 0.08) 100%
+  );
+  border: 1px solid rgba(11, 61, 70, 0.1);
   border-radius: 30px;
+  box-shadow: 0 22px 55px rgba(12, 55, 74, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: hidden;
   position: relative;
   transform-style: preserve-3d;
   transition:
+    background 320ms ease,
     border-color 260ms ease,
     box-shadow 280ms ease,
     transform 280ms ease;
 }
 
 .pricing-card:hover {
-  border-color: rgba(75, 199, 210, 0.54);
+  background: linear-gradient(
+    155deg,
+    #ffffff 0%,
+    rgba(49, 90, 151, 0.12) 55%,
+    rgba(39, 130, 153, 0.18) 100%
+  );
+  border-color: rgba(39, 130, 153, 0.45);
   box-shadow:
-    0 40px 95px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(75, 186, 198, 0.12) inset;
+    0 40px 95px rgba(12, 75, 90, 0.18),
+    0 0 0 1px rgba(39, 130, 153, 0.12) inset;
   transform: perspective(1200px) rotateX(-2deg) translateY(-12px) scale(1.01);
 }
 
 .pricing-card--popular {
-  border-color: rgba(56, 198, 210, 0.6);
-  box-shadow: 0 20px 70px rgba(14, 142, 158, 0.15);
+  border-color: rgba(39, 130, 153, 0.5);
+  box-shadow: 0 20px 70px rgba(39, 130, 153, 0.15);
+}
+
+/* Emplacement réservé en haut de chaque carte, occupé par l'étiquette
+   « Le plus populaire » sur une seule carte : garde les trois cartes
+   alignées (titre, prix, description) quel que soit le plan. */
+.pricing-card__ribbon {
+  flex: none;
+  height: 44px;
 }
 
 .popular-label {
+  align-items: center;
   background: linear-gradient(90deg, #2499ad, #48bfd0);
+  display: flex;
   font-size: 11px;
   font-weight: 900;
+  height: 100%;
+  justify-content: center;
   letter-spacing: 0.14em;
-  padding: 14px;
-  text-align: center;
   text-transform: uppercase;
 }
 
 .pricing-card-head {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgba(11, 61, 70, 0.1);
   min-height: 240px;
   padding: 36px;
 }
 
 .pricing-card-head h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 30px;
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 700;
   margin: 0 0 20px;
 }
 
@@ -3081,20 +3241,20 @@ body.menu-open {
 }
 
 .pricing-card-head p span {
-  color: #728991;
+  color: #5d7581;
   font-size: 11px;
 }
 
 .pricing-card-head em {
-  color: #80979f;
+  color: #5d7581;
   font-style: normal;
   line-height: 1.65;
 }
 
 .pricing-card ul {
+  flex: 1 1 auto;
   list-style: none;
   margin: 0;
-  min-height: 285px;
   padding: 28px 30px 12px;
 }
 
@@ -3175,10 +3335,10 @@ body.menu-open {
 
 .pricing-card li > span {
   align-items: center;
-  background: rgba(35, 182, 196, 0.13);
-  border: 1px solid rgba(51, 192, 204, 0.34);
+  background: var(--accent-soft);
+  border: 1px solid rgba(39, 130, 153, 0.3);
   border-radius: 50%;
-  color: #45c0ce;
+  color: var(--accent-dark);
   display: flex;
   font-size: 11px;
   height: 24px;
@@ -3187,14 +3347,14 @@ body.menu-open {
 }
 
 .pricing-card li.is-excluded > span {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(184, 203, 208, 0.18);
-  color: #71878d;
+  background: rgba(11, 61, 70, 0.05);
+  border-color: rgba(11, 61, 70, 0.14);
+  color: #90a0a4;
 }
 
 .pricing-card li.is-excluded strong,
 .pricing-card li.is-excluded small {
-  color: #71878d;
+  color: #90a0a4;
 }
 
 .pricing-card li div {
@@ -3207,16 +3367,16 @@ body.menu-open {
 }
 
 .pricing-card li small {
-  color: #81969e;
+  color: #5d7480;
   font-size: 13px;
   line-height: 1.5;
 }
 
 .pricing-card > button {
   background: transparent;
-  border: 1px solid rgba(62, 187, 201, 0.42);
+  border: 1px solid rgba(39, 130, 153, 0.4);
   border-radius: 99px;
-  color: #46bfd0;
+  color: var(--accent-dark);
   cursor: pointer;
   display: block;
   font: inherit;
@@ -3232,7 +3392,7 @@ body.menu-open {
 
 .pricing-card > button:hover,
 .pricing-card--popular > button {
-  background: linear-gradient(135deg, #28a9bb, #147a98);
+  background: var(--accent-gradient);
   color: white;
   transform: translateY(-3px);
 }
@@ -3293,9 +3453,8 @@ body.menu-open {
 }
 
 .size-grid h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 42px;
-  font-weight: 500;
+  font-size: 34px;
+  font-weight: 600;
   margin: 0 0 18px;
 }
 
@@ -3341,11 +3500,10 @@ body.menu-open {
 }
 
 .quote-copy h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(52px, 5vw, 78px);
-  font-weight: 500;
-  letter-spacing: -0.05em;
-  line-height: 1;
+  font-size: clamp(38px, 4vw, 58px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
   margin: 0 0 24px;
 }
 
@@ -3587,7 +3745,12 @@ footer {
 .button::after,
 .header-cta::after,
 .app-start-button::after {
-  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.34) 48%, transparent 76%);
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.34) 48%,
+    transparent 76%
+  );
   content: "";
   inset: -70% -35%;
   opacity: 0;
@@ -3747,10 +3910,6 @@ footer div:not(.footer-brand) a {
 
   .places-grid {
     grid-template-columns: 1fr;
-  }
-
-  .place-card {
-    min-height: 520px;
   }
 
   .about,
@@ -4406,11 +4565,6 @@ footer div:not(.footer-brand) a {
     font-size: clamp(38px, 3.6vw, 52px);
   }
 
-  .place-card {
-    height: 100%;
-    min-height: clamp(360px, 60vh, 520px);
-  }
-
   .place-content {
     bottom: 18px;
     left: 22px;
@@ -5030,17 +5184,28 @@ main.offers-page .quote-section {
 .hero-video-overlay {
   position: absolute;
   inset: 0;
+  /* Voile neutre (pas teinté) : la vidéo garde ses vraies couleurs, le texte
+     reste lisible grâce au dégradé latéral et à la vignette basse. Voile
+     allégé pour laisser mieux voir la vidéo derrière le texte. */
   background:
-    radial-gradient(circle at 18% 22%, rgba(30, 196, 190, 0.18), transparent 45%),
-    linear-gradient(105deg, rgba(4, 32, 42, 0.72) 0%, rgba(5, 47, 60, 0.52) 45%, rgba(4, 40, 51, 0.32) 100%);
+    linear-gradient(
+      90deg,
+      rgba(8, 18, 22, 0.6) 0%,
+      rgba(8, 18, 22, 0.28) 48%,
+      rgba(8, 18, 22, 0.04) 100%
+    ),
+    linear-gradient(180deg, rgba(8, 18, 22, 0) 55%, rgba(8, 18, 22, 0.4) 100%);
 }
 
 .hero--video .hero-copy {
+  /* Aligné en haut (et non centré) : si le contenu est plus haut que la
+     zone dispo, il déborde vers le bas et jamais derrière le header fixe. */
+  align-self: flex-start;
   background: transparent;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
   align-items: flex-start;
   text-align: left;
-  max-width: 780px;
+  max-width: 900px;
 }
 
 .hero--video .hero-tagline em {
@@ -5055,7 +5220,26 @@ main.offers-page .quote-section {
   }
 
   .hero--video .hero-copy {
+    /* Bloc de texte centré verticalement sur l'image, aligné à gauche : la
+       colonne occupe toute la hauteur et centre son contenu. */
+    align-self: stretch;
+    justify-content: center;
+    min-height: 0;
     padding-left: clamp(48px, 6vw, 96px);
+  }
+
+  /* Le titre peut être plus large que les paragraphes (qui restent à 600px
+     pour rester lisibles) : c'est ce qui permet la coupe en deux lignes. */
+  .hero--video .hero-copy h1 {
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 1600px) {
+  /* À la taille max du titre, la colonne doit être assez large pour que
+     "pour explorer tous les autres." tienne sur une ligne. */
+  .hero--video .hero-copy {
+    max-width: 1040px;
   }
 }
 
@@ -5063,9 +5247,9 @@ main.offers-page .quote-section {
   .hero-video-overlay {
     background: linear-gradient(
       180deg,
-      rgba(4, 32, 42, 0.78) 0%,
-      rgba(5, 47, 60, 0.58) 60%,
-      rgba(4, 40, 51, 0.72) 100%
+      rgba(8, 18, 22, 0.8) 0%,
+      rgba(8, 18, 22, 0.66) 55%,
+      rgba(8, 18, 22, 0.4) 100%
     );
   }
 }
@@ -5528,39 +5712,39 @@ main.offers-page .quote-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: clamp(24px, 4vh, 54px) clamp(34px, 4.4vw, 76px);
+    padding: clamp(16px, 2.4vh, 32px) clamp(34px, 4.4vw, 76px);
   }
 
   .hero-copy .eyebrow {
-    margin-bottom: clamp(8px, 1.4vh, 18px);
+    margin-bottom: clamp(6px, 1vh, 12px);
   }
 
   .hero h1 {
-    font-size: clamp(42px, 3.6vw, 62px);
+    font-size: clamp(38px, 3.2vw, 56px);
     line-height: 0.94;
   }
 
   .hero-tagline {
     font-size: clamp(18px, 1.35vw, 24px);
-    margin: clamp(10px, 1.8vh, 20px) 0 clamp(8px, 1.2vh, 14px);
+    margin: clamp(6px, 1.2vh, 14px) 0 clamp(6px, 1vh, 10px);
   }
 
   .hero-intro {
     font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: clamp(8px, 1.4vh, 16px);
+    line-height: 1.5;
+    margin-bottom: clamp(6px, 1vh, 12px);
   }
 
   .hero-info-examples {
-    margin-bottom: clamp(12px, 2vh, 22px);
+    margin-bottom: clamp(8px, 1.4vh, 16px);
   }
 
   .hero-proof {
-    margin-top: clamp(12px, 2vh, 22px);
+    margin-top: clamp(8px, 1.4vh, 16px);
   }
 
   .hero-creator {
-    margin-top: clamp(10px, 1.8vh, 18px);
+    margin-top: clamp(6px, 1.2vh, 12px);
   }
 
   main > section.benefits {
@@ -5588,6 +5772,47 @@ main.offers-page .quote-section {
   .benefits-list article {
     min-height: clamp(120px, 15.5vh, 180px);
     padding: clamp(18px, 2.6vh, 32px) 26px;
+  }
+}
+
+/* Écrans PC bas (ex. 1366x768) : le calibrage ci-dessus ne suffit pas
+   toujours à tout faire tenir sans déborder sous le hero. On resserre
+   encore un peu plus le rythme vertical du texte. */
+@media (min-width: 901px) and (max-height: 820px) {
+  .hero-copy {
+    padding: clamp(10px, 1.6vh, 24px) clamp(34px, 4.4vw, 76px);
+  }
+
+  .hero-copy .eyebrow {
+    margin-bottom: clamp(4px, 0.7vh, 10px);
+  }
+
+  .hero h1 {
+    font-size: clamp(30px, 2.5vw, 44px);
+  }
+
+  .hero-tagline {
+    font-size: clamp(16px, 1.2vw, 20px);
+    margin: clamp(2px, 0.6vh, 8px) 0 clamp(2px, 0.5vh, 6px);
+  }
+
+  .hero-intro {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: clamp(2px, 0.5vh, 8px);
+  }
+
+  .hero-info-examples {
+    margin-bottom: clamp(4px, 0.8vh, 10px);
+  }
+
+  .hero-proof {
+    margin-top: clamp(4px, 0.8vh, 10px);
+  }
+
+  .hero-creator {
+    font-size: 10px;
+    margin-top: clamp(2px, 0.6vh, 8px);
   }
 }
 
@@ -5884,7 +6109,12 @@ main.offers-page .quote-section {
 }
 
 .place-phone__cover::after {
-  background: linear-gradient(180deg, rgba(3, 40, 46, 0.22), transparent 50%, rgba(3, 40, 46, 0.32));
+  background: linear-gradient(
+    180deg,
+    rgba(3, 40, 46, 0.22),
+    transparent 50%,
+    rgba(3, 40, 46, 0.32)
+  );
   border-radius: inherit;
   content: "";
   inset: 0;
@@ -6392,10 +6622,6 @@ main.offers-page .quote-section {
   .places-grid {
     grid-template-columns: 1fr !important;
     gap: 18px;
-  }
-
-  .place-card {
-    min-height: 0 !important;
   }
 
   .place-phone__frame {
@@ -6961,7 +7187,10 @@ main.offers-page .quote-section {
   .immersive-promo.section {
     box-sizing: border-box;
     width: calc(100% - (var(--novatour-panel-gap, 22px) * 2));
-    min-height: var(--novatour-panel-height, calc(100dvh - var(--desktop-header-height, 82px) - 44px));
+    min-height: var(
+      --novatour-panel-height,
+      calc(100dvh - var(--desktop-header-height, 82px) - 44px)
+    );
     height: var(--novatour-panel-height, calc(100dvh - var(--desktop-header-height, 82px) - 44px));
     margin: var(--novatour-panel-gap, 22px) auto;
     border-radius: 42px;
@@ -7057,8 +7286,12 @@ main.offers-page .quote-section {
 }
 
 .saison-showcase__veil {
-  background:
-    linear-gradient(100deg, rgba(4, 24, 38, 0.94) 0%, rgba(4, 24, 38, 0.82) 42%, rgba(4, 24, 38, 0.42) 100%);
+  background: linear-gradient(
+    100deg,
+    rgba(4, 24, 38, 0.94) 0%,
+    rgba(4, 24, 38, 0.82) 42%,
+    rgba(4, 24, 38, 0.42) 100%
+  );
   inset: 0;
   position: absolute;
 }
@@ -7133,7 +7366,9 @@ main.offers-page .quote-section {
   gap: 14px;
   padding: clamp(14px, 1.6vh, 20px) clamp(22px, 2vw, 34px);
   text-decoration: none;
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .saison-showcase__cta:hover {
@@ -7381,4 +7616,1549 @@ main.offers-page .quote-section {
 .app-section h2,
 .saison-showcase__content h2 {
   margin-bottom: clamp(14px, 2vh, 26px);
+}
+
+/* ============================================================
+   Dernières découvertes : cartes éditoriales (photo du lieu, logo
+   en médaillon, toute la carte cliquable). Remplace les maquettes
+   téléphone. Placé en fin de feuille pour primer.
+   ============================================================ */
+.place-card {
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease;
+}
+
+.place-card:hover {
+  background-color: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.place-card__media {
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  min-height: 0;
+  overflow: visible;
+  position: relative;
+}
+
+.place-card__cover {
+  border-radius: 22px 22px 0 0;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+  width: 100%;
+}
+
+.place-card__cover--empty {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(115, 216, 209, 0.45), transparent 55%),
+    linear-gradient(160deg, #0a5a67, #083945);
+}
+
+.place-card:hover .place-card__cover {
+  transform: scale(1.03);
+}
+
+/* Le zoom au survol ne doit pas sortir du cadre arrondi de la photo. */
+.place-card__media::before {
+  border-radius: 22px 22px 0 0;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.place-card__badge {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 6px 11px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+}
+
+.place-card__logo {
+  background: var(--white);
+  border-radius: 50%;
+  bottom: -24px;
+  box-shadow:
+    0 0 0 3px var(--white),
+    0 8px 20px rgba(4, 55, 65, 0.18);
+  height: 56px;
+  left: 20px;
+  object-fit: cover;
+  position: absolute;
+  width: 56px;
+}
+
+.place-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  padding: 36px 22px 22px;
+}
+
+.place-card__category {
+  align-items: center;
+  color: var(--teal-dark);
+  display: flex;
+  font-size: 11px;
+  font-weight: 800;
+  gap: 8px;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.place-card__category svg {
+  background: rgba(5, 151, 157, 0.12);
+  border-radius: 50%;
+  box-sizing: content-box;
+  flex: none;
+  height: 14px;
+  padding: 6px;
+  stroke-width: 2.2;
+  width: 14px;
+}
+
+.place-card__title {
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.place-card__city {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin: 0;
+}
+
+.place-card__city::before {
+  content: "⌖ ";
+}
+
+.place-card__desc {
+  -webkit-box-orient: vertical;
+  color: var(--ink-soft);
+  display: -webkit-box;
+  font-size: 14px;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  line-height: 1.5;
+  margin: 4px 0 0;
+  overflow: hidden;
+}
+
+.place-card__cta {
+  align-items: center;
+  color: var(--teal-dark);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.place-card__cta span {
+  transition: transform 180ms ease;
+}
+
+.place-card:hover .place-card__cta span {
+  transform: translateX(4px);
+}
+
+@media (min-width: 901px) {
+  /* Le panneau a une hauteur fixe : la photo prend toute la place restante. */
+  .discover .places-grid {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .place-card {
+    min-height: 0;
+  }
+
+  .place-card__media {
+    aspect-ratio: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .place-card__body {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .place-card__media {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* ============================================================
+   Le concept : une seule photo signature avec le téléphone devant,
+   typographie alignée sur la première page, vrais pictogrammes.
+   Placé en fin de feuille pour primer sur les anciens réglages.
+   ============================================================ */
+.about-scene {
+  align-self: stretch;
+  min-height: 0;
+  min-width: 0;
+  position: relative;
+}
+
+.about-scene__photo {
+  border-radius: 30px;
+  box-shadow: 0 30px 70px rgba(5, 62, 70, 0.18);
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.about-scene__phone {
+  aspect-ratio: 205 / 405;
+  background: #0a0e12;
+  border: 3px solid #252c31;
+  border-radius: 40px;
+  bottom: 6%;
+  box-shadow: 0 36px 70px rgba(2, 26, 34, 0.35);
+  overflow: hidden;
+  padding: 8px;
+  position: absolute;
+  right: 6%;
+  width: clamp(150px, 34%, 230px);
+  z-index: 2;
+}
+
+.about-scene__phone > img {
+  border-radius: 30px;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+}
+
+.about-scene__speaker {
+  background: #080a0c;
+  border-radius: 99px;
+  height: 20px;
+  left: 50%;
+  position: absolute;
+  top: 13px;
+  transform: translateX(-50%);
+  width: 72px;
+  z-index: 2;
+}
+
+.about-copy--editorial h2 {
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.about-features strong {
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.about-features article {
+  grid-template-columns: 70px 1fr;
+}
+
+.feature-icon {
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.feature-icon svg {
+  height: 26px;
+  stroke-width: 2;
+  width: 26px;
+}
+
+.about-cta {
+  margin-top: clamp(18px, 2.6vh, 30px);
+}
+
+.about-cta span {
+  font-size: 18px;
+  transition: transform 180ms ease;
+}
+
+.about-cta:hover span {
+  transform: translateX(4px);
+}
+
+@media (min-width: 901px) {
+  .about--editorial {
+    align-items: center;
+  }
+
+  .about-features article {
+    grid-template-columns: 60px 1fr;
+    min-height: 0;
+    padding: 10px 16px 10px 10px;
+  }
+
+  .about-features .feature-icon {
+    height: 52px;
+    width: 52px;
+  }
+
+  .about-features strong {
+    font-size: 18px;
+  }
+
+  .feature-icon svg {
+    height: 22px;
+    width: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-scene {
+    height: clamp(300px, 48vh, 420px);
+  }
+
+  .about-scene__photo {
+    border-radius: 24px;
+  }
+
+  .about-scene__phone {
+    width: clamp(120px, 32%, 160px);
+  }
+
+  .about-features article {
+    grid-template-columns: 54px 1fr;
+  }
+}
+
+/* ============================================================
+   Locations saisonnières : captures mobiles réelles des visites 360°
+   dans des téléphones, sur la photo du Cosy en fond.
+   ============================================================ */
+.saison-showcase__bg--gradient {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(18, 179, 166, 0.22), transparent 38%),
+    linear-gradient(120deg, #06202b 0%, #0a2f3a 55%, #0f3d46 100%);
+}
+
+.saison-showcase__bg--gradient img {
+  filter: saturate(0.9) blur(3px);
+  opacity: 0.5;
+  transform: scale(1.04);
+}
+
+.saison-showcase__bg--gradient .saison-showcase__veil {
+  background:
+    linear-gradient(
+      100deg,
+      rgba(4, 24, 38, 0.96) 0%,
+      rgba(4, 24, 38, 0.86) 40%,
+      rgba(4, 24, 38, 0.55) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(4, 24, 38, 0.35),
+      transparent 30%,
+      transparent 70%,
+      rgba(4, 24, 38, 0.5)
+    );
+}
+
+.stay-phones {
+  align-items: flex-start;
+  display: flex;
+  gap: clamp(18px, 2.4vw, 36px);
+  justify-content: center;
+  min-width: 0;
+}
+
+.stay-phone {
+  color: #fff;
+  display: grid;
+  flex: 0 1 clamp(180px, 17vw, 250px);
+  gap: 14px;
+  min-width: 0;
+  text-decoration: none;
+  transition: transform 260ms ease;
+}
+
+.stay-phone--offset {
+  margin-top: clamp(28px, 5vh, 64px);
+}
+
+.stay-phone:hover {
+  transform: translateY(-6px);
+}
+
+.stay-phone__frame {
+  background: linear-gradient(160deg, #1a2b33, #05161f);
+  border-radius: clamp(28px, 2.4vw, 40px);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.12);
+  display: block;
+  overflow: hidden;
+  padding: 8px;
+  position: relative;
+}
+
+.stay-phone__notch {
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 999px;
+  height: 22px;
+  left: 50%;
+  position: absolute;
+  top: 16px;
+  transform: translateX(-50%);
+  width: 34%;
+  z-index: 2;
+}
+
+/* La capture est affichée entière, sans recadrage ni déformation :
+   le téléphone prend la hauteur de l'image. */
+.stay-phone__screen {
+  border-radius: clamp(20px, 1.8vw, 32px);
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.stay-phone__caption {
+  display: grid;
+  gap: 3px;
+  padding: 0 4px;
+}
+
+.stay-phone__caption small {
+  color: #5fd6cd;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.stay-phone__caption strong {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.stay-phone__caption em {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .stay-phone {
+    flex-basis: clamp(170px, 15vw, 220px);
+  }
+
+  .stay-phone--offset {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .stay-phones {
+    order: 2;
+  }
+
+  .stay-phone {
+    flex: 1 1 0;
+  }
+
+  .stay-phone--offset {
+    margin-top: 28px;
+  }
+
+  .stay-phone__caption strong {
+    font-size: 16px;
+  }
+}
+
+/* Locations saisonnières : plateformes de réservation (logos). */
+.saison-platforms {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin: 0 0 clamp(18px, 2.6vh, 30px);
+}
+
+.saison-platforms__label {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.saison-platforms__logo {
+  align-items: center;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  display: inline-flex;
+  height: 56px;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.saison-platforms__logo--airbnb {
+  background: #ff5a5f;
+}
+
+.saison-platforms__logo--airbnb img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
+.saison-platforms__logo--booking {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.saison-platforms__logo--booking img {
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  display: block;
+  height: 56px;
+  width: auto;
+}
+
+.saison-showcase__sub {
+  margin-bottom: clamp(14px, 2vh, 22px);
+}
+
+@media (max-width: 900px) {
+  .saison-platforms__logo {
+    height: 48px;
+    padding: 0 14px;
+  }
+
+  .saison-platforms__logo--airbnb img {
+    height: 34px;
+  }
+
+  .saison-platforms__logo--booking img {
+    height: 48px;
+  }
+}
+
+.saison-showcase__lead {
+  max-width: 34ch;
+}
+
+/* ============================================================
+   Locations saisonnières v3 : colonne de gauche aérée, un seul
+   bouton, logos discrets, puces avec pictogrammes, téléphones en
+   relief sur la photo d'intérieur.
+   ============================================================ */
+.saison-showcase__bg--gradient img {
+  filter: saturate(1.05) brightness(0.96) blur(2px);
+  object-position: center 40%;
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.saison-showcase__bg--gradient .saison-showcase__veil {
+  background:
+    linear-gradient(
+      100deg,
+      rgba(4, 24, 38, 0.95) 0%,
+      rgba(4, 24, 38, 0.88) 36%,
+      rgba(4, 24, 38, 0.5) 62%,
+      rgba(4, 24, 38, 0.28) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(4, 24, 38, 0.35),
+      transparent 25%,
+      transparent 70%,
+      rgba(4, 24, 38, 0.55)
+    );
+}
+
+.saison-showcase__content h2 {
+  font-size: clamp(38px, 4.3vw, 66px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  margin-bottom: clamp(14px, 2.2vh, 24px);
+}
+
+.saison-showcase__lead {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(16px, 1.15vw, 19px);
+  font-weight: 500;
+  line-height: 1.55;
+  margin: 0 0 clamp(20px, 3vh, 32px);
+  max-width: 44ch;
+}
+
+.saison-showcase__actions {
+  margin-bottom: clamp(14px, 2vh, 22px);
+}
+
+.saison-showcase__cta {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  color: var(--ink);
+  font-size: 16px;
+  padding: 16px 28px;
+}
+
+.saison-showcase__cta:hover {
+  background: #f2fbfa;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.saison-showcase__cta b {
+  color: var(--teal-dark);
+}
+
+.saison-platforms {
+  gap: 8px 10px;
+  margin-bottom: clamp(20px, 3vh, 32px);
+}
+
+.saison-platforms__label {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.saison-platforms__logo {
+  border-radius: 10px;
+  box-shadow: none;
+  height: 36px;
+  padding: 0 10px;
+}
+
+.saison-platforms__logo--airbnb img {
+  height: 24px;
+}
+
+.saison-platforms__logo--booking img {
+  border-radius: 10px;
+  box-shadow: none;
+  height: 36px;
+}
+
+.saison-benefits {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.saison-benefits li {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  font-size: 15px;
+  gap: 12px;
+  line-height: 1.4;
+}
+
+.saison-benefits li strong {
+  color: #fff;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.saison-benefits svg {
+  background: rgba(95, 214, 205, 0.16);
+  border-radius: 50%;
+  box-sizing: content-box;
+  color: #5fd6cd;
+  flex: none;
+  height: 18px;
+  padding: 8px;
+  stroke-width: 2;
+  width: 18px;
+}
+
+/* Téléphones : le premier plus grand et plus haut, ombres douces. */
+.stay-phones {
+  align-items: flex-start;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.stay-phone:first-child {
+  flex-basis: clamp(200px, 19vw, 280px);
+}
+
+.stay-phone--offset {
+  flex-basis: clamp(170px, 15.5vw, 230px);
+  margin-top: clamp(40px, 7vh, 88px);
+}
+
+.stay-phone__frame {
+  box-shadow:
+    0 30px 45px -20px rgba(0, 0, 0, 0.6),
+    0 70px 90px -30px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.12);
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .stay-phone:first-child {
+    flex-basis: clamp(180px, 16.5vw, 240px);
+  }
+
+  .stay-phone--offset {
+    flex-basis: clamp(160px, 14vw, 200px);
+    margin-top: 36px;
+  }
+
+  .saison-benefits {
+    gap: 8px;
+  }
+
+  .saison-benefits li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .stay-phone:first-child,
+  .stay-phone--offset {
+    flex: 1 1 0;
+  }
+
+  .stay-phone--offset {
+    margin-top: 28px;
+  }
+
+  .saison-benefits li {
+    align-items: flex-start;
+    font-size: 14px;
+  }
+}
+
+/* ============================================================
+   Couleur d'accent terracotta : une seule teinte chaude, réservée
+   aux boutons principaux, pastilles 360°, sous-titres, liens et
+   fonds de pictogrammes. Titres, textes et navigation inchangés.
+   ============================================================ */
+
+/* Boutons principaux */
+.button-primary,
+.hero-actions .button-primary,
+.saison-showcase__cta,
+.about-cta,
+.form-submit,
+.contact-page .form-submit,
+.header-cta {
+  background: var(--accent-gradient);
+  box-shadow: 0 12px 28px rgba(39, 130, 153, 0.32);
+  color: #fff;
+}
+
+.button-primary:hover,
+.hero-actions .button-primary:hover,
+.saison-showcase__cta:hover,
+.about-cta:hover,
+.form-submit:hover,
+.contact-page .form-submit:hover,
+.header-cta:hover {
+  background: linear-gradient(120deg, #2a4f86 0%, #1f6f84 100%);
+  box-shadow: 0 16px 36px rgba(39, 130, 153, 0.4);
+  color: #fff;
+}
+
+.header-cta::after,
+.header-cta:hover::after {
+  display: none;
+}
+
+.hero-actions .button-primary span,
+.about-cta span,
+.saison-showcase__cta b {
+  color: #fff;
+}
+
+/* Pastilles et étiquettes */
+.place-card__badge,
+.stay-card__badge,
+.popular-label {
+  background: var(--accent-gradient);
+  color: #fff;
+}
+
+/* Sous-titres en capitales : foncé sur fond clair, clair sur fond sombre */
+.eyebrow,
+.about-features small,
+.place-card__category,
+.contact-heading .eyebrow {
+  color: var(--accent-dark);
+}
+
+.hero-copy .eyebrow,
+.saison-showcase__eyebrow,
+.app-section .eyebrow,
+.stay-phone__caption small,
+.stay-phone__caption em {
+  color: #6fc3d6;
+}
+
+/* Liens fléchés */
+.text-link,
+.place-card__cta,
+.saison-showcase__link {
+  color: var(--accent-dark);
+}
+
+.saison-showcase__link {
+  border-bottom-color: rgba(39, 130, 153, 0.6);
+  color: #fff;
+}
+
+/* Fonds des pictogrammes */
+.feature-icon,
+.about-features .feature-icon {
+  background: linear-gradient(145deg, rgba(39, 130, 153, 0.1), rgba(39, 130, 153, 0.22));
+  border-color: rgba(39, 130, 153, 0.3);
+  color: var(--accent-dark);
+}
+
+.place-card__category svg {
+  background: var(--accent-soft);
+}
+
+.saison-benefits svg {
+  background: rgba(39, 130, 153, 0.28);
+  color: #6fc3d6;
+}
+
+.contact-icon {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+/* ============================================================
+   Première page : badge à point lumineux et rangée de réassurances.
+   ============================================================ */
+.hero-badge {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.12em;
+  margin: 0 0 18px;
+  padding: 8px 14px 8px 12px;
+  text-transform: uppercase;
+}
+
+.hero-badge__dot {
+  animation: hero-pulse 2s ease-in-out infinite;
+  background: #6fc3d6;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(39, 130, 153, 0.6);
+  height: 8px;
+  width: 8px;
+}
+
+@keyframes hero-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(39, 130, 153, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(39, 130, 153, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(39, 130, 153, 0);
+  }
+}
+
+.hero-proofs {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 18px 0 0;
+}
+
+.hero-proofs li {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.86);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 9px;
+}
+
+.hero-proofs svg {
+  color: #6fc3d6;
+  height: 18px;
+  stroke-width: 2.2;
+  width: 18px;
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .hero-proofs {
+    margin-top: 18px;
+    padding-top: 14px;
+  }
+}
+
+/* ============================================================
+   Le concept : carte d'aperçu 360° avec vraies captures.
+   ============================================================ */
+.tour-preview {
+  align-self: center;
+  background: rgba(8, 30, 36, 0.62);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 28px;
+  box-shadow: 0 40px 90px rgba(4, 55, 65, 0.28);
+  color: #fff;
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  width: 100%;
+}
+
+.tour-preview__bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 6px;
+}
+
+.tour-preview__live {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  text-transform: uppercase;
+}
+
+.tour-preview__dot {
+  animation: hero-pulse 2s ease-in-out infinite;
+  background: #6fc3d6;
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+}
+
+.tour-preview__count {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.6);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 7px;
+}
+
+.tour-preview__clock {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: inline-block;
+  height: 14px;
+  position: relative;
+  width: 14px;
+}
+
+.tour-preview__clock-hand {
+  animation: tour-preview-clock 20s linear infinite;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 1px;
+  height: 6px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform-origin: 50% 0;
+  width: 1.5px;
+}
+
+.tour-preview__clock-hand.is-paused {
+  animation-play-state: paused;
+}
+
+@keyframes tour-preview-clock {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+.tour-preview__stage {
+  aspect-ratio: 3 / 2;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tour-preview__image {
+  animation: tour-preview-pan 20s ease-in-out both;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+@keyframes tour-preview-pan {
+  0% {
+    opacity: 0;
+    transform: scale(1.14) translate(2.5%, -1.5%);
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.22) translate(-2.5%, 1.5%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-preview__image {
+    animation: tour-preview-fade 500ms ease both;
+  }
+}
+
+@keyframes tour-preview-fade {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tour-preview__stage::after {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.35),
+    transparent 30%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.55)
+  );
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.tour-preview__place {
+  align-items: center;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 6px;
+  left: 14px;
+  padding: 6px 10px;
+  position: absolute;
+  top: 14px;
+  z-index: 2;
+}
+
+.tour-preview__place svg {
+  color: #6fc3d6;
+  height: 14px;
+  width: 14px;
+}
+
+.tour-preview__open {
+  align-items: center;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+  display: grid;
+  font-size: 11px;
+  font-weight: 800;
+  gap: 8px;
+  justify-items: center;
+  left: 50%;
+  letter-spacing: 0.08em;
+  position: absolute;
+  text-decoration: none;
+  text-transform: uppercase;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.tour-preview__hotspot {
+  align-items: center;
+  background: var(--accent-gradient);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 900;
+  height: 56px;
+  justify-content: center;
+  transition: transform 200ms ease;
+  width: 56px;
+}
+
+.tour-preview__open:hover .tour-preview__hotspot {
+  transform: scale(1.08);
+}
+
+.tour-preview__foot {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 2px 6px 4px;
+}
+
+.tour-preview__foot > div:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+.tour-preview__foot strong {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.tour-preview__foot span {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+}
+
+.tour-preview__nav {
+  display: flex;
+  gap: 6px;
+}
+
+.tour-preview__nav button {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 36px;
+  justify-content: center;
+  transition: background 160ms ease;
+  width: 36px;
+}
+
+.tour-preview__nav button:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.tour-preview__nav svg {
+  height: 18px;
+  width: 18px;
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .tour-preview__stage {
+    aspect-ratio: 16 / 11;
+  }
+}
+
+/* ============================================================
+   L'application : panneau clair, étapes courtes, une carte QR.
+   ============================================================ */
+.app-section--light {
+  color: var(--ink);
+  gap: clamp(40px, 6vw, 96px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  position: relative;
+}
+
+.app-section__watermark {
+  color: var(--accent-dark);
+  font-size: clamp(48px, 9vw, 140px);
+  font-weight: 800;
+  inset: 0;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  margin: 0;
+  opacity: 0.05;
+  overflow-wrap: break-word;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.app-section--light > .app-copy,
+.app-section--light > .app-qr {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .app-section__watermark {
+    display: none;
+  }
+}
+
+.app-copy--light .eyebrow {
+  color: var(--accent-dark);
+}
+
+.app-copy--light h2 {
+  color: var(--ink);
+}
+
+.app-copy--light h2 em {
+  background: linear-gradient(120deg, #3a68a8 0%, #2a8fa9 55%, #35a6bc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #2a8fa9;
+  font-style: normal;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-copy--light > p:not(.eyebrow) {
+  color: var(--ink-soft);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  margin: 0 0 clamp(18px, 2.6vh, 28px);
+  max-width: 46ch;
+}
+
+.app-steps {
+  counter-reset: step;
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 0 0 clamp(22px, 3vh, 34px);
+  padding: 0;
+}
+
+.app-steps li {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(8, 116, 123, 0.1);
+  border-radius: 16px;
+  color: var(--ink-soft);
+  display: flex;
+  font-size: 15px;
+  gap: 14px;
+  line-height: 1.4;
+  padding: 12px 16px 12px 12px;
+}
+
+.app-steps li {
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Neutralise l'ancien style « pastille numérotée » appliqué aux span des étapes. */
+.app-copy .app-steps li > span {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  display: inline;
+  flex: 1 1 auto;
+  font-size: inherit;
+  height: auto;
+  justify-content: flex-start;
+}
+
+.app-steps li strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.app-steps svg {
+  background: var(--accent-soft);
+  border-radius: 12px;
+  box-sizing: content-box;
+  color: var(--accent-dark);
+  flex: none;
+  height: 20px;
+  padding: 10px;
+  stroke-width: 2;
+  width: 20px;
+}
+
+.app-cta span {
+  font-size: 18px;
+  transition: transform 180ms ease;
+}
+
+.app-cta:hover span {
+  transform: translateX(4px);
+}
+
+.app-qr {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(11, 61, 70, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 30px 70px rgba(4, 55, 65, 0.12);
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  justify-self: center;
+  max-width: 380px;
+  padding: 30px 28px 28px;
+  text-align: center;
+  width: 100%;
+}
+
+.app-qr__logo {
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(4, 55, 65, 0.16);
+  height: 64px;
+  width: 64px;
+}
+
+.app-qr__code {
+  border-radius: 18px;
+  display: block;
+  height: auto;
+  max-width: 240px;
+  width: 100%;
+}
+
+.app-qr strong {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.app-qr span {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .app-qr {
+    gap: 10px;
+    padding: 22px 22px 20px;
+  }
+
+  .app-qr__code {
+    max-width: 200px;
+  }
+
+  .app-steps {
+    gap: 8px;
+  }
+
+  .app-steps li {
+    font-size: 14px;
+    padding: 10px 14px 10px 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-section--light {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Sur téléphone, le QR code n'a pas de sens : le bouton suffit. */
+  .app-qr {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-badge {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 7px 12px 7px 10px;
+  }
+}
+
+/* ============================================================
+   Page « Nos offres » : chiffres clés du hero, pictogrammes de
+   taille, récapitulatif de sélection, contraste de l'eyebrow sur
+   la section devis (fond sombre).
+   ============================================================ */
+.quote-copy .eyebrow {
+  color: #6fc3d6;
+}
+
+.offers-stats {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 32px;
+  justify-content: center;
+  list-style: none;
+  margin: 34px auto 0;
+  max-width: 720px;
+  padding: 24px 0 0;
+}
+
+.offers-stats li {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.86);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 10px;
+}
+
+.offers-stats svg {
+  color: #6fc3d6;
+  flex: none;
+  height: 20px;
+  stroke-width: 2;
+  width: 20px;
+}
+
+.size-grid button > span svg {
+  height: 36px;
+  stroke-width: 1.6;
+  width: 36px;
+}
+
+.quote-selection__summary {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(90, 202, 207, 0.2);
+  border-radius: 14px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  padding: 14px 18px;
+}
+
+.quote-selection__summary strong {
+  color: #6fc3d6;
+}
+
+.quote-selection__summary span {
+  background: none;
+  border: 0;
+  color: rgba(255, 255, 255, 0.4);
+  display: inline;
+  margin: 0 6px;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .offers-stats {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+/* ============================================================
+   Ajustements de la première page : badge resserré à son contenu,
+   lien « Vous êtes un professionnel ? » plus visible sur la vidéo.
+   ============================================================ */
+.hero-badge {
+  max-width: fit-content;
+  width: fit-content;
+}
+
+.hero-actions .hero-pro-link {
+  color: #fff;
+  font-weight: 700;
+  opacity: 1;
+  text-decoration-color: rgba(255, 255, 255, 0.65);
+}
+
+.hero-actions .hero-pro-link:hover {
+  text-decoration-color: #fff;
+}
+
+/* ============================================================
+   Découvertes : réseau illustratif discret et filigrane, en écho
+   à la maquette de référence (constellation + « Narbonne · 360° »).
+   ============================================================ */
+.discover__constellation {
+  height: clamp(90px, 14vh, 150px);
+  inset: 2% 4% auto auto;
+  pointer-events: none;
+  position: absolute;
+  width: clamp(180px, 22vw, 280px);
+  z-index: 1;
+}
+
+.discover__constellation svg {
+  display: block;
+  height: 100%;
+  opacity: 0.45;
+  width: 100%;
+}
+
+.discover__constellation circle {
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.9));
+}
+
+.discover__watermark {
+  bottom: -18px;
+  color: rgba(9, 64, 74, 0.55);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  position: absolute;
+  right: 8px;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 900px) {
+  .discover__constellation {
+    display: none;
+  }
 }

@@ -1,15 +1,28 @@
+import { useState } from "react";
 import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
-import { ShieldCheck } from "lucide-react";
-import heroVideo from "@/assets/novatour-hero.mp4.asset.json";
-import saisonHero from "@/assets/saison-bg-cosy.png.asset.json";
-import cosyVisite from "@/assets/le-cosy-visite.png.asset.json";
-
+import {
+  BadgeCheck,
+  ClipboardList,
+  Compass,
+  Eye,
+  Globe,
+  MousePointerClick,
+  Share,
+  ShieldCheck,
+  Smartphone,
+  SquarePlus,
+} from "lucide-react";
+import { SeasonalStays } from "./SeasonalStays";
+import { TourPreview } from "./TourPreview";
 
 const APP_URL = "https://app.novatour.fr";
+const STAYS_URL = "https://app.novatour.fr/?category=h%C3%A9bergements";
 
 export function HomePage() {
+  const [conceptBg, setConceptBg] = useState("/stays/le-cosy-cuisine.webp");
+
   return (
     <main>
       <MotionEffects />
@@ -36,81 +49,88 @@ export function HomePage() {
 
       <section className="hero hero--video" id="accueil">
         <div className="hero-video-layer" aria-hidden="true">
-          <video className="hero-video" src={heroVideo.url} autoPlay muted loop playsInline preload="auto" />
+          <video
+            className="hero-video"
+            src="/novatour-hero.mp4"
+            poster="/novatour-hero-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          />
           <div className="hero-video-overlay" />
         </div>
 
         <div className="hero-copy">
-          <p className="eyebrow">La plateforme gratuite pour explorer</p>
-          <h1>NovaTour — Visitez. Découvrez. Choisissez. en 360°</h1>
-          <p className="hero-lead">
-            Attirez <span className="highlight-yellow">plus</span> de personnes grâce à la{" "}
-            <span className="highlight-yellow">visite Immersive</span>
+          <p className="hero-badge">
+            <span className="hero-badge__dot" aria-hidden="true" />
+            La plateforme gratuite pour explorer
           </p>
-          <p className="hero-slogan">
-            Offrez à vos futurs clients une nouvelle façon de découvrir votre activité grâce à l’expérience immersive
-            360° de NovaTour.
+          <h1>
+            Un seul <span className="hero-accent">endroit</span> <br className="hero-br" />
+            pour <span className="hero-accent">explorer</span> tous les autres.
+          </h1>
+          <p className="hero-intro">
+            Explorez les meilleurs lieux de la région à 360°, puis retrouvez toutes leurs
+            informations utiles au même endroit.
           </p>
 
-          <p className="hero-tagline">
-            Découvrez l’application <em>maintenant</em> — des lieux en immersion à 360°
-          </p>
-          <p className="hero-intro">
-            Explorez les meilleurs lieux de la région à 360°, puis retrouvez toutes leurs informations utiles au même
-            endroit.
-          </p>
-          <div className="hero-info-examples" aria-label="Informations disponibles sur les fiches NovaTour">
-            <span>Coordonnées · Réseaux sociaux</span>
-            <div className="hero-socials" aria-label="Facebook, Instagram, LinkedIn, TikTok et YouTube">
-              <span className="social-icon social-icon--facebook" aria-label="Facebook">
-                f
-              </span>
-              <span className="social-icon social-icon--instagram" aria-label="Instagram">
-                ◎
-              </span>
-              <span className="social-icon social-icon--linkedin" aria-label="LinkedIn">
-                in
-              </span>
-              <span className="social-icon social-icon--tiktok" aria-label="TikTok">
-                ♪
-              </span>
-              <span className="social-icon social-icon--youtube" aria-label="YouTube">
-                ▶
-              </span>
-            </div>
-          </div>
           <div className="hero-actions">
             <a className="button button-primary" href={APP_URL} target="_blank" rel="noreferrer">
               <span aria-hidden="true">⌕</span>
               Découvrir NovaTour
             </a>
-            <a className="button button-secondary" href="/offres">
-              <span aria-hidden="true">▦</span>
-              Professionnels : être visible
+            <a className="text-link hero-pro-link" href="/offres">
+              Vous êtes un professionnel ? Devenez visible <span aria-hidden="true">→</span>
             </a>
           </div>
-          <div className="hero-proof">
-            <span>
-              <strong>360°</strong> visites immersives
-            </span>
-            <span>
-              <strong>Gratuit</strong> pour tous les visiteurs
-            </span>
-          </div>
-          <div className="hero-creator">
-            <img src="/novavisio-logo.png" alt="Logo NovaVisio" width="64" height="64" />
-            <span className="novavisio-accent">
-              Une plateforme imaginée et développée par <strong>NovaVisio</strong>
-            </span>
-          </div>
+
+          <ul className="hero-proofs">
+            <li>
+              <BadgeCheck aria-hidden="true" />
+              Gratuit
+            </li>
+            <li>
+              <Smartphone aria-hidden="true" />
+              Sans téléchargement
+            </li>
+            <li>
+              <Compass aria-hidden="true" />
+              Immersion 360°
+            </li>
+          </ul>
         </div>
       </section>
 
       <section className="discover section" aria-labelledby="discover-title">
+        <div className="discover__bg" aria-hidden="true">
+          <img src="/narbonne-canal.webp" alt="" loading="lazy" />
+        </div>
+        <div className="discover__veil" aria-hidden="true" />
+        <div className="discover__constellation" aria-hidden="true">
+          <svg viewBox="0 0 360 220" preserveAspectRatio="xMaxYMin meet">
+            <g fill="none" stroke="rgba(255, 255, 255, 0.85)" strokeWidth="1" strokeLinecap="round">
+              <path d="M40 150 L120 100 L170 60 L250 90 L300 40" />
+              <path d="M120 100 L150 150 L250 90" />
+              <path d="M170 60 L200 20" />
+            </g>
+            <g fill="#fff">
+              <circle cx="40" cy="150" r="2.4" />
+              <circle cx="120" cy="100" r="3" />
+              <circle cx="170" cy="60" r="2.2" />
+              <circle cx="250" cy="90" r="3.2" />
+              <circle cx="300" cy="40" r="2.4" />
+              <circle cx="150" cy="150" r="2" />
+              <circle cx="200" cy="20" r="1.8" />
+            </g>
+          </svg>
+          <span className="discover__watermark">Narbonne · 360° · NovaTour</span>
+        </div>
         <div className="section-heading">
           <div>
             <p className="eyebrow">Les dernières découvertes</p>
-            <h2 id="discover-title">À vivre près de chez vous</h2>
+            <h2 id="discover-title">Ils viennent de rejoindre NovaTour</h2>
           </div>
           <a className="text-link" href={APP_URL} target="_blank" rel="noreferrer">
             Voir tous les lieux <span>→</span>
@@ -120,32 +140,19 @@ export function HomePage() {
       </section>
 
       <section className="about about--editorial section" id="concept">
-        <div className="about-story-visual" aria-label="Lieux et expériences à découvrir">
-          <figure className="story-photo story-photo--village">
-            <img src="/occitanie-village.png" alt="Village occitan en pierre traversé par un canal" />
-          </figure>
-          <figure className="story-photo story-photo--restaurant">
-            <img src="/occitanie-restaurant.png" alt="Terrasse de restaurant avec vue sur les vignobles" />
-          </figure>
-          <figure className="story-photo story-photo--marina">
-            <img src="/occitanie-marina.png" alt="Marina méditerranéenne bordée de maisons et de palmiers" />
-          </figure>
-          <div className="story-phone" aria-hidden="true">
-            <span className="story-phone-speaker" />
-            <img src="/novatour-app-home.png" alt="" />
-          </div>
+        <div className="about-editorial__bg" aria-hidden="true">
+          <img src={conceptBg} alt="" loading="lazy" key={conceptBg} />
         </div>
+        <div className="about-editorial__veil" aria-hidden="true" />
+        <TourPreview onTourChange={(tour) => setConceptBg(tour.image)} />
 
         <div className="about-copy about-copy--editorial">
-          <p className="eyebrow">
-            La plateforme gratuite créée par <span className="novavisio-accent">NovaVisio</span>
-          </p>
+          <p className="eyebrow">Le concept</p>
           <h2>
             Tout un territoire
             <br />
             au creux de la main
           </h2>
-          <p className="about-categories">Restaurants · Hébergements · Professionnels · Commerces</p>
 
           <div className="about-features">
             <article>
@@ -159,33 +166,38 @@ export function HomePage() {
             </article>
             <article>
               <span className="feature-icon" aria-hidden="true">
-                ▤
+                <ClipboardList />
               </span>
               <div>
                 <small>02 — S’informer</small>
-                <strong>Toutes les informations réunies au même endroit : coordonnées, réseaux sociaux, avis…</strong>
+                <strong>Coordonnées, réseaux sociaux et avis réunis</strong>
               </div>
             </article>
-            <a href={APP_URL} target="_blank" rel="noreferrer">
+            <article>
               <span className="feature-icon" aria-hidden="true">
-                ♡
+                <MousePointerClick />
               </span>
               <div>
                 <small>03 — Choisir</small>
                 <strong>Explorer avant de choisir</strong>
               </div>
-              <b aria-hidden="true">→</b>
-            </a>
+            </article>
           </div>
+
+          <a
+            className="button button-primary about-cta"
+            href={APP_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Découvrir NovaTour <span aria-hidden="true">→</span>
+          </a>
         </div>
       </section>
 
-
-
-
       <section className="saison-showcase" id="partenaire" aria-labelledby="partner-title">
-        <div className="saison-showcase__bg" aria-hidden="true">
-          <img src={saisonHero.url} alt="" />
+        <div className="saison-showcase__bg saison-showcase__bg--gradient" aria-hidden="true">
+          <img src="/stays/le-cosy-cuisine.webp" alt="" loading="lazy" />
           <span className="saison-showcase__veil" />
         </div>
 
@@ -193,48 +205,63 @@ export function HomePage() {
           <div className="saison-showcase__content">
             <p className="saison-showcase__eyebrow">Locations saisonnières</p>
             <h2 id="partner-title">
-              Visitez avant
+              Visitez en immersion 360°
               <br />
-              de réserver.
+              avant de réserver.
             </h2>
             <p className="saison-showcase__lead">
-              Pour la première fois, découvrez vos locations saisonnières en immersion 360° avant de faire votre choix.
-            </p>
-            <p className="saison-showcase__sub">
-              Faites ressentir l’ambiance, valorisez chaque espace et donnez envie de réserver avant même la première
-              visite.
+              Explorez gîtes, maisons et appartements pièce par pièce. Réservez en toute confiance
+              sur vos plateformes préférées ou en direct.
             </p>
 
             <div className="saison-showcase__actions">
-              <a className="saison-showcase__cta" href="/contact">
-                Mettre mon logement en valeur <b aria-hidden="true">→</b>
-              </a>
-              <a className="saison-showcase__link" href={APP_URL} target="_blank" rel="noreferrer">
-                Découvrir NovaTour <b aria-hidden="true">→</b>
+              <a className="saison-showcase__cta" href={STAYS_URL} target="_blank" rel="noreferrer">
+                Voir les locations <b aria-hidden="true">→</b>
               </a>
             </div>
 
-            <p className="saison-showcase__trust">
-              <ShieldCheck aria-hidden="true" />
-              Une visite immersive créée pour inspirer confiance.
-            </p>
+            <div className="saison-platforms" aria-label="Plateformes de réservation concernées">
+              <span className="saison-platforms__label">Visitez sur NovaTour, réservez sur</span>
+              <span className="saison-platforms__logo saison-platforms__logo--airbnb">
+                <img src="/stays/airbnb-logo.png" alt="Airbnb" height="24" />
+              </span>
+              <span className="saison-platforms__logo saison-platforms__logo--booking">
+                <img src="/stays/booking-logo.png" alt="Booking.com" height="36" />
+              </span>
+              <span className="saison-platforms__label">ou en direct.</span>
+            </div>
+
+            <ul className="saison-benefits">
+              <li>
+                <Eye aria-hidden="true" />
+                <span>
+                  <strong>Immersion 360°</strong> Une visite virtuelle fidèle au lieu.
+                </span>
+              </li>
+              <li>
+                <ShieldCheck aria-hidden="true" />
+                <span>
+                  <strong>Zéro mauvaise surprise</strong> Transparence totale avant de réserver.
+                </span>
+              </li>
+              <li>
+                <ClipboardList aria-hidden="true" />
+                <span>
+                  <strong>Tout au même endroit</strong> Coordonnées, avis, réseaux et réservation.
+                </span>
+              </li>
+            </ul>
           </div>
 
-          <a
-            className="saison-showcase__device"
-            href={APP_URL}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Ouvrir une visite immersive 360° dans l’application NovaTour"
-          >
-            <span className="saison-showcase__notch" aria-hidden="true" />
-            <img src={cosyVisite.url} alt="Visite immersive 360° d’une location saisonnière dans l’application NovaTour" />
-          </a>
+          <SeasonalStays />
         </div>
       </section>
 
-      <section className="app-section section app-section--modern">
-        <div className="app-copy">
+      <section className="app-section app-section--light section">
+        <p className="app-section__watermark" aria-hidden="true">
+          Un seul endroit pour explorer tous les autres.
+        </p>
+        <div className="app-copy app-copy--light">
           <p className="eyebrow">L’application web</p>
           <h2>
             NovaTour dans
@@ -242,74 +269,59 @@ export function HomePage() {
             votre <em>poche</em>
           </h2>
           <p>
-            NovaTour est une application web : aucun téléchargement ni store. Ajoutez-la directement à l’écran d’accueil
-            de votre téléphone et accédez aux visites comme dans une véritable application.
+            Aucun téléchargement : ajoutez NovaTour à l’écran d’accueil de votre téléphone et lancez
+            les visites en un geste.
           </p>
-          <ol className="install-steps">
+          <ol className="app-steps">
             <li>
-              <span>1</span>
-              <p>
-                <strong>Ouvrez NovaTour</strong> dans Safari sur iPhone ou Chrome sur Android.
-              </p>
+              <Globe aria-hidden="true" />
+              <span>
+                <strong>Ouvrez NovaTour</strong> dans Safari ou Chrome.
+              </span>
             </li>
             <li>
-              <span>2</span>
-              <p>
-                <strong>Appuyez sur « Partager »</strong> ou ouvrez le menu de votre navigateur.
-              </p>
+              <Share aria-hidden="true" />
+              <span>
+                <strong>Appuyez sur « Partager »</strong> dans votre navigateur.
+              </span>
             </li>
             <li>
-              <span>3</span>
-              <p>
-                <strong>Choisissez « Ajouter à l’écran d’accueil »</strong> : l’icône NovaTour apparaît sur votre
-                téléphone.
-              </p>
+              <SquarePlus aria-hidden="true" />
+              <span>
+                <strong>Ajoutez à l’écran d’accueil</strong>, l’icône apparaît.
+              </span>
             </li>
           </ol>
-          <a className="app-start-button" href={APP_URL} target="_blank" rel="noreferrer">
-            <span aria-hidden="true">▯</span>
-            <small>Démarrer</small>
-            <strong>Faire votre première recherche</strong>
-            <b aria-hidden="true">→</b>
-          </a>
-        </div>
-
-        <div className="app-install">
           <a
-            className="app-notification"
+            className="button button-primary app-cta"
             href={APP_URL}
             target="_blank"
             rel="noreferrer"
-            aria-label="Découvrir les derniers partenaires NovaTour"
           >
-            <img src="/novatour-logo.png" alt="" width="52" height="52" />
-            <div>
-              <strong>Profitez des derniers partenaires de NovaTour</strong>
-              <p>Découvrez les nouveaux lieux qui rejoignent la plateforme près de chez vous.</p>
-            </div>
+            Ouvrir NovaTour <span aria-hidden="true">→</span>
           </a>
+        </div>
 
-          <div className="scan-divider">
-            <span>ou scannez</span>
-          </div>
-
-          <div className="qr-card">
-            <p>Scanner pour ouvrir NovaTour</p>
-            <a href={APP_URL} target="_blank" rel="noreferrer" aria-label="Ouvrir l’application NovaTour">
-              <img
-                src="/novatour-app-qr.png"
-                alt="QR code permettant d’ouvrir l’application NovaTour"
-                width="220"
-                height="220"
-              />
-            </a>
-            <strong>Pointez votre appareil photo</strong>
-            <span>Le lien s’ouvre directement sur iOS et Android.</span>
-          </div>
+        <div className="app-qr">
+          <img alt="" className="app-qr__logo" height="64" src="/novatour-logo.png" width="64" />
+          <a
+            href={APP_URL}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Ouvrir l’application NovaTour"
+          >
+            <img
+              alt="QR code permettant d’ouvrir l’application NovaTour"
+              className="app-qr__code"
+              height="240"
+              src="/novatour-app-qr.png"
+              width="240"
+            />
+          </a>
+          <strong>Scannez pour ouvrir NovaTour sur votre téléphone</strong>
+          <span>Le lien s’ouvre directement sur iOS et Android.</span>
         </div>
       </section>
-
-
 
       <footer id="contact">
         <div className="footer-brand">
@@ -357,7 +369,11 @@ export function HomePage() {
           <a href="https://www.instagram.com/novatour.fr/" target="_blank" rel="noreferrer">
             Instagram
           </a>
-          <a href="https://www.facebook.com/p/NovaTour-61587281682477/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.facebook.com/p/NovaTour-61587281682477/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Facebook
           </a>
         </div>

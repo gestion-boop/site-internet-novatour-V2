@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://pixel-perfect-clone-10707.lovable.app/sitemap.xml
+Sitemap: https://novatour.fr/sitemap.xml
