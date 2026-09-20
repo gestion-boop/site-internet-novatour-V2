@@ -116,7 +116,7 @@ main > section:not(.hero) {
   }
 
   main > footer {
-    scroll-snap-align: end;
+    scroll-snap-align: start;
     scroll-snap-stop: normal;
   }
 
@@ -5483,7 +5483,7 @@ footer div:not(.footer-brand) a {
 main.offers-page > footer {
   min-height: 300px;
   padding: 54px clamp(28px, 5vw, 76px) 32px;
-  scroll-snap-align: end;
+  scroll-snap-align: start;
 }
 
 main.offers-page .footer-brand img {
@@ -5494,12 +5494,6 @@ main.offers-page .footer-brand img {
 main.offers-page .footer-brand > p {
   font-size: 16px;
   line-height: 1.55;
-}
-
-/* The contact form on the offers page is the last content section; the footer
-   should become the final snap target so the bottom logos remain visible. */
-main.offers-page .quote-section {
-  scroll-snap-align: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
