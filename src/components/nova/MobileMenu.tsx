@@ -107,11 +107,8 @@ export function MobileMenu() {
           <a href="/offres" onClick={closeMenu}>
             <span>03</span>Nos offres
           </a>
-          <a href="/#partenaire" onClick={closeMenu}>
-            <span>04</span>Devenir partenaire
-          </a>
           <a href="/contact" onClick={closeMenu}>
-            <span>05</span>Contact
+            <span>04</span>Contact
           </a>
         </nav>
 

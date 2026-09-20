@@ -89,7 +89,6 @@ export function OffersPage() {
           <a className="active" href="/offres">
             Nos offres
           </a>
-          <a href="/#partenaire">Devenir partenaire</a>
           <a href="/contact">Contact</a>
         </nav>
         <a className="header-cta" href="#devis">

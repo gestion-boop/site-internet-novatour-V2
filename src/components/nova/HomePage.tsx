@@ -41,10 +41,12 @@ export function HomePage() {
             Découvrir NovaTour
           </a>
           <a href="/offres">Nos offres</a>
-          <a href="#partenaire">Pourquoi nous rejoindre</a>
           <a href="/contact">Contact</a>
         </nav>
 
+        <a className="header-cta" href="/offres#devis">
+          Obtenir un devis
+        </a>
         <MobileMenu />
       </header>
 

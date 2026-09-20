@@ -71,7 +71,6 @@ export function ContactPage() {
             Découvrir NovaTour
           </a>
           <a href="/offres">Nos offres</a>
-          <a href="/#partenaire">Devenir partenaire</a>
           <a className="active" href="/contact">
             Contact
           </a>
