@@ -8634,18 +8634,38 @@ main.offers-page .quote-section {
 }
 
 .tour-preview__stage {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
 }
 
 .tour-preview__image {
-  animation: tour-preview-fade 500ms ease both;
+  animation: tour-preview-pan 20s ease-in-out both;
   display: block;
   height: 100%;
   object-fit: cover;
   width: 100%;
+}
+
+@keyframes tour-preview-pan {
+  0% {
+    opacity: 0;
+    transform: scale(1.14) translate(2.5%, -1.5%);
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.22) translate(-2.5%, 1.5%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-preview__image {
+    animation: tour-preview-fade 500ms ease both;
+  }
 }
 
 @keyframes tour-preview-fade {
