@@ -26,13 +26,13 @@ const tours: Tour[] = [
     title: "Le Cosy",
   },
   {
-    alt: "Terrasse ombragée d’un restaurant en visite 360°",
-    city: "Narbonne",
-    href: APP_URL,
-    id: "saveurs-occitanie",
-    image: "/occitanie-restaurant.png",
+    alt: "Terrasse ombragée du restaurant La Cascade de Moussan en visite 360°",
+    city: "Moussan",
+    href: "https://app.novatour.fr/place/la-cascade-de-moussan?category=se+restaurer&id=84f25fd1-8892-498e-aeda-d0c7f3480753",
+    id: "cascade-de-moussan",
+    image: "/stays/cascade-de-moussan-terrasse.webp",
     kind: "Restaurant",
-    title: "Saveurs d’Occitanie",
+    title: "La Cascade de Moussan",
   },
   {
     alt: "Chambre du gîte de Jonquières en visite 360°",
@@ -54,7 +54,7 @@ const tours: Tour[] = [
   },
 ];
 
-export function TourPreview() {
+export function TourPreview({ onTourChange }: { onTourChange?: (tour: Tour) => void }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const tour = tours[index];
@@ -80,6 +80,12 @@ export function TourPreview() {
     }, remainingRef.current);
     return () => window.clearTimeout(timer);
   }, [paused, index]);
+
+  useEffect(() => {
+    onTourChange?.(tour);
+    // onTourChange identity isn't expected to change across renders.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tour]);
 
   return (
     <div

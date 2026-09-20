@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
@@ -20,6 +21,8 @@ const APP_URL = "https://app.novatour.fr";
 const STAYS_URL = "https://app.novatour.fr/?category=h%C3%A9bergements";
 
 export function HomePage() {
+  const [conceptBg, setConceptBg] = useState("/stays/le-cosy-cuisine.webp");
+
   return (
     <main>
       <MotionEffects />
@@ -138,10 +141,10 @@ export function HomePage() {
 
       <section className="about about--editorial section" id="concept">
         <div className="about-editorial__bg" aria-hidden="true">
-          <img src="/stays/le-cosy-cuisine.webp" alt="" loading="lazy" />
+          <img src={conceptBg} alt="" loading="lazy" key={conceptBg} />
         </div>
         <div className="about-editorial__veil" aria-hidden="true" />
-        <TourPreview />
+        <TourPreview onTourChange={(tour) => setConceptBg(tour.image)} />
 
         <div className="about-copy about-copy--editorial">
           <p className="eyebrow">Le concept</p>

@@ -1676,10 +1676,20 @@ body.menu-open {
 }
 
 .about-editorial__bg img {
+  animation: about-editorial-bg-fade 900ms ease both;
   display: block;
   height: 100%;
   object-fit: cover;
   width: 100%;
+}
+
+@keyframes about-editorial-bg-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .about-editorial__veil {
