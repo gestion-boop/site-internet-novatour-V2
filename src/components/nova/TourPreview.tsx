@@ -52,6 +52,15 @@ const tours: Tour[] = [
     kind: "Professionnels",
     title: "ImmoSphera",
   },
+  {
+    alt: "Couloir zen de l’institut Ariya en visite 360°",
+    city: "Narbonne",
+    href: "https://app.novatour.fr/place/ariya-bien-etre-et-tradition?category=commerces&id=bcaf93c6-4286-4434-811e-862c09d70265",
+    id: "ariya",
+    image: "/stays/ariya-salon.webp",
+    kind: "Institut de bien-être",
+    title: "Ariya",
+  },
 ];
 
 export function TourPreview({ onTourChange }: { onTourChange?: (tour: Tour) => void }) {
