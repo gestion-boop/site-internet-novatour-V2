@@ -116,7 +116,9 @@ export function OffersSelector() {
               id={item.id}
               key={item.id}
             >
-              {item.popular && <div className="popular-label">Le plus populaire</div>}
+              <div className="pricing-card__ribbon">
+                {item.popular ? <span className="popular-label">Le plus populaire</span> : null}
+              </div>
               <div className="pricing-card-head">
                 <h3>{item.name}</h3>
                 <p>

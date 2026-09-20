@@ -3113,13 +3113,23 @@ body.menu-open {
   box-shadow: 0 20px 70px rgba(39, 130, 153, 0.15);
 }
 
+/* Emplacement réservé en haut de chaque carte, occupé par l'étiquette
+   « Le plus populaire » sur une seule carte : garde les trois cartes
+   alignées (titre, prix, description) quel que soit le plan. */
+.pricing-card__ribbon {
+  flex: none;
+  height: 44px;
+}
+
 .popular-label {
+  align-items: center;
   background: linear-gradient(90deg, #2499ad, #48bfd0);
+  display: flex;
   font-size: 11px;
   font-weight: 900;
+  height: 100%;
+  justify-content: center;
   letter-spacing: 0.14em;
-  padding: 14px;
-  text-align: center;
   text-transform: uppercase;
 }
 
