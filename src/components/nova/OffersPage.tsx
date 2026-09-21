@@ -322,28 +322,23 @@ export function OffersPage() {
 
       <OffersSelector />
 
-      <footer>
+      <footer id="contact">
         <div className="footer-brand">
           <a className="brand brand--footer" href="/#accueil">
             <img src="/novatour-logo.png" alt="" width="54" height="54" />
             <span>NovaTour</span>
           </a>
           <p>
-            La plateforme gratuite de découverte conçue par{" "}
-            <a
-              className="novavisio-accent"
-              href="https://www.novavisio.fr/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              NovaVisio
-            </a>
-            .
+            NovaTour est la plateforme gratuite de découverte imaginée et développée par{" "}
+            <span className="novavisio-accent">NovaVisio</span>.
           </p>
         </div>
         <div>
           <h3>Navigation</h3>
           <a href="/#accueil">Accueil</a>
+          <a href={APP_URL} target="_blank" rel="noreferrer">
+            Découvrir
+          </a>
           <a href="/offres">Nos offres</a>
           <a href="/#partenaire">Devenir partenaire</a>
         </div>
@@ -352,14 +347,41 @@ export function OffersPage() {
           <p>
             19 Rue du Luxembourg
             <br />
-            11100 Narbonne
+            11100 Narbonne, France
           </p>
           <a href="mailto:natacha.jaillet@novavisio.fr">natacha.jaillet@novavisio.fr</a>
         </div>
         <div>
-          <h3>Commercial</h3>
-          <p>Natacha Jaillet</p>
-          <a href="tel:+33630310065">06 30 31 00 65</a>
+          <h3>Informations légales</h3>
+          <a href="https://app.novatour.fr/legal" target="_blank" rel="noreferrer">
+            Mentions légales
+          </a>
+          <a href="https://app.novatour.fr/cgu" target="_blank" rel="noreferrer">
+            Conditions générales d’utilisation
+          </a>
+          <a href="https://app.novatour.fr/privacy" target="_blank" rel="noreferrer">
+            Politique de confidentialité
+          </a>
+        </div>
+        <div>
+          <h3>Suivez-nous</h3>
+          <a href="https://www.instagram.com/novatour.fr/" target="_blank" rel="noreferrer">
+            Instagram
+          </a>
+          <a
+            href="https://www.facebook.com/p/NovaTour-61587281682477/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Facebook
+          </a>
+          <a
+            href="https://fr.linkedin.com/showcase/novatournarbonne/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </a>
         </div>
         <p className="copyright">© 2026 NovaTour. Tous droits réservés.</p>
       </footer>

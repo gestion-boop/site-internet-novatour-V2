@@ -386,6 +386,13 @@ export function HomePage() {
           >
             Facebook
           </a>
+          <a
+            href="https://fr.linkedin.com/showcase/novatournarbonne/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </a>
         </div>
         <p className="copyright">© 2026 NovaTour. Tous droits réservés.</p>
       </footer>
