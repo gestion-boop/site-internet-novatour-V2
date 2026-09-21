@@ -267,9 +267,10 @@ export function HomePage() {
       <TrustedPartners />
 
       <section className="app-section app-section--light section">
-        <p className="app-section__watermark" aria-hidden="true">
-          Un seul endroit pour explorer tous les autres.
-        </p>
+        <div className="app-section__bg" aria-hidden="true">
+          <img src="/hero-occitanie.png" alt="" loading="lazy" />
+        </div>
+        <div className="app-section__veil" aria-hidden="true" />
         <div className="app-copy app-copy--light">
           <p className="eyebrow">L’application web</p>
           <h2>

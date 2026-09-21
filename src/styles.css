@@ -8890,38 +8890,63 @@ main.offers-page .footer-brand > p {
   color: var(--ink);
   gap: clamp(40px, 6vw, 96px);
   grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  overflow: hidden;
   position: relative;
 }
 
-.app-section__watermark {
-  color: var(--accent-dark);
-  font-size: clamp(48px, 9vw, 140px);
-  font-weight: 800;
+.app-section__bg {
   inset: 0;
-  letter-spacing: -0.03em;
-  line-height: 0.92;
-  margin: 0;
-  opacity: 0.05;
-  overflow-wrap: break-word;
-  pointer-events: none;
+  overflow: hidden;
   position: absolute;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 0;
+}
+
+.app-section__bg img {
+  animation: app-section-bg-drift 32s ease-in-out infinite alternate;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  transform: scale(1.06);
+  width: 100%;
+}
+
+@keyframes app-section-bg-drift {
+  from {
+    transform: scale(1.06) translate(0, 0);
+  }
+  to {
+    transform: scale(1.1) translate(-1.2%, -0.8%);
+  }
+}
+
+/* Même esprit "verre dépoli" que les autres panneaux photo du site,
+   en version claire : la photo se devine sous un voile blanc translucide. */
+.app-section__veil {
+  background-color: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .app-section__veil {
+    background-color: rgba(255, 255, 255, 0.92);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-section__bg img {
+    animation: none;
+  }
 }
 
 .app-section--light > .app-copy,
 .app-section--light > .app-qr {
   position: relative;
   z-index: 1;
-}
-
-@media (max-width: 900px) {
-  .app-section__watermark {
-    display: none;
-  }
 }
 
 .app-copy--light .eyebrow {
