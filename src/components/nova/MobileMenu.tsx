@@ -105,7 +105,7 @@ export function MobileMenu() {
             <span>02</span>Découvrir NovaTour
           </a>
           <a
-            href="https://www.novavisio.fr/comment-ca-marche"
+            href="https://www.novavisio.fr/#novatour"
             target="_blank"
             rel="noreferrer"
             onClick={closeMenu}
