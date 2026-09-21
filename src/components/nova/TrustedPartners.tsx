@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 type Partner = {
   alt: string;
   href: string;
@@ -5,6 +7,16 @@ type Partner = {
   logo: string;
   name: string;
 };
+
+/** Ambiance en fond : un aperçu des univers présents sur NovaTour. */
+const backdrops = [
+  "/stays/le-cosy-cuisine.webp",
+  "/stays/cascade-de-moussan-terrasse.webp",
+  "/narbonne-canal.webp",
+  "/stays/jonquieres-chambre.webp",
+];
+
+const BACKDROP_DELAY = 5000;
 
 const partners: Partner[] = [
   {
@@ -90,8 +102,30 @@ const partners: Partner[] = [
 const loop = [...partners, ...partners];
 
 export function TrustedPartners() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setIndex((current) => (current + 1) % backdrops.length);
+    }, BACKDROP_DELAY);
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <section className="trusted-partners section" aria-labelledby="trusted-title">
+      <div className="trusted-partners__bg" aria-hidden="true">
+        {backdrops.map((src, i) => (
+          <img
+            className={`trusted-partners__bg-image${i === index ? " is-active" : ""}`}
+            key={src}
+            src={src}
+            alt=""
+            loading="lazy"
+          />
+        ))}
+        <span className="trusted-partners__veil" />
+      </div>
+
       <div className="trusted-partners__heading">
         <p className="eyebrow">Ils nous font confiance</p>
         <h2 id="trusted-title">Déjà présents sur NovaTour</h2>
@@ -99,11 +133,11 @@ export function TrustedPartners() {
 
       <div className="trusted-partners__track" aria-hidden="true">
         <div className="trusted-partners__scroller">
-          {loop.map((partner, index) => (
+          {loop.map((partner, loopIndex) => (
             <a
               className="trusted-partners__logo"
               href={partner.href}
-              key={`${partner.id}-${index}`}
+              key={`${partner.id}-${loopIndex}`}
               target="_blank"
               rel="noreferrer"
               tabIndex={-1}

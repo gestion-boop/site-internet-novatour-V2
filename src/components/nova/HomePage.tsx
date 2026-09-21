@@ -3,7 +3,6 @@ import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import {
-  BadgeCheck,
   ClipboardList,
   Compass,
   Eye,
@@ -40,7 +39,7 @@ export function HomePage() {
           <a href={APP_URL} target="_blank" rel="noreferrer">
             Découvrir NovaTour
           </a>
-          <a href="/offres">Nos offres</a>
+          <a href="/offres">Rejoignez-nous</a>
           <a href="/contact">Contact</a>
         </nav>
 
@@ -71,8 +70,8 @@ export function HomePage() {
             pour <span className="hero-accent">explorer</span> tous les autres.
           </h1>
           <p className="hero-intro">
-            Explorez les meilleurs lieux de la région à 360°, puis retrouvez toutes leurs
-            informations utiles au même endroit.
+            Découvrez des lieux, des expériences et des adresses à explorer en visites immersives et
+            intéractives en 360°, avec toutes les informations utiles au même endroit.
           </p>
 
           <div className="hero-actions">
@@ -86,10 +85,6 @@ export function HomePage() {
           </div>
 
           <ul className="hero-proofs">
-            <li>
-              <BadgeCheck aria-hidden="true" />
-              Gratuit
-            </li>
             <li>
               <Smartphone aria-hidden="true" />
               Sans téléchargement
@@ -131,7 +126,6 @@ export function HomePage() {
             <h2 id="discover-title">Ils viennent de rejoindre NovaTour</h2>
           </div>
           <div className="discover__heading-side">
-            <span className="discover__watermark">Narbonne · 360° · NovaTour</span>
             <a className="text-link" href={APP_URL} target="_blank" rel="noreferrer">
               Voir tous les lieux <span>→</span>
             </a>
@@ -148,9 +142,8 @@ export function HomePage() {
         <TourPreview onTourChange={(tour) => setConceptBg(tour.image)} />
 
         <div className="about-copy about-copy--editorial">
-          <p className="eyebrow">Le concept</p>
           <h2>
-            Tous réunis
+            Tout réuni
             <br />
             au même endroit
           </h2>
@@ -162,7 +155,9 @@ export function HomePage() {
               </span>
               <div>
                 <small>01 — Découvrir</small>
-                <strong>Visites immersives interactives 360°</strong>
+                <strong>
+                  Découvrez autrement un lieu grâce à la visite immersive et intéractive
+                </strong>
               </div>
             </article>
             <article>
@@ -171,7 +166,10 @@ export function HomePage() {
               </span>
               <div>
                 <small>02 — S’informer</small>
-                <strong>Coordonnées, réseaux sociaux et avis réunis</strong>
+                <strong>
+                  Retrouvez toutes les coordonnées, les réseaux sociaux, les menus, les vidéos, sur
+                  la même interface
+                </strong>
               </div>
             </article>
             <article>
@@ -222,12 +220,20 @@ export function HomePage() {
             </div>
 
             <div className="saison-platforms" aria-label="Plateformes de réservation concernées">
-              <span className="saison-platforms__label">Visitez sur NovaTour, réservez sur</span>
+              <span className="saison-platforms__label">
+                Visitez sur NovaTour, et réservez sur les plateformes
+              </span>
               <span className="saison-platforms__logo saison-platforms__logo--airbnb">
                 <img src="/stays/airbnb-logo.png" alt="Airbnb" height="24" />
               </span>
               <span className="saison-platforms__logo saison-platforms__logo--booking">
                 <img src="/stays/booking-logo.png" alt="Booking.com" height="36" />
+              </span>
+              <span className="saison-platforms__logo saison-platforms__logo--expedia">
+                <img src="/stays/expedia-logo.png" alt="Expedia" height="22" />
+              </span>
+              <span className="saison-platforms__logo saison-platforms__logo--abritel">
+                <img src="/stays/abritel-logo.png" alt="Abritel" height="22" />
               </span>
               <span className="saison-platforms__label">ou en direct.</span>
             </div>

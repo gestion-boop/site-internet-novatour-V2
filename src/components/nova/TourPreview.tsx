@@ -125,10 +125,7 @@ export function TourPreview({ onTourChange }: { onTourChange?: (tour: Tour) => v
           {tour.city} · {tour.kind}
         </span>
         <a className="tour-preview__open" href={tour.href} target="_blank" rel="noreferrer">
-          <span className="tour-preview__hotspot" aria-hidden="true">
-            360°
-          </span>
-          Ouvrir la visite
+          Ouvrir la visite 360°
         </a>
       </div>
 

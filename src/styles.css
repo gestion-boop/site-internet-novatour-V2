@@ -1622,8 +1622,7 @@ body.menu-open {
    lisible quelle que soit la zone de la photo qui se devine dessous. */
 .discover > .section-heading .eyebrow,
 .discover > .section-heading h2,
-.discover > .section-heading .text-link,
-.discover > .section-heading .discover__watermark {
+.discover > .section-heading .text-link {
   text-shadow: 0 1px 16px rgba(255, 255, 255, 0.6);
 }
 
@@ -8205,6 +8204,18 @@ main.offers-page .footer-brand > p {
   width: auto;
 }
 
+.saison-platforms__logo--expedia,
+.saison-platforms__logo--abritel {
+  background: #fff;
+}
+
+.saison-platforms__logo--expedia img,
+.saison-platforms__logo--abritel img {
+  display: block;
+  height: 32px;
+  width: auto;
+}
+
 .saison-showcase__sub {
   margin-bottom: clamp(14px, 2vh, 22px);
 }
@@ -8221,6 +8232,11 @@ main.offers-page .footer-brand > p {
 
   .saison-platforms__logo--booking img {
     height: 48px;
+  }
+
+  .saison-platforms__logo--expedia img,
+  .saison-platforms__logo--abritel img {
+    height: 26px;
   }
 }
 
@@ -8323,6 +8339,16 @@ main.offers-page .footer-brand > p {
   border-radius: 10px;
   box-shadow: none;
   height: 36px;
+}
+
+.saison-platforms__logo--expedia,
+.saison-platforms__logo--abritel {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.saison-platforms__logo--expedia img,
+.saison-platforms__logo--abritel img {
+  height: 22px;
 }
 
 .saison-benefits {
@@ -8766,40 +8792,31 @@ main.offers-page .footer-brand > p {
 
 .tour-preview__open {
   align-items: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  bottom: 16px;
   color: #fff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
-  display: grid;
-  font-size: 11px;
-  font-weight: 800;
-  gap: 8px;
-  justify-items: center;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
   left: 50%;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
+  padding: 9px 18px;
   position: absolute;
   text-decoration: none;
-  text-transform: uppercase;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  transition:
+    background 200ms ease,
+    transform 200ms ease;
   z-index: 2;
 }
 
-.tour-preview__hotspot {
-  align-items: center;
-  background: var(--accent-gradient);
-  border: 2px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  display: inline-flex;
-  font-size: 13px;
-  font-weight: 900;
-  height: 56px;
-  justify-content: center;
-  transition: transform 200ms ease;
-  width: 56px;
-}
-
-.tour-preview__open:hover .tour-preview__hotspot {
-  transform: scale(1.08);
+.tour-preview__open:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateX(-50%) translateY(-2px);
 }
 
 .tour-preview__foot {
@@ -9204,14 +9221,6 @@ main.offers-page .footer-brand > p {
   gap: 6px;
 }
 
-.discover__watermark {
-  color: rgba(9, 64, 74, 0.55);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 13px;
-  font-style: italic;
-  letter-spacing: 0.02em;
-}
-
 @media (max-width: 900px) {
   .discover__constellation {
     display: none;
@@ -9253,7 +9262,6 @@ main.offers-page .footer-brand > p {
    logos partenaires déjà présents sur NovaTour.
    ============================================================ */
 .trusted-partners {
-  background: rgba(255, 255, 255, 0.58);
   border: 1px solid rgba(8, 116, 123, 0.08);
   border-radius: 42px;
   box-shadow: 0 30px 80px rgba(4, 55, 65, 0.07);
@@ -9261,6 +9269,59 @@ main.offers-page .footer-brand > p {
   flex-direction: column;
   gap: clamp(28px, 4vw, 44px);
   justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.trusted-partners__bg {
+  border-radius: inherit;
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}
+
+.trusted-partners__bg-image {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1400ms ease;
+  width: 100%;
+}
+
+.trusted-partners__bg-image.is-active {
+  opacity: 1;
+}
+
+/* Verre dépoli : les photos se devinent sous un voile clair, dans le
+   même esprit que les autres sections "Liquid Glass" du site. */
+.trusted-partners__veil {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(30px) saturate(140%);
+  -webkit-backdrop-filter: blur(30px) saturate(140%);
+  inset: 0;
+  position: absolute;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .trusted-partners__veil {
+    background-color: rgba(255, 255, 255, 0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trusted-partners__bg-image {
+    transition: none;
+  }
+}
+
+.trusted-partners__heading,
+.trusted-partners__track,
+.trusted-partners__list {
+  position: relative;
+  z-index: 1;
 }
 
 .trusted-partners__heading {

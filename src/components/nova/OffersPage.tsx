@@ -87,7 +87,7 @@ export function OffersPage() {
             Faire une recherche
           </a>
           <a className="active" href="/offres">
-            Nos offres
+            Rejoignez-nous
           </a>
           <a href="/contact">Contact</a>
         </nav>

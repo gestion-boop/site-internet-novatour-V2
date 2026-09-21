@@ -70,7 +70,7 @@ export function ContactPage() {
           <a href={APP_URL} target="_blank" rel="noreferrer">
             Découvrir NovaTour
           </a>
-          <a href="/offres">Nos offres</a>
+          <a href="/offres">Rejoignez-nous</a>
           <a className="active" href="/contact">
             Contact
           </a>
@@ -86,8 +86,8 @@ export function ContactPage() {
           <p className="eyebrow">Une question, un projet, un lieu à valoriser ?</p>
           <h1>Besoin d’une information ? On vous rappelle.</h1>
           <p>
-            Remplissez le formulaire ci-dessous. L’équipe NovaVisio vous recontacte sous 24h ouvrées pour échanger sur
-            votre besoin et vous guider vers la solution adaptée.
+            Remplissez le formulaire ci-dessous. L’équipe NovaVisio vous recontacte sous 24h ouvrées
+            pour échanger sur votre besoin et vous guider vers la solution adaptée.
           </p>
         </div>
 
@@ -98,8 +98,8 @@ export function ContactPage() {
                 <div className="contact-success-icon">✓</div>
                 <h2>Message bien envoyé</h2>
                 <p>
-                  Merci {formData.fullName.trim() || ""}, l’équipe NovaVisio a bien reçu votre demande. Nous vous
-                  rappellerons très prochainement au {formData.phone.trim()}.
+                  Merci {formData.fullName.trim() || ""}, l’équipe NovaVisio a bien reçu votre
+                  demande. Nous vous rappellerons très prochainement au {formData.phone.trim()}.
                 </p>
                 <a className="button button-primary" href="/offres">
                   Découvrir nos offres
@@ -110,7 +110,13 @@ export function ContactPage() {
                 <input type="hidden" name="_subject" value="Demande de contact — NovaTour" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_next" value="https://novatour.fr/contact?envoye=1" />
-                <input className="form-honeypot" type="text" name="_honey" tabIndex={-1} autoComplete="off" />
+                <input
+                  className="form-honeypot"
+                  type="text"
+                  name="_honey"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
                 <div className="form-grid">
                   <label>
                     <span>
@@ -221,7 +227,8 @@ export function ContactPage() {
                     aria-describedby={errors.consent ? "error-consent" : undefined}
                   />
                   <label htmlFor="contact-consent">
-                    J’accepte d’être recontacté(e) par l’équipe <strong>NovaVisio</strong> au sujet de ma demande.
+                    J’accepte d’être recontacté(e) par l’équipe <strong>NovaVisio</strong> au sujet
+                    de ma demande.
                     {errors.consent && (
                       <span id="error-consent" className="form-error" role="alert">
                         {errors.consent}
@@ -286,7 +293,12 @@ export function ContactPage() {
           </a>
           <p>
             La plateforme gratuite de découverte conçue par{" "}
-            <a className="novavisio-accent" href="https://www.novavisio.fr/" target="_blank" rel="noreferrer">
+            <a
+              className="novavisio-accent"
+              href="https://www.novavisio.fr/"
+              target="_blank"
+              rel="noreferrer"
+            >
               NovaVisio
             </a>
             .
