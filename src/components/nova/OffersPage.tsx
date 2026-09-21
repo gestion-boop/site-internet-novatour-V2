@@ -120,9 +120,23 @@ export function OffersPage() {
           </a>
           <a href="/contact">Contact</a>
         </nav>
-        <a className="header-cta" href="#devis">
-          Obtenir un devis
-        </a>
+        <div className="header-actions">
+          <a
+            className="header-novavisio"
+            href="https://www.novavisio.fr/#novatour"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src="/novavisio-logo.png" alt="" width="32" height="32" />
+            <span>
+              <strong>NovaVisio</strong>
+              <small>Création immersive</small>
+            </span>
+          </a>
+          <a className="header-cta" href="#devis">
+            Obtenir un devis
+          </a>
+        </div>
         <MobileMenu />
       </header>
 
