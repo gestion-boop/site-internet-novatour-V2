@@ -70,7 +70,7 @@ export function ContactPage() {
           <a href={APP_URL} target="_blank" rel="noreferrer">
             Découvrir NovaTour
           </a>
-          <a href="https://www.novavisio.fr/#etapes" target="_blank" rel="noreferrer">
+          <a href="https://www.novavisio.fr/#novatour" target="_blank" rel="noreferrer">
             Rejoignez-nous
           </a>
           <a className="active" href="/contact">
