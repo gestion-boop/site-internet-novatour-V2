@@ -39,7 +39,9 @@ export function HomePage() {
           <a href={APP_URL} target="_blank" rel="noreferrer">
             Découvrir NovaTour
           </a>
-          <a href="/offres">Rejoignez-nous</a>
+          <a href="https://www.novavisio.fr/#etapes" target="_blank" rel="noreferrer">
+            Rejoignez-nous
+          </a>
           <a href="/contact">Contact</a>
         </nav>
 

@@ -104,7 +104,12 @@ export function MobileMenu() {
           <a href={APP_URL} target="_blank" rel="noreferrer" onClick={closeMenu}>
             <span>02</span>Découvrir NovaTour
           </a>
-          <a href="/offres" onClick={closeMenu}>
+          <a
+            href="https://www.novavisio.fr/#etapes"
+            target="_blank"
+            rel="noreferrer"
+            onClick={closeMenu}
+          >
             <span>03</span>Rejoignez-nous
           </a>
           <a href="/contact" onClick={closeMenu}>
