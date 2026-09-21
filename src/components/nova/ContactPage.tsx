@@ -84,7 +84,7 @@ export function ContactPage() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/novavisio-logo.png" alt="" width="32" height="32" />
+            <img src="/novavisio-logo.png" alt="" width="58" height="58" />
             <span>
               <strong>NovaVisio</strong>
               <small>Création immersive</small>
