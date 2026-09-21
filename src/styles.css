@@ -5230,11 +5230,13 @@ main.offers-page .footer-brand > p {
 
   .hero--video .hero-copy {
     /* Bloc de texte centré verticalement sur l'image, aligné à gauche : la
-       colonne occupe toute la hauteur et centre son contenu. */
+       colonne occupe toute la hauteur et centre son contenu, remonté
+       légèrement pour respirer davantage sous le header. */
     align-self: stretch;
     justify-content: center;
     min-height: 0;
     padding-left: clamp(48px, 6vw, 96px);
+    transform: translateY(-6vh);
   }
 
   /* Le titre peut être plus large que les paragraphes (qui restent à 600px

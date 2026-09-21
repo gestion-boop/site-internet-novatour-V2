@@ -66,10 +66,6 @@ export function HomePage() {
         </div>
 
         <div className="hero-copy">
-          <p className="hero-badge">
-            <span className="hero-badge__dot" aria-hidden="true" />
-            La plateforme gratuite pour explorer
-          </p>
           <h1>
             Un seul <span className="hero-accent">endroit</span> <br className="hero-br" />
             pour <span className="hero-accent">explorer</span> tous les autres.
