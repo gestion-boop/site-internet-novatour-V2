@@ -247,8 +247,8 @@ export function OffersPage() {
           </span>
 
           <div className="nv-flow__node nv-flow__node--novavisio">
-            <span className="nv-flow__icon">
-              <Camera aria-hidden="true" />
+            <span className="nv-flow__logo">
+              <img src="/novavisio-logo.png" alt="NovaVisio" />
             </span>
             <strong>NovaVisio</strong>
             <p>Création de votre visite immersive 360°</p>
@@ -259,8 +259,8 @@ export function OffersPage() {
           </span>
 
           <div className="nv-flow__node nv-flow__node--novatour">
-            <span className="nv-flow__icon">
-              <Globe aria-hidden="true" />
+            <span className="nv-flow__logo">
+              <img src="/novatour-logo.png" alt="NovaTour" />
             </span>
             <strong>NovaTour</strong>
             <p>Diffusion et découverte de votre établissement</p>
@@ -279,7 +279,7 @@ export function OffersPage() {
         </div>
 
         <p className="nv-flow__tagline">
-          « Nous créons l’expérience, <span className="novavisio-accent">NovaTour</span> la fait
+          « Nous créons l’expérience, <span className="novatour-accent">NovaTour</span> la fait
           découvrir. »
         </p>
       </section>

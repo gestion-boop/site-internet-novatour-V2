@@ -3017,6 +3017,10 @@ body.menu-open {
   color: var(--novavisio-gold-soft);
 }
 
+.novatour-accent {
+  color: #6fd6d9;
+}
+
 /* NovaVisio stays gold throughout the site; the stronger gold keeps that
    distinction accessible on the light contact and sizing panels. */
 .contact-section .novavisio-accent,
@@ -9921,8 +9925,8 @@ main.offers-page .footer-brand > p {
 }
 
 .nv-flow__node--novatour {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(7, 155, 159, 0.14);
+  border-color: rgba(7, 155, 159, 0.4);
 }
 
 .nv-flow__icon {
@@ -9940,6 +9944,37 @@ main.offers-page .footer-brand > p {
 .nv-flow__icon svg {
   height: 18px;
   width: 18px;
+}
+
+.nv-flow__logo {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  display: flex;
+  height: 56px;
+  justify-content: center;
+  overflow: hidden;
+  width: 56px;
+}
+
+.nv-flow__logo img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.nv-flow__node--novavisio .nv-flow__logo {
+  box-shadow: 0 0 0 2px rgba(255, 189, 89, 0.55);
+}
+
+.nv-flow__node--novatour .nv-flow__logo {
+  box-shadow: 0 0 0 2px rgba(7, 155, 159, 0.55);
+}
+
+.nv-flow__node--novatour strong {
+  color: #6fd6d9;
 }
 
 .nv-flow__arrow {
