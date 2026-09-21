@@ -14,6 +14,8 @@
   --accent-gradient: linear-gradient(120deg, #315a97 0%, #278299 100%);
   --novavisio-gold: #ffbd59;
   --novavisio-gold-soft: #ffe0a3;
+  --novavisio-cyan: #22e8f7;
+  --novavisio-cyan-soft: #9df2fa;
   --novavisio-ink: #20252b;
   --cream: #f7f8f5;
   --white: #ffffff;
@@ -94,7 +96,9 @@ main > section:not(.hero) {
        breathing room at the bottom, so every rounded panel is centred. */
     scroll-padding: calc(var(--desktop-header-height) + var(--desktop-panel-gap)) 0
       var(--desktop-panel-gap);
-    scroll-snap-type: y proximity;
+    /* Mandatory: relâcher la molette doit toujours aimanter vers un panneau
+       entier, jamais rester entre deux sections. */
+    scroll-snap-type: y mandatory;
     scrollbar-gutter: stable;
   }
 
@@ -112,7 +116,7 @@ main > section:not(.hero) {
   }
 
   main > footer {
-    scroll-snap-align: end;
+    scroll-snap-align: start;
     scroll-snap-stop: normal;
   }
 
@@ -177,42 +181,6 @@ main > section:not(.hero) {
     margin-top: clamp(10px, 1.8vh, 20px);
   }
 
-  .offers-hero {
-    min-height: calc(
-      var(--desktop-viewport-height, 100dvh) - var(--desktop-header-height) -
-        (var(--desktop-panel-gap) * 2)
-    );
-    padding: clamp(30px, 4.5vh, 54px) 24px;
-  }
-
-  /* Keep the complete NovaVisio / NovaTour explanation and both actions
-     inside one snapped MacBook Air viewport. */
-  .offers-hero h1 {
-    font-size: clamp(48px, 5.35vw, 82px);
-    line-height: 0.96;
-    margin: 8px 0 18px;
-  }
-
-  .offers-hero > p:not(.eyebrow) {
-    font-size: clamp(15px, 1.2vw, 17px);
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  .offers-hero .brand-flow {
-    margin-top: 17px !important;
-    min-height: 70px;
-    padding: 12px 18px;
-  }
-
-  .offers-hero .brand-flow span {
-    justify-content: center;
-  }
-
-  .offers-hero .offers-hero-actions {
-    margin-top: 16px !important;
-  }
-
   /* A pricing comparison needs room to be read and chosen. It intentionally
      scrolls as a complete editorial section instead of clipping plan details
      into a single viewport-sized frame. */
@@ -220,7 +188,7 @@ main > section:not(.hero) {
     /* The offers rail uses the same firm magnetic stop as the homepage.
        A full panel settles below the fixed header instead of lingering
        between the pricing section and the following panel. */
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
   }
 
   main.offers-page > section {
@@ -575,11 +543,6 @@ main > section:not(.hero) {
   .about-features strong {
     font-size: clamp(17px, 1.45vw, 20px);
   }
-
-  .offers-hero .brand-flow {
-    margin-top: 14px !important;
-    max-width: 760px;
-  }
 }
 
 main > section:not(.hero)::after {
@@ -622,7 +585,6 @@ main > section:not(.hero)::after {
 .benefits,
 .offers-preview,
 .app-section,
-.offers-hero,
 .pricing-section,
 .features-section,
 .venue-size-section,
@@ -637,10 +599,13 @@ a {
 
 .site-header {
   align-items: center;
-  backdrop-filter: blur(18px);
-  background: linear-gradient(90deg, rgba(4, 42, 53, 0.97), rgba(6, 72, 82, 0.94));
-  border-bottom: 1px solid rgba(115, 216, 209, 0.2);
-  box-shadow: 0 12px 40px rgba(2, 31, 40, 0.18);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  background: linear-gradient(90deg, rgba(4, 42, 53, 0.86), rgba(6, 72, 82, 0.8));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 12px 40px rgba(2, 31, 40, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   color: var(--white);
   display: grid;
   column-gap: 14px;
@@ -658,6 +623,12 @@ a {
   position: static;
   transform: none;
   justify-self: center;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header {
+    background: linear-gradient(90deg, #042a35, #064852);
+  }
 }
 
 .brand {
@@ -963,15 +934,18 @@ body.menu-open {
   margin: 0;
 }
 
-/* Mots-clés aux couleurs du logo : le dégradé bleu profond → teal du disque,
-   reproduit dans les lettres. Sans ombre, sinon elle transparaît. */
+/* Mots-clés aux couleurs du logo : dégradé bleu → cyan plus vif que le
+   disque, pour rester lisible sur toutes les scènes de la vidéo. Un
+   drop-shadow (et non un text-shadow, qui transparaît à travers le
+   dégradé) renforce le contraste sans ternir les couleurs. */
 .hero h1 .hero-accent {
-  background: linear-gradient(120deg, #3a68a8 0%, #2a8fa9 55%, #35a6bc 100%);
+  background: linear-gradient(120deg, #4f8fff 0%, #22b4e0 55%, #2fe0d0 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: #2a8fa9;
+  color: #22b4e0;
   -webkit-text-fill-color: transparent;
   text-shadow: none;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.5));
 }
 
 .wave {
@@ -1181,22 +1155,42 @@ body.menu-open {
   min-height: 46px;
   padding: 10px 22px;
   transition:
-    transform 180ms ease,
-    box-shadow 180ms ease,
-    background 180ms ease;
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease,
+    filter 220ms ease;
 }
 
 .button-primary {
   background: linear-gradient(135deg, #0ca7a9, #048d96);
-  box-shadow: 0 10px 24px rgba(2, 135, 143, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 10px 24px rgba(2, 135, 143, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
   color: var(--white);
 }
 
+.button-primary:hover {
+  filter: brightness(1.05);
+}
+
 .button-secondary {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(115, 216, 209, 0.72);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
   color: var(--white);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.button-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .button-secondary {
+    background: rgba(8, 61, 70, 0.55);
+  }
 }
 
 .button span {
@@ -1536,30 +1530,103 @@ body.menu-open {
 }
 
 .discover__bg img {
+  animation: discover-bg-drift 32s ease-in-out infinite alternate;
   display: block;
-  filter: blur(3px);
+  filter: blur(6px);
   height: 100%;
   object-fit: cover;
-  transform: scale(1.04);
+  transform: scale(1.06);
   width: 100%;
 }
 
+@keyframes discover-bg-drift {
+  from {
+    transform: scale(1.06) translate(0, 0);
+  }
+  to {
+    transform: scale(1.1) translate(-1.2%, -0.8%);
+  }
+}
+
 .discover__veil {
-  /* Le panneau lui-même est en verre dépoli : fond blanc semi-transparent
-     et flou d'arrière-plan, la photo légèrement floutée se devine au travers. */
-  background-color: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Verre dépoli premium : très translucide (la photo se devine nettement
+     au travers), fort flou d'arrière-plan et légère saturation pour un
+     rendu "Liquid Glass" plutôt qu'un simple voile blanc opaque. */
+  background-color: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   inset: 0;
+  overflow: hidden;
   position: absolute;
   z-index: 1;
+}
+
+/* Reflet lumineux très diffus, comme une plaque de verre éclairée
+   depuis le coin supérieur gauche : subtil, jamais "plastique". */
+.discover__veil::before {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.08) 22%,
+    transparent 46%
+  );
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* Halo diffus qui dérive très légèrement, sans jamais distraire. */
+.discover__veil::after {
+  animation: discover-halo-drift 22s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 60%);
+  border-radius: 50%;
+  content: "";
+  height: 60%;
+  opacity: 0.5;
+  pointer-events: none;
+  position: absolute;
+  right: -10%;
+  top: -15%;
+  width: 40%;
+}
+
+@keyframes discover-halo-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-4%, 3%);
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .discover__veil {
+    background-color: rgba(255, 255, 255, 0.82);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .discover__bg img,
+  .discover__veil::after {
+    animation: none;
+  }
 }
 
 .discover > .section-heading,
 .discover > .places-grid {
   position: relative;
   z-index: 2;
+}
+
+/* Le voile est très translucide : une ombre portée légère garde le texte
+   lisible quelle que soit la zone de la photo qui se devine dessous. */
+.discover > .section-heading .eyebrow,
+.discover > .section-heading h2,
+.discover > .section-heading .text-link {
+  text-shadow: 0 1px 16px rgba(255, 255, 255, 0.6);
 }
 
 .discover .places-grid {
@@ -1700,8 +1767,38 @@ body.menu-open {
     rgba(255, 255, 255, 0.78) 100%
   );
   inset: 0;
+  overflow: hidden;
   position: absolute;
   z-index: 1;
+}
+
+.about-editorial__veil::after {
+  animation: about-editorial-halo-drift 26s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(115, 216, 209, 0.35), transparent 60%);
+  border-radius: 50%;
+  content: "";
+  height: 55%;
+  left: -12%;
+  opacity: 0.6;
+  pointer-events: none;
+  position: absolute;
+  top: -18%;
+  width: 38%;
+}
+
+@keyframes about-editorial-halo-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(4%, 3%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-editorial__veil::after {
+    animation: none;
+  }
 }
 
 .about--editorial > .tour-preview,
@@ -1819,7 +1916,9 @@ body.menu-open {
 .about-features > a {
   align-items: center;
   background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(8, 116, 123, 0.1);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 21px;
   box-shadow: 0 18px 45px rgba(4, 55, 65, 0.07);
   display: grid;
@@ -1829,13 +1928,22 @@ body.menu-open {
   padding: 12px 22px 12px 12px;
   transition:
     box-shadow 250ms ease,
-    transform 250ms ease;
+    transform 250ms ease,
+    background 250ms ease;
 }
 
 .about-features article:hover,
 .about-features > a:hover {
+  background: rgba(255, 255, 255, 0.85);
   box-shadow: 0 26px 55px rgba(4, 55, 65, 0.13);
   transform: translateY(-4px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .about-features article,
+  .about-features > a {
+    background: rgba(255, 255, 255, 0.92);
+  }
 }
 
 .feature-icon {
@@ -2908,30 +3016,12 @@ body.menu-open {
   background: #091820;
 }
 
-.offers-hero {
-  align-items: center;
-  background:
-    radial-gradient(circle at 82% 24%, rgba(32, 190, 193, 0.2), transparent 30%),
-    radial-gradient(circle at 12% 86%, rgba(20, 83, 112, 0.24), transparent 34%),
-    linear-gradient(145deg, #071922, #0a303b);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 160px 24px 90px;
-  text-align: center;
-}
-
-.offers-hero .eyebrow {
-  color: var(--aqua);
-}
-
-.offers-hero .eyebrow.novavisio-accent {
-  color: var(--novavisio-gold-soft);
-}
-
 .novavisio-accent {
   color: var(--novavisio-gold-soft);
+}
+
+.novatour-accent {
+  color: #6fd6d9;
 }
 
 /* NovaVisio stays gold throughout the site; the stronger gold keeps that
@@ -2941,43 +3031,6 @@ body.menu-open {
 .pricing-section .novavisio-accent,
 .quote-section .novavisio-accent {
   color: #b8791f;
-}
-
-.offers-hero > p:not(.eyebrow) .novavisio-accent {
-  color: var(--novavisio-gold-soft);
-  font-weight: 800;
-}
-
-.offers-hero h1 {
-  font-size: clamp(38px, 4.4vw, 66px);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-  margin: 10px 0 24px;
-}
-
-.offers-hero h1 em {
-  color: #44c7ca;
-  font-style: normal;
-}
-
-.offers-hero > p:not(.eyebrow) {
-  color: #a5bec3;
-  font-size: 18px;
-  line-height: 1.7;
-  max-width: 760px;
-}
-
-.offers-hero > div {
-  align-items: center;
-  display: flex;
-  gap: 26px;
-  margin-top: 30px;
-}
-
-.offers-hero .offers-hero-actions > a:last-child {
-  color: var(--aqua);
-  font-weight: 800;
 }
 
 .brand-flow {
@@ -3069,10 +3122,6 @@ body.menu-open {
   font-size: 10px;
   font-style: normal;
   line-height: 1.25;
-}
-
-.offers-hero-actions {
-  margin-top: 22px !important;
 }
 
 .offers-page .offers-section-heading .eyebrow {
@@ -3957,8 +4006,7 @@ footer div:not(.footer-brand) a {
     width: 100%;
   }
 
-  .offers-preview-heading,
-  .offers-hero > div {
+  .offers-preview-heading {
     align-items: flex-start;
     flex-direction: column;
   }
@@ -4094,28 +4142,6 @@ footer div:not(.footer-brand) a {
 
   .section {
     padding: 56px 18px;
-  }
-
-  .offers-hero {
-    align-items: flex-start;
-    padding: 140px 22px 72px;
-    text-align: left;
-  }
-
-  .offers-hero h1 {
-    font-size: 48px;
-  }
-
-  .offers-hero > div {
-    width: 100%;
-  }
-
-  .offers-hero .brand-flow {
-    grid-template-columns: 1fr auto 1fr;
-  }
-
-  .offers-hero .button {
-    width: 100%;
   }
 
   .pricing-section,
@@ -5046,11 +5072,6 @@ footer div:not(.footer-brand) a {
   .about-features strong {
     font-size: clamp(17px, 1.45vw, 20px);
   }
-
-  .offers-hero .brand-flow {
-    margin-top: 14px !important;
-    max-width: 760px;
-  }
 }
 
 /* Offers page: calibrate the footer so the bottom logos stay fully visible
@@ -5058,7 +5079,7 @@ footer div:not(.footer-brand) a {
 main.offers-page > footer {
   min-height: 300px;
   padding: 54px clamp(28px, 5vw, 76px) 32px;
-  scroll-snap-align: end;
+  scroll-snap-align: start;
 }
 
 main.offers-page .footer-brand img {
@@ -5069,12 +5090,6 @@ main.offers-page .footer-brand img {
 main.offers-page .footer-brand > p {
   font-size: 16px;
   line-height: 1.55;
-}
-
-/* The contact form on the offers page is the last content section; the footer
-   should become the final snap target so the bottom logos remain visible. */
-main.offers-page .quote-section {
-  scroll-snap-align: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5221,11 +5236,13 @@ main.offers-page .quote-section {
 
   .hero--video .hero-copy {
     /* Bloc de texte centré verticalement sur l'image, aligné à gauche : la
-       colonne occupe toute la hauteur et centre son contenu. */
+       colonne occupe toute la hauteur et centre son contenu, remonté
+       légèrement pour respirer davantage sous le header. */
     align-self: stretch;
     justify-content: center;
     min-height: 0;
     padding-left: clamp(48px, 6vw, 96px);
+    transform: translateY(-6vh);
   }
 
   /* Le titre peut être plus large que les paragraphes (qui restent à 600px
@@ -6497,6 +6514,14 @@ main.offers-page .quote-section {
     gap: 24px;
   }
 
+  /* Quand ce n'est pas le vrai hero qui ouvre la page (Nos offres,
+     NovaVisio, Contact...), la première section suit directement le
+     header en position absolue : il lui faut assez de marge en haut
+     pour ne pas passer dessous. */
+  main > header + section:not(.hero) {
+    padding-top: 130px !important;
+  }
+
   main > section.snap-section,
   main > section.hero {
     scroll-snap-align: none;
@@ -6604,8 +6629,7 @@ main.offers-page .quote-section {
   .benefits-heading h2,
   .offers-section-heading h2,
   .partner-showcase h2,
-  .contact-heading h1,
-  .offers-hero h1 {
+  .contact-heading h1 {
     font-size: clamp(28px, 7.4vw, 38px) !important;
     line-height: 1.08;
   }
@@ -6709,12 +6733,6 @@ main.offers-page .quote-section {
 
   .brand-flow > span:not(.brand-flow__side) {
     display: none;
-  }
-
-  .offers-hero-actions {
-    display: grid;
-    gap: 10px;
-    width: 100%;
   }
 
   .pricing-grid,
@@ -7293,7 +7311,37 @@ main.offers-page .quote-section {
     rgba(4, 24, 38, 0.42) 100%
   );
   inset: 0;
+  overflow: hidden;
   position: absolute;
+}
+
+.saison-showcase__veil::after {
+  animation: saison-showcase-halo-drift 28s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(115, 216, 209, 0.28), transparent 62%);
+  border-radius: 50%;
+  content: "";
+  height: 60%;
+  opacity: 0.7;
+  pointer-events: none;
+  position: absolute;
+  right: -10%;
+  top: -20%;
+  width: 42%;
+}
+
+@keyframes saison-showcase-halo-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-3%, 4%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saison-showcase__veil::after {
+    animation: none;
+  }
 }
 
 .saison-showcase__inner {
@@ -7625,26 +7673,32 @@ main.offers-page .quote-section {
    ============================================================ */
 .place-card {
   background-color: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 24px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 26px;
+  box-shadow: 0 14px 40px 0 rgba(4, 55, 65, 0.1);
   color: var(--ink);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   text-decoration: none;
   transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
-    background-color 220ms ease;
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    background-color 260ms ease;
 }
 
 .place-card:hover {
   background-color: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 18px 48px 0 rgba(4, 55, 65, 0.16);
   transform: translateY(-4px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .place-card {
+    background-color: rgba(255, 255, 255, 0.94);
+  }
 }
 
 .place-card__media {
@@ -8157,6 +8211,18 @@ main.offers-page .quote-section {
   width: auto;
 }
 
+.saison-platforms__logo--expedia,
+.saison-platforms__logo--abritel {
+  background: #fff;
+}
+
+.saison-platforms__logo--expedia img,
+.saison-platforms__logo--abritel img {
+  display: block;
+  height: 32px;
+  width: auto;
+}
+
 .saison-showcase__sub {
   margin-bottom: clamp(14px, 2vh, 22px);
 }
@@ -8173,6 +8239,11 @@ main.offers-page .quote-section {
 
   .saison-platforms__logo--booking img {
     height: 48px;
+  }
+
+  .saison-platforms__logo--expedia img,
+  .saison-platforms__logo--abritel img {
+    height: 26px;
   }
 }
 
@@ -8275,6 +8346,16 @@ main.offers-page .quote-section {
   border-radius: 10px;
   box-shadow: none;
   height: 36px;
+}
+
+.saison-platforms__logo--expedia,
+.saison-platforms__logo--abritel {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.saison-platforms__logo--expedia img,
+.saison-platforms__logo--abritel img {
+  height: 22px;
 }
 
 .saison-benefits {
@@ -8718,40 +8799,31 @@ main.offers-page .quote-section {
 
 .tour-preview__open {
   align-items: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  bottom: 16px;
   color: #fff;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
-  display: grid;
-  font-size: 11px;
-  font-weight: 800;
-  gap: 8px;
-  justify-items: center;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
   left: 50%;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
+  padding: 9px 18px;
   position: absolute;
   text-decoration: none;
-  text-transform: uppercase;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  transition:
+    background 200ms ease,
+    transform 200ms ease;
   z-index: 2;
 }
 
-.tour-preview__hotspot {
-  align-items: center;
-  background: var(--accent-gradient);
-  border: 2px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  display: inline-flex;
-  font-size: 13px;
-  font-weight: 900;
-  height: 56px;
-  justify-content: center;
-  transition: transform 200ms ease;
-  width: 56px;
-}
-
-.tour-preview__open:hover .tour-preview__hotspot {
-  transform: scale(1.08);
+.tour-preview__open:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateX(-50%) translateY(-2px);
 }
 
 .tour-preview__foot {
@@ -8818,38 +8890,63 @@ main.offers-page .quote-section {
   color: var(--ink);
   gap: clamp(40px, 6vw, 96px);
   grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  overflow: hidden;
   position: relative;
 }
 
-.app-section__watermark {
-  color: var(--accent-dark);
-  font-size: clamp(48px, 9vw, 140px);
-  font-weight: 800;
+.app-section__bg {
   inset: 0;
-  letter-spacing: -0.03em;
-  line-height: 0.92;
-  margin: 0;
-  opacity: 0.05;
-  overflow-wrap: break-word;
-  pointer-events: none;
+  overflow: hidden;
   position: absolute;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 0;
+}
+
+.app-section__bg img {
+  animation: app-section-bg-drift 32s ease-in-out infinite alternate;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  transform: scale(1.06);
+  width: 100%;
+}
+
+@keyframes app-section-bg-drift {
+  from {
+    transform: scale(1.06) translate(0, 0);
+  }
+  to {
+    transform: scale(1.1) translate(-1.2%, -0.8%);
+  }
+}
+
+/* Même esprit "verre dépoli" que les autres panneaux photo du site,
+   en version claire : la photo se devine sous un voile blanc translucide. */
+.app-section__veil {
+  background-color: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .app-section__veil {
+    background-color: rgba(255, 255, 255, 0.92);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-section__bg img {
+    animation: none;
+  }
 }
 
 .app-section--light > .app-copy,
 .app-section--light > .app-qr {
   position: relative;
   z-index: 1;
-}
-
-@media (max-width: 900px) {
-  .app-section__watermark {
-    display: none;
-  }
 }
 
 .app-copy--light .eyebrow {
@@ -9126,11 +9223,11 @@ main.offers-page .quote-section {
    à la maquette de référence (constellation + « Narbonne · 360° »).
    ============================================================ */
 .discover__constellation {
-  height: clamp(90px, 14vh, 150px);
+  height: clamp(70px, 12vh, 120px);
   inset: 2% 4% auto auto;
   pointer-events: none;
   position: absolute;
-  width: clamp(180px, 22vw, 280px);
+  width: clamp(160px, 20vw, 260px);
   z-index: 1;
 }
 
@@ -9145,20 +9242,939 @@ main.offers-page .quote-section {
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.9));
 }
 
-.discover__watermark {
-  bottom: -18px;
-  color: rgba(9, 64, 74, 0.55);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 14px;
-  font-style: italic;
-  letter-spacing: 0.02em;
-  position: absolute;
-  right: 8px;
-  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
+/* Le filigrane vit dans le flux normal, au-dessus du lien "Voir tous
+   les lieux" : contrairement à un positionnement absolu calé sur la
+   hauteur (variable) de la section, il ne peut jamais chevaucher le
+   titre ni le lien. */
+.discover__heading-side {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 @media (max-width: 900px) {
   .discover__constellation {
     display: none;
+  }
+
+  /* Même esprit "verre dépoli", mais un blur plus léger (coût de rendu
+     mobile) et un peu plus d'opacité pour garder une bonne lisibilité. */
+  .discover__veil {
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    background-color: rgba(255, 255, 255, 0.22);
+  }
+
+  .discover__veil::after {
+    height: 45%;
+    width: 55%;
+  }
+
+  .place-card {
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+  }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* ============================================================
+   Bandeau "Ils nous font confiance" : défilement continu des
+   logos partenaires déjà présents sur NovaTour.
+   ============================================================ */
+.trusted-partners {
+  border: 1px solid rgba(8, 116, 123, 0.08);
+  border-radius: 42px;
+  box-shadow: 0 30px 80px rgba(4, 55, 65, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vw, 44px);
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.trusted-partners__bg {
+  border-radius: inherit;
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}
+
+.trusted-partners__bg-image {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1400ms ease;
+  width: 100%;
+}
+
+.trusted-partners__bg-image.is-active {
+  opacity: 1;
+}
+
+/* Verre dépoli : les photos se devinent sous un voile clair, dans le
+   même esprit que les autres sections "Liquid Glass" du site. */
+.trusted-partners__veil {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(30px) saturate(140%);
+  -webkit-backdrop-filter: blur(30px) saturate(140%);
+  inset: 0;
+  position: absolute;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .trusted-partners__veil {
+    background-color: rgba(255, 255, 255, 0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trusted-partners__bg-image {
+    transition: none;
+  }
+}
+
+.trusted-partners__heading,
+.trusted-partners__track,
+.trusted-partners__list {
+  position: relative;
+  z-index: 1;
+}
+
+.trusted-partners__heading {
+  text-align: center;
+}
+
+.trusted-partners__track {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  margin-block: -12px;
+  overflow: hidden;
+  padding-block: 12px;
+  width: 100%;
+}
+
+.trusted-partners__scroller {
+  animation: trusted-partners-scroll 32s linear infinite;
+  display: flex;
+  gap: clamp(28px, 5vw, 56px);
+  width: max-content;
+}
+
+.trusted-partners__track:hover .trusted-partners__scroller {
+  animation-play-state: paused;
+}
+
+@keyframes trusted-partners-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.trusted-partners__logo {
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(4, 55, 65, 0.1);
+  display: block;
+  flex: 0 0 auto;
+  height: clamp(64px, 8vw, 92px);
+  overflow: hidden;
+  pointer-events: auto;
+  transition:
+    box-shadow 260ms ease,
+    transform 260ms ease;
+  width: clamp(64px, 8vw, 92px);
+}
+
+.trusted-partners__logo:hover,
+.trusted-partners__logo:focus-visible {
+  box-shadow: 0 14px 32px rgba(4, 55, 65, 0.18);
+  transform: translateY(-3px);
+}
+
+.trusted-partners__logo img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trusted-partners__scroller {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Page NovaVisio : vitrine dédiée à la visite virtuelle 360°.
+   ============================================================ */
+.novavisio-page {
+  background: #1a1a1c;
+}
+
+.nv-hero {
+  align-items: center;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255, 189, 89, 0.24), transparent 32%),
+    radial-gradient(circle at 8% 92%, rgba(255, 189, 89, 0.12), transparent 30%),
+    linear-gradient(155deg, #18181a 0%, #292420 55%, #3a2f1c 100%);
+  color: white;
+  display: grid;
+  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: 1fr 1.15fr;
+  overflow: hidden;
+  padding: clamp(72px, 12vh, 130px) clamp(28px, 4vw, 64px) clamp(36px, 6vh, 64px);
+  position: relative;
+}
+
+.nv-hero__glow {
+  background:
+    radial-gradient(circle at 14% 20%, rgba(255, 189, 89, 0.18), transparent 30%),
+    radial-gradient(circle at 92% 82%, rgba(255, 189, 89, 0.14), transparent 34%);
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.nv-hero__copy,
+.nv-viewer {
+  position: relative;
+  z-index: 1;
+}
+
+.nv-hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.6vh, 16px);
+  text-align: left;
+}
+
+.nv-hero__copy .eyebrow {
+  color: var(--novavisio-gold-soft);
+}
+
+.nv-hero__copy h1 {
+  font-size: clamp(32px, 3.2vw, 46px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.nv-hero__copy h1 em {
+  color: var(--novavisio-gold);
+  font-style: normal;
+}
+
+.nv-hero__copy > p {
+  color: #b8b2a6;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 46ch;
+}
+
+.nv-google-badge {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  display: inline-flex;
+  gap: 12px;
+  margin: clamp(4px, 1vh, 10px) 0;
+  padding: 10px 18px 10px 14px;
+  width: fit-content;
+}
+
+.nv-google-badge svg {
+  flex: none;
+  height: 26px;
+  width: 26px;
+}
+
+.nv-google-badge span {
+  display: grid;
+  gap: 1px;
+  text-align: left;
+}
+
+.nv-google-badge strong {
+  color: white;
+  font-size: 14px;
+}
+
+.nv-google-badge small {
+  color: #aca69c;
+  font-size: 12px;
+}
+
+.nv-hero .button-primary {
+  background: linear-gradient(135deg, #ffd583, #e8a53a);
+  box-shadow:
+    0 12px 32px rgba(255, 189, 89, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  color: #2b1c05;
+  width: fit-content;
+}
+
+.nv-hero__actions {
+  align-items: center;
+  display: flex;
+  gap: 22px;
+  margin-top: clamp(6px, 1.2vh, 12px);
+}
+
+.nv-hero__actions > a:last-child {
+  color: var(--novavisio-gold);
+  font-weight: 800;
+}
+
+.nv-viewer {
+  aspect-ratio: 4 / 3;
+  border-radius: 28px;
+  box-shadow: 0 40px 100px rgba(2, 20, 26, 0.45);
+  height: clamp(300px, 52vh, 500px);
+  justify-self: center;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+}
+
+.nv-viewer__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.nv-viewer__place {
+  align-items: center;
+  background: rgba(22, 20, 17, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  color: white;
+  display: flex;
+  gap: 10px;
+  left: 16px;
+  padding: 10px 16px 10px 12px;
+  position: absolute;
+  top: 16px;
+}
+
+.nv-viewer__place svg {
+  color: var(--novavisio-gold);
+  flex: none;
+  height: 18px;
+  width: 18px;
+}
+
+.nv-viewer__place span {
+  display: grid;
+  gap: 0;
+  text-align: left;
+}
+
+.nv-viewer__place strong {
+  font-size: 13px;
+}
+
+.nv-viewer__place small {
+  color: #d9d4c9;
+  font-size: 11px;
+}
+
+.nv-viewer__daynight {
+  background: rgba(22, 20, 17, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 999px;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.nv-viewer__daynight span {
+  align-items: center;
+  border-radius: 999px;
+  color: #d9d4c9;
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 6px;
+  padding: 6px 12px;
+}
+
+.nv-viewer__daynight span svg {
+  height: 13px;
+  width: 13px;
+}
+
+.nv-viewer__daynight span.is-active {
+  background: var(--novavisio-gold);
+  color: #2b1c05;
+}
+
+.nv-viewer__pin {
+  align-items: center;
+  background: rgba(22, 20, 17, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 999px;
+  color: white;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 8px;
+  padding: 7px 14px 7px 10px;
+  position: absolute;
+}
+
+.nv-viewer__pin::before {
+  background: var(--novavisio-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 189, 89, 0.28);
+  content: "";
+  height: 7px;
+  width: 7px;
+}
+
+.nv-viewer__controls {
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  left: 16px;
+  position: absolute;
+}
+
+.nv-viewer__controls svg {
+  align-items: center;
+  background: rgba(22, 20, 17, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  height: 36px;
+  padding: 9px;
+  width: 36px;
+}
+
+.nv-viewer__badge {
+  bottom: 18px;
+  position: absolute;
+  right: 18px;
+}
+
+.nv-viewer__badge-ring {
+  align-items: center;
+  background: rgba(22, 20, 17, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid var(--novavisio-gold);
+  border-radius: 50%;
+  color: var(--novavisio-gold);
+  display: flex;
+  font-size: 13px;
+  font-weight: 800;
+  height: 58px;
+  justify-content: center;
+  width: 58px;
+}
+
+.nv-features {
+  background: linear-gradient(180deg, #241f1a, #18181a);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vh, 44px);
+  justify-content: center;
+  padding: clamp(64px, 10vh, 110px) clamp(28px, 4vw, 64px);
+}
+
+.nv-features__intro {
+  max-width: 640px;
+}
+
+.nv-features__intro .eyebrow {
+  color: var(--novavisio-gold-soft);
+}
+
+.nv-features__intro h2 {
+  font-size: clamp(28px, 2.8vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 8px 0 14px;
+}
+
+.nv-features__intro p {
+  color: #aca69c;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.nv-features__grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.nv-features__grid article {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+}
+
+.nv-features__icon {
+  align-items: center;
+  background: rgba(255, 189, 89, 0.14);
+  border: 1px solid rgba(255, 189, 89, 0.35);
+  border-radius: 12px;
+  color: var(--novavisio-gold);
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+
+.nv-features__icon svg {
+  height: 20px;
+  width: 20px;
+}
+
+.nv-features__grid strong {
+  color: white;
+  font-size: 16px;
+}
+
+.nv-features__grid p {
+  color: #aca69c;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .nv-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .nv-viewer {
+    aspect-ratio: 16 / 11;
+    height: auto;
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .nv-features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .nv-features__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nv-viewer__pin {
+    font-size: 11px;
+    padding: 6px 12px 6px 8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .trusted-partners__logo {
+    height: 56px;
+    width: 56px;
+  }
+
+  .trusted-partners__scroller {
+    animation-duration: 22s;
+  }
+}
+
+/* ============================================================
+   Page Offres : étapes, savoir-faire, parcours NovaVisio →
+   NovaTour, cibles et appel à l'action final.
+   ============================================================ */
+.nv-steps {
+  background: linear-gradient(180deg, #18181a, #201b16);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4.5vh, 48px);
+  justify-content: center;
+  padding: clamp(64px, 10vh, 110px) clamp(28px, 4vw, 64px);
+}
+
+.nv-steps__intro {
+  max-width: 640px;
+}
+
+.nv-steps__intro .eyebrow {
+  color: var(--novavisio-gold-soft);
+}
+
+.nv-steps__intro h2 {
+  font-size: clamp(28px, 2.8vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 8px 0 0;
+}
+
+.nv-steps__grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.nv-steps__grid article {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px;
+}
+
+.nv-steps__index {
+  color: var(--novavisio-gold);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.nv-steps__grid h3 {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.nv-steps__grid p {
+  color: #aca69c;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.nv-flow {
+  align-items: center;
+  background: linear-gradient(180deg, #201b16, #18181a);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4.5vh, 44px);
+  justify-content: center;
+  padding: clamp(64px, 10vh, 110px) clamp(28px, 4vw, 64px);
+  text-align: center;
+}
+
+.nv-flow__intro {
+  max-width: 680px;
+}
+
+.nv-flow__intro .eyebrow {
+  color: var(--novavisio-gold-soft);
+}
+
+.nv-flow__intro h2 {
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 8px 0 0;
+}
+
+.nv-flow__chain {
+  align-items: center;
+  display: flex;
+  gap: clamp(10px, 1.6vw, 20px);
+  justify-content: center;
+  width: 100%;
+}
+
+.nv-flow__node {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 220px;
+  padding: 22px 16px;
+}
+
+.nv-flow__node strong {
+  font-size: 15px;
+}
+
+.nv-flow__node p {
+  color: #aca69c;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.nv-flow__node--novavisio {
+  background: rgba(255, 189, 89, 0.1);
+  border-color: rgba(255, 189, 89, 0.35);
+}
+
+.nv-flow__node--novatour {
+  background: rgba(7, 155, 159, 0.14);
+  border-color: rgba(7, 155, 159, 0.4);
+}
+
+.nv-flow__icon {
+  align-items: center;
+  background: rgba(255, 189, 89, 0.14);
+  border: 1px solid rgba(255, 189, 89, 0.35);
+  border-radius: 12px;
+  color: var(--novavisio-gold);
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+
+.nv-flow__icon svg {
+  height: 18px;
+  width: 18px;
+}
+
+.nv-flow__logo {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  display: flex;
+  height: 56px;
+  justify-content: center;
+  overflow: hidden;
+  width: 56px;
+}
+
+.nv-flow__logo img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.nv-flow__node--novavisio .nv-flow__logo {
+  box-shadow: 0 0 0 2px rgba(255, 189, 89, 0.55);
+}
+
+.nv-flow__node--novatour .nv-flow__logo {
+  box-shadow: 0 0 0 2px rgba(7, 155, 159, 0.55);
+}
+
+.nv-flow__node--novatour strong {
+  color: #6fd6d9;
+}
+
+.nv-flow__arrow {
+  color: var(--novavisio-gold);
+  flex: none;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nv-flow__tagline {
+  color: white;
+  font-size: clamp(17px, 1.6vw, 21px);
+  font-style: italic;
+  font-weight: 500;
+  margin: 0;
+  max-width: 640px;
+}
+
+.nv-audience {
+  align-items: center;
+  background: linear-gradient(180deg, #18181a, #201b16);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vh, 36px);
+  justify-content: center;
+  padding: clamp(64px, 10vh, 110px) clamp(28px, 4vw, 64px);
+  text-align: center;
+}
+
+.nv-audience__intro {
+  max-width: 680px;
+}
+
+.nv-audience__intro .eyebrow {
+  color: var(--novavisio-gold-soft);
+}
+
+.nv-audience__intro h2 {
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 8px 0 0;
+}
+
+.nv-audience__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  max-width: 900px;
+  padding: 0;
+}
+
+.nv-audience__tags li {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: #e6e1d7;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+
+.nv-audience__note {
+  color: #aca69c;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 56ch;
+}
+
+.nv-cta-final {
+  align-items: center;
+  background: linear-gradient(155deg, #201b16 0%, #2b2318 55%, #3a2f1c 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(64px, 10vh, 110px) clamp(28px, 4vw, 64px);
+  position: relative;
+  text-align: center;
+}
+
+.nv-cta-final__glow {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 189, 89, 0.24), transparent 40%),
+    radial-gradient(circle at 15% 90%, rgba(255, 189, 89, 0.12), transparent 34%);
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.nv-cta-final__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 1.8vh, 18px);
+  max-width: 680px;
+  position: relative;
+  z-index: 1;
+}
+
+.nv-cta-final__inner .eyebrow {
+  color: var(--novavisio-gold-soft);
+}
+
+.nv-cta-final__inner h2 {
+  font-size: clamp(28px, 3vw, 46px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  margin: 0;
+}
+
+.nv-cta-final__inner > p {
+  color: #d9d4c9;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 52ch;
+}
+
+.nv-cta-final__actions {
+  align-items: center;
+  display: flex;
+  gap: 22px;
+  margin-top: clamp(6px, 1.2vh, 12px);
+}
+
+.nv-cta-final__actions .button-primary {
+  background: linear-gradient(135deg, #ffd583, #e8a53a);
+  box-shadow:
+    0 12px 32px rgba(255, 189, 89, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  color: #2b1c05;
+}
+
+.nv-cta-final__actions > a:last-child {
+  color: var(--novavisio-gold);
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .nv-steps__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nv-flow__chain {
+    flex-direction: column;
+  }
+
+  .nv-flow__node {
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .nv-flow__arrow {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 620px) {
+  .nv-steps__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nv-audience__tags li {
+    font-size: 13px;
+    padding: 8px 16px;
   }
 }

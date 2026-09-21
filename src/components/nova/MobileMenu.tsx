@@ -86,7 +86,12 @@ export function MobileMenu() {
             <img src="/novatour-logo.png" alt="" width="48" height="48" />
             <span>NovaTour</span>
           </a>
-          <button className="menu-close" type="button" aria-label="Fermer le menu" onClick={closeMenu}>
+          <button
+            className="menu-close"
+            type="button"
+            aria-label="Fermer le menu"
+            onClick={closeMenu}
+          >
             ×
           </button>
         </div>
@@ -100,13 +105,10 @@ export function MobileMenu() {
             <span>02</span>Découvrir NovaTour
           </a>
           <a href="/offres" onClick={closeMenu}>
-            <span>03</span>Nos offres
-          </a>
-          <a href="/#partenaire" onClick={closeMenu}>
-            <span>04</span>Devenir partenaire
+            <span>03</span>Rejoignez-nous
           </a>
           <a href="/contact" onClick={closeMenu}>
-            <span>05</span>Contact
+            <span>04</span>Contact
           </a>
         </nav>
 

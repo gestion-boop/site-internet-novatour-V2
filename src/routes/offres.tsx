@@ -37,11 +37,6 @@ export const Route = createFileRoute("/offres")({
           areaServed: { "@type": "AdministrativeArea", name: "Occitanie" },
           url: URL,
           description: DESCRIPTION,
-          offers: [
-            { "@type": "Offer", name: "Statique", price: "9.90", priceCurrency: "EUR" },
-            { "@type": "Offer", name: "Dynamique", price: "19.90", priceCurrency: "EUR" },
-            { "@type": "Offer", name: "Premium", price: "24.90", priceCurrency: "EUR" },
-          ],
         }),
       },
     ],

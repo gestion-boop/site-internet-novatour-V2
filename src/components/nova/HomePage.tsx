@@ -3,7 +3,6 @@ import { LatestPlaces } from "./LatestPlaces";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import {
-  BadgeCheck,
   ClipboardList,
   Compass,
   Eye,
@@ -16,6 +15,7 @@ import {
 } from "lucide-react";
 import { SeasonalStays } from "./SeasonalStays";
 import { TourPreview } from "./TourPreview";
+import { TrustedPartners } from "./TrustedPartners";
 
 const APP_URL = "https://app.novatour.fr";
 const STAYS_URL = "https://app.novatour.fr/?category=h%C3%A9bergements";
@@ -39,11 +39,13 @@ export function HomePage() {
           <a href={APP_URL} target="_blank" rel="noreferrer">
             Découvrir NovaTour
           </a>
-          <a href="/offres">Nos offres</a>
-          <a href="#partenaire">Pourquoi nous rejoindre</a>
+          <a href="/offres">Rejoignez-nous</a>
           <a href="/contact">Contact</a>
         </nav>
 
+        <a className="header-cta" href="/offres#devis">
+          Obtenir un devis
+        </a>
         <MobileMenu />
       </header>
 
@@ -63,17 +65,13 @@ export function HomePage() {
         </div>
 
         <div className="hero-copy">
-          <p className="hero-badge">
-            <span className="hero-badge__dot" aria-hidden="true" />
-            La plateforme gratuite pour explorer
-          </p>
           <h1>
             Un seul <span className="hero-accent">endroit</span> <br className="hero-br" />
             pour <span className="hero-accent">explorer</span> tous les autres.
           </h1>
           <p className="hero-intro">
-            Explorez les meilleurs lieux de la région à 360°, puis retrouvez toutes leurs
-            informations utiles au même endroit.
+            Découvrez des lieux, des expériences et des adresses à explorer en visites immersives et
+            intéractives en 360°, avec toutes les informations utiles au même endroit.
           </p>
 
           <div className="hero-actions">
@@ -87,10 +85,6 @@ export function HomePage() {
           </div>
 
           <ul className="hero-proofs">
-            <li>
-              <BadgeCheck aria-hidden="true" />
-              Gratuit
-            </li>
             <li>
               <Smartphone aria-hidden="true" />
               Sans téléchargement
@@ -125,16 +119,17 @@ export function HomePage() {
               <circle cx="200" cy="20" r="1.8" />
             </g>
           </svg>
-          <span className="discover__watermark">Narbonne · 360° · NovaTour</span>
         </div>
         <div className="section-heading">
           <div>
             <p className="eyebrow">Les dernières découvertes</p>
             <h2 id="discover-title">Ils viennent de rejoindre NovaTour</h2>
           </div>
-          <a className="text-link" href={APP_URL} target="_blank" rel="noreferrer">
-            Voir tous les lieux <span>→</span>
-          </a>
+          <div className="discover__heading-side">
+            <a className="text-link" href={APP_URL} target="_blank" rel="noreferrer">
+              Voir tous les lieux <span>→</span>
+            </a>
+          </div>
         </div>
         <LatestPlaces />
       </section>
@@ -147,11 +142,10 @@ export function HomePage() {
         <TourPreview onTourChange={(tour) => setConceptBg(tour.image)} />
 
         <div className="about-copy about-copy--editorial">
-          <p className="eyebrow">Le concept</p>
           <h2>
-            Tout un territoire
+            Tout réuni
             <br />
-            au creux de la main
+            au même endroit
           </h2>
 
           <div className="about-features">
@@ -161,7 +155,9 @@ export function HomePage() {
               </span>
               <div>
                 <small>01 — Découvrir</small>
-                <strong>Visites immersives interactives 360°</strong>
+                <strong>
+                  Découvrez autrement un lieu grâce à la visite immersive et intéractive
+                </strong>
               </div>
             </article>
             <article>
@@ -170,7 +166,10 @@ export function HomePage() {
               </span>
               <div>
                 <small>02 — S’informer</small>
-                <strong>Coordonnées, réseaux sociaux et avis réunis</strong>
+                <strong>
+                  Retrouvez toutes les coordonnées, les réseaux sociaux, les menus, les vidéos, sur
+                  la même interface
+                </strong>
               </div>
             </article>
             <article>
@@ -221,12 +220,20 @@ export function HomePage() {
             </div>
 
             <div className="saison-platforms" aria-label="Plateformes de réservation concernées">
-              <span className="saison-platforms__label">Visitez sur NovaTour, réservez sur</span>
+              <span className="saison-platforms__label">
+                Visitez sur NovaTour, et réservez sur les plateformes
+              </span>
               <span className="saison-platforms__logo saison-platforms__logo--airbnb">
                 <img src="/stays/airbnb-logo.png" alt="Airbnb" height="24" />
               </span>
               <span className="saison-platforms__logo saison-platforms__logo--booking">
                 <img src="/stays/booking-logo.png" alt="Booking.com" height="36" />
+              </span>
+              <span className="saison-platforms__logo saison-platforms__logo--expedia">
+                <img src="/stays/expedia-logo.png" alt="Expedia" height="22" />
+              </span>
+              <span className="saison-platforms__logo saison-platforms__logo--abritel">
+                <img src="/stays/abritel-logo.png" alt="Abritel" height="22" />
               </span>
               <span className="saison-platforms__label">ou en direct.</span>
             </div>
@@ -257,10 +264,13 @@ export function HomePage() {
         </div>
       </section>
 
+      <TrustedPartners />
+
       <section className="app-section app-section--light section">
-        <p className="app-section__watermark" aria-hidden="true">
-          Un seul endroit pour explorer tous les autres.
-        </p>
+        <div className="app-section__bg" aria-hidden="true">
+          <img src="/hero-occitanie.png" alt="" loading="lazy" />
+        </div>
+        <div className="app-section__veil" aria-hidden="true" />
         <div className="app-copy app-copy--light">
           <p className="eyebrow">L’application web</p>
           <h2>
@@ -375,6 +385,13 @@ export function HomePage() {
             rel="noreferrer"
           >
             Facebook
+          </a>
+          <a
+            href="https://fr.linkedin.com/showcase/novatournarbonne/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
           </a>
         </div>
         <p className="copyright">© 2026 NovaTour. Tous droits réservés.</p>

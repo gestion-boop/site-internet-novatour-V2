@@ -27,14 +27,14 @@ type FeaturedPlace = {
 
 const fallbackPlaces: FeaturedPlace[] = [
   {
-    category: "Se restaurer",
+    category: "Institut de bien-être",
     city: "Narbonne",
-    coverUrl: "/occitanie-restaurant.png",
-    family: "restaurant",
-    href: APP_URL,
-    id: "fallback-restaurant",
-    logoUrl: "/novatour-logo.png",
-    title: "Saveurs d’Occitanie",
+    coverUrl: "/stays/ariya-salon.webp",
+    family: "shop",
+    href: "https://app.novatour.fr/place/ariya-bien-etre-et-tradition?category=commerces&id=bcaf93c6-4286-4434-811e-862c09d70265",
+    id: "fallback-ariya",
+    logoUrl: "/partners/ariya.webp",
+    title: "Ariya",
   },
   {
     category: "Hébergement",

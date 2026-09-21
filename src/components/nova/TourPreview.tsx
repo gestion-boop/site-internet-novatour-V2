@@ -19,7 +19,7 @@ const tours: Tour[] = [
   {
     alt: "Cuisine ouverte de l’appartement Le Cosy en visite 360°",
     city: "Narbonne",
-    href: APP_URL,
+    href: "https://app.novatour.fr/place/le-cosy?category=h%C3%A9bergements&search=cosy&id=1d274a97-8e90-42c6-897f-a0928301562c",
     id: "le-cosy",
     image: "/stays/le-cosy-cuisine.webp",
     kind: "Appartement",
@@ -51,6 +51,15 @@ const tours: Tour[] = [
     image: "/stays/immosphera-salon.webp",
     kind: "Professionnels",
     title: "ImmoSphera",
+  },
+  {
+    alt: "Couloir zen de l’institut Ariya en visite 360°",
+    city: "Narbonne",
+    href: "https://app.novatour.fr/place/ariya-bien-etre-et-tradition?category=commerces&id=bcaf93c6-4286-4434-811e-862c09d70265",
+    id: "ariya",
+    image: "/stays/ariya-salon.webp",
+    kind: "Institut de bien-être",
+    title: "Ariya",
   },
 ];
 
@@ -116,10 +125,7 @@ export function TourPreview({ onTourChange }: { onTourChange?: (tour: Tour) => v
           {tour.city} · {tour.kind}
         </span>
         <a className="tour-preview__open" href={tour.href} target="_blank" rel="noreferrer">
-          <span className="tour-preview__hotspot" aria-hidden="true">
-            360°
-          </span>
-          Ouvrir la visite
+          Ouvrir la visite 360°
         </a>
       </div>
 
