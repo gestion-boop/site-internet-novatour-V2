@@ -9707,7 +9707,7 @@ main.offers-page .footer-brand > p {
 .nv-features__grid {
   display: grid;
   gap: 18px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .nv-features__grid article {
@@ -9785,5 +9785,333 @@ main.offers-page .footer-brand > p {
 
   .trusted-partners__scroller {
     animation-duration: 22s;
+  }
+}
+
+/* ============================================================
+   Page Offres : étapes, savoir-faire, parcours NovaVisio →
+   NovaTour, cibles et appel à l'action final.
+   ============================================================ */
+.nv-steps {
+  background: linear-gradient(180deg, #18181a, #201b16);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4.5vh, 48px);
+  justify-content: center;
+  padding: clamp(64px, 10vh, 110px) clamp(28px, 4vw, 64px);
+}
+
+.nv-steps__intro {
+  max-width: 640px;
+}
+
+.nv-steps__intro .eyebrow {
+  color: var(--novavisio-gold-soft);
+}
+
+.nv-steps__intro h2 {
+  font-size: clamp(28px, 2.8vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 8px 0 0;
+}
+
+.nv-steps__grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.nv-steps__grid article {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px;
+}
+
+.nv-steps__index {
+  color: var(--novavisio-gold);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.nv-steps__grid h3 {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.nv-steps__grid p {
+  color: #aca69c;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.nv-flow {
+  align-items: center;
+  background: linear-gradient(180deg, #201b16, #18181a);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4.5vh, 44px);
+  justify-content: center;
+  padding: clamp(64px, 10vh, 110px) clamp(28px, 4vw, 64px);
+  text-align: center;
+}
+
+.nv-flow__intro {
+  max-width: 680px;
+}
+
+.nv-flow__intro .eyebrow {
+  color: var(--novavisio-gold-soft);
+}
+
+.nv-flow__intro h2 {
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 8px 0 0;
+}
+
+.nv-flow__chain {
+  align-items: center;
+  display: flex;
+  gap: clamp(10px, 1.6vw, 20px);
+  justify-content: center;
+  width: 100%;
+}
+
+.nv-flow__node {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 220px;
+  padding: 22px 16px;
+}
+
+.nv-flow__node strong {
+  font-size: 15px;
+}
+
+.nv-flow__node p {
+  color: #aca69c;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.nv-flow__node--novavisio {
+  background: rgba(255, 189, 89, 0.1);
+  border-color: rgba(255, 189, 89, 0.35);
+}
+
+.nv-flow__node--novatour {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.nv-flow__icon {
+  align-items: center;
+  background: rgba(255, 189, 89, 0.14);
+  border: 1px solid rgba(255, 189, 89, 0.35);
+  border-radius: 12px;
+  color: var(--novavisio-gold);
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+
+.nv-flow__icon svg {
+  height: 18px;
+  width: 18px;
+}
+
+.nv-flow__arrow {
+  color: var(--novavisio-gold);
+  flex: none;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nv-flow__tagline {
+  color: white;
+  font-size: clamp(17px, 1.6vw, 21px);
+  font-style: italic;
+  font-weight: 500;
+  margin: 0;
+  max-width: 640px;
+}
+
+.nv-audience {
+  align-items: center;
+  background: linear-gradient(180deg, #18181a, #201b16);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vh, 36px);
+  justify-content: center;
+  padding: clamp(64px, 10vh, 110px) clamp(28px, 4vw, 64px);
+  text-align: center;
+}
+
+.nv-audience__intro {
+  max-width: 680px;
+}
+
+.nv-audience__intro .eyebrow {
+  color: var(--novavisio-gold-soft);
+}
+
+.nv-audience__intro h2 {
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 8px 0 0;
+}
+
+.nv-audience__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  max-width: 900px;
+  padding: 0;
+}
+
+.nv-audience__tags li {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: #e6e1d7;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+
+.nv-audience__note {
+  color: #aca69c;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 56ch;
+}
+
+.nv-cta-final {
+  align-items: center;
+  background: linear-gradient(155deg, #201b16 0%, #2b2318 55%, #3a2f1c 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(64px, 10vh, 110px) clamp(28px, 4vw, 64px);
+  position: relative;
+  text-align: center;
+}
+
+.nv-cta-final__glow {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 189, 89, 0.24), transparent 40%),
+    radial-gradient(circle at 15% 90%, rgba(255, 189, 89, 0.12), transparent 34%);
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.nv-cta-final__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 1.8vh, 18px);
+  max-width: 680px;
+  position: relative;
+  z-index: 1;
+}
+
+.nv-cta-final__inner .eyebrow {
+  color: var(--novavisio-gold-soft);
+}
+
+.nv-cta-final__inner h2 {
+  font-size: clamp(28px, 3vw, 46px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  margin: 0;
+}
+
+.nv-cta-final__inner > p {
+  color: #d9d4c9;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 52ch;
+}
+
+.nv-cta-final__actions {
+  align-items: center;
+  display: flex;
+  gap: 22px;
+  margin-top: clamp(6px, 1.2vh, 12px);
+}
+
+.nv-cta-final__actions .button-primary {
+  background: linear-gradient(135deg, #ffd583, #e8a53a);
+  box-shadow:
+    0 12px 32px rgba(255, 189, 89, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  color: #2b1c05;
+}
+
+.nv-cta-final__actions > a:last-child {
+  color: var(--novavisio-gold);
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .nv-steps__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nv-flow__chain {
+    flex-direction: column;
+  }
+
+  .nv-flow__node {
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .nv-flow__arrow {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 620px) {
+  .nv-steps__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nv-audience__tags li {
+    font-size: 13px;
+    padding: 8px 16px;
   }
 }
