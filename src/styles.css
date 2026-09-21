@@ -934,15 +934,18 @@ body.menu-open {
   margin: 0;
 }
 
-/* Mots-clés aux couleurs du logo : le dégradé bleu profond → teal du disque,
-   reproduit dans les lettres. Sans ombre, sinon elle transparaît. */
+/* Mots-clés aux couleurs du logo : dégradé bleu → cyan plus vif que le
+   disque, pour rester lisible sur toutes les scènes de la vidéo. Un
+   drop-shadow (et non un text-shadow, qui transparaît à travers le
+   dégradé) renforce le contraste sans ternir les couleurs. */
 .hero h1 .hero-accent {
-  background: linear-gradient(120deg, #3a68a8 0%, #2a8fa9 55%, #35a6bc 100%);
+  background: linear-gradient(120deg, #4f8fff 0%, #22b4e0 55%, #2fe0d0 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: #2a8fa9;
+  color: #22b4e0;
   -webkit-text-fill-color: transparent;
   text-shadow: none;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.5));
 }
 
 .wave {
