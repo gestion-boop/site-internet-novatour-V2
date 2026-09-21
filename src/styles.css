@@ -686,6 +686,47 @@ a {
   color: var(--aqua);
 }
 
+.header-actions {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-self: end;
+}
+
+.header-novavisio {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+}
+
+.header-novavisio img {
+  border-radius: 50%;
+  display: block;
+  flex: none;
+  height: 32px;
+  width: 32px;
+}
+
+.header-novavisio span {
+  display: grid;
+  gap: 1px;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.header-novavisio strong {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.header-novavisio small {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 .header-cta {
   background: linear-gradient(135deg, #20c7c1, #079ba6);
   border-radius: 10px;
@@ -693,7 +734,6 @@ a {
   color: var(--white);
   font-size: 14px;
   font-weight: 800;
-  justify-self: end;
   padding: 12px 22px;
   transition:
     transform 180ms ease,
@@ -3892,7 +3932,7 @@ footer div:not(.footer-brand) a {
   }
 
   .desktop-nav,
-  .header-cta {
+  .header-actions {
     display: none;
   }
 
