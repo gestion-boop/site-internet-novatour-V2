@@ -96,6 +96,13 @@ const partners: Partner[] = [
     logo: "/partners/le-bali.webp",
     name: "Le Bali",
   },
+  {
+    alt: "Château de Jonquières — Hospitalité & Événementiel",
+    href: "https://app.novatour.fr/place/chateau-de-jonquieres?category=professionnels&id=7ff876e1-2608-417a-a862-9f883238dd1e",
+    id: "jonquieres",
+    logo: "/partners/jonquieres.webp",
+    name: "Château de Jonquières",
+  },
 ];
 
 /** Doublé pour un défilement en boucle continue et sans coupure. */
