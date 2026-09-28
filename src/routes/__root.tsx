@@ -1,5 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Outlet, Link, createRootRouteWithContext, useRouter, HeadContent, Scripts } from "@tanstack/react-router";
+import {
+  Outlet,
+  Link,
+  createRootRouteWithContext,
+  useRouter,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
 import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
@@ -33,7 +40,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">Cette page n’a pas pu être chargée</h1>
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          Cette page n’a pas pu être chargée
+        </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Une erreur est survenue. Vous pouvez réessayer ou retourner à l’accueil.
         </p>
@@ -65,7 +74,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "NovaTour — Un seul endroit pour explorer tous les autres" },
-      { name: "description", content: "La plateforme gratuite pour explorer les lieux en immersion 360°." },
+      {
+        name: "description",
+        content: "La plateforme gratuite pour explorer les lieux en immersion 360°.",
+      },
       { name: "author", content: "NovaVisio" },
       { property: "og:title", content: "NovaTour" },
       { property: "og:description", content: "Découvrez des lieux en immersion à 360°." },
@@ -101,9 +113,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "Plateforme gratuite de visites immersives 360° des lieux, développée par NovaVisio.",
               address: {
                 "@type": "PostalAddress",
+                streetAddress: "19 Rue du Luxembourg",
                 addressLocality: "Narbonne",
+                postalCode: "11100",
                 addressCountry: "FR",
               },
+              sameAs: [
+                "https://www.instagram.com/novatour.fr/",
+                "https://www.facebook.com/p/NovaTour-61587281682477/",
+                "https://fr.linkedin.com/showcase/novatournarbonne/",
+              ],
             },
             {
               "@type": "WebSite",
