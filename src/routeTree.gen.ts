@@ -13,6 +13,8 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as OffresRouteImport } from './routes/offres'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LieuxIndexRouteImport } from './routes/lieux/index'
+import { Route as LieuxSlugRouteImport } from './routes/lieux/$slug'
 import { Route as ApiLatestPlacesRouteImport } from './routes/api/latest-places'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -35,6 +37,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LieuxIndexRoute = LieuxIndexRouteImport.update({
+  id: '/lieux/',
+  path: '/lieux/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LieuxSlugRoute = LieuxSlugRouteImport.update({
+  id: '/lieux/$slug',
+  path: '/lieux/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiLatestPlacesRoute = ApiLatestPlacesRouteImport.update({
   id: '/api/latest-places',
   path: '/api/latest-places',
@@ -47,6 +59,8 @@ export interface FileRoutesByFullPath {
   '/offres': typeof OffresRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/latest-places': typeof ApiLatestPlacesRoute
+  '/lieux/$slug': typeof LieuxSlugRoute
+  '/lieux/': typeof LieuxIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +68,8 @@ export interface FileRoutesByTo {
   '/offres': typeof OffresRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/latest-places': typeof ApiLatestPlacesRoute
+  '/lieux/$slug': typeof LieuxSlugRoute
+  '/lieux': typeof LieuxIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,6 +78,8 @@ export interface FileRoutesById {
   '/offres': typeof OffresRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/latest-places': typeof ApiLatestPlacesRoute
+  '/lieux/$slug': typeof LieuxSlugRoute
+  '/lieux/': typeof LieuxIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -71,8 +89,17 @@ export interface FileRouteTypes {
     | '/offres'
     | '/sitemap.xml'
     | '/api/latest-places'
+    | '/lieux/$slug'
+    | '/lieux/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/offres' | '/sitemap.xml' | '/api/latest-places'
+  to:
+    | '/'
+    | '/contact'
+    | '/offres'
+    | '/sitemap.xml'
+    | '/api/latest-places'
+    | '/lieux/$slug'
+    | '/lieux'
   id:
     | '__root__'
     | '/'
@@ -80,6 +107,8 @@ export interface FileRouteTypes {
     | '/offres'
     | '/sitemap.xml'
     | '/api/latest-places'
+    | '/lieux/$slug'
+    | '/lieux/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -88,6 +117,8 @@ export interface RootRouteChildren {
   OffresRoute: typeof OffresRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ApiLatestPlacesRoute: typeof ApiLatestPlacesRoute
+  LieuxSlugRoute: typeof LieuxSlugRoute
+  LieuxIndexRoute: typeof LieuxIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -120,6 +151,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lieux/': {
+      id: '/lieux/'
+      path: '/lieux'
+      fullPath: '/lieux/'
+      preLoaderRoute: typeof LieuxIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lieux/$slug': {
+      id: '/lieux/$slug'
+      path: '/lieux/$slug'
+      fullPath: '/lieux/$slug'
+      preLoaderRoute: typeof LieuxSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/latest-places': {
       id: '/api/latest-places'
       path: '/api/latest-places'
@@ -136,6 +181,8 @@ const rootRouteChildren: RootRouteChildren = {
   OffresRoute: OffresRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ApiLatestPlacesRoute: ApiLatestPlacesRoute,
+  LieuxSlugRoute: LieuxSlugRoute,
+  LieuxIndexRoute: LieuxIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
