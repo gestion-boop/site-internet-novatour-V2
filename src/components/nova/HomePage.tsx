@@ -6,7 +6,10 @@ import {
   ClipboardList,
   Compass,
   Eye,
+  Facebook,
   Globe,
+  Instagram,
+  Linkedin,
   MousePointerClick,
   Share,
   ShieldCheck,
@@ -392,23 +395,35 @@ export function HomePage() {
         </div>
         <div>
           <h3>Suivez-nous</h3>
-          <a href="https://www.instagram.com/novatour.fr/" target="_blank" rel="noreferrer">
-            Instagram
-          </a>
-          <a
-            href="https://www.facebook.com/p/NovaTour-61587281682477/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Facebook
-          </a>
-          <a
-            href="https://fr.linkedin.com/showcase/novatournarbonne/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
+          <div className="footer-social">
+            <a
+              className="footer-social__link"
+              href="https://www.instagram.com/novatour.fr/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <Instagram aria-hidden="true" />
+            </a>
+            <a
+              className="footer-social__link"
+              href="https://www.facebook.com/p/NovaTour-61587281682477/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+            >
+              <Facebook aria-hidden="true" />
+            </a>
+            <a
+              className="footer-social__link"
+              href="https://fr.linkedin.com/showcase/novatournarbonne/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+            >
+              <Linkedin aria-hidden="true" />
+            </a>
+          </div>
         </div>
         <p className="copyright">© 2026 NovaTour. Tous droits réservés.</p>
       </footer>

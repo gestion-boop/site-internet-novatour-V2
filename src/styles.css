@@ -3916,6 +3916,43 @@ footer div:not(.footer-brand) a {
   margin: 12px 0;
 }
 
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+footer div:not(.footer-brand) .footer-social__link {
+  margin: 0;
+}
+
+.footer-social__link {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  color: #d4e2e3;
+  display: inline-flex;
+  height: 42px;
+  justify-content: center;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+  width: 42px;
+}
+
+.footer-social__link svg {
+  height: 18px;
+  width: 18px;
+}
+
+.footer-social__link:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(115, 216, 209, 0.5);
+  color: #73d8d1;
+  transform: translateY(-2px);
+}
+
 .copyright {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   color: #7f9ea1;
