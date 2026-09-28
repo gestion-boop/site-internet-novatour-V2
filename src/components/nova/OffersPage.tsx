@@ -118,6 +118,7 @@ export function OffersPage() {
           <a href={APP_URL} target="_blank" rel="noreferrer">
             Faire une recherche
           </a>
+          <a href="/lieux">Tous les lieux</a>
           <a href="https://www.novavisio.fr/#novatour" target="_blank" rel="noreferrer">
             Rejoignez-nous
           </a>

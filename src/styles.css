@@ -10245,6 +10245,251 @@ main.offers-page .footer-brand > p {
   }
 }
 
+/* ============================================================
+   Pages lieux (/lieux, /lieux/:slug) — fiches SEO indexables par
+   établissement. Volontairement hors du système de panneaux plein
+   écran (pas de <section> en enfant direct de <main>) : le contenu
+   défile normalement, comme une page éditoriale classique.
+   ============================================================ */
+.lieux-page,
+.lieu-page {
+  background: var(--cream);
+  /* Ni l'un ni l'autre n'a de <section> enfant direct : le seul point
+     d'ancrage resterait le footer, ce qui forcerait un snap intempestif
+     dès le chargement. On désactive donc l'aimantation plein écran ici. */
+  scroll-snap-type: none;
+}
+
+@media (min-width: 901px) {
+  main.lieux-page,
+  main.lieu-page {
+    scroll-snap-type: none;
+  }
+}
+
+.lieux-hero {
+  background: linear-gradient(150deg, #052f3c 0%, #074a57 52%, #063945 100%);
+  color: var(--white);
+  padding: 104px clamp(24px, 4.2vw, 72px) 56px;
+  text-align: center;
+}
+
+@media (min-width: 901px) {
+  .lieux-hero {
+    padding-top: 48px;
+  }
+}
+
+.lieux-hero__inner {
+  margin: 0 auto;
+  max-width: 760px;
+}
+
+.lieux-hero .eyebrow {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.lieux-hero h1 {
+  font-size: clamp(36px, 4.4vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 16px;
+}
+
+.lieux-hero__lead {
+  color: #d7e7e8;
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 620px;
+}
+
+.lieux-body {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 48px clamp(24px, 4.2vw, 72px) 88px;
+}
+
+.lieux-grid {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.lieux-empty {
+  color: var(--ink-soft);
+  font-size: 16px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.lieux-empty a {
+  color: var(--teal-dark);
+  font-weight: 700;
+}
+
+.lieu-hero {
+  color: var(--white);
+  min-height: 480px;
+  padding-top: 104px;
+  position: relative;
+}
+
+@media (min-width: 901px) {
+  .lieu-hero {
+    min-height: 560px;
+    padding-top: 0;
+  }
+}
+
+.lieu-hero__bg {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
+.lieu-hero__veil {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 47, 60, 0.55) 0%,
+    rgba(5, 47, 60, 0.4) 45%,
+    rgba(4, 32, 41, 0.94) 100%
+  );
+  inset: 0;
+  position: absolute;
+}
+
+.lieu-hero__inner {
+  max-width: 900px;
+  padding: 40px clamp(24px, 4.2vw, 72px) 56px;
+  position: relative;
+  z-index: 2;
+}
+
+.lieu-breadcrumb {
+  color: rgba(255, 255, 255, 0.78);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.lieu-breadcrumb:hover {
+  color: var(--white);
+}
+
+.lieu-hero .eyebrow {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.88);
+  display: flex;
+  gap: 8px;
+}
+
+.lieu-hero .eyebrow svg {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  box-sizing: content-box;
+  height: 14px;
+  padding: 6px;
+  stroke-width: 2.2;
+  width: 14px;
+}
+
+.lieu-hero h1 {
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 16px;
+}
+
+.lieu-hero__city {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  font-size: 16px;
+  gap: 8px;
+  margin: 0 0 30px;
+}
+
+.lieu-hero__city svg {
+  height: 16px;
+  width: 16px;
+}
+
+.lieu-body {
+  display: grid;
+  gap: 36px;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 56px clamp(24px, 4.2vw, 72px) 88px;
+}
+
+@media (min-width: 901px) {
+  .lieu-body {
+    align-items: start;
+    grid-template-columns: 1.7fr 1fr;
+  }
+}
+
+.lieu-description h2 {
+  color: var(--ink);
+  font-size: clamp(24px, 2.4vw, 32px);
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+
+.lieu-description p {
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.lieu-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 26px;
+  box-shadow: 0 14px 40px rgba(4, 55, 65, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px;
+}
+
+.lieu-panel__logo {
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3px var(--white),
+    0 8px 20px rgba(4, 55, 65, 0.18);
+  height: 64px;
+  object-fit: cover;
+  width: 64px;
+}
+
+.lieu-panel h3 {
+  color: var(--ink);
+  font-size: 20px;
+  margin: 0;
+}
+
+.lieu-panel p {
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.lieu-panel__cta {
+  align-self: flex-start;
+}
+
 @media (max-width: 620px) {
   .nv-steps__grid {
     grid-template-columns: 1fr;
