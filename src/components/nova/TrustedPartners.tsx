@@ -11,7 +11,7 @@ type Partner = {
 /** Ambiance en fond : un aperçu des univers présents sur NovaTour. */
 const backdrops = [
   "/stays/le-cosy-cuisine.webp",
-  "/stays/cascade-de-moussan-terrasse.webp",
+  "/stays/cascade-de-moussan.jpg",
   "/narbonne-canal.webp",
   "/stays/jonquieres-chambre.webp",
 ];
