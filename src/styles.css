@@ -10342,15 +10342,16 @@ main.offers-page .footer-brand > p {
 .lieu-hero__bg {
   /* Les photos viennent telles quelles de la fiche établissement : leur
      définition d'origine ne suit pas toujours la largeur d'un hero plein
-     écran. Un flou léger + un léger zoom (pour masquer les bords flous)
-     transforment un agrandissement grossier en fond d'ambiance volontaire
-     plutôt qu'en image pixelisée. */
-  filter: blur(7px) saturate(1.12);
+     écran. Ce fond n'est plus qu'une ambiance (la photo nette vit dans
+     .lieu-panel__photo, à une taille où elle reste lisible) : un flou
+     généreux + un zoom pour masquer les bords flous en font un aplat
+     volontaire, jamais un agrandissement pixelisé. */
+  filter: blur(16px) saturate(1.15);
   height: 100%;
   inset: 0;
   object-fit: cover;
   position: absolute;
-  transform: scale(1.08);
+  transform: scale(1.15);
   width: 100%;
 }
 
@@ -10507,18 +10508,69 @@ main.offers-page .footer-brand > p {
   box-shadow: 0 14px 40px rgba(4, 55, 65, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 32px;
+  overflow: hidden;
+}
+
+/* La photo n'est affichée qu'à sa taille réelle dans le panneau (~380px de
+   large au lieu des ~1200px du hero) : un agrandissement bien plus modeste,
+   qui reste net même pour une photo modeste envoyée par l'établissement.
+   Un très léger lissage absorbe le reste : imperceptible sur une photo
+   correcte, il efface le crénelage si la source est vraiment petite. */
+.lieu-panel__photo {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  position: relative;
+}
+
+.lieu-panel__photo img {
+  display: block;
+  filter: blur(2.5px);
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  width: 100%;
 }
 
 .lieu-panel__logo {
+  align-items: center;
+  background: var(--white);
   border-radius: 50%;
   box-shadow:
-    0 0 0 3px var(--white),
+    0 0 0 4px var(--white),
     0 8px 20px rgba(4, 55, 65, 0.18);
+  display: flex;
   height: 64px;
-  object-fit: cover;
+  justify-content: center;
+  overflow: hidden;
   width: 64px;
+}
+
+.lieu-panel__photo .lieu-panel__logo {
+  bottom: -28px;
+  left: 24px;
+  position: absolute;
+}
+
+.lieu-panel__logo--standalone {
+  margin: 28px 0 0 28px;
+}
+
+.lieu-panel__logo img {
+  /* object-fit: contain (et non cover) : le logo n'est jamais recadré ni
+     déformé. Un lissage minime rattrape le cas d'un logo envoyé en très
+     basse définition, sans jamais brouiller le tracé de la marque. */
+  filter: blur(0.4px);
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  width: 100%;
+}
+
+.lieu-panel__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 40px 32px 32px;
 }
 
 .lieu-panel h3 {

@@ -122,23 +122,38 @@ export function LieuPage({ place }: { place: Place }) {
         </div>
 
         <aside className="lieu-panel">
-          {place.logoUrl ? <img className="lieu-panel__logo" src={place.logoUrl} alt="" /> : null}
-          <h3>Découvrez {place.title} comme si vous y étiez</h3>
-          <p>
-            Une visite immersive à 360°, créée par NovaVisio et diffusée gratuitement sur NovaTour :
-            explorez chaque espace avant même de pousser la porte.
-          </p>
-          <a
-            className="button button-primary lieu-panel__cta"
-            href={place.tourHref}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Ouvrir la visite 360° <span aria-hidden="true">→</span>
-          </a>
-          <a className="text-link" href={APP_URL} target="_blank" rel="noreferrer">
-            Découvrir d’autres lieux sur NovaTour <span aria-hidden="true">→</span>
-          </a>
+          {place.coverUrl ? (
+            <div className="lieu-panel__photo">
+              <img src={place.coverUrl} alt="" loading="lazy" />
+              {place.logoUrl ? (
+                <span className="lieu-panel__logo">
+                  <img src={place.logoUrl} alt="" loading="lazy" />
+                </span>
+              ) : null}
+            </div>
+          ) : place.logoUrl ? (
+            <span className="lieu-panel__logo lieu-panel__logo--standalone">
+              <img src={place.logoUrl} alt="" loading="lazy" />
+            </span>
+          ) : null}
+          <div className="lieu-panel__body">
+            <h3>Découvrez {place.title} comme si vous y étiez</h3>
+            <p>
+              Une visite immersive à 360°, créée par NovaVisio et diffusée gratuitement sur NovaTour
+              : explorez chaque espace avant même de pousser la porte.
+            </p>
+            <a
+              className="button button-primary lieu-panel__cta"
+              href={place.tourHref}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Ouvrir la visite 360° <span aria-hidden="true">→</span>
+            </a>
+            <a className="text-link" href={APP_URL} target="_blank" rel="noreferrer">
+              Découvrir d’autres lieux sur NovaTour <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </aside>
       </div>
 
