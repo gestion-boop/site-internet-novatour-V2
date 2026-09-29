@@ -10324,53 +10324,57 @@ main.offers-page .footer-brand > p {
   font-weight: 700;
 }
 
+/* Pas de photo plein écran en fond : à cette taille, une image envoyée par
+   l'établissement s'agrandit trop et devient floue/pixelisée. Le hero est un
+   simple aplat dégradé (comme le hero de l'accueil) ; la photo, quand elle
+   existe, n'apparaît qu'en petit format à droite (une carte cadrée, jamais
+   étirée au-delà d'une taille raisonnable). */
 .lieu-hero {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(30, 196, 190, 0.22), transparent 30%),
+    radial-gradient(circle at 86% 86%, rgba(34, 139, 157, 0.24), transparent 42%),
+    linear-gradient(150deg, #052f3c 0%, #074a57 52%, #063945 100%);
   color: var(--white);
-  min-height: 480px;
-  overflow: hidden;
   padding-top: 104px;
-  position: relative;
 }
 
 @media (min-width: 901px) {
   .lieu-hero {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
     min-height: 560px;
     padding-top: 0;
   }
 }
 
-.lieu-hero__bg {
-  /* Les photos viennent telles quelles de la fiche établissement : leur
-     définition d'origine ne suit pas toujours la largeur d'un hero plein
-     écran. Ce fond n'est plus qu'une ambiance (la photo nette vit dans
-     .lieu-panel__photo, à une taille où elle reste lisible) : un flou
-     généreux + un zoom pour masquer les bords flous en font un aplat
-     volontaire, jamais un agrandissement pixelisé. */
-  filter: blur(16px) saturate(1.15);
-  height: 100%;
-  inset: 0;
-  object-fit: cover;
-  position: absolute;
-  transform: scale(1.15);
+.lieu-hero__inner {
+  max-width: 900px;
+  padding: 40px clamp(24px, 4.2vw, 72px) 32px;
+}
+
+.lieu-hero__visual {
+  border-radius: 22px;
+  box-shadow: 0 24px 60px rgba(2, 20, 26, 0.35);
+  margin: 0 clamp(24px, 4.2vw, 72px) 40px;
+  max-width: 340px;
+  overflow: hidden;
   width: 100%;
 }
 
-.lieu-hero__veil {
-  background: linear-gradient(
-    180deg,
-    rgba(5, 47, 60, 0.55) 0%,
-    rgba(5, 47, 60, 0.4) 45%,
-    rgba(4, 32, 41, 0.94) 100%
-  );
-  inset: 0;
-  position: absolute;
+.lieu-hero__visual img {
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+  width: 100%;
 }
 
-.lieu-hero__inner {
-  max-width: 900px;
-  padding: 40px clamp(24px, 4.2vw, 72px) 56px;
-  position: relative;
-  z-index: 2;
+@media (min-width: 901px) {
+  .lieu-hero__visual {
+    justify-self: end;
+    margin: 0 clamp(24px, 4vw, 56px) 0 0;
+    width: 340px;
+  }
 }
 
 .lieu-breadcrumb {
@@ -10524,10 +10528,8 @@ main.offers-page .footer-brand > p {
 
 .lieu-panel__photo img {
   display: block;
-  filter: blur(2.5px);
   height: 100%;
   object-fit: cover;
-  transform: scale(1.03);
   width: 100%;
 }
 
@@ -10557,9 +10559,7 @@ main.offers-page .footer-brand > p {
 
 .lieu-panel__logo img {
   /* object-fit: contain (et non cover) : le logo n'est jamais recadré ni
-     déformé. Un lissage minime rattrape le cas d'un logo envoyé en très
-     basse définition, sans jamais brouiller le tracé de la marque. */
-  filter: blur(0.4px);
+     déformé, quelle que soit sa forme d'origine. */
   height: 100%;
   object-fit: contain;
   padding: 8px;
