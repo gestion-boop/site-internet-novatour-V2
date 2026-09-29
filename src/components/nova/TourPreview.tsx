@@ -26,11 +26,11 @@ const tours: Tour[] = [
     title: "Le Cosy",
   },
   {
-    alt: "Terrasse ombragée du restaurant La Cascade de Moussan en visite 360°",
+    alt: "La cascade et le bassin du restaurant La Cascade de Moussan en visite 360°",
     city: "Moussan",
     href: "https://app.novatour.fr/place/la-cascade-de-moussan?category=se+restaurer&id=84f25fd1-8892-498e-aeda-d0c7f3480753",
     id: "cascade-de-moussan",
-    image: "/stays/cascade-de-moussan-terrasse.webp",
+    image: "/stays/cascade-de-moussan.jpg",
     kind: "Restaurant",
     title: "La Cascade de Moussan",
   },
