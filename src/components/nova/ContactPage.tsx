@@ -1,6 +1,6 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
 import { useEffect, useState } from "react";
 
 const APP_URL = "https://app.novatour.fr";
@@ -354,7 +354,7 @@ export function ContactPage() {
               rel="noreferrer"
               aria-label="Instagram"
             >
-              <Instagram aria-hidden="true" />
+              <InstagramIcon />
             </a>
             <a
               className="footer-social__link"
@@ -363,7 +363,7 @@ export function ContactPage() {
               rel="noreferrer"
               aria-label="Facebook"
             >
-              <Facebook aria-hidden="true" />
+              <FacebookIcon />
             </a>
             <a
               className="footer-social__link"
@@ -372,7 +372,7 @@ export function ContactPage() {
               rel="noreferrer"
               aria-label="LinkedIn"
             >
-              <Linkedin aria-hidden="true" />
+              <LinkedinIcon />
             </a>
           </div>
         </div>

@@ -1,9 +1,6 @@
 import {
   Camera,
-  Facebook,
   Globe,
-  Instagram,
-  Linkedin,
   Maximize,
   MapPin,
   Moon,
@@ -17,6 +14,7 @@ import {
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import { OffersSelector } from "./OffersSelector";
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
 
 const APP_URL = "https://app.novatour.fr";
 
@@ -391,7 +389,7 @@ export function OffersPage() {
               rel="noreferrer"
               aria-label="Instagram"
             >
-              <Instagram aria-hidden="true" />
+              <InstagramIcon />
             </a>
             <a
               className="footer-social__link"
@@ -400,7 +398,7 @@ export function OffersPage() {
               rel="noreferrer"
               aria-label="Facebook"
             >
-              <Facebook aria-hidden="true" />
+              <FacebookIcon />
             </a>
             <a
               className="footer-social__link"
@@ -409,7 +407,7 @@ export function OffersPage() {
               rel="noreferrer"
               aria-label="LinkedIn"
             >
-              <Linkedin aria-hidden="true" />
+              <LinkedinIcon />
             </a>
           </div>
         </div>
