@@ -7918,22 +7918,26 @@ main.offers-page .footer-brand > p {
 }
 
 @media (min-width: 901px) {
-  /* Le panneau a une hauteur fixe : la photo prend toute la place restante. */
+  /* Le panneau a une hauteur fixe : la photo prend toute la place restante.
+     Réservé au panneau "Discover" de l'accueil (hauteur fixe imposée par le
+     système de panneaux plein écran) : ailleurs (grille /lieux, notamment),
+     .place-card__media doit garder son aspect-ratio pour ne pas s'effondrer
+     quand une carte n'a pas de photo. */
   .discover .places-grid {
     grid-template-rows: minmax(0, 1fr);
   }
 
-  .place-card {
+  .discover .place-card {
     min-height: 0;
   }
 
-  .place-card__media {
+  .discover .place-card__media {
     aspect-ratio: auto;
     flex: 1 1 auto;
     min-height: 0;
   }
 
-  .place-card__body {
+  .discover .place-card__body {
     flex: 0 0 auto;
   }
 }
