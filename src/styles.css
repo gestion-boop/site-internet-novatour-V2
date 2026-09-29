@@ -10316,6 +10316,99 @@ main.offers-page .footer-brand > p {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
+/* Cartes calquées sur le design de l'application NovaTour : logo en haut à
+   gauche de la photo, badge catégorie en bas à gauche, bouton "Démarrer la
+   visite" + localisation en pied de carte. Toutes les règles ci-dessous sont
+   volontairement scopées à .lieux-grid : .place-card est partagé avec le
+   panneau "Dernières découvertes" de l'accueil, qui garde son propre style. */
+.lieux-grid .place-card__logo {
+  bottom: auto;
+  left: 14px;
+  top: 14px;
+}
+
+.place-card__type {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  bottom: 14px;
+  color: var(--ink);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 6px;
+  left: 14px;
+  padding: 6px 12px 6px 6px;
+  position: absolute;
+}
+
+.place-card__type svg {
+  background: rgba(5, 151, 157, 0.14);
+  border-radius: 50%;
+  box-sizing: content-box;
+  color: var(--teal-dark);
+  flex: none;
+  height: 12px;
+  padding: 5px;
+  stroke-width: 2.4;
+  width: 12px;
+}
+
+.lieux-grid .place-card__body {
+  padding-top: 18px;
+}
+
+.lieux-grid .place-card__desc {
+  margin-top: 8px;
+}
+
+.place-card__footer {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.lieux-grid .place-card__cta {
+  align-items: center;
+  background: linear-gradient(135deg, #0ca7a9, #048d96);
+  border-radius: 999px;
+  color: var(--white);
+  display: inline-flex;
+  flex: none;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 6px;
+  margin-top: 0;
+  padding: 9px 16px;
+}
+
+.lieux-grid .place-card__cta svg {
+  height: 14px;
+  width: 14px;
+}
+
+.lieux-grid .place-card:hover .place-card__cta {
+  filter: brightness(1.05);
+  transform: none;
+}
+
+.place-card__location {
+  align-items: center;
+  color: var(--ink-soft);
+  display: inline-flex;
+  flex: none;
+  font-size: 13px;
+  gap: 4px;
+}
+
+.place-card__location svg {
+  height: 14px;
+  width: 14px;
+}
+
 .lieux-empty {
   color: var(--ink-soft);
   font-size: 16px;

@@ -1,4 +1,4 @@
-import { BedDouble, House, ShoppingBag, Utensils } from "lucide-react";
+import { BedDouble, House, MapPin, Play, ShoppingBag, Utensils } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
@@ -94,20 +94,24 @@ export function LieuxIndexPage({ places }: { places: Place[] }) {
                         src={place.logoUrl}
                       />
                     ) : null}
-                  </figure>
-                  <div className="place-card__body">
-                    <p className="place-card__category">
+                    <span className="place-card__type">
                       {FamilyIcon ? <FamilyIcon aria-hidden="true" /> : null}
                       {place.category}
-                    </p>
+                    </span>
+                  </figure>
+                  <div className="place-card__body">
                     <h2 className="place-card__title">{place.title}</h2>
-                    <p className="place-card__city">{place.city}</p>
                     {place.description ? (
                       <p className="place-card__desc">{place.description}</p>
                     ) : null}
-                    <span className="place-card__cta">
-                      Découvrir la fiche <span aria-hidden="true">→</span>
-                    </span>
+                    <div className="place-card__footer">
+                      <span className="place-card__cta">
+                        <Play aria-hidden="true" /> Démarrer la visite
+                      </span>
+                      <span className="place-card__location">
+                        <MapPin aria-hidden="true" /> {place.city}
+                      </span>
+                    </div>
                   </div>
                 </a>
               );
