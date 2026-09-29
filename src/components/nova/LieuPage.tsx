@@ -1,4 +1,4 @@
-import { BedDouble, House, MapPin, ShoppingBag, Utensils } from "lucide-react";
+import { BedDouble, House, MapPin, Orbit, ShoppingBag, Utensils } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
@@ -86,12 +86,40 @@ export function LieuPage({ place }: { place: Place }) {
       </div>
 
       <div className="lieu-body">
-        {place.description ? (
-          <div className="lieu-description">
-            <h2>À propos</h2>
+        <div className="lieu-description">
+          <h2>À propos de {place.title}</h2>
+          {place.description ? (
             <p>{place.description}</p>
-          </div>
-        ) : null}
+          ) : (
+            <p>
+              {place.title} fait partie des lieux référencés gratuitement sur NovaTour. Explorez-en
+              chaque espace en visite immersive à 360°, avant même d’y mettre les pieds.
+            </p>
+          )}
+          <ul className="lieu-facts">
+            <li>
+              <FamilyIcon aria-hidden="true" />
+              <div>
+                <strong>Catégorie</strong>
+                <span>{place.category}</span>
+              </div>
+            </li>
+            <li>
+              <MapPin aria-hidden="true" />
+              <div>
+                <strong>Localisation</strong>
+                <span>{place.city}</span>
+              </div>
+            </li>
+            <li>
+              <Orbit aria-hidden="true" />
+              <div>
+                <strong>Visite 360°</strong>
+                <span>Gratuite, sans inscription</span>
+              </div>
+            </li>
+          </ul>
+        </div>
 
         <aside className="lieu-panel">
           {place.logoUrl ? <img className="lieu-panel__logo" src={place.logoUrl} alt="" /> : null}
