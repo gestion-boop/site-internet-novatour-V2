@@ -10327,6 +10327,7 @@ main.offers-page .footer-brand > p {
 .lieu-hero {
   color: var(--white);
   min-height: 480px;
+  overflow: hidden;
   padding-top: 104px;
   position: relative;
 }
@@ -10339,10 +10340,17 @@ main.offers-page .footer-brand > p {
 }
 
 .lieu-hero__bg {
+  /* Les photos viennent telles quelles de la fiche établissement : leur
+     définition d'origine ne suit pas toujours la largeur d'un hero plein
+     écran. Un flou léger + un léger zoom (pour masquer les bords flous)
+     transforment un agrandissement grossier en fond d'ambiance volontaire
+     plutôt qu'en image pixelisée. */
+  filter: blur(7px) saturate(1.12);
   height: 100%;
   inset: 0;
   object-fit: cover;
   position: absolute;
+  transform: scale(1.08);
   width: 100%;
 }
 
@@ -10443,6 +10451,51 @@ main.offers-page .footer-brand > p {
   font-size: 16px;
   line-height: 1.7;
   white-space: pre-line;
+}
+
+.lieu-facts {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+}
+
+.lieu-facts li {
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.lieu-facts svg {
+  background: rgba(5, 151, 157, 0.12);
+  border-radius: 50%;
+  box-sizing: content-box;
+  color: var(--teal-dark);
+  flex: none;
+  height: 16px;
+  padding: 8px;
+  stroke-width: 2.2;
+  width: 16px;
+}
+
+.lieu-facts strong {
+  color: var(--ink);
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lieu-facts span {
+  color: var(--ink-soft);
+  font-size: 14px;
 }
 
 .lieu-panel {
