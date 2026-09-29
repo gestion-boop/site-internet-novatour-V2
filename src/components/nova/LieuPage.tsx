@@ -1,15 +1,7 @@
-import {
-  BedDouble,
-  Facebook,
-  House,
-  Instagram,
-  Linkedin,
-  MapPin,
-  ShoppingBag,
-  Utensils,
-} from "lucide-react";
+import { BedDouble, House, MapPin, ShoppingBag, Utensils } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
 import type { Place } from "@/lib/novatour-places";
 
 const APP_URL = "https://app.novatour.fr";
@@ -174,7 +166,7 @@ export function LieuPage({ place }: { place: Place }) {
               rel="noreferrer"
               aria-label="Instagram"
             >
-              <Instagram aria-hidden="true" />
+              <InstagramIcon />
             </a>
             <a
               className="footer-social__link"
@@ -183,7 +175,7 @@ export function LieuPage({ place }: { place: Place }) {
               rel="noreferrer"
               aria-label="Facebook"
             >
-              <Facebook aria-hidden="true" />
+              <FacebookIcon />
             </a>
             <a
               className="footer-social__link"
@@ -192,7 +184,7 @@ export function LieuPage({ place }: { place: Place }) {
               rel="noreferrer"
               aria-label="LinkedIn"
             >
-              <Linkedin aria-hidden="true" />
+              <LinkedinIcon />
             </a>
           </div>
         </div>

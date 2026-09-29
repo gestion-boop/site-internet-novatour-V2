@@ -6,10 +6,7 @@ import {
   ClipboardList,
   Compass,
   Eye,
-  Facebook,
   Globe,
-  Instagram,
-  Linkedin,
   MousePointerClick,
   Share,
   ShieldCheck,
@@ -17,6 +14,7 @@ import {
   SquarePlus,
 } from "lucide-react";
 import { SeasonalStays } from "./SeasonalStays";
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
 import { TourPreview } from "./TourPreview";
 import { TrustedPartners } from "./TrustedPartners";
 
@@ -404,7 +402,7 @@ export function HomePage() {
               rel="noreferrer"
               aria-label="Instagram"
             >
-              <Instagram aria-hidden="true" />
+              <InstagramIcon />
             </a>
             <a
               className="footer-social__link"
@@ -413,7 +411,7 @@ export function HomePage() {
               rel="noreferrer"
               aria-label="Facebook"
             >
-              <Facebook aria-hidden="true" />
+              <FacebookIcon />
             </a>
             <a
               className="footer-social__link"
@@ -422,7 +420,7 @@ export function HomePage() {
               rel="noreferrer"
               aria-label="LinkedIn"
             >
-              <Linkedin aria-hidden="true" />
+              <LinkedinIcon />
             </a>
           </div>
         </div>

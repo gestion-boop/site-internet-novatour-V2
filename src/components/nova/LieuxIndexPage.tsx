@@ -1,14 +1,7 @@
-import {
-  BedDouble,
-  Facebook,
-  House,
-  Instagram,
-  Linkedin,
-  ShoppingBag,
-  Utensils,
-} from "lucide-react";
+import { BedDouble, House, ShoppingBag, Utensils } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { MotionEffects } from "./MotionEffects";
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
 import type { Place } from "@/lib/novatour-places";
 
 const familyIcons = {
@@ -184,7 +177,7 @@ export function LieuxIndexPage({ places }: { places: Place[] }) {
               rel="noreferrer"
               aria-label="Instagram"
             >
-              <Instagram aria-hidden="true" />
+              <InstagramIcon />
             </a>
             <a
               className="footer-social__link"
@@ -193,7 +186,7 @@ export function LieuxIndexPage({ places }: { places: Place[] }) {
               rel="noreferrer"
               aria-label="Facebook"
             >
-              <Facebook aria-hidden="true" />
+              <FacebookIcon />
             </a>
             <a
               className="footer-social__link"
@@ -202,7 +195,7 @@ export function LieuxIndexPage({ places }: { places: Place[] }) {
               rel="noreferrer"
               aria-label="LinkedIn"
             >
-              <Linkedin aria-hidden="true" />
+              <LinkedinIcon />
             </a>
           </div>
         </div>
