@@ -10365,8 +10365,8 @@ main.offers-page .footer-brand > p {
 .place-card__footer {
   align-items: center;
   display: flex;
-  gap: 12px;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 10px;
   margin-top: auto;
   padding-top: 14px;
 }
@@ -10382,10 +10382,12 @@ main.offers-page .footer-brand > p {
   font-weight: 700;
   gap: 6px;
   margin-top: 0;
-  padding: 9px 16px;
+  padding: 9px 14px;
+  white-space: nowrap;
 }
 
 .lieux-grid .place-card__cta svg {
+  flex: none;
   height: 14px;
   width: 14px;
 }
@@ -10399,14 +10401,23 @@ main.offers-page .footer-brand > p {
   align-items: center;
   color: var(--ink-soft);
   display: inline-flex;
-  flex: none;
+  flex: 1 1 auto;
   font-size: 13px;
   gap: 4px;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 .place-card__location svg {
+  flex: none;
   height: 14px;
   width: 14px;
+}
+
+.place-card__location span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .lieux-empty {

@@ -109,7 +109,8 @@ export function LieuxIndexPage({ places }: { places: Place[] }) {
                         <Play aria-hidden="true" /> Démarrer la visite
                       </span>
                       <span className="place-card__location">
-                        <MapPin aria-hidden="true" /> {place.city}
+                        <MapPin aria-hidden="true" />
+                        <span>{place.city}</span>
                       </span>
                     </div>
                   </div>
