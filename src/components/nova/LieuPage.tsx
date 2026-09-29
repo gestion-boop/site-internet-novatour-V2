@@ -58,10 +58,6 @@ export function LieuPage({ place }: { place: Place }) {
       </header>
 
       <div className="lieu-hero">
-        {place.coverUrl ? (
-          <img className="lieu-hero__bg" src={place.coverUrl} alt="" loading="eager" />
-        ) : null}
-        <span className="lieu-hero__veil" aria-hidden="true" />
         <div className="lieu-hero__inner">
           <a className="lieu-breadcrumb" href="/lieux">
             ← Tous les lieux
@@ -83,6 +79,11 @@ export function LieuPage({ place }: { place: Place }) {
             Visiter en immersion 360° <span aria-hidden="true">→</span>
           </a>
         </div>
+        {place.coverUrl ? (
+          <div className="lieu-hero__visual">
+            <img src={place.coverUrl} alt="" loading="eager" />
+          </div>
+        ) : null}
       </div>
 
       <div className="lieu-body">
