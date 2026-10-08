@@ -9,22 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as OffresRouteImport } from './routes/offres'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as OffresRouteImport } from './routes/offres'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ApiLatestPlacesRouteImport } from './routes/api/latest-places'
 import { Route as LieuxIndexRouteImport } from './routes/lieux/index'
 import { Route as LieuxSlugRouteImport } from './routes/lieux/$slug'
-import { Route as ApiLatestPlacesRouteImport } from './routes/api/latest-places'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OffresRoute = OffresRouteImport.update({
-  id: '/offres',
-  path: '/offres',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -32,9 +27,19 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const OffresRoute = OffresRouteImport.update({
+  id: '/offres',
+  path: '/offres',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiLatestPlacesRoute = ApiLatestPlacesRouteImport.update({
+  id: '/api/latest-places',
+  path: '/api/latest-places',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LieuxIndexRoute = LieuxIndexRouteImport.update({
@@ -45,11 +50,6 @@ const LieuxIndexRoute = LieuxIndexRouteImport.update({
 const LieuxSlugRoute = LieuxSlugRouteImport.update({
   id: '/lieux/$slug',
   path: '/lieux/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiLatestPlacesRoute = ApiLatestPlacesRouteImport.update({
-  id: '/api/latest-places',
-  path: '/api/latest-places',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -123,18 +123,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/offres': {
-      id: '/offres'
-      path: '/offres'
-      fullPath: '/offres'
-      preLoaderRoute: typeof OffresRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -144,11 +137,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/offres': {
+      id: '/offres'
+      path: '/offres'
+      fullPath: '/offres'
+      preLoaderRoute: typeof OffresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/latest-places': {
+      id: '/api/latest-places'
+      path: '/api/latest-places'
+      fullPath: '/api/latest-places'
+      preLoaderRoute: typeof ApiLatestPlacesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lieux/': {
@@ -163,13 +170,6 @@ declare module '@tanstack/react-router' {
       path: '/lieux/$slug'
       fullPath: '/lieux/$slug'
       preLoaderRoute: typeof LieuxSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/latest-places': {
-      id: '/api/latest-places'
-      path: '/api/latest-places'
-      fullPath: '/api/latest-places'
-      preLoaderRoute: typeof ApiLatestPlacesRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

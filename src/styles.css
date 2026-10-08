@@ -3948,14 +3948,53 @@ footer div:not(.footer-brand) .footer-social__link {
   transform: translateY(-2px);
 }
 
-.copyright {
+.footer-bottom {
+  align-items: center;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  color: #7f9ea1;
-  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  gap: 16px 24px;
   grid-column: 1 / -1;
+  justify-content: center;
   margin: 16px 0 0;
   padding-top: 24px;
+}
+
+.copyright {
+  color: #7f9ea1;
+  flex: 1 1 auto;
+  font-size: 12px;
+  margin: 0;
   text-align: center;
+}
+
+.footer-village {
+  background: var(--white);
+  border-radius: 12px;
+  display: inline-flex;
+  flex: none;
+  padding: 7px 14px;
+  transition: transform 200ms ease;
+}
+
+.footer-village:hover {
+  transform: translateY(-2px);
+}
+
+.footer-village img {
+  display: block;
+  height: 30px;
+  width: auto;
+}
+
+@media (min-width: 640px) {
+  .footer-bottom {
+    justify-content: space-between;
+  }
+
+  .copyright {
+    text-align: left;
+  }
 }
 
 @media (max-width: 1180px) {

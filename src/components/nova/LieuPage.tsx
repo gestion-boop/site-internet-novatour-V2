@@ -232,7 +232,22 @@ export function LieuPage({ place }: { place: Place }) {
             </a>
           </div>
         </div>
-        <p className="copyright">© 2026 NovaTour. Tous droits réservés.</p>
+        <div className="footer-bottom">
+          <p className="copyright">© 2026 NovaTour. Tous droits réservés.</p>
+          <a
+            className="footer-village"
+            href="https://www.villagebyca.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="/partners/village-by-ca.png"
+              alt="Le Village by CA — 1er accélérateur en Europe"
+              width="77"
+              height="30"
+            />
+          </a>
+        </div>
       </footer>
     </main>
   );
