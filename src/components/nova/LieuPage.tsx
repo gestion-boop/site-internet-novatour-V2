@@ -243,6 +243,8 @@ export function LieuPage({ place }: { place: Place }) {
             <img
               src="/partners/village-by-ca.png"
               alt="Le Village by CA — 1er accélérateur en Europe"
+              width="77"
+              height="30"
             />
           </a>
         </div>
