@@ -893,6 +893,12 @@ a {
   text-transform: uppercase;
 }
 
+.menu-kicker--pro {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin: 32px 0 16px;
+  padding-top: 24px;
+}
+
 .menu-panel nav {
   display: flex;
   flex-direction: column;
@@ -3751,7 +3757,7 @@ footer {
   color: white;
   display: grid;
   gap: 50px;
-  grid-template-columns: 1.6fr repeat(4, 1fr);
+  grid-template-columns: 1.4fr repeat(5, 1fr);
   padding: 75px clamp(24px, 7vw, 110px) 32px;
 }
 
