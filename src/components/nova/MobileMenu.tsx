@@ -107,21 +107,14 @@ export function MobileMenu() {
           <a href="/lieux" onClick={closeMenu}>
             <span>03</span>Tous les lieux
           </a>
-          <a
-            href="https://www.novavisio.fr/#novatour"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeMenu}
-          >
-            <span>04</span>Rejoignez-nous
-          </a>
           <a href="/contact" onClick={closeMenu}>
-            <span>05</span>Contact
+            <span>04</span>Contact
           </a>
         </nav>
 
-        <a className="button button-primary menu-cta" href="/#partenaire" onClick={closeMenu}>
-          Inscrire mon entreprise <span>→</span>
+        <p className="menu-kicker menu-kicker--pro">Espace professionnels</p>
+        <a className="button button-primary menu-cta" href="/offres" onClick={closeMenu}>
+          Faire découvrir mon établissement <span>→</span>
         </a>
       </aside>
     </div>
