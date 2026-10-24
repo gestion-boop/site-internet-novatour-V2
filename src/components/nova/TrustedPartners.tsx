@@ -117,6 +117,13 @@ const partners: Partner[] = [
     logo: "/partners/cascade-de-moussan.webp",
     name: "La Cascade de Moussan",
   },
+  {
+    alt: "Art Pub Déco — Agence de publicité, impression & enseigne",
+    href: "https://app.novatour.fr/place/art-pub-deco?category=professionnels&id=0dfb4094-fd87-4766-9f37-18ad5a08cdc2",
+    id: "art-pub-deco",
+    logo: "/partners/art-pub-deco.webp",
+    name: "Art Pub Déco",
+  },
 ];
 
 /** Doublé pour un défilement en boucle continue et sans coupure. */
