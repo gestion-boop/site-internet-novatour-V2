@@ -54,15 +54,16 @@ export function HomePage() {
 
       <section className="hero hero--video" id="accueil">
         <div className="hero-video-layer" aria-hidden="true">
-          <div className="hero-bg-slide">
-            <img src="/occitanie-restaurant.png" alt="" loading="eager" />
-          </div>
-          <div className="hero-bg-slide">
-            <img src="/occitanie-marina.png" alt="" loading="eager" />
-          </div>
-          <div className="hero-bg-slide">
-            <img src="/occitanie-village.png" alt="" loading="eager" />
-          </div>
+          <video
+            className="hero-video"
+            src="/novatour-hero.mp4"
+            poster="/novatour-hero-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          />
           <div className="hero-video-overlay" />
         </div>
 
