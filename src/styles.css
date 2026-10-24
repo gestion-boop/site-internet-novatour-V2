@@ -7879,12 +7879,18 @@ main.offers-page .footer-brand > p {
 }
 
 .place-card__title {
+  -webkit-box-orient: vertical;
   color: var(--ink);
+  display: -webkit-box;
   font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.15;
   margin: 0;
+  min-height: calc(1.15em * 2);
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .place-card__city {
@@ -7906,6 +7912,7 @@ main.offers-page .footer-brand > p {
   line-clamp: 2;
   line-height: 1.5;
   margin: 4px 0 0;
+  min-height: calc(1.5em * 2);
   overflow: hidden;
 }
 
