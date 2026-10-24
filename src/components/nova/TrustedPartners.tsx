@@ -124,6 +124,13 @@ const partners: Partner[] = [
     logo: "/partners/art-pub-deco.webp",
     name: "Art Pub Déco",
   },
+  {
+    alt: "BunnyTech — Agence de communication",
+    href: "https://app.novatour.fr/place/bunnytech?category=professionnels&id=daf31ee4-b096-4e8d-9033-49affaf1dcf8",
+    id: "bunnytech",
+    logo: "/partners/bunnytech.webp",
+    name: "BunnyTech",
+  },
 ];
 
 /** Doublé pour un défilement en boucle continue et sans coupure. */
