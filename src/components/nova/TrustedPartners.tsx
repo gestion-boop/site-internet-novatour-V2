@@ -110,6 +110,13 @@ const partners: Partner[] = [
     logo: "/partners/cote-du-midi.webp",
     name: "Côte du Midi — Office de Tourisme",
   },
+  {
+    alt: "La Cascade de Moussan — Cuisine et tradition familiale",
+    href: "https://app.novatour.fr/place/la-cascade-de-moussan?category=se+restaurer&id=84f25fd1-8892-498e-aeda-d0c7f3480753",
+    id: "cascade-de-moussan",
+    logo: "/partners/cascade-de-moussan.webp",
+    name: "La Cascade de Moussan",
+  },
 ];
 
 /** Doublé pour un défilement en boucle continue et sans coupure. */
