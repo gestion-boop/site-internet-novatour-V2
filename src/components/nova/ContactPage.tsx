@@ -72,28 +72,13 @@ export function ContactPage() {
             Découvrir NovaTour
           </a>
           <a href="/lieux">Tous les lieux</a>
-          <a href="https://www.novavisio.fr/#novatour" target="_blank" rel="noreferrer">
-            Rejoignez-nous
-          </a>
           <a className="active" href="/contact">
             Contact
           </a>
         </nav>
         <div className="header-actions">
-          <a
-            className="header-novavisio"
-            href="https://www.novavisio.fr/#novatour"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src="/novavisio-logo.png" alt="" width="58" height="58" />
-            <span>
-              <strong>NovaVisio</strong>
-              <small>Création immersive</small>
-            </span>
-          </a>
-          <a className="header-cta" href="/offres#devis">
-            Obtenir un devis
+          <a className="header-cta" href="/offres">
+            Espace professionnels
           </a>
         </div>
         <MobileMenu />
@@ -315,13 +300,17 @@ export function ContactPage() {
           </p>
         </div>
         <div>
-          <h3>Navigation</h3>
+          <h3>Pour les visiteurs</h3>
           <a href="/#accueil">Accueil</a>
           <a href={APP_URL} target="_blank" rel="noreferrer">
             Découvrir
           </a>
+          <a href="/lieux">Tous les lieux</a>
+        </div>
+        <div>
+          <h3>Pour les professionnels</h3>
           <a href="/offres">Nos offres</a>
-          <a href="/#partenaire">Devenir partenaire</a>
+          <a href="/offres#taille-lieu">Devenir partenaire</a>
         </div>
         <div>
           <h3>Contact</h3>

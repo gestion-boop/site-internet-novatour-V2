@@ -73,6 +73,9 @@ function flattenCategories(categories: ApiCategory[]) {
 function detectFamily(labels: (string | undefined)[]): PlaceFamily | null {
   const text = labels.filter(Boolean).join(" ").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   if (!text) return null;
+  if (/office de tourisme|\btourisme\b|\btourismes\b/.test(text)) {
+    return "pro";
+  }
   if (/restaur|\bbars?\b|cafe|brasserie|pizz|traiteur|manger|gastro/.test(text)) {
     return "restaurant";
   }

@@ -103,6 +103,13 @@ const partners: Partner[] = [
     logo: "/partners/jonquieres.webp",
     name: "Château de Jonquières",
   },
+  {
+    alt: "Côte du Midi — Office de Tourisme",
+    href: "https://app.novatour.fr/place/office-de-tourisme-port-la-nouvelle?category=tourismes&id=a989d2aa-1f3a-475d-8198-6fbb37e52b15",
+    id: "cote-du-midi",
+    logo: "/partners/cote-du-midi.webp",
+    name: "Côte du Midi — Office de Tourisme",
+  },
 ];
 
 /** Doublé pour un défilement en boucle continue et sans coupure. */

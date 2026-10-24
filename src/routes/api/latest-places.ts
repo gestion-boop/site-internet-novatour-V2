@@ -73,6 +73,9 @@ function detectFamily(labels: (string | undefined)[]): PlaceFamily | null {
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
   if (!text) return null;
+  if (/office de tourisme|\btourisme\b|\btourismes\b/.test(text)) {
+    return "pro";
+  }
   if (/restaur|\bbars?\b|cafe|brasserie|pizz|traiteur|manger|gastro/.test(text)) {
     return "restaurant";
   }
