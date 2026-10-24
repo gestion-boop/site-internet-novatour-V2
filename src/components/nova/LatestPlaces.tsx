@@ -136,7 +136,7 @@ export function LatestPlaces() {
               </p>
               <h3 className="place-card__title">{place.title}</h3>
               <p className="place-card__city">{place.city}</p>
-              {place.description ? <p className="place-card__desc">{place.description}</p> : null}
+              <p className="place-card__desc">{place.description ?? ""}</p>
               <span className="place-card__cta">
                 Visiter en immersion <span aria-hidden="true">→</span>
               </span>
